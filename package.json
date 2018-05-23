@@ -1,0 +1,32 @@
+{
+  "name": "outils_fta",
+  "version": "1.0.0",
+  "description": "Projet client French Tech Alsace (Développement des outils \"Communautés Startups\" et \"Gestion d'événements\")",
+  "main": "webpack.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "@symfony/webpack-encore": "^0.20.1",
+    "jquery": "^3.3.1",
+    "webpack-notifier": "^1.6.0"
+  },
+  "devDependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saphir88/Outils_FTA.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saphir88/Outils_FTA/issues"
+  },
+  "homepage": "https://github.com/saphir88/Outils_FTA#readme"
+}
