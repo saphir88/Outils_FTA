@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\StartUps;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Startup controller.
@@ -39,7 +40,7 @@ class StartUpsController extends Controller
      */
     public function newAction(Request $request)
     {
-        $startUp = new Startup();
+        $startUp = new Startups();
         $form = $this->createForm('AppBundle\Form\StartUpsType', $startUp);
         $form->handleRequest($request);
 
