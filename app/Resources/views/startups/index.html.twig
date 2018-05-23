@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Startups list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Label</th>
+                <th>Type</th>
+                <th>Tags</th>
+                <th>Description</th>
+                <th>Adresse</th>
+                <th>Siret</th>
+                <th>Siteinternet</th>
+                <th>Ville</th>
+                <th>Anneecreation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for startUp in startUps %}
+            <tr>
+                <td><a href="{{ path('startups_show', { 'id': startUp.id }) }}">{{ startUp.id }}</a></td>
+                <td>{{ startUp.label }}</td>
+                <td>{{ startUp.type }}</td>
+                <td>{{ startUp.tags }}</td>
+                <td>{{ startUp.description }}</td>
+                <td>{{ startUp.adresse }}</td>
+                <td>{{ startUp.sIRET }}</td>
+                <td>{{ startUp.siteInternet }}</td>
+                <td>{{ startUp.ville }}</td>
+                <td>{{ startUp.anneeCreation }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('startups_show', { 'id': startUp.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('startups_edit', { 'id': startUp.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('startups_new') }}">Create a new startUp</a>
+        </li>
+    </ul>
+{% endblock %}

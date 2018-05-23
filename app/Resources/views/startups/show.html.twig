@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Startup</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ startUp.id }}</td>
+            </tr>
+            <tr>
+                <th>Label</th>
+                <td>{{ startUp.label }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ startUp.type }}</td>
+            </tr>
+            <tr>
+                <th>Tags</th>
+                <td>{{ startUp.tags }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ startUp.description }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ startUp.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Siret</th>
+                <td>{{ startUp.sIRET }}</td>
+            </tr>
+            <tr>
+                <th>Siteinternet</th>
+                <td>{{ startUp.siteInternet }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ startUp.ville }}</td>
+            </tr>
+            <tr>
+                <th>Anneecreation</th>
+                <td>{{ startUp.anneeCreation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('startups_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('startups_edit', { 'id': startUp.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
