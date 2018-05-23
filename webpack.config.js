@@ -5,6 +5,7 @@ var Encore = require('@symfony/webpack-encore');
         .setPublicPath('/web')  
         .addEntry('app', './assets/js/app.js')  
         .addEntry('style', './assets/scss/main.scss')
+	.autoProvidejQuery()
         .cleanupOutputBeforeBuild()  
         .enableBuildNotifications()
         .enableSassLoader();
