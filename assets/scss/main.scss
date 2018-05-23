@@ -1,6 +1,12 @@
-    $brand-primary: darken(#428bca, 20%);
-    body{
-        color: $brand-primary;
-    }
-    @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+p{
+  color: blue;
+}
+h2{
+  text-align: center;
+}
+img{
+  height: 140px;
+  width: 140px;
+}
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
