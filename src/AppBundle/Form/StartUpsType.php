@@ -13,7 +13,11 @@ class StartUpsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('label')->add('type')->add('tags')->add('description')->add('adresse')->add('sIRET')->add('siteInternet')->add('ville')->add('anneeCreation');
+        $builder->add('label')
+            ->add('type')
+            ->add('tags')
+            ->add('description')
+            ->add('adresse')->add('sIRET')->add('siteInternet')->add('ville')->add('anneeCreation');
     }/**
      * {@inheritdoc}
      */
