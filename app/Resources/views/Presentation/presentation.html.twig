@@ -3,41 +3,37 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="form-group ">
                 <label for="sel1">StartUp</label>
-                <form>
-                    <select class="form-control col-xl-3" id="sel1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
+                    <select class="" id="Type">
+                        <option value="">0. Toute</option>
+                        <option value="HealthTech">1. HealthTech</option>
+                        <option value="service informatique BtoB">2. service informatique BtoB</option>
+                        <option value="Ed Tech Entertainment">3. Ed Tech Entertainment</option>
+                        <option value="IOT Manufacturing">4. IOT Manufacturing</option>
+                        <option value="CleanTech/Mobility">5. CleanTech/Mobility</option>
+                        <option value="FoodTech">6. FoodTech</option>
+                        <option value="Sports">7. Sports</option>
+                        <option value="Retail">8. Retail</option>
+                        <option value="Fintech">9. Fintech</option>
+                        <option value="Security Privacy">10. Security Privacy</option>
+                        <option value="service informatique BtoC">11. service informatique BtoC</option>
                     </select>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
         </div>
     </div>
-
-
+    
     <h2>Start Up</h2>
     <div class="container">
         <div class="row">
             {% for  startUp in startUps %}
-                <div class="col-lg-3">
+                <div data-Type="{{ startUp.type }}" class="col-lg-3 test">
                     <h1 class="nomStartUp">{{ startUp.Label }}</h1>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgTDOzadSH7HZlU96Ogy2XzMynwk4o4Epcvw12FmpBYRT0B_aLrA">
                     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#{{ startUp.id }}">More Infos</button>
-                    <div class="modal fade" id="{{ startUp.id }}" role="dialog">
+                    <div  class="modal fade {{ startUp.type }}" id="{{ startUp.id }}"  role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="nomStartUp">{{ startUp.Label|e }}</h4>
+                                    <h4 class="nomStartUp">{{ startUp.Label }}</h4>
                                     <a href="#">logo</a>
                                 </div>
                                 <div class="modal-body">
@@ -47,6 +43,7 @@
                                     <p>Tags:{{ startUp.Tags }}</p>
                                     <p>Site: <a href="{{ startUp.SiteInternet }}">{{ startUp.SiteInternet }}</a></p>
                                     <p>Email et autre information</p>
+                                    <p>Video</p>
                                 </div>
                             </div>
                         </div>
@@ -56,4 +53,7 @@
         </div>
     </div>
 
+
+{% endblock %}
+{% block javascripts %}
 {% endblock %}
