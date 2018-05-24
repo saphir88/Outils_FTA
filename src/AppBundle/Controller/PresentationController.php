@@ -2,15 +2,21 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\StartUps;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+/**
+ * Startup controller.
+ *
+ * @Route("presentation")
+ */
+class PresentationController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="presentation")
      */
     public function indexAction(Request $request)
     {
@@ -18,7 +24,7 @@ class DefaultController extends Controller
 
         $startUps = $em->getRepository('AppBundle:StartUps')->findAll();
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig',array(
+        return $this->render('Presentation/presentation.html.twig',array(
             'startUps' => $startUps,
         ));
     }
