@@ -78,9 +78,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 
-
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
     console.log("ok, JQuery fonctionne !");
+});
+
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()('select').on('change', function () {
+    var valType = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#Type').val();
+    var dataType = valType == '' ? '' : '[data-Type="' + valType + '"]';
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.test').show();
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.test').not(dataType).hide();
 });
 
 /***/ }),
