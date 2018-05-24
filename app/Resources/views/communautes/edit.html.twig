@@ -1,21 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Communaute edit</h1>
-
-    {{ form_start(edit_form) }}
+    <h1>Modification de la Startup "{{ communaute.nomStartup }}"</h1>
+    <div class="container">
+        {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('communautes_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <div class="container">
+                    <button type="submit" class="btn btn-success">Valider les modifications</button>
+                    {{ form_end(edit_form) }}
+                    {{ form_start(delete_form) }}
+                    <button class="btn btn-danger" type="submit">Supprimer</button>
+                    {{ form_end(delete_form) }}
+        </div>
+        <a class="btn btn-primary" href="{{ path('communautes_index') }}">Revenir à la liste des Startups</a>
+    </div>
 {% endblock %}

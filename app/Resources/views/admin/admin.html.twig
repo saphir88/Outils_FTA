@@ -4,22 +4,18 @@
     <div class="container">
     <div class="row">
         <div class="col-6 offset-3">
-            <h2 class="titre">Star Ship Racing</h2>
+            <h2 class="titre">Bienvenue dans l'administration du site !</h2>
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row">
-            <div class="container ">
-                <div class="row ">
-                    <div class="col-6 offset-3 test">
-                        <div class="col-4 offset-3">
-                            <a class="btn offset-1 " href="#" role="button">Gestion des Startups</a>
-                            <a class="btn offset-2" href="#" role="button">Validation des inscriptions</a>
-                            <a class="btn offset-2" href="#" role="button">Extraction de la base de donnée des Startups</a>
-                            <br>
-                            <a class="btn offset-3" href="{{ path('logout') }}" role="button">Deconnexion</a>
-                        </div>
-                    </div>
+        <div class="row ">
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="col-lg-4">
+                    <a class="btn btn-primary" href="{{ path('communautes_index') }}" role="button">Gestion des Startups</a>
+                    <a class="btn btn-primary" href="#" role="button">Validation des inscriptions</a>
+                    <a class="btn btn-primary" href="{{ path('csv_extract') }}" role="button">Extraction de la base de données des Startups</a>
+                    <br>
+                    <a class="btn btn-danger" href="{{ path('logout') }}" role="button">Deconnexion</a>
                 </div>
             </div>
         </div>
