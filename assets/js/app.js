@@ -6,7 +6,13 @@ import $ from "jquery"
 $('select').on('change', function() {
     var valType = $('#Type').val();
     var dataType = (valType == '') ? '' : '[data-Type="'+valType +'"]';
-    $('.test').show();
-    $('.test').not(dataType).hide();
+
+        console.log(valType);
+    if (valType !== '') {
+        $('.test').show();
+        $('.test').not(dataType).hide();
+    }else if(valType === ''){
+        $('.test').show();
+    }
 });
 

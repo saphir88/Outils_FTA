@@ -85,8 +85,14 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()('select').on('change', function () {
     var valType = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#Type').val();
     var dataType = valType == '' ? '' : '[data-Type="' + valType + '"]';
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.test').show();
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.test').not(dataType).hide();
+
+    console.log(valType);
+    if (valType !== '') {
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.test').show();
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.test').not(dataType).hide();
+    } else if (valType === '') {
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.test').show();
+    }
 });
 
 /***/ }),
