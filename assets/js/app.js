@@ -9,10 +9,10 @@ $('select').on('change', function() {
 
         console.log(valType);
     if (valType !== '') {
-        $('.test').show();
-        $('.test').not(dataType).hide();
+        $('.modalUnique').slideDown(1800);
+        $('.modalUnique').not(dataType).hide();
     }else if(valType === ''){
-        $('.test').show();
+        $('.modalUnique').slideDown(1800);
     }
 });
 
