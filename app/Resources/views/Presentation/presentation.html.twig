@@ -28,8 +28,8 @@
             {% for  startUp in startUps %}
                 <div data-Type="{{ startUp.type }}" class="col-lg-3 modalUnique">
                     <div class="test">
-                        <h1 class="nomStartUp">{{ startUp.Label }}</h1>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgTDOzadSH7HZlU96Ogy2XzMynwk4o4Epcvw12FmpBYRT0B_aLrA">
+                        <h1 class="nomStartUp">{{ startUp.id }} :{{ startUp.Label }}</h1>
+                        <a  href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgTDOzadSH7HZlU96Ogy2XzMynwk4o4Epcvw12FmpBYRT0B_aLrA"></a>
 
                         <button type="button" class="btn btn-info btn-lg info" data-toggle="modal" data-target="#{{ startUp.id }}">More Infos</button>
 
