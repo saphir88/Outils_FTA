@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Images
 {
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communautes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $communaute;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -62,5 +68,28 @@ class Images
     {
         return $this->nom;
     }
-}
 
+    /**
+     * Set communaute
+     *
+     * @param \AppBundle\Entity\Communautes $communaute
+     *
+     * @return Images
+     */
+    public function setCommunaute(\AppBundle\Entity\Communautes $communaute)
+    {
+        $this->communaute = $communaute;
+
+        return $this;
+    }
+
+    /**
+     * Get communaute
+     *
+     * @return \AppBundle\Entity\Communautes
+     */
+    public function getCommunaute()
+    {
+        return $this->communaute;
+    }
+}

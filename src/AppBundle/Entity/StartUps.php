@@ -311,4 +311,3 @@ class StartUps
         return $this->anneeCreation;
     }
 }
-

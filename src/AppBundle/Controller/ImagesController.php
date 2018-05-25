@@ -39,7 +39,7 @@ class ImagesController extends Controller
      */
     public function newAction(Request $request)
     {
-        $image = new Image();
+        $image = new Images();
         $form = $this->createForm('AppBundle\Form\ImagesType', $image);
         $form->handleRequest($request);
 
