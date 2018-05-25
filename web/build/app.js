@@ -88,10 +88,10 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()('select').on('change', function (
 
     console.log(valType);
     if (valType !== '') {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.test').show();
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.test').not(dataType).hide();
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.modalUnique').slideDown(1800);
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.modalUnique').not(dataType).hide();
     } else if (valType === '') {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.test').show();
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.modalUnique').slideDown(1800);
     }
 });
 
