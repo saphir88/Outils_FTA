@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Communautes
@@ -97,9 +98,21 @@ class Communautes
      * @var string
      *
      * @ORM\Column(name="telephone", type="string", length=255)
+     *
+     * @Assert\Regex(
+     *     pattern="/^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$/",
+     *     match=false,
+     *     message="Veuillez rentrer un numéro de telephone valide"
+     * )
      */
     private $telephone;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="logo", type="string", length=255)
+     */
+    private $logo;
 
     /**
      * Get id
@@ -350,4 +363,31 @@ class Communautes
     {
         return $this->telephone;
     }
+
+    /**
+     * Set logo.
+     *
+     * @param string $logo
+     *
+     * @return Communautes
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    /**
+     * Get logo.
+     *
+     * @return string
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+
+
 }

@@ -45,7 +45,7 @@ class StartUps
     /**
      * @var string
      *
-     * @ORM\Column(name="Description", type="string", length=255, nullable=true)
+     * @ORM\Column(name="Description", type="string", length=1000, nullable=true)
      */
     private $description;
 
