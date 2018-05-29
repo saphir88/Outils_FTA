@@ -1,27 +1,64 @@
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+$fontFamily : Arial;/*variable global d'écriture du site*/
+
+/*style de la page d'accueil*/
+
+.imgTete{
+  margin-bottom: 20px;
+}
+.section1{
+  border: 1px solid black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.contourText{
+  border: 1px solid black;
+
+}
+.titre1{
+  text-align: center;
+  background-color: #e14277;
+  color: white;
+  font-family: $fontFamily;
+  border: 1px solid black;
+
+}
+.paragraphe{
+  margin-top: 20px;
+}
+.text{
+  font-family: $fontFamily;
+  font-size: 1.5em;
+  padding: 20px;
+}
+
+/*style de la page d'accueil*/
+
+/*style de la page presentation*/
+.startUP{
+  border: 1px solid black;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
 .nomStartUp{
   font-size: 1em;
 }
 .modalUnique{
   text-align: center;
-
-}
-.test{
-  border: 1px solid black;
-  background-color: rgba(0,0,0, 0.1);
-  padding-bottom: 20px;
-}
-.col-lg-3{
-  margin-bottom: 20px;
 }
 .info{
   margin-top: 10px;
 }
-
 h2{
   text-align: center;
 }
-img{
+.logo{
   height: 140px;
   width: 140px;
 }
-@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+/*style de la page presentation*/
+
+
+

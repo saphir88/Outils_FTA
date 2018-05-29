@@ -1,10 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    <center><img class="imgTete" src="{{ asset ('build/images/French-tech-horizontal1.jpg') }}"></center>
+
+    <div class="container section1">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 titre1">
+                    <h1>Bienvenue sur l'outil "Communautés startup"</h1>
+                </div>
+            </div>
+
+            <div class="row paragraphe">
+                <div class="col-lg-10 col-lg-offset-1 contourText">
+                    <p class="text">
+                        Grace au formulaire proposer par le site de la French Tech les startUps Alsaciennes pourrons s'enregistrer en renseignant
+                        certaines information, elles pourront etre gerer dans leur espace personnnelle.<br>
+                        L'ajout de photo et vidéo seront à remplir dans l'espace du compte.<br>
+                        <br>
+                        Elles seront visible dans la page présentation et seront trier grace à un filtre.<br>
+
+                    </p>
+                </div>
+            </div>
+    </div>
+
+
     <div class="jumbotron">
         <h1>Bienvenue sur l'outil "Communautés startup"</h1>
-        <p>Cet outil permet aux startups d'Alsace de se montrer au grand jour. Si vous avez une Startup, vous pouvez l'ajouter en vous inscrivant <a href="#">ici</a> </p>
+        <p>Cet outil permet aux startups d'Alsace de se montrer au grand jour.<br>vous avez une Startup, vous pouvez l'ajouter en vous inscrivant <a href="{{ path('communautes_new') }}">ici</a> </p>
     </div>
+
 {% endblock %}
 
 {% block stylesheets %}
