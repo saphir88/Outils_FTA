@@ -33,3 +33,14 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    app.logo_uploader:
+            class: AppBundle\LogoUpload
+            arguments: ['%images_directory%']
+
+    app.doctrine_logo_listener:
+            class: AppBundle\EventListener\LogoUploadListener
+            arguments: ['@app.logo_uploader']
+            tags:
+                - { name: doctrine.event_listener, event: prePersist }
+                - { name: doctrine.event_listener, event: preUpdate }

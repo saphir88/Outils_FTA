@@ -48,7 +48,7 @@ class CommunautesController extends Controller
             $em->persist($communaute);
             $em->flush();
 
-            return $this->redirectToRoute('communautes_show', array('id' => $communaute->getId()));
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('communautes/new.html.twig', array(

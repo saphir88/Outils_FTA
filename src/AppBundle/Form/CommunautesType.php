@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -21,8 +22,9 @@ class CommunautesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nomStartup', TextType::class, array('label'=>'Nom de la startup* :'))
+            ->add('logo', FileType::class, array('label' => 'Logo :'))
             ->add('description', TextareaType::class, array('required'=> false, 'label'=>'Description :'))
-            ->add('video', TextType::class, array('required'=> false, 'label'=>'Vidéo :'))
+            //->add('video', TextType::class, array('required'=> false, 'label'=>'Vidéo :'))
             ->add('siteWeb', TextType::class, array('required'=> false, 'label'=>'Site Web :'))
             ->add('categorie', ChoiceType::class, array('label'=>'Domaine* :',
                 'choices'  => array(

@@ -94,4 +94,3 @@ class Users
         return $this->motDePasse;
     }
 }
-
