@@ -4,6 +4,7 @@
     <h1>Modification de la Startup "{{ communaute.nomStartup }}"</h1>
     <div class="container">
         {{ form_start(edit_form) }}
+        <img src="/uploads/img/{{ communaute.logo }}">
         {{ form_widget(edit_form) }}
         <div class="container">
                     <button type="submit" class="btn btn-success">Valider les modifications</button>
