@@ -1,41 +1,45 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Gestion des Startups</h1>
 
-    <div class="container">
-        <div class="row">
-            <label for="sel1">StartUp</label>
-            <select class="" id="Type">
-                <option value="">0. Tous</option>
-                <option value="HealthTech">1. HealthTech</option>
-                <option value="service informatique BtoB">2. service informatique BtoB</option>
-                <option value="Ed Tech Entertainment">3. Ed Tech Entertainment</option>
-                <option value="IOT Manufacturing">4. IOT Manufacturing</option>
-                <option value="CleanTech/Mobility">5. CleanTech/Mobility</option>
-                <option value="FoodTech">6. FoodTech</option>
-                <option value="Sports">7. Sports</option>
-                <option value="Retail">8. Retail</option>
-                <option value="Fintech">9. Fintech</option>
-                <option value="Security Privacy">10. Security Privacy</option>
-                <option value="service informatique BtoC">11. service informatique BtoC</option>
-            </select>
-        </div>
-    </div>
-
-    <h2>Start Up</h2>
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                <h2 class="">Gestion des Startups</h2>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row select">
+                <div class=" col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-3">
+                    <label for="sel1">Filtre des StartUp :</label>
+                    <select class="" id="Type">
+                        <option value="">0. Tous</option>
+                        <option value="HealthTech">1. HealthTech</option>
+                        <option value="service informatique BtoB">2. service informatique BtoB</option>
+                        <option value="Ed Tech Entertainment">3. Ed Tech Entertainment</option>
+                        <option value="IOT Manufacturing">4. IOT Manufacturing</option>
+                        <option value="CleanTech/Mobility">5. CleanTech/Mobility</option>
+                        <option value="FoodTech">6. FoodTech</option>
+                        <option value="Sports">7. Sports</option>
+                        <option value="Retail">8. Retail</option>
+                        <option value="Fintech">9. Fintech</option>
+                        <option value="Security Privacy">10. Security Privacy</option>
+                        <option value="service informatique BtoC">11. service informatique BtoC</option>
+                    </select>
+                </div>
+            </div>
+        </div>
         <div class="row">
             {% for  communaute in communautes %}
                 <div data-Type="{{ communaute.categorie }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
                     <div class="startUP">
-                        <h1 class="nomStartup">{{ communaute.id }} :{{ communaute.nomStartup }}</h1>
+                        <h1 class="nomStartUp">{{ communaute.id }} :{{ communaute.nomStartup }}</h1>
                         <center><img class="logo" src="{{ asset('uploads/img/') }}{{ communaute.logo }}"></center>
                         <a class="btn btn-primary" href="{{ path('communautes_edit', { 'id': communaute.id }) }}">Modifier</a>
-                        </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
     </div>
+
 {% endblock %}
