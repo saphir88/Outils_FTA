@@ -22,7 +22,7 @@ class CommunautesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nomStartup', TextType::class, array('label'=>'Nom de la startup* :'))
-            ->add('logo', FileType::class, array('label' => 'Logo :', 'data_class' => NULL))
+            ->add('logo', FileType::class, array('label' => 'Logo :', 'data_class' => NULL, 'required'=> false))
             ->add('description', TextareaType::class, array('required'=> false, 'label'=>'Description :'))
             ->add('video', TextType::class, array('required'=> false, 'label'=>'Vidéo :'))
             ->add('siteWeb', TextType::class, array('required'=> false, 'label'=>'Site Web :'))
