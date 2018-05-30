@@ -29,11 +29,12 @@ class CompteController extends Controller
      */
     public function compte()
     {
+        $user = $this->getUser();
         $infos[] = ""; //Stockage des futures informations du compte de la startup
 
         // TODO
 
-        return $this->render('compte/index.html.twig', ['infos' => $infos,]);
+        return $this->render('compte/index.html.twig', ['infos' => $infos, 'user' => $user]);
     }
 
 }
