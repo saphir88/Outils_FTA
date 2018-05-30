@@ -24,10 +24,19 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="/presentation">Presentation </a></li>
-                <li><a href="{{ path('communautes_new') }}">Inscription</a></li>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {% else %}
+                    <li><a href="{{ path('communautes_new') }}">Inscription</a></li>
+                {% endif %}
+
                 <li><a href="#">Evenement</a></li>
             </ul>
-            <p class="navbar-text navbar-right"><a href="/login" class="navbar-link"> Connection</a></p>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <p class="navbar-text navbar-right"><a href="{{ path('compte') }}" class="navbar-link">Mon compte</a></p>
+                <p class="navbar-text navbar-right"><a href="/logout" class="navbar-link">Deconnexion</a></p>
+            {% else %}
+                <p class="navbar-text navbar-right"><a href="/login" class="navbar-link">Connexion</a></p>
+            {% endif %}
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

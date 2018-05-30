@@ -50,7 +50,7 @@ class LogoUploadListener
         // If no new logo file was uploaded
         if(is_null($entity->getLogo())){
             // Let original filename in the entity
-            $entity->setBrochure($previousFilename);
+            $entity->setLogo($previousFilename);
 
             // If a new logo was uploaded in the form
         }else{
@@ -71,7 +71,7 @@ class LogoUploadListener
 
     private function uploadFile($entity)
     {
-        // upload only works for Product entities
+        // upload only works for Communautes entities
         if (!$entity instanceof Communautes) {
             return;
         }

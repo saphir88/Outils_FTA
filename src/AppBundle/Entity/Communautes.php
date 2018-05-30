@@ -24,7 +24,6 @@ class Communautes
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\User", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
