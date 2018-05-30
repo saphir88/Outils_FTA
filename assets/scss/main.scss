@@ -1,9 +1,12 @@
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 $fontFamily : Arial;/*variable global d'écriture du site*/
+$Rouge : rgb(236,55,55);
+$GrisClair: rgb(122,151,170);
+$VertClair: rgb(181,221,214);
+$Rose: rgb(241, 78, 182);
 
 /*style de la page d'accueil*/
-
 .imgTete{
   margin-bottom: 20px;
 }
@@ -12,17 +15,25 @@ $fontFamily : Arial;/*variable global d'écriture du site*/
   padding-top: 20px;
   padding-bottom: 20px;
   margin-bottom: 20px;
+  background-color: $VertClair;
+  border-radius: 20px;
+  font-family: $fontFamily;
 }
 .contourText{
   border: 1px solid black;
-
+  border-radius: 20px;
 }
 .titre1{
   text-align: center;
-  background-color: #e14277;
+  background-color: $Rose;
   color: white;
   font-family: $fontFamily;
   border: 1px solid black;
+  border-radius: 20px;
+}
+
+.contourText{
+  background-color: $GrisClair;
 
 }
 .paragraphe{
@@ -33,20 +44,46 @@ $fontFamily : Arial;/*variable global d'écriture du site*/
   font-size: 1.5em;
   padding: 20px;
 }
-
 /*style de la page d'accueil*/
 
+
 /*style de la page presentation*/
+.test{
+  margin-top: 20px;
+  border: 1px solid black;
+}
+.select{
+  margin-bottom: 20px;
+}
 .startUP{
   border: 1px solid black;
   padding-bottom: 20px;
   margin-bottom: 30px;
+  border-radius: 20px;
+  background-color: rgba(122,151,170,0.4);
+  font-family: $fontFamily;
+}
+.titreNomStartUp{
+  font-size: 4em;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  background-color: $Rose;
+  color: white;
+  font-family: $fontFamily;
+
 }
 .nomStartUp{
-  font-size: 1em;
+  font-size: 2em;
+  font-family: $fontFamily;
+
+}
+.info{
+
 }
 .modalUnique{
   text-align: center;
+
 }
 .info{
   margin-top: 10px;
