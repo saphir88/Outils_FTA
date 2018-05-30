@@ -26,7 +26,7 @@
                 <li><a href="/presentation">Presentation </a></li>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {% else %}
-                    <li><a href="{{ path('communautes_new') }}">Inscription</a></li>
+                    <li><a href="/register">Inscription</a></li>
                 {% endif %}
 
                 <li><a href="#">Evenement</a></li>

@@ -31,7 +31,7 @@ class CompteController extends Controller
      */
     public function compte(Request $request)
     {
-        $user = $this->getUser();;
+        $user = $this->getUser();
         $form = $this->createForm('AppBundle\Form\CommunautesType', $user);
         $form->handleRequest($request);
 
