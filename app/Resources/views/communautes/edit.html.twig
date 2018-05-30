@@ -7,7 +7,7 @@
         {{ form_row(edit_form.nomStartup) }}
         {{ form_label(edit_form.logo) }}
         <br>
-        <img src="{{ asset('uploads/img/') }}{{ communaute.logo }}">
+        <img src="{{ asset('uploads/img/') }}{{ communaute.logo }}" width="300">
         {{ form_errors(edit_form.logo) }}
         {{ form_widget(edit_form.logo) }}
         {{ form_rest(edit_form) }}

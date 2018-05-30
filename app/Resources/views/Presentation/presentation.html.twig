@@ -26,10 +26,10 @@
     <div class="container-fluid">
         <div class="row">
             {% for  startUp in startUps %}
-                <div data-Type="{{ startUp.type }}" class="col-lg-3 modalUnique">
-                    <div class="test">
+                <div data-Type="{{ startUp.type }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
+                    <div class="startUP">
                         <h1 class="nomStartUp">{{ startUp.id }} :{{ startUp.Label }}</h1>
-                        <a  href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgTDOzadSH7HZlU96Ogy2XzMynwk4o4Epcvw12FmpBYRT0B_aLrA"></a>
+                        <center><img class="logo" src="{{ asset ('build/images/logo.jpg') }}"></center>
 
                         <button type="button" class="btn btn-info btn-lg info" data-toggle="modal" data-target="#{{ startUp.id }}">More Infos</button>
 
@@ -47,7 +47,7 @@
                                         <p>Tags:{{ startUp.Tags }}</p>
                                         <p>Site: <a href="{{ startUp.SiteInternet }}">{{ startUp.SiteInternet }}</a></p>
                                         <p>Email et autre information</p>
-                                        <p>Video</p>
+                                        <p>Video? Photo?</p>
                                     </div>
                                 </div>
                             </div>
