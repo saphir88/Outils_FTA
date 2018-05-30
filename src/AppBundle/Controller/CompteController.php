@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Entity\Communautes;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,16 +27,27 @@ class CompteController extends Controller
      * Page compte
      *
      * @Route("/", name="compte")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function compte()
+    public function compte(Request $request)
     {
-        $user = $this->getUser();
-        $infos[] = ""; //Stockage des futures informations du compte de la startup
+        $user = $this->getUser();;
+        $form = $this->createForm('AppBundle\Form\CommunautesType', $user);
+        $form->handleRequest($request);
 
-        // TODO
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
-        return $this->render('compte/index.html.twig', ['infos' => $infos, 'user' => $user]);
+            return $this->redirectToRoute('compte');
+        }
+
+        return $this->render('compte/index.html.twig', array(
+            'utilisateur' => $user,
+            'form' => $form->createView(),
+        ));
+
     }
 
 }
