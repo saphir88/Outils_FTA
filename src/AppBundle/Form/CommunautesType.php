@@ -28,7 +28,6 @@ class CommunautesType extends AbstractType
             ->add('siteWeb', TextType::class, array('required'=> false, 'label'=>'Site Web :'))
             ->add('categorie', ChoiceType::class, array('label'=>'Domaine* :',
                 'choices'  => array(
-
                     'HealthTech' => 'HealthTech',
                     'Service Informatique BtoB' => 'Service Informatique BtoB',
                     'Ed Tech Entertainement' => 'Ed Tech Entertainement',

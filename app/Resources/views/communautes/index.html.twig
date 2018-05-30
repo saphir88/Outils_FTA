@@ -23,55 +23,14 @@
         </div>
     </div>
 
-    <table class="table table-bordered">
-        <thead>
-        <tr class="info">
-            <th>Id</th>
-            <th>Nom de la Startup</th>
-            <th>Description</th>
-            <th>Video</th>
-            <th>Site web</th>
-            <th>Catégorie</th>
-            <th>N° SIRET</th>
-            <th>Adresse</th>
-            <th>Nom du contact</th>
-            <th>Mail</th>
-            <th>Telephone</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for communaute in communautes %}
-            <tr>
-                <td>{{ communaute.id }}</td>
-                <td>{{ communaute.nomStartup }}</td>
-                <td>{{ communaute.description }}</td>
-                <td>{{ communaute.video }}</td>
-                <td>{{ communaute.siteWeb }}</td>
-                <td>{{ communaute.categorie }}</td>
-                <td>{{ communaute.siret }}</td>
-                <td>{{ communaute.adresse }}</td>
-                <td>{{ communaute.nomContact }}</td>
-                <td>{{ communaute.mail }}</td>
-                <td>{{ communaute.telephone }}</td>
-                <td>
-                    <a class="btn btn-primary" href="{{ path('communautes_edit', { 'id': communaute.id }) }}">Modifier</a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-
     <h2>Start Up</h2>
     <div class="container-fluid">
         <div class="row">
             {% for  communaute in communautes %}
-                <div data-Type="{{ communaute.categorie }}" class="col-lg-3 modalUnique">
-                    <div class="test">
+                <div data-Type="{{ communaute.categorie }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
+                    <div class="startUP">
                         <h1 class="nomStartup">{{ communaute.id }} :{{ communaute.nomStartup }}</h1>
-                        <a  href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgTDOzadSH7HZlU96Ogy2XzMynwk4o4Epcvw12FmpBYRT0B_aLrA"></a>
-
+                        <center><img class="logo" src="{{ asset('uploads/img/') }}{{ communaute.logo }}"></center>
                         <a class="btn btn-primary" href="{{ path('communautes_edit', { 'id': communaute.id }) }}">Modifier</a>
                         </div>
                     </div>
