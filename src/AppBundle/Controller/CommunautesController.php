@@ -90,12 +90,12 @@ class CommunautesController extends Controller
 
             return $this->redirectToRoute('communautes_edit', array('id' => $communaute->getId()));
         }
-
         return $this->render('communautes/edit.html.twig', array(
             'communaute' => $communaute,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
+
     }
 
     /**
