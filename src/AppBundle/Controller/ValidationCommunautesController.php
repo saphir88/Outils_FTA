@@ -53,7 +53,10 @@ class ValidationCommunautesController extends Controller
     public function delete()
     {
         $id = $_POST['id'];
+        $logo = "uploads/img/".$_POST['logo'];
+
         $this->getDoctrine()->getManager()->getRepository('AppBundle:Communautes')->delete($id);
+        unlink($logo);
 
         return $this->redirectToRoute('validation_index');
     }

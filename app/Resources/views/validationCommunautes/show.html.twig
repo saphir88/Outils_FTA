@@ -52,6 +52,7 @@
         <a class="btn btn-primary" href="{{ path('validation_index') }}">Retourner à la liste des validations en attentes</a>
         <form action="{{ path('validation_delete') }}" method="POST">
             <input type="hidden" name="id" value="{{ communaute.id }}">
+            <input type="hidden" name="logo" value="{{ communaute.logo }}">
             <input type="submit" class="btn btn-danger" value="Refuser cette startup">
         </form>
         <form action="{{ path('validation_validate') }}" method="POST">
