@@ -122,7 +122,12 @@ class Communautes extends BaseUser
      */
     private $logo;
 
-
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="validation", type="boolean", nullable=true)
+     */
+    private $validation;
 
     /**
      * Get id
@@ -423,5 +428,29 @@ class Communautes extends BaseUser
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set validation.
+     *
+     * @param bool $validation
+     *
+     * @return Communautes
+     */
+    public function setValidation($validation)
+    {
+        $this->validation = $validation;
+
+        return $this;
+    }
+
+    /**
+     * Get validation.
+     *
+     * @return bool
+     */
+    public function getValidation()
+    {
+        return $this->validation;
     }
 }

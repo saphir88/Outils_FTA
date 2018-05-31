@@ -50,6 +50,7 @@ class RegistrationType extends AbstractType
             ->add('adresse', TextType::class, array('label'=>'Adresse* :'))
             ->add('nomContact', TextType::class, array('label'=>'Nom du contact* :'))
             ->add('mail', EmailType::class, array('label'=>'Email du contact* :'))
+            ->add('validation', HiddenType::class, array('data' => '0'))
             ->add('telephone', TelType::class, array('label' => 'N° de téléphone du contact* :'));
     }
 
