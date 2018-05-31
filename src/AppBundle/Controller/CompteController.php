@@ -47,7 +47,18 @@ class CompteController extends Controller
             'utilisateur' => $user,
             'form' => $form->createView(),
         ));
+    }
 
+    /**
+     * @Route("/delete", name="compte_delete")
+     * @Method("POST")
+     */
+    public function delete()
+    {
+        $id = $_POST['id'];
+        $this->getDoctrine()->getManager()->getRepository('AppBundle:Communautes')->delete($id);
+
+        return $this->redirectToRoute('homepage');
     }
 
 }
