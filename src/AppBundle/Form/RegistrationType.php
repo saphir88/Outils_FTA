@@ -31,7 +31,7 @@ class RegistrationType extends AbstractType
             ->add('logo', FileType::class, array('label' => 'Logo :', 'data_class' => null))
             ->add('description', TextareaType::class, array('required'=> false, 'label'=>'Description :'))
             ->add('siteWeb', TextType::class, array('required'=> false, 'label'=>'Site Web :'))
-            ->add('video', TextType::class, array('required' => false , 'label' => 'Vidéo :'))
+            ->add('video', TextType::class, array('required' => false , 'label' => 'Lien Youtube :'))
             ->add('categorie', ChoiceType::class, array('label'=>'Domaine* :',
                 'choices'  => array(
                     'HealthTech' => 'HealthTech',

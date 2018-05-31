@@ -92,6 +92,7 @@ class Communautes extends BaseUser
      * @var string
      *
      * @ORM\Column(name="nomContact", type="string", length=255)
+     *
      */
     private $nomContact;
 
@@ -108,8 +109,8 @@ class Communautes extends BaseUser
      * @ORM\Column(name="telephone", type="string", length=255)
      *
      * @Assert\Regex(
-     *     pattern="/^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$/",
-     *     match=false,
+     *     pattern="/(0|\\+33|0033)[1-9][0-9]{8}/",
+     *     match= true,
      *     message="Veuillez rentrer un numéro de telephone valide"
      * )
      */

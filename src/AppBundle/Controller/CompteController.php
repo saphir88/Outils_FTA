@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Communautes;
 
@@ -21,8 +22,6 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
  */
 class CompteController extends Controller
 {
-    protected $errors = [];
-
     /**
      * Page compte
      *
@@ -31,20 +30,22 @@ class CompteController extends Controller
      */
     public function compte(Request $request)
     {
-        $user = $this->getUser();
-        $form = $this->createForm('AppBundle\Form\CommunautesType', $user);
+
+        $communaute = $this->getUser();
+
+        $form = $this->createForm('AppBundle\Form\CommunautesType', $communaute);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
+            $em->persist($communaute);
             $em->flush();
 
             return $this->redirectToRoute('compte');
         }
 
         return $this->render('compte/index.html.twig', array(
-            'utilisateur' => $user,
+            'utilisateur' => $communaute,
             'form' => $form->createView(),
         ));
 
