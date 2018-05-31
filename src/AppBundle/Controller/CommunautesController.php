@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 class CommunautesController extends Controller
 {
     /**
-     * Lists all communaute entities.
+     * Lists all communaute entities where they are validated.
      *
      * @Route("/", name="communautes_index")
      * @Method("GET")
@@ -25,7 +25,7 @@ class CommunautesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $communautes = $em->getRepository('AppBundle:Communautes')->findAll();
+        $communautes = $em->getRepository('AppBundle:Communautes')->findAllValidTrue();
 
         return $this->render('communautes/index.html.twig', array(
             'communautes' => $communautes,

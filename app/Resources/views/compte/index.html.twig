@@ -13,18 +13,19 @@
         <img src="{{ asset('uploads/img/') }}{{ utilisateur.logo }}" width="300">
         {{ form_errors(form.logo) }}
         {{ form_widget(form.logo) }}
-
-        {#{{ form_row(utilisateur.password) }}
-        #}
         {{ form_rest(form) }}
+
 
         <div class="container">
             <button type="submit" class="btn btn-success">Valider les modifications</button>
             {{ form_end(form) }}
-            {#{{ form_start(dform) }}
-            <button class="btn btn-danger" type="submit">Supprimer</button>
-            {{ form_end(delete_form) }}#}
+
+            <form action="{{ path('compte_delete') }}" method="POST">
+                <input type="hidden" name="id" value="{{ utilisateur.id }}">
+                <input type="submit" class="btn btn-danger" value="Supprimer son compte">
+            </form>
+
+
         </div>
-        {#<a class="btn btn-primary" href="{{ path('communautes_index') }}">Revenir à la liste des Startups</a>#}
     </div>
 {% endblock %}
