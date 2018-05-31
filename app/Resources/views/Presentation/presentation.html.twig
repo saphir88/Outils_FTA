@@ -15,18 +15,18 @@
                 <div class=" col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-3">
                     <label for="sel1">Filtre des StartUp :</label>
                     <select class="" id="Type">
-                        <option value="">0. Tous</option>
-                        <option value="HealthTech">1. HealthTech</option>
-                        <option value="service informatique BtoB">2. service informatique BtoB</option>
-                        <option value="Ed Tech Entertainment">3. Ed Tech Entertainment</option>
-                        <option value="IOT Manufacturing">4. IOT Manufacturing</option>
-                        <option value="CleanTech/Mobility">5. CleanTech/Mobility</option>
-                        <option value="FoodTech">6. FoodTech</option>
-                        <option value="Sports">7. Sports</option>
-                        <option value="Retail">8. Retail</option>
-                        <option value="Fintech">9. Fintech</option>
-                        <option value="Security Privacy">10. Security Privacy</option>
-                        <option value="service informatique BtoC">11. service informatique BtoC</option>
+                        <option value="">Tous</option>
+                        <option value="HealthTech">HealthTech</option>
+                        <option value="service informatique BtoB">service informatique BtoB</option>
+                        <option value="Ed Tech Entertainment">Ed Tech Entertainment</option>
+                        <option value="IOT Manufacturing">IOT Manufacturing</option>
+                        <option value="CleanTech/Mobility">CleanTech/Mobility</option>
+                        <option value="FoodTech">FoodTech</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Retail">Retail</option>
+                        <option value="Fintech">Fintech</option>
+                        <option value="Security Privacy">Security Privacy</option>
+                        <option value="service informatique BtoC">service informatique BtoC</option>
                     </select>
                 </div>
             </div>
@@ -35,7 +35,7 @@
             {% for  startUp in startUps %}
                 <div data-Type="{{ startUp.type }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
                     <div class="startUP">
-                        <h1 class="nomStartUp">{{ startUp.id }} :{{ startUp.Label }}</h1>
+                        <h1 class="nomStartUp">{{ startUp.Label }}</h1>
                         <center><img class="logo" src="{{ asset ('build/images/logo.jpg') }}"></center>
                         <button type="button" class="btn btn-info btn-lg info" data-toggle="modal" data-target="#{{ startUp.id }}">More Infos</button>
                         <div  class="modal fade {{ startUp.type }}" id="{{ startUp.id }}"  role="dialog">
