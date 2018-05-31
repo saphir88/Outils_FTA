@@ -30,8 +30,8 @@ class RegistrationType extends AbstractType
         $builder->add('nomStartup', TextType::class, array('label'=>'Nom de la startup* :'))
             ->add('logo', FileType::class, array('label' => 'Logo :', 'data_class' => null))
             ->add('description', TextareaType::class, array('required'=> false, 'label'=>'Description :'))
-            //->add('video', TextType::class, array('required'=> false, 'label'=>'Vidéo :'))
             ->add('siteWeb', TextType::class, array('required'=> false, 'label'=>'Site Web :'))
+            ->add('video', TextType::class, array('required' => false , 'label' => 'Vidéo :'))
             ->add('categorie', ChoiceType::class, array('label'=>'Domaine* :',
                 'choices'  => array(
                     'HealthTech' => 'HealthTech',
