@@ -1,10 +1,16 @@
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
-$fontFamily : Arial;/*variable global d'écriture du site*/
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/../fonts/Helvetica/HelveticaLTStd-Light.otf');
+}
+
+$fontFamily : Helvetica, Arial;/*variable global d'écriture du site*/
 $Rouge : rgb(236,55,55);
 $GrisClair: rgb(122,151,170);
 $VertClair: rgb(181,221,214);
 $Rose: rgb(241, 78, 182);
+
 
 /*style de la page d'accueil*/
 .imgTete{
@@ -56,7 +62,7 @@ $Rose: rgb(241, 78, 182);
   margin-bottom: 20px;
 }
 .startUP{
-  border: 1px solid black;
+  border: 10px outset darkgrey;
   padding-bottom: 20px;
   margin-bottom: 30px;
   border-radius: 20px;
@@ -83,6 +89,7 @@ $Rose: rgb(241, 78, 182);
 }
 .modalUnique{
   text-align: center;
+
 
 }
 .info{
