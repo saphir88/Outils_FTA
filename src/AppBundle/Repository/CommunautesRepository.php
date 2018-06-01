@@ -40,4 +40,11 @@ class CommunautesRepository extends EntityRepository
             ->createQuery("UPDATE AppBundle:Communautes c SET c.validation='1' WHERE c.id=$id")
             ->getResult();
     }
+
+    public function modifier($id,$replace)
+    {
+        return $this->getEntityManager()
+            ->createQuery("UPDATE AppBundle:Communautes c SET c.video='$replace' WHERE c.id=$id")
+            ->getResult();
+    }
 }

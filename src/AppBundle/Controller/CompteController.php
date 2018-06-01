@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\User;
+use AppBundle\Repository\CompteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Communautes;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -35,40 +35,35 @@ class CompteController extends Controller
         $form = $this->createForm('AppBundle\Form\CommunautesType', $communaute);
         $form->handleRequest($request);
 
-        $video = $this->getUser()->getVideo();
-        $Youtube = array("https://www.youtube.com/watch?v=");
-        $replace   = array("https://www.youtube.com/embed/");
-        $test= str_replace($Youtube, $replace, $video);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($communaute);
             $em->flush();
 
             return $this->redirectToRoute('compte');
-
         }
 
         return $this->render('compte/index.html.twig', array(
             'utilisateur' => $communaute,
             'form' => $form->createView(),
-            'video'=> $video,
-            'test'=>$test,
-
-
         ));
-    }
 
+    }
     /**
-     * @Route("/delete", name="compte_delete")
+     * @Route("/replace", name="replace_youtube")
      * @Method("POST")
      */
-    public function delete()
+    public function replaceVideo()
     {
+        $video = $this->getUser()->getVideo();
+        $youtubeWatch = array("https://www.youtube.com/watch?v=");
+        $youtubeEmbed   = array("https://www.youtube.com/embed/");
+        $replace= str_replace($youtubeWatch, $youtubeEmbed , $video);
         $id = $_POST['id'];
-        $this->getDoctrine()->getManager()->getRepository('AppBundle:Communautes')->delete($id);
 
-        return $this->redirectToRoute('homepage');
+        $this->getDoctrine()->getRepository('AppBundle:Communautes')->modifier($id,$replace);
+
+        return $this->redirectToRoute('compte');
     }
 
 }
