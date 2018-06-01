@@ -45,7 +45,7 @@ class RegistrationType extends AbstractType
                     'Fintech' => 'Fintech',
                     'Security Privacy' => 'Security Privacy',
                     'Service Informatique BtoC' => 'Service Informatique BtoC'
-                ),))
+                ),'placeholder' => 'Choisissez votre domaine'))
             ->add('siret', TextType::class, array('required'=> false,'label'=>'SIRET :'))
             ->add('adresse', TextType::class, array('label'=>'Adresse* :'))
             ->add('nomContact', TextType::class, array('label'=>'Nom du contact* :'))
