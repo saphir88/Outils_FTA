@@ -36,7 +36,7 @@
                 <div data-Type="{{ startUp.type }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
                     <div class="startUP">
                         <h1 class="nomStartUp">{{ startUp.id }} :{{ startUp.Label }}</h1>
-                        <center><img class="logo" src="{{ asset ('build/images/logo.jpg') }}"></center>
+                        <center><img class="logo" src="{{ asset ('uploads/img/logo.jpg') }}"></center>
                         <button type="button" class="btn btn-info btn-lg info" data-toggle="modal" data-target="#{{ startUp.id }}">More Infos</button>
                         <div  class="modal fade {{ startUp.type }}" id="{{ startUp.id }}"  role="dialog">
                             <div class="modal-dialog">
@@ -52,7 +52,6 @@
                                         <p><b>Tags:</b>{{ startUp.Tags }}</p>
                                         <p><b>Site:</b> <a href="{{ startUp.SiteInternet }}">{{ startUp.SiteInternet }}</a></p>
                                         <p><b>Email et autre information</b></p>
-                                        <iframe src="https://www.youtube.com/embed/GvAuuS1Expc">
                                     </div>
                                 </div>
                             </div>
