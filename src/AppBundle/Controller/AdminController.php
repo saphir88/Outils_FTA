@@ -29,11 +29,7 @@ class AdminController extends Controller
      */
     public function admin()
     {
-        if(isset($_SESSION['username'])) {
             return $this->render('admin/admin.html.twig');
-        }else{
-            return $this->redirectToRoute('login');
-        }
     }
 
     /**

@@ -2,8 +2,6 @@
 
 {% block body %}
 
-
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
@@ -32,27 +30,27 @@
             </div>
         </div>
         <div class="row">
-            {% for  startUp in startUps %}
-                <div data-Type="{{ startUp.type }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
+            {% for  communaute in communautes %}
+
+                <div data-Type="{{ communaute.categorie }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
                     <div class="startUP">
 
-                        <h1 class="nomStartUp">{{ startUp.Label }}</h1>
+                        <h1 class="nomStartUp">{{ communaute.nomStartup }}</h1>
 
-                        <center><img class="logo" src="{{ asset ('uploads/img/logo.jpg') }}"></center>
-                        <button type="button" class="btn btn-info btn-lg info" data-toggle="modal" data-target="#{{ startUp.id }}">More Infos</button>
-                        <div  class="modal fade {{ startUp.type }}" id="{{ startUp.id }}"  role="dialog">
+                        <center><img class="logo" src="/uploads/img/{{ communaute.logo }}"></center>
+                        <button type="button" class="btn btn-info btn-lg info" data-toggle="modal" data-target="#{{ communaute.id }}">More Infos</button>
+                        <div  class="modal fade {{ communaute.categorie }}" id="{{ communaute.id }}"  role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="nomStartUp">{{ startUp.Label }}</h4>
-                                        <a href="#">logo</a>
+                                        <h4 class="nomStartUp">{{ communaute.nomStartup }}</h4>
+                                        <img class="logo" src="/uploads/img/{{ communaute.logo }}">
                                     </div>
                                     <div class="modal-body">
-                                        <p><b>Description:</b>{{ startUp.Description}}</p>
-                                        <p><b>Adresse:</b> {{ startUp.Adresse }}</p>
-                                        <p><b>Type:</b> {{ startUp.Type }}</p>
-                                        <p><b>Tags:</b>{{ startUp.Tags }}</p>
-                                        <p><b>Site:</b> <a href="{{ startUp.SiteInternet }}">{{ startUp.SiteInternet }}</a></p>
+                                        <p><b>Description :</b>{{ communaute.description}}</p>
+                                        <p><b>Adresse :</b> {{ communaute.adresse }}</p>
+                                        <p><b>Domaine :</b> {{ communaute.categorie }}</p>
+                                        <p><b>Site:</b><a href="{{ communaute.siteWeb }}">{{ communaute.siteWeb }}</a></p>
                                         <p><b>Email et autre information</b></p>
                                         <p><b>Video? Photo?</b></p>
 

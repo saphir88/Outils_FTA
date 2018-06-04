@@ -16,7 +16,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $startUps = $em->getRepository('AppBundle:StartUps')->findAll();
+        $startUps = $em->getRepository('AppBundle:Communautes')->findAll();
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig',array(
             'startUps' => $startUps,
