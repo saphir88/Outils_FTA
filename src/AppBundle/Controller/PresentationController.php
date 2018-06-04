@@ -22,10 +22,10 @@ class PresentationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $startUps = $em->getRepository('AppBundle:StartUps')->findAll();
+        $communautes = $em->getRepository('AppBundle:Communautes')->findAllValidTrue();
         // replace this example code with whatever you need
         return $this->render('Presentation/presentation.html.twig',array(
-            'startUps' => $startUps,
+            'communautes' => $communautes,
         ));
     }
 

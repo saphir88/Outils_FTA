@@ -66,4 +66,33 @@ class CompteController extends Controller
         return $this->redirectToRoute('compte');
     }
 
+    /**
+     *
+     * @Route("/gestion_admin", name="gestion_admin")
+     * @Method({"GET", "POST"})
+     */
+    public function gestionAdmin(Request $request)
+    {
+
+        $communaute = $this->getUser();
+
+        $form = $this->createForm('AppBundle\Form\CommunautesType', $communaute);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($communaute);
+            $em->flush();
+
+            return $this->redirectToRoute('gestion_admin');
+        }
+
+        return $this->render('admin/gestion.html.twig', array(
+            'utilisateur' => $communaute,
+            'form' => $form->createView(),
+        ));
+
+    }
+
+
 }
