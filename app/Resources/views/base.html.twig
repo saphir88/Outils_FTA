@@ -31,7 +31,11 @@
 
                 <li><a href="#">Evenement</a></li>
             </ul>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {% if is_granted("ROLE_ADMIN") %}
+                <p class="navbar-text navbar-right"><a href="{{ path('compte') }}" class="navbar-link">Mon compte</a></p>
+                <p class="navbar-text navbar-right"><a href="{{ path('admin') }}" class="navbar-link">Gestion</a></p>
+                <p class="navbar-text navbar-right"><a href="/logout" class="navbar-link">Deconnexion</a></p>
+            {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <p class="navbar-text navbar-right"><a href="{{ path('compte') }}" class="navbar-link">Mon compte</a></p>
                 <p class="navbar-text navbar-right"><a href="/logout" class="navbar-link">Deconnexion</a></p>
             {% else %}
