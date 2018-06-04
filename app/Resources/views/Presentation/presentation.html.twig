@@ -47,12 +47,16 @@
                                         <img class="logo" src="/uploads/img/{{ communaute.logo }}">
                                     </div>
                                     <div class="modal-body">
+                                        {% if communaute.description is not null %}
                                         <p><b>Description :</b>{{ communaute.description}}</p>
+                                        {% endif %}
                                         <p><b>Adresse :</b> {{ communaute.adresse }}</p>
                                         <p><b>Domaine :</b> {{ communaute.categorie }}</p>
                                         <p><b>Site:</b><a href="{{ communaute.siteWeb }}">{{ communaute.siteWeb }}</a></p>
-                                        <p><b>Email et autre information</b></p>
-                                        <p><b>Video? Photo?</b></p>
+                                        {% if communaute.video is not null %}
+                                            <div><iframe width="560" height="315" src="{{ communaute.video }}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe></div>
+                                        {% endif %}
+
 
                                     </div>
                                 </div>
