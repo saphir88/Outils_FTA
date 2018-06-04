@@ -35,8 +35,8 @@ class RegistrationType extends AbstractType
             ->add('categorie', ChoiceType::class, array('label'=>'Domaine* :',
                 'choices'  => array(
                     'HealthTech' => 'HealthTech',
-                    'Service Informatique BtoB' => 'Service Informatique BtoB',
-                    'Ed Tech Entertainement' => 'Ed Tech Entertainement',
+                    'service informatique BtoB' => 'service informatique BtoB',
+                    'Ed Tech Entertainment' => 'Ed Tech Entertainment',
                     'IOT Manufacturing' => 'IOT Manufacturing',
                     'CleanTech/Mobility' => 'CleanTech/Mobility',
                     'FoodTech' => 'FoodTech',
@@ -44,7 +44,7 @@ class RegistrationType extends AbstractType
                     'Retail' => 'Retail',
                     'Fintech' => 'Fintech',
                     'Security Privacy' => 'Security Privacy',
-                    'Service Informatique BtoC' => 'Service Informatique BtoC'
+                    'Service Informatique BtoC' => 'service informatique BtoC'
                 ),'placeholder' => 'Choisissez votre domaine'))
             ->add('siret', TextType::class, array('required'=> false,'label'=>'SIRET :'))
             ->add('adresse', TextType::class, array('label'=>'Adresse* :'))
