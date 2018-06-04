@@ -8,13 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UserType extends AbstractType
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder->add('nomDeCompte')->add('motDePasse');
-    }/**
+/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

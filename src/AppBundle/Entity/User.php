@@ -3,15 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Entity\Communautes;
 use FOS\UserBundle\Model\User as BaseUser;
-
 /**
  * User
  *
  * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
+
 class User extends BaseUser
 {
     /**
@@ -24,13 +23,8 @@ class User extends BaseUser
     protected $id;
 
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -39,4 +33,8 @@ class User extends BaseUser
         return $this->id;
     }
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
 }

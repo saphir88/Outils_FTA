@@ -1,43 +1,36 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: m0rsak
- * Date: 04/06/18
- * Time: 20:11
- */
 
 namespace AppBundle\Form;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-Class RegistrationType extends AbstractType
+class CommunauteType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
-    }
-
-    /**
+        $builder->add('nomStartup')->add('logo')->add('categorie')->add('description')->add('video')->add('siteWeb')->add('siret')->add('adresse')->add('nomContact')->add('mail')->add('telephone')->add('validation');
+    }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\User'
+            'data_class' => 'AppBundle\Entity\Communaute'
         ));
     }
-    public function getParent()
-    {
-        return 'FOS\UserBundle\Form\Type\RegistrationFormType';
-    }
 
-
+    /**
+     * {@inheritdoc}
+     */
     public function getBlockPrefix()
     {
-        return 'app_user_registration';
+        return 'appbundle_communaute';
     }
+
+
 }

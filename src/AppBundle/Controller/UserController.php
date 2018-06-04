@@ -24,10 +24,10 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $user = $em->getRepository('AppBundle:User')->findAll();
+        $users = $em->getRepository('AppBundle:User')->findAll();
 
         return $this->render('user/index.html.twig', array(
-            'user' => $user,
+            'users' => $users,
         ));
     }
 

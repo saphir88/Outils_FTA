@@ -1,0 +1,320 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Communaute
+ *
+ * @ORM\Table(name="communaute")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CommunauteRepository")
+ */
+class Communaute
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomStartup", type="string", length=255, unique=true)
+     */
+    private $nomStartup;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="logo", type="string", length=255)
+     */
+    private $logo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="categorie", type="string", length=255)
+     */
+    private $categorie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="video", type="string", length=255, nullable=true)
+     */
+    private $video;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="siteWeb", type="string", length=255, nullable=true)
+     */
+    private $siteWeb;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="siret", type="string", length=255, nullable=true)
+     */
+    private $siret;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255)
+     */
+    private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomContact", type="string", length=255)
+     *
+     */
+    private $nomContact;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mail", type="string", length=255)
+     */
+    private $mail;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telephone", type="string", length=255)
+     *
+     * @Assert\Regex(
+     *     pattern="/(0|\\+33|0033)[1-9][0-9]{8}/",
+     *     match= true,
+     *     message="Veuillez rentrer un numéro de telephone valide"
+     * )
+     */
+    private $telephone;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="validation", type="boolean", nullable=true)
+     */
+    private $validation;
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /* Getters and Setters */
+
+    /**
+     * @return string
+     */
+    public function getNomStartup()
+    {
+        return $this->nomStartup;
+    }
+
+    /**
+     * @param string $nomStartup
+     */
+    public function setNomStartup($nomStartup)
+    {
+        $this->nomStartup = $nomStartup;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+    /**
+     * @param string $logo
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * @param string $categorie
+     */
+    public function setCategorie($categorie)
+    {
+        $this->categorie = $categorie;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * @param string $video
+     */
+    public function setVideo($video)
+    {
+        $this->video = $video;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSiteWeb()
+    {
+        return $this->siteWeb;
+    }
+
+    /**
+     * @param string $siteWeb
+     */
+    public function setSiteWeb($siteWeb)
+    {
+        $this->siteWeb = $siteWeb;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSiret()
+    {
+        return $this->siret;
+    }
+
+    /**
+     * @param string $siret
+     */
+    public function setSiret($siret)
+    {
+        $this->siret = $siret;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * @param string $adresse
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomContact()
+    {
+        return $this->nomContact;
+    }
+
+    /**
+     * @param string $nomContact
+     */
+    public function setNomContact($nomContact)
+    {
+        $this->nomContact = $nomContact;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
+
+    /**
+     * @param string $mail
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * @param string $telephone
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isValidation()
+    {
+        return $this->validation;
+    }
+
+    /**
+     * @param bool $validation
+     */
+    public function setValidation($validation)
+    {
+        $this->validation = $validation;
+    }
+
+
+}
