@@ -13,6 +13,13 @@ use FOS\UserBundle\Model\User as BaseUser;
 
 class User extends BaseUser
 {
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Communaute", cascade={"persist"})
+     */
+    private $communaute;
+
+
     /**
      * @var int
      *
@@ -36,5 +43,29 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+    }
+
+    /**
+     * Set communaute.
+     *
+     * @param \AppBundle\Entity\Communaute|null $communaute
+     *
+     * @return User
+     */
+    public function setCommunaute(\AppBundle\Entity\Communaute $communaute = null)
+    {
+        $this->communaute = $communaute;
+
+        return $this;
+    }
+
+    /**
+     * Get communaute.
+     *
+     * @return \AppBundle\Entity\Communaute|null
+     */
+    public function getCommunaute()
+    {
+        return $this->communaute;
     }
 }

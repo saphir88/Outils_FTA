@@ -10,7 +10,7 @@ namespace AppBundle\EventListener;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
-use AppBundle\Entity\Communautes;
+use AppBundle\Entity\Communaute;
 use AppBundle\LogoUpload;
 
 class LogoUploadListener
@@ -72,7 +72,7 @@ class LogoUploadListener
     private function uploadFile($entity)
     {
         // upload only works for Communautes entities
-        if (!$entity instanceof Communautes) {
+        if (!$entity instanceof Communaute) {
             return;
         }
 

@@ -7,9 +7,15 @@
  */
 
 namespace AppBundle\Form;
+
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
+use AppBundle\Form\CommunauteType;
 
 Class RegistrationType extends AbstractType
 {
@@ -18,7 +24,11 @@ Class RegistrationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
+        $builder->add('communaute', CommunauteType::class)
+            ->get('communaute')
+        ->remove('logo')
+            ->remove('validation')
+        ->add('logo', FileType::class, array('label' => 'Logo :', 'data_class' => NULL, 'required'=> false));
     }
 
     /**
@@ -27,7 +37,7 @@ Class RegistrationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\User'
+            'data_class' => 'Appbundle\Entity\User',
         ));
     }
     public function getParent()
@@ -35,9 +45,9 @@ Class RegistrationType extends AbstractType
         return 'FOS\UserBundle\Form\Type\RegistrationFormType';
     }
 
-
     public function getBlockPrefix()
     {
         return 'app_user_registration';
     }
+
 }

@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Communaute;
+use AppBundle\Entity\User;
 use AppBundle\Repository\CompteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Communautes;
@@ -32,7 +34,7 @@ class CompteController extends Controller
 
         $communaute = $this->getUser();
 
-        $form = $this->createForm('AppBundle\Form\CommunautesType', $communaute);
+        $form = $this->createForm('AppBundle\Form\UserType', $communaute);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
