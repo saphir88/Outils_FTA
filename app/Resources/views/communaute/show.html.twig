@@ -15,11 +15,7 @@
             </tr>
             <tr>
                 <th>Logo</th>
-                <td>{{ communaute.logo }}</td>
-            </tr>
-            <tr>
-                <th>Categorie</th>
-                <td>{{ communaute.categorie }}</td>
+                <td><img src="{{ asset('uploads/img/' ~ communaute.logo) }}">{{ communaute.logo }}</td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -32,6 +28,10 @@
             <tr>
                 <th>Siteweb</th>
                 <td>{{ communaute.siteWeb }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ communaute.categorie }}</td>
             </tr>
             <tr>
                 <th>Siret</th>
@@ -52,10 +52,6 @@
             <tr>
                 <th>Telephone</th>
                 <td>{{ communaute.telephone }}</td>
-            </tr>
-            <tr>
-                <th>Validation</th>
-                <td>{% if communaute.validation %}Yes{% else %}No{% endif %}</td>
             </tr>
         </tbody>
     </table>

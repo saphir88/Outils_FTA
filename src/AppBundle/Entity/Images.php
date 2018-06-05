@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Images
 {
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communautes")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communaute")
      * @ORM\JoinColumn(nullable=false)
      */
     private $communaute;

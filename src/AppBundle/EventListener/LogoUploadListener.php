@@ -48,24 +48,26 @@ class LogoUploadListener
         }
 
         // If no new logo file was uploaded
-        if(is_null($entity->getCommunaute()->getLogo())){
-            // Let original filename in the entity
-            $entity->getCommunaute()->setLogo($previousFilename);
+        if (!is_null($entity->getCommunaute())) {
+            if (is_null($entity->getCommunaute()->getLogo())) {
+                // Let original filename in the entity
+                $entity->getCommunaute()->setLogo($previousFilename);
 
-            // If a new logo was uploaded in the form
-        }else{
-            // If some previous file exist
-            if(!is_null($previousFilename)){
-                $pathPreviousFile = $this->uploader->getTargetDir(). "/". $previousFilename;
+                // If a new logo was uploaded in the form
+            } else {
+                // If some previous file exist
+                if (!is_null($previousFilename)) {
+                    $pathPreviousFile = $this->uploader->getTargetDir() . "/" . $previousFilename;
 
-                // Remove it
-                if(file_exists($pathPreviousFile)){
-                    unlink($pathPreviousFile);
+                    // Remove it
+                    if (file_exists($pathPreviousFile)) {
+                        unlink($pathPreviousFile);
+                    }
                 }
-            }
 
-            // Upload new file
-            $this->uploadFile($entity);
+                // Upload new file
+                $this->uploadFile($entity);
+            }
         }
     }
 

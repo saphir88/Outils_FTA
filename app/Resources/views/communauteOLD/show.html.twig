@@ -15,7 +15,11 @@
             </tr>
             <tr>
                 <th>Logo</th>
-                <td><img src="{{ asset('uploads/img/' ~ communaute.logo) }}">{{ communaute.logo }}</td>
+                <td>{{ communaute.logo }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ communaute.categorie }}</td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -28,10 +32,6 @@
             <tr>
                 <th>Siteweb</th>
                 <td>{{ communaute.siteWeb }}</td>
-            </tr>
-            <tr>
-                <th>Categorie</th>
-                <td>{{ communaute.categorie }}</td>
             </tr>
             <tr>
                 <th>Siret</th>
@@ -53,15 +53,19 @@
                 <th>Telephone</th>
                 <td>{{ communaute.telephone }}</td>
             </tr>
+            <tr>
+                <th>Validation</th>
+                <td>{% if communaute.validation %}Yes{% else %}No{% endif %}</td>
+            </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('communautes_index') }}">Back to the list</a>
+            <a href="{{ path('communaute_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('communautes_edit', { 'id': communaute.id }) }}">Edit</a>
+            <a href="{{ path('communaute_edit', { 'id': communaute.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

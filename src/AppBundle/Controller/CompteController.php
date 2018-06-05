@@ -78,7 +78,7 @@ class CompteController extends Controller
 
         $communaute = $this->getUser();
 
-        $form = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
+        /* $form = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -87,11 +87,11 @@ class CompteController extends Controller
             $em->flush();
 
             return $this->redirectToRoute('gestion_admin');
-        }
+        }*/
 
         return $this->render('admin/gestion.html.twig', array(
             'utilisateur' => $communaute,
-            'form' => $form->createView(),
+            //'form' => $form->createView(),
         ));
 
     }

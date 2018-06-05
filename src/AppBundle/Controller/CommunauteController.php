@@ -24,7 +24,7 @@ class CommunauteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $communautes = $em->getRepository('AppBundle:Communaute')->findAll();
+        $communautes = $em->getRepository('AppBundle:Communaute')->findAllValidTrue();
 
         return $this->render('communaute/index.html.twig', array(
             'communautes' => $communautes,

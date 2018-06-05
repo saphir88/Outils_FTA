@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Communautes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nomstartup</th>
+                <th>Logo</th>
+                <th>Categorie</th>
+                <th>Description</th>
+                <th>Video</th>
+                <th>Siteweb</th>
+                <th>Siret</th>
+                <th>Adresse</th>
+                <th>Nomcontact</th>
+                <th>Mail</th>
+                <th>Telephone</th>
+                <th>Validation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for communaute in communautes %}
+            <tr>
+                <td><a href="{{ path('communaute_show', { 'id': communaute.id }) }}">{{ communaute.id }}</a></td>
+                <td>{{ communaute.nomStartup }}</td>
+                <td>{{ communaute.logo }}</td>
+                <td>{{ communaute.categorie }}</td>
+                <td>{{ communaute.description }}</td>
+                <td>{{ communaute.video }}</td>
+                <td>{{ communaute.siteWeb }}</td>
+                <td>{{ communaute.siret }}</td>
+                <td>{{ communaute.adresse }}</td>
+                <td>{{ communaute.nomContact }}</td>
+                <td>{{ communaute.mail }}</td>
+                <td>{{ communaute.telephone }}</td>
+                <td>{% if communaute.validation %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('communaute_show', { 'id': communaute.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('communaute_edit', { 'id': communaute.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('communaute_new') }}">Create a new communaute</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -10,8 +10,6 @@ namespace AppBundle\Repository;
  */
 class CommunauteRepository extends \Doctrine\ORM\EntityRepository
 {
-class CommunautesRepository extends EntityRepository
-{
     public function findAllValidTrue()
     {
         return $this->getEntityManager()
@@ -47,4 +45,4 @@ class CommunautesRepository extends EntityRepository
             ->getResult();
     }
 }
-}
+
