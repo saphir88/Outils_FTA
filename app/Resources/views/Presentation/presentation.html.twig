@@ -60,9 +60,9 @@
 
                                         {% if communaute.logo is not null %}
                                         <div class="favIcon">
-                                            <a href=""><i class="fa fa-facebook-official"  style="font-size:36px;color:#365899;"></i></a>
-                                            <a href=""><i class="fa fa-twitter-square" style="font-size:36px; color:#1DA1F2;"></i></a>
-                                            <a href=""><i class="fa fa-linkedin-square" style="font-size:36px; color:#0077B5;"></i></a>
+                                            <a href="{{ communaute.facebook }}"><i class="fa fa-facebook-official"  style="font-size:36px;color:#365899;"></i></a>
+                                            <a href="{{ communaute.twitter }}"><i class="fa fa-twitter-square" style="font-size:36px; color:#1DA1F2;"></i></a>
+                                            <a href="{{ communaute.linkedin }}"><i class="fa fa-linkedin-square" style="font-size:36px; color:#0077B5;"></i></a>
                                         </div>
                                         {% endif %}
 
