@@ -24,11 +24,8 @@ Class RegistrationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('communaute', CommunauteType::class)
-            ->get('communaute')
-        ->remove('logo')
-            ->remove('validation')
-        ->add('logo', FileType::class, array('label' => 'Logo :', 'data_class' => NULL, 'required'=> false));
+        $builder->add('communaute', CommunauteType::class);
+
     }
 
     /**

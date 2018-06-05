@@ -22,15 +22,15 @@ class CommunauteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nomStartup', TextType::class, array('label'=>'Nom de la startup* :'))
-            ->add('logo', FileType::class, array('label' => 'Logo :', 'data_class' => NULL, 'required'=> false))
+            ->add('logo', FileType::class, array('label' => 'Logo :', 'data_class' => null))
             ->add('description', TextareaType::class, array('required'=> false, 'label'=>'Description :'))
-            ->add('video', TextType::class, array('required'=> false, 'label'=>'Lien Youtube :'))
             ->add('siteWeb', TextType::class, array('required'=> false, 'label'=>'Site Web :'))
+            ->add('video', TextType::class, array('required' => false , 'label' => 'Lien Youtube :'))
             ->add('categorie', ChoiceType::class, array('label'=>'Domaine* :',
                 'choices'  => array(
                     'HealthTech' => 'HealthTech',
-                    'Service Informatique BtoB' => 'Service Informatique BtoB',
-                    'Ed Tech Entertainement' => 'Ed Tech Entertainement',
+                    'service informatique BtoB' => 'service informatique BtoB',
+                    'Ed Tech Entertainment' => 'Ed Tech Entertainment',
                     'IOT Manufacturing' => 'IOT Manufacturing',
                     'CleanTech/Mobility' => 'CleanTech/Mobility',
                     'FoodTech' => 'FoodTech',
@@ -38,13 +38,13 @@ class CommunauteType extends AbstractType
                     'Retail' => 'Retail',
                     'Fintech' => 'Fintech',
                     'Security Privacy' => 'Security Privacy',
-                    'Service Informatique BtoC' => 'Service Informatique BtoC'
-                ),))
-
+                    'Service Informatique BtoC' => 'service informatique BtoC'
+                ),'placeholder' => 'Choisissez votre domaine'))
             ->add('siret', TextType::class, array('required'=> false,'label'=>'SIRET :'))
             ->add('adresse', TextType::class, array('label'=>'Adresse* :'))
             ->add('nomContact', TextType::class, array('label'=>'Nom du contact* :'))
             ->add('mail', EmailType::class, array('label'=>'Email du contact* :'))
+            ->add('validation', HiddenType::class, array('data' => '0'))
             ->add('telephone', TelType::class, array('label' => 'N° de téléphone du contact* :'));
     }/**
      * {@inheritdoc}

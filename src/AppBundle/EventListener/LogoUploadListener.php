@@ -48,9 +48,9 @@ class LogoUploadListener
         }
 
         // If no new logo file was uploaded
-        if(is_null($entity->getLogo())){
+        if(is_null($entity->getCommunaute()->getLogo())){
             // Let original filename in the entity
-            $entity->setLogo($previousFilename);
+            $entity->getCommunaute()->setLogo($previousFilename);
 
             // If a new logo was uploaded in the form
         }else{
