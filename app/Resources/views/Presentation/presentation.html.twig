@@ -58,13 +58,18 @@
                                             <div><iframe width="560" height="315" src="{{ communaute.video }}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe></div>
                                         {% endif %}
 
-                                        {% if communaute.logo is not null %}
                                         <div class="favIcon">
+                                            {% if communaute.facebook is not null %}
                                             <a href="{{ communaute.facebook }}"><i class="fa fa-facebook-official"  style="font-size:36px;color:#365899;"></i></a>
+                                            {% endif %}
+                                            {% if communaute.twitter is not null %}
                                             <a href="{{ communaute.twitter }}"><i class="fa fa-twitter-square" style="font-size:36px; color:#1DA1F2;"></i></a>
+                                            {% endif %}
+                                            {% if communaute.linkedin is not null %}
                                             <a href="{{ communaute.linkedin }}"><i class="fa fa-linkedin-square" style="font-size:36px; color:#0077B5;"></i></a>
+                                            {% endif %}
                                         </div>
-                                        {% endif %}
+
 
                                     </div>
                                 </div>
