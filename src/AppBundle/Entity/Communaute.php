@@ -115,6 +115,33 @@ class Communaute
      * @ORM\Column(name="validation", type="boolean", nullable=true)
      */
     private $validation;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook", type="string", length=255, nullable=true)
+     */
+    private $facebook;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="twitter", type="string", length=255, nullable=true)
+     */
+    private $twitter;
+
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="linkedin", type="string", length=255, nullable=true)
+     */
+    private $linkedin;
+
+
+
     /**
      * Get id.
      *
@@ -319,5 +346,52 @@ class Communaute
         $this->validation = $validation;
     }
 
+    /**
+     * @return string
+     */
+    public function getFacebook()
+    {
+        return $this->facebook;
+    }
+
+    /**
+     * @param string $facebook
+     */
+    public function setFacebook($facebook)
+    {
+        $this->facebook = $facebook;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
+     * @param string $twitter
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLinkedin()
+    {
+        return $this->linkedin;
+    }
+
+    /**
+     * @param string $linkedin
+     */
+    public function setLinkedin($linkedin)
+    {
+        $this->linkedin = $linkedin;
+    }
 
 }
