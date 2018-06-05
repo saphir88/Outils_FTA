@@ -15,7 +15,7 @@ class User extends BaseUser
 {
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Communaute", cascade={"remove"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Communaute",cascade={"persist"})
      * @ORM\joinColumn(onDelete="CASCADE")
      */
     private $communaute;
