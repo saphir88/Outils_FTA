@@ -82,7 +82,7 @@ class AdminController extends Controller
     public function exportCSV()
     {
         $em = $this->getDoctrine()->getManager();
-        $dataExport = $em->getRepository('AppBundle:Communautes')->findAll();
+        $dataExport = $em->getRepository('AppBundle:Communaute')->findAll();
 
         $test[] = "Startup;Nom du Contact;Mail;Telephone";
         foreach($dataExport as $key => $value) {

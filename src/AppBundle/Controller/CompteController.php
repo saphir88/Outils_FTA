@@ -2,11 +2,11 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Communaute;
+
 use AppBundle\Entity\User;
 use AppBundle\Repository\CompteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use AppBundle\Entity\Communautes;
+use AppBundle\Entity\Communaute;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -63,7 +63,7 @@ class CompteController extends Controller
         $replace= str_replace($youtubeWatch, $youtubeEmbed , $video);
         $id = $_POST['id'];
 
-        $this->getDoctrine()->getRepository('AppBundle:Communautes')->modifier($id,$replace);
+        $this->getDoctrine()->getRepository('AppBundle:Communaute')->modifier($id,$replace);
 
         return $this->redirectToRoute('compte');
     }
@@ -78,7 +78,7 @@ class CompteController extends Controller
 
         $communaute = $this->getUser();
 
-        $form = $this->createForm('AppBundle\Form\CommunautesType', $communaute);
+        $form = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
