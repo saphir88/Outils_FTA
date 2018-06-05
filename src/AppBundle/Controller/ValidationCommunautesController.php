@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Communautes;
+use AppBundle\Entity\Communaute;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -25,7 +25,7 @@ class ValidationCommunautesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $communautes = $em->getRepository('AppBundle:Communautes')->findAllValidFalse();
+        $communautes = $em->getRepository('AppBundle:Communaute')->findAllValidFalse();
 
         return $this->render('validationCommunautes/index.html.twig', array(
             'communautes' => $communautes,
@@ -39,7 +39,7 @@ class ValidationCommunautesController extends Controller
      * @Route("/{id}", name="validation_show")
      * @Method("GET")
      */
-    public function showAction(Communautes $communaute)
+    public function showAction(Communaute $communaute)
     {
         return $this->render('validationCommunautes/show.html.twig', array(
             'communaute' => $communaute
@@ -55,7 +55,7 @@ class ValidationCommunautesController extends Controller
         $id = $_POST['id'];
         $logo = "uploads/img/".$_POST['logo'];
 
-        $this->getDoctrine()->getManager()->getRepository('AppBundle:Communautes')->delete($id);
+        $this->getDoctrine()->getManager()->getRepository('AppBundle:Communaute')->delete($id);
         unlink($logo);
 
         return $this->redirectToRoute('validation_index');
@@ -68,7 +68,7 @@ class ValidationCommunautesController extends Controller
     public function validate()
     {
         $id = $_POST['id'];
-        $this->getDoctrine()->getManager()->getRepository('AppBundle:Communautes')->validate($id);
+        $this->getDoctrine()->getManager()->getRepository('AppBundle:Communaute')->validate($id);
 
         return $this->redirectToRoute('validation_index');
     }

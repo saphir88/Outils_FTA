@@ -73,7 +73,7 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: AppBundle\Entity\Communautes
+    user_class: AppBundle\Entity\User
     service:                                              # since Symfony 3.4
         mailer: fos_user.mailer.twig_swift    # since Symfony 3.4
     from_email:

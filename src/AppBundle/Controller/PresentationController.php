@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\StartUps;
+use AppBundle\Entity\communaute;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -22,7 +22,7 @@ class PresentationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $communautes = $em->getRepository('AppBundle:Communautes')->findAllValidTrue();
+        $communautes = $em->getRepository('AppBundle:Communaute')->findAllValidTrue();
         // replace this example code with whatever you need
         return $this->render('Presentation/presentation.html.twig',array(
             'communautes' => $communautes,

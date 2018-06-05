@@ -1,17 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ dump(utilisateur) }}
 
-
-    <h1>Modification de la Startup "{{ utilisateur.nomStartup }}"</h1>
+    <h1>Modification de la Startup "{{ utilisateur.communaute.nomStartup }}"</h1>
     <div class="container">
         {{ form_start(form) }}
-        {{ form_row(form.nomStartup) }}
-        {{ form_label(form.logo) }}
+        {{ form_row(form.communaute.nomStartup) }}
         <br>
-        <img src="{{ asset('uploads/img/') }}{{ utilisateur.logo }}" width="300">
-        {{ form_errors(form.logo) }}
-        {{ form_widget(form.logo) }}
+        <img src="{{ asset('uploads/img/') }}{{ utilisateur.communaute.logo }}" width="300">
+        {{ form_errors(form.communaute.logo) }}
+        {{ form_widget(form.communaute.logo) }}
         {{ form_rest(form) }}
 
         <div class="container">
@@ -21,7 +20,7 @@
             <button class="btn btn-danger" type="submit">Supprimer</button>
             {{ form_end(delete_form) }}#}
         </div>
-        
+
         {{ form_end(form) }}
         <form action="{{ path('replace_youtube') }}" method="POST">
             <input type="hidden" name="id" value="{{ utilisateur.id }}">
@@ -29,4 +28,5 @@
         </form>
         {#<a class="btn btn-primary" href="{{ path('communautes_index') }}">Revenir à la liste des Startups</a>#}
     </div>
+
 {% endblock %}

@@ -2,32 +2,31 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Communautes;
+use AppBundle\Entity\Communaute;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Communaute controller.
  *
- * @Route("communautes")
+ * @Route("communaute")
  */
-class CommunautesController extends Controller
+class CommunauteController extends Controller
 {
     /**
-     * Lists all communaute entities where they are validated.
+     * Lists all communaute entities.
      *
-     * @Route("/", name="communautes_index")
+     * @Route("/", name="communaute_index")
      * @Method("GET")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $communautes = $em->getRepository('AppBundle:Communautes')->findAllValidTrue();
+        $communautes = $em->getRepository('AppBundle:Communaute')->findAllValidTrue();
 
-        return $this->render('communautes/index.html.twig', array(
+        return $this->render('communaute/index.html.twig', array(
             'communautes' => $communautes,
         ));
     }
@@ -35,13 +34,13 @@ class CommunautesController extends Controller
     /**
      * Creates a new communaute entity.
      *
-     * @Route("/new", name="communautes_new")
+     * @Route("/new", name="communaute_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
-        $communaute = new Communautes();
-        $form = $this->createForm('AppBundle\Form\CommunautesType', $communaute);
+        $communaute = new Communaute();
+        $form = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -49,10 +48,10 @@ class CommunautesController extends Controller
             $em->persist($communaute);
             $em->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('communaute_show', array('id' => $communaute->getId()));
         }
 
-        return $this->render('communautes/new.html.twig', array(
+        return $this->render('communaute/new.html.twig', array(
             'communaute' => $communaute,
             'form' => $form->createView(),
         ));
@@ -61,14 +60,14 @@ class CommunautesController extends Controller
     /**
      * Finds and displays a communaute entity.
      *
-     * @Route("/{id}", name="communautes_show")
+     * @Route("/{id}", name="communaute_show")
      * @Method("GET")
      */
-    public function showAction(Communautes $communaute)
+    public function showAction(Communaute $communaute)
     {
         $deleteForm = $this->createDeleteForm($communaute);
 
-        return $this->render('communautes/show.html.twig', array(
+        return $this->render('communaute/show.html.twig', array(
             'communaute' => $communaute,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -77,35 +76,35 @@ class CommunautesController extends Controller
     /**
      * Displays a form to edit an existing communaute entity.
      *
-     * @Route("/{id}/edit", name="communautes_edit")
+     * @Route("/{id}/edit", name="communaute_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Communautes $communaute)
+    public function editAction(Request $request, Communaute $communaute)
     {
         $deleteForm = $this->createDeleteForm($communaute);
-        $editForm = $this->createForm('AppBundle\Form\CommunautesType', $communaute);
+        $editForm = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('communautes_edit', array('id' => $communaute->getId()));
+            return $this->redirectToRoute('communaute_edit', array('id' => $communaute->getId()));
         }
-        return $this->render('communautes/edit.html.twig', array(
+
+        return $this->render('communaute/edit.html.twig', array(
             'communaute' => $communaute,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
-
     }
 
     /**
      * Deletes a communaute entity.
      *
-     * @Route("/{id}", name="communautes_delete")
+     * @Route("/{id}", name="communaute_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Communautes $communaute)
+    public function deleteAction(Request $request, Communaute $communaute)
     {
         $form = $this->createDeleteForm($communaute);
         $form->handleRequest($request);
@@ -116,20 +115,20 @@ class CommunautesController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('communautes_index');
+        return $this->redirectToRoute('communaute_index');
     }
 
     /**
      * Creates a form to delete a communaute entity.
      *
-     * @param Communautes $communaute The communaute entity
+     * @param Communaute $communaute The communaute entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Communautes $communaute)
+    private function createDeleteForm(Communaute $communaute)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('communautes_delete', array('id' => $communaute->getId())))
+            ->setAction($this->generateUrl('communaute_delete', array('id' => $communaute->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

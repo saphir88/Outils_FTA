@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Communaute</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ communaute.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomstartup</th>
+                <td>{{ communaute.nomStartup }}</td>
+            </tr>
+            <tr>
+                <th>Logo</th>
+                <td>{{ communaute.logo }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ communaute.categorie }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ communaute.description }}</td>
+            </tr>
+            <tr>
+                <th>Video</th>
+                <td>{{ communaute.video }}</td>
+            </tr>
+            <tr>
+                <th>Siteweb</th>
+                <td>{{ communaute.siteWeb }}</td>
+            </tr>
+            <tr>
+                <th>Siret</th>
+                <td>{{ communaute.siret }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ communaute.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Nomcontact</th>
+                <td>{{ communaute.nomContact }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ communaute.mail }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ communaute.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Validation</th>
+                <td>{% if communaute.validation %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('communaute_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('communaute_edit', { 'id': communaute.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
