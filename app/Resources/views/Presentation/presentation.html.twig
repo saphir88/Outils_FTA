@@ -47,6 +47,7 @@
                                         <img class="logo" src="/uploads/img/{{ communaute.logo }}">
                                     </div>
                                     <div class="modal-body">
+
                                         {% if communaute.description is not null %}
                                         <p><b>Description :</b>{{ communaute.description}}</p>
                                         {% endif %}
@@ -57,6 +58,13 @@
                                             <div><iframe width="560" height="315" src="{{ communaute.video }}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe></div>
                                         {% endif %}
 
+                                        {% if communaute.logo is not null %}
+                                        <div class="favIcon">
+                                            <a href=""><i class="fa fa-facebook-official"  style="font-size:36px;color:#365899;"></i></a>
+                                            <a href=""><i class="fa fa-twitter-square" style="font-size:36px; color:#1DA1F2;"></i></a>
+                                            <a href=""><i class="fa fa-linkedin-square" style="font-size:36px; color:#0077B5;"></i></a>
+                                        </div>
+                                        {% endif %}
 
                                     </div>
                                 </div>
