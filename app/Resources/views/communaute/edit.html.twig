@@ -9,7 +9,7 @@
         <br>
         <img src="{{ asset('uploads/img/') }}{{ communaute.logo }}" width="300">
         {{ form_errors(edit_form.logo) }}
-        {{ form_widget(edit_form.logo) }}
+        {{ form_widget(edit_form.logo, {'required': false}) }}
         {{ form_rest(edit_form) }}
 
         <div class="container">
