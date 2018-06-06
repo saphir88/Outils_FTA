@@ -41,12 +41,7 @@ class CommunauteRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 
-    public function modifier($id,$replace)
-    {
-        return $this->getEntityManager()
-            ->createQuery("UPDATE AppBundle:Communaute c SET c.video='$replace' WHERE c.id=$id")
-            ->getResult();
-    }
+
 }
 
 

@@ -48,8 +48,9 @@ class CommunauteType extends AbstractType
             ->add('adresse', TextType::class, array('label'=>'Adresse* :'))
             ->add('nomContact', TextType::class, array('label'=>'Nom du contact* :'))
             ->add('mail', EmailType::class, array('label'=>'Email du contact* :'))
-            ->add('validation', TextType::class)
-            ->add('telephone', TelType::class, array('label' => 'N° de téléphone du contact* :'));
+            ->add('telephone', TelType::class, array('label' => 'N° de téléphone du contact* :'))
+            ->add('validation', HiddenType::class);
+
     }/**
      * {@inheritdoc}
      */
