@@ -30,7 +30,7 @@ services:
         tags: ['controller.service_arguments']
 
     # add more services, or override services that need manual wiring
-    # AppBundle\Service\ExampleService:
+    AppBundle\Service\Youtube:
     #     arguments:
     #         $someArgument: 'some_value'
 
