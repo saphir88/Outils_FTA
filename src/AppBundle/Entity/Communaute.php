@@ -57,6 +57,7 @@ class Communaute
      * @var string
      *
      * @ORM\Column(name="video", type="string", length=255, nullable=true)
+     *
      */
     private $video;
 

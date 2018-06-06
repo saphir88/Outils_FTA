@@ -14,7 +14,7 @@ class Images
 {
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communaute")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(onDelete="cascade" ,nullable=false)
      */
     private $communaute;
 
@@ -86,7 +86,7 @@ class Images
     /**
      * Get communaute
      *
-     * @return \AppBundle\Entity\Communautes
+     * @return \AppBundle\Entity\Communaute
      */
     public function getCommunaute()
     {

@@ -46,7 +46,10 @@
             {% endif %}
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
+
 </nav>
+{% block fos_user_content %}{% endblock fos_user_content %}
+
 {% block body %}{% endblock %}
 <script src="{{ asset('build/app.js') }}"></script>
 {% block javascripts %}{% endblock %}

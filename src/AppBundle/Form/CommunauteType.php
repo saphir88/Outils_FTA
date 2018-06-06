@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Doctrine\DBAL\Types\BooleanType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -47,8 +48,9 @@ class CommunauteType extends AbstractType
             ->add('adresse', TextType::class, array('label'=>'Adresse* :'))
             ->add('nomContact', TextType::class, array('label'=>'Nom du contact* :'))
             ->add('mail', EmailType::class, array('label'=>'Email du contact* :'))
+            ->add('telephone', TelType::class, array('label' => 'N° de téléphone du contact* :'))
+            ->add('validation', HiddenType::class);
 
-            ->add('telephone', TelType::class, array('label' => 'N° de téléphone du contact* :'));
     }/**
      * {@inheritdoc}
      */

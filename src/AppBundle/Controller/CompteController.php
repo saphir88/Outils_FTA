@@ -39,6 +39,7 @@ class CompteController extends Controller
 
         $deleteForm = $this->createDeleteForm($communaute);
         $form = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
+        $form->remove('validation');
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
