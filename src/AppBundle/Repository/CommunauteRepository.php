@@ -47,6 +47,13 @@ class CommunauteRepository extends \Doctrine\ORM\EntityRepository
             ->createQuery("UPDATE AppBundle:Communaute c SET c.video='$replace' WHERE c.id=$id")
             ->getResult();
     }
+
+    public function findAllByCategory($categorie)
+    {
+        return $this->getEntityManager()
+            ->createQuery("SELECT c FROM AppBundle:Communaute c WHERE c.categorie='$categorie' AND c.validation='1'")
+            ->getResult();
+    }
 }
 
 

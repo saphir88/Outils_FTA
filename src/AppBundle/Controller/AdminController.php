@@ -5,11 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Serializer\Encoder\CsvEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 
 /**
@@ -71,30 +67,5 @@ class AdminController extends Controller
     {
         session_destroy();
         return $this->redirectToRoute('homepage');
-    }
-
-    /**
-     * Exportation en CSV
-     *
-     * @Route("/csv_extract", name="csv_extract")
-     * @Method("GET")
-     */
-    public function exportCSV()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $dataExport = $em->getRepository('AppBundle:Communaute')->findAll();
-
-        $test[] = "Startup;Nom du Contact;Mail;Telephone";
-        foreach($dataExport as $key => $value) {
-            $test[] = "\n".'"'.$dataExport[$key]->getNomStartup().'";"'.$dataExport[$key]->getNomContact().'";"'.$dataExport[$key]->getMail().'";"'.$dataExport[$key]->getTelephone().'"';
-        }
-        $test2= implode("",$test);
-
-        $response = new Response($test2);
-        $response->headers->set('Content-Type', 'text/csv; charset=utf-8');
-        $response->headers->set('Content-Disposition','attachment; filename="startups_export.csv"');
-
-        return $response;
-
     }
 }
