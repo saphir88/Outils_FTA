@@ -14,7 +14,7 @@ class Images
 {
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communaute")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(onDelete="cascade" ,nullable=false)
      */
     private $communaute;
 
@@ -72,11 +72,11 @@ class Images
     /**
      * Set communaute
      *
-     * @param \AppBundle\Entity\Communautes $communaute
+     * @param \AppBundle\Entity\Communaute $communaute
      *
      * @return Images
      */
-    public function setCommunaute(\AppBundle\Entity\Communautes $communaute)
+    public function setCommunaute(\AppBundle\Entity\Communaute $communaute)
     {
         $this->communaute = $communaute;
 
@@ -86,7 +86,7 @@ class Images
     /**
      * Get communaute
      *
-     * @return \AppBundle\Entity\Communautes
+     * @return \AppBundle\Entity\Communaute
      */
     public function getCommunaute()
     {
