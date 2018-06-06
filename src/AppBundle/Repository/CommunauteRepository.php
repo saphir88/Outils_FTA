@@ -40,7 +40,12 @@ class CommunauteRepository extends \Doctrine\ORM\EntityRepository
             ->createQuery("UPDATE AppBundle:Communaute c SET c.validation='1' WHERE c.id=$id")
             ->getResult();
     }
-
+    public function modifierYoutube($id,$replace)
+    {
+        return $this->getEntityManager()
+            ->createQuery("UPDATE AppBundle:Communaute c SET c.validation='$replace' WHERE c.id=$id")
+            ->getResult();
+    }
 
 }
 
