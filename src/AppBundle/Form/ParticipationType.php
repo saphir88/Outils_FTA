@@ -8,7 +8,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ParticipationType extends AbstractType
 {
-/**
+    /**
+     * {@inheritdoc}
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder->add('event')->add('communaute');
+    }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

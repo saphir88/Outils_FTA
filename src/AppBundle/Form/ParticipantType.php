@@ -13,7 +13,7 @@ class ParticipantType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('prenom')->add('nom')->add('mail')->add('societe');
+        $builder->add('prenom')->add('nom')->add('mail')->add('societe')->add('event');
     }/**
      * {@inheritdoc}
      */
