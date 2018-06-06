@@ -32,9 +32,9 @@ class CompteController extends Controller
     public function compte(Request $request)
     {
 
-        $communaute = $this->getUser();
-
-        $form = $this->createForm('AppBundle\Form\UserType', $communaute);
+        $communaute = $this->getUser()->getCommunaute();
+        $deleteForm = $this->createDeleteForm($communaute);
+        $form = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -46,10 +46,10 @@ class CompteController extends Controller
         }
 
         return $this->render('compte/index.html.twig', array(
-            'utilisateur' => $communaute,
+            'communaute' => $communaute,
             'form' => $form->createView(),
+            'delete_form' => $deleteForm->createView(),
         ));
-
     }
     /**
      * @Route("/replace", name="replace_youtube")
@@ -94,6 +94,42 @@ class CompteController extends Controller
             //'form' => $form->createView(),
         ));
 
+    }
+
+    /**
+     * Deletes a communaute entity.
+     *
+     * @Route("/{id}", name="compte_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAction(Request $request, Communaute $communaute)
+    {
+        $form = $this->createDeleteForm($communaute);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($communaute);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('communaute_index');
+    }
+
+    /**
+     * Creates a form to delete a communaute entity.
+     *
+     * @param Communaute $communaute The communaute entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(Communaute $communaute)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('communaute_delete', array('id' => $communaute->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
     }
 
 

@@ -31,7 +31,6 @@
         </div>
         <div class="row">
             {% for  communaute in communautes %}
-
                 <div data-Type="{{ communaute.categorie }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
                     <div class="startUP">
 
@@ -54,6 +53,7 @@
                                         <p><b>Adresse :</b> {{ communaute.adresse }}</p>
                                         <p><b>Domaine :</b> {{ communaute.categorie }}</p>
                                         <p><b>Site:</b><a href="{{ communaute.siteWeb }}">{{ communaute.siteWeb }}</a></p>
+
                                         {% if communaute.video is not null %}
                                             <div><iframe width="560" height="315" src="{{ communaute.video }}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe></div>
                                         {% endif %}

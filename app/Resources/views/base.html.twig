@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>{% block title %}Frenchtech Alsace{% endblock %}</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('logo.jpg') }}" />
     <link rel="stylesheet" href="{{ asset('build/style.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,9 +33,9 @@
                 <li><a href="#">Evenement</a></li>
             </ul>
             {% if is_granted("ROLE_ADMIN") %}
+                <p class="navbar-text navbar-right"><a href="/logout" class="navbar-link">Deconnexion</a></p>
                 <p class="navbar-text navbar-right"><a href="{{ path('gestion_admin') }}" class="navbar-link">Mon compte</a></p>
                 <p class="navbar-text navbar-right"><a href="{{ path('admin') }}" class="navbar-link">Gestion</a></p>
-                <p class="navbar-text navbar-right"><a href="/logout" class="navbar-link">Deconnexion</a></p>
                 
             {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <p class="navbar-text navbar-right"><a href="/logout" class="navbar-link">Deconnexion</a></p>

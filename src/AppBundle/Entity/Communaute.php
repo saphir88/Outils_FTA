@@ -35,7 +35,7 @@ class Communaute
     /**
      * @var string
      *
-     * @ORM\Column(name="logo", type="string", length=255)
+     * @ORM\Column(name="logo", type="string", length=255, nullable=true)
      */
     private $logo;
 

@@ -1,32 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ dump(utilisateur) }}
+    {{ dump(form) }}
+    {{ dump(communaute) }}
+          <h1>Modification de la Startup "{{ communaute.nomStartup }}"</h1>
+       <div class="container">
+           {{ form_start(form) }}
+           {{ form_row(form.nomStartup) }}
+           {{ form_label(form.logo) }}
+           <br>
+           <img src="{{ asset('uploads/img/') }}{{ communaute.logo }}" width="300">
+           {{ form_errors(form.logo) }}
+           {{ form_widget(form.logo, {'required': false}) }}
+           {{ form_rest(form) }}
 
-    <h1>Modification de la Startup "{{ utilisateur.communaute.nomStartup }}"</h1>
-    <div class="container">
-        {{ form_start(form) }}
-        {{ form_row(form.communaute.nomStartup) }}
-        <br>
-        <img src="{{ asset('uploads/img/') }}{{ utilisateur.communaute.logo }}" width="300">
-        {{ form_errors(form.communaute.logo) }}
-        {{ form_widget(form.communaute.logo) }}
-        {{ form_rest(form) }}
-
-        <div class="container">
-            <button type="submit" class="btn btn-success">Valider les modifications</button>
-            {#{{ form_end(form) }}
-            {{ form_start(dform) }}
-            <button class="btn btn-danger" type="submit">Supprimer</button>
-            {{ form_end(delete_form) }}#}
-        </div>
-
-        {{ form_end(form) }}
-        <form action="{{ path('replace_youtube') }}" method="POST">
-            <input type="hidden" name="id" value="{{ utilisateur.id }}">
-            <input type="submit" class="btn btn-danger" value="modifier youtube">
-        </form>
-        {#<a class="btn btn-primary" href="{{ path('communautes_index') }}">Revenir à la liste des Startups</a>#}
-    </div>
-
+            <div class="container">
+               <button type="submit" class="btn btn-success">Valider les modifications</button>
+               {{ form_end(form) }}
+               {{ form_start(delete_form) }}
+               <button class="btn btn-danger" type="submit">Supprimer</button>
+               {{ form_end(delete_form) }}
+           </div>
+  {#     </div>
+       #}
 {% endblock %}
