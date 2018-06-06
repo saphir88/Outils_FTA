@@ -72,11 +72,11 @@ class Images
     /**
      * Set communaute
      *
-     * @param \AppBundle\Entity\Communautes $communaute
+     * @param \AppBundle\Entity\Communaute $communaute
      *
      * @return Images
      */
-    public function setCommunaute(\AppBundle\Entity\Communautes $communaute)
+    public function setCommunaute(\AppBundle\Entity\Communaute $communaute)
     {
         $this->communaute = $communaute;
 
