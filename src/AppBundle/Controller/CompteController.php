@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\User;
-use AppBundle\Repository\CompteRepository;
+use AppBundle\Repository\CommunauteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Communaute;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -14,6 +14,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use AppBundle\service\Youtube;
+
 
 
 /**
@@ -29,15 +31,22 @@ class CompteController extends Controller
      * @Route("/", name="compte")
      * @Method({"GET", "POST"})
      */
-    public function compte(Request $request)
+    public function compte(Request $request, Youtube $youtube)
     {
 
         $communaute = $this->getUser()->getCommunaute();
+        $video = $this->getUser()->getCommunaute()->getVideo();
+
         $deleteForm = $this->createDeleteForm($communaute);
         $form = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $replace = $youtube->replaceVideo($video);
+            $communaute->setVideo($replace);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($communaute);
             $em->flush();
@@ -51,22 +60,7 @@ class CompteController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-    /**
-     * @Route("/replace", name="replace_youtube")
-     * @Method("POST")
-     */
-    public function replaceVideo()
-    {
-        $video = $this->getUser()->getVideo();
-        $youtubeWatch = array("https://www.youtube.com/watch?v=");
-        $youtubeEmbed   = array("https://www.youtube.com/embed/");
-        $replace= str_replace($youtubeWatch, $youtubeEmbed , $video);
-        $id = $_POST['id'];
 
-        $this->getDoctrine()->getRepository('AppBundle:Communaute')->modifier($id,$replace);
-
-        return $this->redirectToRoute('compte');
-    }
 
     /**
      *

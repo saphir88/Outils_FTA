@@ -19,10 +19,5 @@ use Doctrine\ORM\EntityRepository;
 
 class CompteRepository extends EntityRepository
 {
-    public function modifier($id,$youtubeEmbed )
-    {
-        return $this->getEntityManager()
-            ->createQuery("UPDATE AppBundle:Communautes c SET c.video='$youtubeEmbed ' WHERE c.id=$id")
-            ->getResult();
-    }
+
 }
