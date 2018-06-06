@@ -12,7 +12,6 @@ class Youtube{
     public function replaceVideo($video)
     {
 
-
         $youtubeWatch = array("https://www.youtube.com/watch?v=");
         $youtubeEmbed   = array("https://www.youtube.com/embed/");
         $replace = str_replace($youtubeWatch, $youtubeEmbed , $video);

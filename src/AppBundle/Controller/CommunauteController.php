@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\service\Youtube;
+
 
 /**
  * Communaute controller.
@@ -80,14 +82,25 @@ class CommunauteController extends Controller
      * @Route("/{id}/edit", name="communaute_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Communaute $communaute)
+    public function editAction(Request $request, Communaute $communaute,Youtube $youtube)
+
     {
+
+        $video = $communaute->getVideo();
+
+
         $deleteForm = $this->createDeleteForm($communaute);
         $editForm = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            $replace = $youtube->replaceVideo($video);
+            $communaute->setVideo($replace);
+
             $this->getDoctrine()->getManager()->flush();
+
+
 
             return $this->redirectToRoute('communaute_edit', array('id' => $communaute->getId()));
         }
