@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 
 /**
@@ -22,6 +23,7 @@ class Communaute
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Participation", mappedBy="communaute")
      */
     protected $id;
 
@@ -141,7 +143,9 @@ class Communaute
      */
     private $linkedin;
 
-
+    public function __construct() {
+        $this->id = new ArrayCollection();
+    }
 
     /**
      * Get id.

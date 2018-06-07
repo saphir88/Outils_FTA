@@ -21,7 +21,7 @@ use AppBundle\Service\Youtube;
 /**
  * Compte controller.
  *
- * @Route("profil")
+ * @Route("monCompte")
  */
 class CompteController extends Controller
 {
