@@ -8,6 +8,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Service\Youtube;
+use AppBundle\Entity\User;
+use AppBundle\Repository\CommunauteRepository;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\CsvEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 
 /**
@@ -86,12 +92,13 @@ class CommunauteController extends Controller
 
     {
 
-        $video = $communaute->getVideo();
+
 
 
         $deleteForm = $this->createDeleteForm($communaute);
         $editForm = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
         $editForm->handleRequest($request);
+        $video = $communaute->getVideo();
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
