@@ -27,6 +27,13 @@ class CommunauteRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 
+    public function findAllByCategory($categorie)
+    {
+        return $this->getEntityManager()
+            ->createQuery("SELECT c FROM AppBundle:Communaute c WHERE c.categorie='$categorie'")
+            ->getResult();
+    }
+
     public function delete($id)
     {
         return $this->getEntityManager()

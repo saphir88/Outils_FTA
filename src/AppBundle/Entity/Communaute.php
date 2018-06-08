@@ -147,6 +147,11 @@ class Communaute
         $this->id = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getId().' : '.$this->getNomStartup();
+    }
+
     /**
      * Get id.
      *
