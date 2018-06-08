@@ -9,11 +9,12 @@ namespace AppBundle\Service;
 
 class Youtube{
 
-    public function replaceVideo($video)
+    public function replaceVideo(string $video)
     {
 
-        $youtubeWatch = array("https://www.youtube.com/watch?v=");
-        $youtubeEmbed   = array("https://www.youtube.com/embed/");
+        $youtubeWatch = array("/watch?v=");
+        $youtubeEmbed   = array("/embed/");
+
         $replace = str_replace($youtubeWatch, $youtubeEmbed , $video);
 
         return $replace;

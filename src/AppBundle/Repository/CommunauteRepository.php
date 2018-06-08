@@ -48,7 +48,6 @@ class CommunauteRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 
-
 }
 
 
