@@ -12,11 +12,12 @@
 </div>
 <br>
 <div class="container jumbotron">
+    {{ form_widget(form.communaute.validation, {'value': 0 , 'type': 'hidden'}) }}
     {{ form_row(form.communaute, {"label":" "}) }}
 
 
 
-    {{ form_row(form.communaute.validation, {'value': 0, 'type': 'hidden'}) }}
+
     <div>
         <input type="submit" value="{{ 'Inscription'|trans }}" />
     </div>

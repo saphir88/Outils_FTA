@@ -3,12 +3,12 @@
 {% block body %}
     <div class="container">
         <h1>{{ communaute.nomStartup }}</h1>
-
+{{ dump(communaute) }}
         <table>
             <tbody>
             <tr>
                 <th>Logo</th>
-                <td><img src="{{ asset('uploads/img/') }}{{ communaute.logo }}" width="300"></td>
+                {#<td><img src="{{ asset('uploads/img/') }}{{ communaute.logo }}" width="300"></td>#}
             </tr>
             <tr>
                 <th>Description : </th>
@@ -52,7 +52,7 @@
         <a class="btn btn-primary" href="{{ path('validation_index') }}">Retourner à la liste des validations en attentes</a>
         <form action="{{ path('validation_delete') }}" method="POST">
             <input type="hidden" name="id" value="{{ communaute.id }}">
-            <input type="hidden" name="logo" value="{{ communaute.logo }}">
+            {# <input type="hidden" name="logo" value="{{ communaute.logo }}"> #}
             <input type="submit" class="btn btn-danger" value="Refuser cette startup">
         </form>
         <form action="{{ path('validation_validate') }}" method="POST">

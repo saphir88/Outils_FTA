@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Communaute;
+use  AppBundle\Entity\Communaute;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -29,8 +29,10 @@ class CommunauteController extends Controller
 
         $communautes = $em->getRepository('AppBundle:Communaute')->findAllValidTrue();
 
+
         return $this->render('communaute/index.html.twig', array(
             'communautes' => $communautes,
+
         ));
     }
 
@@ -50,7 +52,6 @@ class CommunauteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($communaute);
             $em->flush();
-
             return $this->redirectToRoute('communaute_show', array('id' => $communaute->getId()));
         }
 
@@ -83,11 +84,9 @@ class CommunauteController extends Controller
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Communaute $communaute,Youtube $youtube)
-
     {
 
         $video = $communaute->getVideo();
-
 
         $deleteForm = $this->createDeleteForm($communaute);
         $editForm = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
@@ -99,9 +98,6 @@ class CommunauteController extends Controller
             $communaute->setVideo($replace);
 
             $this->getDoctrine()->getManager()->flush();
-
-
-
             return $this->redirectToRoute('communaute_edit', array('id' => $communaute->getId()));
         }
 

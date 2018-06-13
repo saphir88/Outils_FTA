@@ -13,10 +13,16 @@
                 <th>Nomstartup</th>
                 <td>{{ communaute.nomStartup }}</td>
             </tr>
+            <img src="{{ asset(communaute.file) }}" style="width: 150px">
+            <td>{{ asset(communaute.file) }}</td>
             <tr>
+                <th>nom fichier</th>
+                <td>{{ communaute.fileName }}</td>
+            </tr>
+            {#<tr>
                 <th>Logo</th>
                 <td><img src="{{ asset('uploads/img/' ~ communaute.logo) }}">{{ communaute.logo }}</td>
-            </tr>
+            </tr>#}
             <tr>
                 <th>Description</th>
                 <td>{{ communaute.description }}</td>
@@ -64,9 +70,9 @@
             <a href="{{ path('communaute_edit', { 'id': communaute.id }) }}">Edit</a>
         </li>
         <li>
-            {{ form_start(delete_form) }}
+           {# {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
+            {{ form_end(delete_form) }}#}
         </li>
     </ul>
 {% endblock %}

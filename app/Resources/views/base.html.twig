@@ -28,7 +28,7 @@
                 <li><a href="/presentation">Presentation </a></li>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {% else %}
-                    <li><a href="/register">Inscription</a></li>
+                    <li><a href="/inscription">Inscription</a></li>
                 {% endif %}
 
                 <li><a href="#">Evenement</a></li>
@@ -37,21 +37,24 @@
                 <p class="navbar-text navbar-right"><a href="/logout" class="navbar-link">Deconnexion</a></p>
                 <p class="navbar-text navbar-right"><a href="{{ path('gestion_admin') }}" class="navbar-link">Mon compte</a></p>
                 <p class="navbar-text navbar-right"><a href="{{ path('admin') }}" class="navbar-link">Gestion</a></p>
-                
-            {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+            {% elseif is_granted("ROLE_USER") %}
                 <p class="navbar-text navbar-right"><a href="/logout" class="navbar-link">Deconnexion</a></p>
 
                 <p class="navbar-text navbar-right"><a href="{{ path('compte') }}" class="navbar-link">Mon compte</a></p>
             {% else %}
                 <p class="navbar-text navbar-right"><a href="/login" class="navbar-link">Connexion</a></p>
             {% endif %}
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        </div> <!-- /.navbar-collapse -->
+    </div> <!-- /.container-fluid -->
 
 </nav>
-{% block fos_user_content %}{% endblock fos_user_content %}
+<div class="container-fluid">
+    {% block fos_user_content %}{% endblock fos_user_content %}
 
-{% block body %}{% endblock %}
+    {% block body %}{% endblock %}
+</div>
+
 <script src="{{ asset('build/app.js') }}"></script>
 {% block javascripts %}{% endblock %}
 </body>
