@@ -31,17 +31,12 @@ class CompteController extends Controller
      */
     public function compte(Request $request, Youtube $youtube)
     {
-
-
-
         $id = $this->getUser()->getId();
 
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('AppBundle:User')->find($id);
 
         $communaute = $user->getCommunaute();
-
-        //$video = $communaute->getVideo();
 
         $deleteForm = $this->createDeleteForm($communaute);
         $editForm = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
