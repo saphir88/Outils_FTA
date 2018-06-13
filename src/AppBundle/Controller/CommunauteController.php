@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+//use AppBundle\Service\InscriptionMailer;
 
 
 /**
@@ -46,7 +47,7 @@ class CommunauteController extends Controller
      * @Route("/new", name="communaute_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request) //,InscriptionMailer $InscriptionMailer)
     {
         $communaute = new Communaute();
         $form = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
@@ -56,6 +57,8 @@ class CommunauteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($communaute);
             $em->flush();
+
+            //$InscriptionMailer->sendEmailInscription($communaute->getNomStartup(),$communaute->getMail());
 
             return $this->redirectToRoute('communaute_show', array('id' => $communaute->getId()));
         }
