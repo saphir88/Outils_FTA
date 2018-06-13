@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="text-center">
+                <h1>{{ event.0.titre }}</h1>
+            </div>
+            <div class="col-lg-10 img-event">
+                <img src="{{ event.0.image }}" class="img-responsive">
+            </div>
+            <div class="col-lg-2 redbox">
+                <div class="v-center">
+                    <div class="date">{{ jour }}</div>
+                    <div class="hour">{{ heure }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="text-justify event-description">
+                {{  event.0.description | nl2br }}
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+
+{% endblock %}
+{% block javascripts %}
+{% endblock %}

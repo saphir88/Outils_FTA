@@ -37,12 +37,11 @@ class CompteController extends Controller
         $id = $this->getUser()->getId();
 
         $em = $this->getDoctrine()->getManager();
-        //$em->clear();
         $user = $em->getRepository('AppBundle:User')->find($id);
 
         $communaute = $user->getCommunaute();
 
-        $video = $communaute->getVideo();
+        //$video = $communaute->getVideo();
 
         $deleteForm = $this->createDeleteForm($communaute);
         $editForm = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
@@ -50,10 +49,16 @@ class CompteController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
-            $replace = $youtube->replaceVideo($video);
-            $communaute->setVideo($replace);
+            if($communaute->getVideo() !== null){
+                $replace = $youtube->replaceVideo($communaute->getVideo());
+                $communaute->setVideo($replace);
+            }
 
-            $this->getDoctrine()->getManager()->flush();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($communaute);
+            $em->flush();
+
             return $this->redirectToRoute('compte');
         }
 
@@ -61,6 +66,7 @@ class CompteController extends Controller
             'communaute' => $communaute,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+
         ));
     }
 

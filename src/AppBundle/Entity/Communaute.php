@@ -170,6 +170,11 @@ class Communaute
     private $linkedin;
 
 
+    public function __toString()
+    {
+        return $this->getId().' : '.$this->getNomStartup();
+    }
+
     /**
      * Get id.
      *

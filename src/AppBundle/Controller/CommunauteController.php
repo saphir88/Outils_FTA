@@ -8,6 +8,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Service\Youtube;
+use AppBundle\Entity\User;
+use AppBundle\Repository\CommunauteRepository;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\CsvEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+//use AppBundle\Service\InscriptionMailer;
 
 
 /**
@@ -42,7 +49,7 @@ class CommunauteController extends Controller
      * @Route("/new", name="communaute_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request) //,InscriptionMailer $InscriptionMailer)
     {
         $communaute = new Communaute();
         $form = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
@@ -52,6 +59,10 @@ class CommunauteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($communaute);
             $em->flush();
+
+            //$InscriptionMailer->sendEmailInscription($communaute->getNomStartup(),$communaute->getMail());
+
+
             return $this->redirectToRoute('communaute_show', array('id' => $communaute->getId()));
         }
 
@@ -86,11 +97,12 @@ class CommunauteController extends Controller
     public function editAction(Request $request, Communaute $communaute,Youtube $youtube)
     {
 
-        $video = $communaute->getVideo();
+
 
         $deleteForm = $this->createDeleteForm($communaute);
         $editForm = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
         $editForm->handleRequest($request);
+        $video = $communaute->getVideo();
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 

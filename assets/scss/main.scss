@@ -104,5 +104,39 @@ h2{
 }
 /*style de la page presentation*/
 
+/*style de la page evenement*/
+.redbox {
+  display: block;
+  background-color: red;
+  height: 548px;
+}
+
+.img-event {
+  padding: 0;
+}
+
+.v-center {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.date {
+  font-size: 2em;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.hour {
+  font-size: 1.5em;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+/*style de la page evenement*/
+
 
 

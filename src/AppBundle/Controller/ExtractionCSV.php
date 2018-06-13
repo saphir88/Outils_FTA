@@ -31,6 +31,7 @@ class ExtractionCSV extends Controller
         if(isset($_POST['categorie'])) {
             $categorie = $_POST['categorie'];
             $em = $this->getDoctrine()->getManager();
+
             if ($categorie == "all") {
                 $dataExport = $em->getRepository('AppBundle:Communaute')->findAll();
             } else {
@@ -43,6 +44,7 @@ class ExtractionCSV extends Controller
             $test2= implode("",$test);
 
             $filename = $categorie."_startups_export.csv";
+            $filename = str_replace(" ", "_", $filename);
             $response = new Response($test2);
             $response->headers->set('Content-Type', 'text/csv; charset=utf-8');
             $response->headers->set('Content-Disposition',"attachment; filename=$filename");
