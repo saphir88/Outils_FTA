@@ -7,7 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Service\Mailer;
+//use AppBundle\Service\Mailer;
+use AppBundle\Service\InscriptionMailer;
 
 /**
  * Contact controller.
@@ -39,7 +40,7 @@ class ContactController extends Controller
      * @Route("/new", name="contact_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request, Mailer $mailer)
+    public function newAction(Request $request, InscriptionMailer $InscriptionMailer)
     {
         $contact = new Contact();
         $form = $this->createForm('AppBundle\Form\ContactType', $contact);
@@ -50,7 +51,8 @@ class ContactController extends Controller
             $em->persist($contact);
             $em->flush();
 
-            $mailer->sendEmail($contact->getNom(),$contact->getEmail(),$contact->getMessage());
+            $InscriptionMailer->sendEmailInscription($contact->getNom(),$contact->getEmail(),$contact->getMessage());
+            //$mailer->sendEmail($contact->getNom(),$contact->getEmail(),$contact->getMessage());
 
             return $this->redirectToRoute('contact_new', array('id' => $contact->getId()));
         }
