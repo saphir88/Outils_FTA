@@ -5,12 +5,14 @@
     <div class="container">
         {{ form_start(edit_form) }}
         {{ form_row(edit_form.nomStartup) }}
-        {{ form_label(edit_form.logo) }}
+        {#{{ form_label(edit_form.file) }}#}
         <br>
-        <img src="{{ asset('uploads/img/') }}{{ communaute.logo }}" width="300">
-        {{ form_errors(edit_form.logo) }}
-        {{ form_widget(edit_form.logo, {'required': false}) }}
+
+        <img src="{{ asset(communaute.file) }}" width="300">
+        {{ form_errors(edit_form.file) }}
+        {{ form_widget(edit_form.file, {'required': false}) }}
         {{ form_rest(edit_form) }}
+
 
         <div class="container">
             <button type="submit" class="btn btn-success">Valider les modifications</button>

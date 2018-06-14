@@ -34,7 +34,7 @@
                 <div data-Type="{{ communaute.categorie }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
                     <div class="startUP">
                         <h1 class="nomStartUp">{{ communaute.id }} :{{ communaute.nomStartup }}</h1>
-                        <center><img class="logo" src="{{ asset('uploads/img/') }}{{ communaute.logo }}"></center>
+                        <center><img class="logo" src="{{ asset(communaute.file) }}"></center>
                         <a class="btn btn-primary" href="{{ path('communaute_edit', { 'id': communaute.id }) }}">Modifier</a>
                     </div>
                 </div>

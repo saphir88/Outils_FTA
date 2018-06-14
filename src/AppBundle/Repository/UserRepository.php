@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findCompteById($id)
+    {
+        return $this->getEntityManager()
+            ->createQuery("SELECT u,c FROM AppBundle:User u JOIN u.communaute c where u.id = $id")
+            ->getResult();
+
+
+    }
+
+
 }

@@ -1,7 +1,5 @@
 <?php
-
 namespace AppBundle\Controller;
-
 
 use AppBundle\Entity\User;
 use AppBundle\Repository\CommunauteRepository;
@@ -11,11 +9,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Serializer\Encoder\CsvEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use AppBundle\Service\Youtube;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 
+use AppBundle\Service\Youtube;
 
 
 /**
@@ -23,6 +19,8 @@ use AppBundle\Service\Youtube;
  *
  * @Route("monCompte")
  */
+
+
 class CompteController extends Controller
 {
     /**
@@ -34,19 +32,27 @@ class CompteController extends Controller
     public function compte(Request $request, Youtube $youtube)
     {
 
-        $communaute = $this->getUser()->getCommunaute();
 
+
+        $id = $this->getUser()->getId();
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('AppBundle:User')->find($id);
+
+        $communaute = $user->getCommunaute();
+
+        //$video = $communaute->getVideo();
 
         $deleteForm = $this->createDeleteForm($communaute);
-        $form = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
-        $form->remove('validation');
-        $form->handleRequest($request);
+        $editForm = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
+        $editForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
 
-
-            $replace = $youtube->replaceVideo($communaute->getVideo());
-            $communaute->setVideo($replace);
+            if($communaute->getVideo() !== null){
+                $replace = $youtube->replaceVideo($communaute->getVideo());
+                $communaute->setVideo($replace);
+            }
 
 
             $em = $this->getDoctrine()->getManager();
@@ -58,7 +64,7 @@ class CompteController extends Controller
 
         return $this->render('compte/index.html.twig', array(
             'communaute' => $communaute,
-            'form' => $form->createView(),
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
 
         ));
@@ -75,6 +81,7 @@ class CompteController extends Controller
 
         $communaute = $this->getUser();
 
+        dump($communaute);
         /* $form = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
         $form->handleRequest($request);
 

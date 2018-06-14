@@ -36,14 +36,14 @@
 
                         <h1 class="nomStartUp">{{ communaute.nomStartup }}</h1>
 
-                        <center><img class="logo" src="/uploads/img/{{ communaute.logo }}"></center>
+                        <center><img class="logo" src="{{ asset(communaute.file) }}"></center>
                         <button type="button" class="btn btn-info btn-lg info" data-toggle="modal" data-target="#{{ communaute.id }}">More Infos</button>
                         <div  class="modal fade {{ communaute.categorie }}" id="{{ communaute.id }}"  role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h4 class="nomStartUp">{{ communaute.nomStartup }}</h4>
-                                        <img class="logo" src="/uploads/img/{{ communaute.logo }}">
+                                        <img class="logo" src="{{ asset(communaute.file) }}">
                                     </div>
                                     <div class="modal-body">
 

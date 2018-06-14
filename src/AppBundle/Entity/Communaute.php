@@ -2,16 +2,20 @@
 
 namespace AppBundle\Entity;
 
+
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\Common\Collections\ArrayCollection;
-use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\HttpFoundation\File\File;
+use Upload\UploadBundle\Annotation\Uploadable;
+use Upload\UploadBundle\Annotation\UploadableField;
+
 
 /**
  * Communaute
  *
  * @ORM\Table(name="communaute")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CommunauteRepository")
+ * @Uploadable()
  */
 class Communaute
 {
@@ -37,9 +41,9 @@ class Communaute
     /**
      * @var string
      *
-     * @ORM\Column(name="logo", type="string", length=255, nullable=true)
+     * @ORM\Column(name="fileName", type="string", length=255, nullable=true)
      */
-    private $logo;
+    private $fileName;
 
     /**
      * @var string
@@ -134,6 +138,28 @@ class Communaute
      */
     private $twitter;
 
+    /**
+     * @UploadableField(filename="filename", path="uploads")
+     * @Assert\Image()
+     *
+     */
+    private $file;
+
+    /**
+     * @return File|null
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param File $file|null
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
 
 
     /**
@@ -143,9 +169,6 @@ class Communaute
      */
     private $linkedin;
 
-    public function __construct() {
-        $this->id = new ArrayCollection();
-    }
 
     public function __toString()
     {
@@ -183,18 +206,20 @@ class Communaute
     /**
      * @return string
      */
-    public function getLogo()
+    public function getFileName()
     {
-        return $this->logo;
+        return $this->fileName;
     }
 
     /**
-     * @param string $logo
+     * @param string $fileName
      */
-    public function setLogo($logo)
+    public function setFileName($fileName)
     {
-        $this->logo = $logo;
+        $this->fileName = $fileName;
     }
+
+
 
     /**
      * @return string
