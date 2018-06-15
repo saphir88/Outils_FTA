@@ -10,7 +10,7 @@ class InscriptionMailer
 
     /**
      * Mailer constructor.
-     * @param $mailer
+     * @param $InscriptionMailer
      */
     public function __construct(\Swift_Mailer $InscriptionMailer, \Twig_Environment $templating)
     {
@@ -19,11 +19,12 @@ class InscriptionMailer
     }
 
 
-    public function sendEmailInscription($nomStartup,$email){
+    public function sendEmailInscription($nomStartup,$email,$message){
 
         $body = $this->templating->render('email/inscriptionMail.html.twig',[
             'nom'=>$nomStartup,
             'email'=>$email,
+            'message'=>$message,
         ]);
         //$sendAllMails =
         $message = (new\Swift_Message('InscriptionStartUp'))

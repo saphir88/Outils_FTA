@@ -15,6 +15,7 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 //use AppBundle\Service\InscriptionMailer;
+use AppBundle\Service\suppressionStartUp;
 
 
 /**
@@ -97,8 +98,6 @@ class CommunauteController extends Controller
     public function editAction(Request $request, Communaute $communaute,Youtube $youtube)
     {
 
-
-
         $deleteForm = $this->createDeleteForm($communaute);
         $editForm = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
         $editForm->handleRequest($request);
@@ -126,7 +125,7 @@ class CommunauteController extends Controller
      * @Route("/{id}", name="communaute_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Communaute $communaute)
+    public function deleteAction(Request $request, Communaute $communaute,suppressionStartUp $suppressionStartUp)
     {
         $form = $this->createDeleteForm($communaute);
         $form->handleRequest($request);
@@ -135,6 +134,7 @@ class CommunauteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($communaute);
             $em->flush();
+            $suppressionStartUp->sendEmailsuppression($communaute->getMail());
         }
 
         return $this->redirectToRoute('communaute_index');
