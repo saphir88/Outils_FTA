@@ -3,7 +3,9 @@
 namespace AppBundle\Form;
 
 use Doctrine\DBAL\Types\BooleanType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -49,9 +51,17 @@ class CommunauteType extends AbstractType
             ->add('nomContact', TextType::class, array('label'=>'Nom du contact* :'))
             ->add('mail', EmailType::class, array('label'=>'Email du contact* :'))
             ->add('telephone', TelType::class, array('label' => 'N° de téléphone du contact* :'))
-            ->add('validation', HiddenType::class);
+            ->add('validation', TextType::class)
+            ->add('images', CollectionType::class, [
+                'entry_type' => ImagesType::class,
+                'allow_add' => true,
+                'allow_delete' => true
+            ]);
 
-    }/**
+
+
+    }
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

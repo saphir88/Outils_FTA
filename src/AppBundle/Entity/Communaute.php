@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
@@ -19,15 +20,40 @@ use Upload\UploadBundle\Annotation\UploadableField;
  */
 class Communaute
 {
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
 
-    
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Images", mappedBy="communaute", cascade={"persist", "remove"})
+     */
+    private $images;
+
+    /**
+     * @return mixed
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * @param mixed $images
+     */
+    public function setImages($images)
+    {
+        $this->images = $images;
+    }
+
+
     /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     *
      */
     protected $id;
 
@@ -173,12 +199,14 @@ class Communaute
      */
     private $linkedin;
 
+    /**
+     * @UploadableField(filename="filename", path="uploads")
+     * @Assert\Image()
+     *
+     */
+    private $file;
 
-    public function __toString()
-    {
-        return $this->getId().' : '.$this->getNomStartup();
-    }
-
+    /* Getters and Setters */
     /**
      * Get id.
      *
@@ -188,8 +216,6 @@ class Communaute
     {
         return $this->id;
     }
-
-    /* Getters and Setters */
 
     /**
      * @return string
@@ -222,8 +248,6 @@ class Communaute
     {
         $this->fileName = $fileName;
     }
-
-
 
     /**
      * @return string
@@ -432,5 +456,22 @@ class Communaute
     {
         $this->linkedin = $linkedin;
     }
+
+    /**
+     * @return File|null
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param File $file|null
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
 
 }

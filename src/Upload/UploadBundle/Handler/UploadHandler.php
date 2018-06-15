@@ -17,7 +17,11 @@ class UploadHandler {
         $file = $this->accessor->getValue($entity, $property);
         if ($file instanceof UploadedFile) {
             $this->removeOldFile($entity, $annotation);
-            $filename = $file->getClientOriginalName();
+
+
+
+            $extension = $file->getClientOriginalExtension();
+            $filename = md5(uniqid($extension)) . "." . $extension;
 
             $file->move($annotation->getPath(), $filename);
             $this->accessor->setValue($entity, $annotation->getFilename(), $filename);

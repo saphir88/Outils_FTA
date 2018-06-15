@@ -8,8 +8,6 @@ use AppBundle\Entity\Communaute;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PropertyAccess\PropertyAccess;
 
 use AppBundle\Service\Youtube;
 
@@ -44,9 +42,15 @@ class CompteController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
+
             if($communaute->getVideo() !== null){
                 $replace = $youtube->replaceVideo($communaute->getVideo());
                 $communaute->setVideo($replace);
+            }
+
+            foreach($communaute->getImages() as $Image)
+            {
+                $Image->setCommunaute($communaute);
             }
 
 
@@ -54,9 +58,10 @@ class CompteController extends Controller
             $em->persist($communaute);
             $em->flush();
 
+            $this->addFlash('sucess', 'Modifications bien prise en compte.');
+
             return $this->redirectToRoute('compte');
         }
-
         return $this->render('compte/index.html.twig', array(
             'communaute' => $communaute,
             'edit_form' => $editForm->createView(),
