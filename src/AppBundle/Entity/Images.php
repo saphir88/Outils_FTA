@@ -35,21 +35,15 @@ class Images
     /**
      * @var string
      *
-<<<<<<< HEAD
-     * @ORM\Column(name="filename", type="string", length=255)
-     */
-    private $filename;
-=======
+<
      * @ORM\Column(name="filename", type="string", length=255, nullable=true)
      */
     private $filename;
-
 
     /**
      * @Assert\Image()
      */
     private $file;
->>>>>>> uploadMulti
 
 
     /**

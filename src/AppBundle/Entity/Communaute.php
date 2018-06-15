@@ -165,31 +165,12 @@ class Communaute
     private $twitter;
 
     /**
-     * @UploadableField(filename="filename", path="uploads")
-     * @Assert\Image()
      *
+     * @Assert\Image()
+     *@UploadableField(filename="filename", path="uploads")
      */
     private $file;
 
-    /**
-     */
-    private $images;
-
-    /**
-     * @return File|null
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
-     * @param File $file|null
-     */
-    public function setFile($file)
-    {
-        $this->file = $file;
-    }
 
 
     /**
@@ -199,12 +180,6 @@ class Communaute
      */
     private $linkedin;
 
-    /**
-     * @UploadableField(filename="filename", path="uploads")
-     * @Assert\Image()
-     *
-     */
-    private $file;
 
     /* Getters and Setters */
     /**
