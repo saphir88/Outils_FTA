@@ -13,13 +13,10 @@ use FOS\UserBundle\Model\User as BaseUser;
 
 class User extends BaseUser
 {
-
-    /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Communaute",cascade={"persist", "remove"}, fetch="EAGER")
-     * @ORM\JoinColumn(onDelete="cascade")
-     */
-    private $communaute;
-
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * @var int
@@ -29,6 +26,12 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Communaute",cascade={"persist", "remove"}, fetch="EAGER")
+     * @ORM\JoinColumn(onDelete="cascade")
+     */
+    private $communaute;
 
 
     /**
@@ -41,10 +44,6 @@ class User extends BaseUser
         return $this->id;
     }
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     /**
      * Set communaute.

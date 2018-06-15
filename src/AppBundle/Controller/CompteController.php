@@ -8,8 +8,6 @@ use AppBundle\Entity\Communaute;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PropertyAccess\PropertyAccess;
 
 use AppBundle\Service\Youtube;
 
@@ -31,9 +29,6 @@ class CompteController extends Controller
      */
     public function compte(Request $request, Youtube $youtube)
     {
-
-
-
         $id = $this->getUser()->getId();
 
         $em = $this->getDoctrine()->getManager();
@@ -42,7 +37,6 @@ class CompteController extends Controller
         $communaute = $user->getCommunaute();
 
         //$video = $communaute->getVideo();
-
         $deleteForm = $this->createDeleteForm($communaute);
         $editForm = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
         $editForm->handleRequest($request);
@@ -54,10 +48,17 @@ class CompteController extends Controller
                 $communaute->setVideo($replace);
             }
 
+            foreach($communaute->getImages() as $Image)
+            {
+                $Image->setCommunaute($communaute);
+            }
+
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($communaute);
             $em->flush();
+
+            $this->addFlash('sucess', 'Modifications bien prise en compte.');
 
             return $this->redirectToRoute('compte');
         }

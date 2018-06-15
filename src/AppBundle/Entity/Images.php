@@ -3,20 +3,26 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
+use Upload\UploadBundle\Annotation\Uploadable;
+use Upload\UploadBundle\Annotation\UploadableField;
 
 /**
  * Images
  *
  * @ORM\Table(name="images")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ImagesRepository")
+ * @Uploadable()
  */
 class Images
 {
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communaute")
-     * @ORM\JoinColumn(onDelete="cascade" ,nullable=false)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communaute", inversedBy="images", fetch="EAGER", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=true)
      */
     private $communaute;
+
 
     /**
      * @var int
@@ -30,9 +36,16 @@ class Images
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="filename", type="string", length=255, nullable=true)
      */
-    private $nom;
+    private $filename;
+
+
+    /**
+     * @UploadableField(filename="filename", path="uploads")
+     * @Assert\Image()
+     */
+    private $file;
 
 
     /**
@@ -45,51 +58,55 @@ class Images
         return $this->id;
     }
 
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return Images
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
 
     /**
-     * Get nom
-     *
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * Set communaute
-     *
-     * @param \AppBundle\Entity\Communaute $communaute
-     *
-     * @return Images
-     */
-    public function setCommunaute(\AppBundle\Entity\Communaute $communaute)
-    {
-        $this->communaute = $communaute;
-
-        return $this;
-    }
-
-    /**
-     * Get communaute
-     *
-     * @return \AppBundle\Entity\Communaute
+     * @return mixed
      */
     public function getCommunaute()
     {
         return $this->communaute;
     }
+
+    /**
+     * @param mixed $communaute
+     */
+    public function setCommunaute($communaute)
+    {
+        $this->communaute = $communaute;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFilename()
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @param string $filename
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+    }
+
+
+    /**
+     * @return File
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param File $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+
 }
