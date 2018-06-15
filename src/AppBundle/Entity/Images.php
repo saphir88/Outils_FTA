@@ -13,7 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Images
 {
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communaute")
      * @ORM\JoinColumn(onDelete="cascade" ,nullable=false)
      */
     private $communaute;
@@ -30,9 +29,9 @@ class Images
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="filename", type="string", length=255)
      */
-    private $nom;
+    private $filename;
 
 
     /**

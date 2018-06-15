@@ -27,7 +27,7 @@ class Communaute
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Participation", mappedBy="communaute")
+     *
      */
     protected $id;
 
@@ -144,6 +144,10 @@ class Communaute
      *
      */
     private $file;
+
+    /**
+     */
+    private $images;
 
     /**
      * @return File|null
