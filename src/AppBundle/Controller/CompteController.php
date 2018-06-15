@@ -38,10 +38,11 @@ class CompteController extends Controller
 
         $deleteForm = $this->createDeleteForm($communaute);
         $editForm = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
+        $editForm->remove('validation');
+
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-
 
             if($communaute->getVideo() !== null){
                 $replace = $youtube->replaceVideo($communaute->getVideo());
@@ -58,10 +59,13 @@ class CompteController extends Controller
             $em->persist($communaute);
             $em->flush();
 
+
             $this->addFlash('sucess', 'Modifications bien prise en compte.');
 
             return $this->redirectToRoute('compte');
         }
+
+        dump($this->getUser());
         return $this->render('compte/index.html.twig', array(
             'communaute' => $communaute,
             'edit_form' => $editForm->createView(),
@@ -117,7 +121,7 @@ class CompteController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('communaute_index');
+        return $this->redirectToRoute('homepage');
     }
 
     /**
