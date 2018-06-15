@@ -2,7 +2,6 @@ upload:
     resource: "@UploadBundle/Resources/config/routing.yml"
     prefix:   /
 
-
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
@@ -25,3 +24,7 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+kms_froala_editor:
+  resource: "@KMSFroalaEditorBundle/Resources/config/routing.yml"
+  prefix:   /froalaeditor
