@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "31699f42196157e9284798f821f0ce22",
+    "content-hash": "c503899e6ff97b7fd7c581121c86fc57",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -980,6 +980,50 @@
             "time": "2018-03-08T08:59:27+00:00"
         },
         {
+            "name": "froala/wysiwyg-editor",
+            "version": "v2.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/froala/wysiwyg-editor.git",
+                "reference": "a07268ceecff70dbd696ab48f28af88a0c820123"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/froala/wysiwyg-editor/zipball/a07268ceecff70dbd696ab48f28af88a0c820123",
+                "reference": "a07268ceecff70dbd696ab48f28af88a0c820123",
+                "shasum": ""
+            },
+            "type": "component",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Froala Labs",
+                    "email": "support@froala.com"
+                }
+            ],
+            "description": "A beautiful jQuery WYSIWYG HTML rich text editor. High performance and modern design make it easy to use for developers and loved by users.",
+            "homepage": "https://www.froala.com/wysiwyg-editor",
+            "keywords": [
+                "editor",
+                "froala",
+                "froala-editor",
+                "froala-wysiwyg",
+                "html",
+                "javascript",
+                "jquery",
+                "jquery-plugin",
+                "rich editor",
+                "rich text editor",
+                "rte",
+                "text",
+                "wysiwyg"
+            ],
+            "time": "2018-04-26T09:08:13+00:00"
+        },
+        {
             "name": "incenteev/composer-parameter-handler",
             "version": "v2.1.3",
             "source": {
@@ -1079,6 +1123,58 @@
                 "sql"
             ],
             "time": "2014-01-12T16:20:24+00:00"
+        },
+        {
+            "name": "kms/froala-editor-bundle",
+            "version": "v2.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/froala/KMSFroalaEditorBundle.git",
+                "reference": "b9cfa0f55d61eccc1402d424bf02a168250f1cb8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/froala/KMSFroalaEditorBundle/zipball/b9cfa0f55d61eccc1402d424bf02a168250f1cb8",
+                "reference": "b9cfa0f55d61eccc1402d424bf02a168250f1cb8",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3|^7.0",
+                "symfony/form": "^2.3|^3.0|^4.0",
+                "symfony/framework-bundle": "^2.3|^3.0|^4.0",
+                "twig/twig": "^1.1|^2.0"
+            },
+            "require-dev": {
+                "symfony/twig-bundle": "^2.3|^3.0|^4.0",
+                "symfony/yaml": "^2.3|^3.0|^4.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "KMS\\FroalaEditorBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simon Guionniere",
+                    "email": "simon.guionniere@gmail.com"
+                },
+                {
+                    "name": "Stefan Neculai",
+                    "email": "stefan.neculai@gmail.com"
+                }
+            ],
+            "description": "Provides a Froala editor integration for Symfony 2/3/4.",
+            "keywords": [
+                "editor",
+                "froala",
+                "wysiwyg"
+            ],
+            "time": "2018-05-02T22:21:24+00:00"
         },
         {
             "name": "monolog/monolog",

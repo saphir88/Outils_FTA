@@ -86,3 +86,33 @@ fos_user:
     registration:
         form:
             type: AppBundle\Form\RegistrationType
+
+kms_froala_editor:
+
+  # Froala license number if you want to use a purchased license.
+  serialNumber: ""
+
+  # Disable JQuery inclusion.
+  includeJQuery: true
+
+  # Disable CodeMirror inclusion.
+  includeCodeMirror: false
+
+   # Disable Font Awesome inclusion.
+  includeFontAwesome: true
+
+  # Disable all bundle javascripts inclusion (not concerning JQuery nor CodeMirror).
+  # Usage: if you are using Grunt or other and you want to include yourself all scripts.
+  includeJS: true
+
+  # Disable all bundle CSS inclusion (not concerning Font Awesome nor CodeMirror).
+  # Usage: if you are using Grunt or other and you want to include yourself all stylesheets.
+  includeCSS: true
+
+  # Change the froala base path.
+  # Usage: let me know, I don't think it's usefull.
+  # basePath: "/my/custom/path".
+
+  # Custom JS file.
+  # Usage: add custom plugins/buttons...
+  # customJS: "/custom/js/path"

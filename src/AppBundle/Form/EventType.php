@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use KMS\FroalaEditorBundle\Form\Type\FroalaEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,8 +14,28 @@ class EventType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('titre')->add('description')->add('image')->add('date')->add('localisation')->add('nbMaxParticipants');
-    }/**
+        $builder
+            ->add('titre')
+            ->add('image')
+            ->add("description", FroalaEditorType::class, array(
+                "language" => "fr",
+                "toolbarInline" => false,
+                "tableColors" => ["#FFFFFF", "#FF0000"],
+                "saveInterval" => "0",
+                "imageUpload" => false,
+                "toolbarButtons" => ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough',
+                    'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle',
+                    'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent',
+                    'indent', 'quote', '-', 'insertLink', 'insertTable', '|', 'emoticons', 'specialCharacters',
+                    'insertHR', 'clearFormatting', '|', 'html', '|', 'undo', 'redo']
+
+            ))
+            ->add('date')
+            ->add('localisation')
+            ->add('nbMaxParticipants');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
