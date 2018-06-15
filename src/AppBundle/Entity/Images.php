@@ -13,12 +13,11 @@ use Upload\UploadBundle\Annotation\UploadableField;
  *
  * @ORM\Table(name="images")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ImagesRepository")
- * @Uploadable()
  */
 class Images
 {
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communaute", inversedBy="images", fetch="EAGER", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communaute", inversedBy="images", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $communaute;
@@ -42,7 +41,6 @@ class Images
 
 
     /**
-     * @UploadableField(filename="filename", path="uploads")
      * @Assert\Image()
      */
     private $file;

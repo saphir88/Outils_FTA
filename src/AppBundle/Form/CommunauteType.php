@@ -51,7 +51,7 @@ class CommunauteType extends AbstractType
             ->add('nomContact', TextType::class, array('label'=>'Nom du contact* :'))
             ->add('mail', EmailType::class, array('label'=>'Email du contact* :'))
             ->add('telephone', TelType::class, array('label' => 'N° de téléphone du contact* :'))
-            ->add('validation', HiddenType::class)
+            ->add('validation', TextType::class)
             ->add('images', CollectionType::class, [
                 'entry_type' => ImagesType::class,
                 'allow_add' => true,

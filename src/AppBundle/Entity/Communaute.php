@@ -27,7 +27,7 @@ class Communaute
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Images", mappedBy="communaute", cascade={"persist", "remove"}, fetch="EAGER")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Images", mappedBy="communaute", cascade={"persist", "remove"})
      */
     private $images;
 

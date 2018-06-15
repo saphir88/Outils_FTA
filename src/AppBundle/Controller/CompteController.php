@@ -36,12 +36,12 @@ class CompteController extends Controller
 
         $communaute = $user->getCommunaute();
 
-        //$video = $communaute->getVideo();
         $deleteForm = $this->createDeleteForm($communaute);
         $editForm = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
 
             if($communaute->getVideo() !== null){
                 $replace = $youtube->replaceVideo($communaute->getVideo());
@@ -62,7 +62,6 @@ class CompteController extends Controller
 
             return $this->redirectToRoute('compte');
         }
-
         return $this->render('compte/index.html.twig', array(
             'communaute' => $communaute,
             'edit_form' => $editForm->createView(),
