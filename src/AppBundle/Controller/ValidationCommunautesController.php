@@ -7,8 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Service\validateStartUp;
-use AppBundle\Service\refusStartUp;
+use AppBundle\Service\Mailer;
 /**
  * ValidationCommunaute controller.
  *
@@ -54,7 +53,7 @@ class ValidationCommunautesController extends Controller
      * @Route("/delete", name="validation_delete")
      * @Method("POST")
      */
-    public function delete(refusStartUp $refusStartUp)
+    public function delete(Mailer $mailer)
     {
         $id = $_POST['id'];
         //$logo = "uploads/img/".$_POST['logo'];
@@ -63,7 +62,7 @@ class ValidationCommunautesController extends Controller
         //unlink($logo);
 
         $mail = $_POST['mail'];
-        $refusStartUp->sendEmailRefus($mail);
+        $mailer->sendEmailRefus($mail);
 
         return $this->redirectToRoute('validation_index');
 
@@ -74,14 +73,14 @@ class ValidationCommunautesController extends Controller
      * @Route("/validate", name="validation_validate")
      * @Method("POST")
      */
-    public function validate(validateStartUp $validateStartUp)
+    public function validate(Mailer $mailer)
     {
 
         $id = $_POST['id'];
         $this->getDoctrine()->getManager()->getRepository('AppBundle:Communaute')->validate($id);
 
         $mail = $_POST['mail'];
-        $validateStartUp->sendEmailValidate($mail);
+        $mailer->sendEmailValidate($mail);
 
 
 
