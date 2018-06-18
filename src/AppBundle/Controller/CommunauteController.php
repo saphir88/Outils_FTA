@@ -95,18 +95,19 @@ class CommunauteController extends Controller
      * @Route("/{id}/edit", name="communaute_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Communaute $communaute,Youtube $youtube)
+    public function editAction(Request $request, Communaute $communaute, Youtube $youtube)
     {
 
         $deleteForm = $this->createDeleteForm($communaute);
         $editForm = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
         $editForm->handleRequest($request);
-        $video = $communaute->getVideo();
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
-            $replace = $youtube->replaceVideo($video);
-            $communaute->setVideo($replace);
+            if($communaute->getVideo() !== null){
+                $replace = $youtube->replaceVideo($communaute->getVideo());
+                $communaute->setVideo($replace);
+            }
 
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('communaute_edit', array('id' => $communaute->getId()));
