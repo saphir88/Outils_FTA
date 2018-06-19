@@ -6,7 +6,6 @@ use Doctrine\Common\EventSubscriber;
 use Upload\UploadBundle\Annotation\UploadAnnotationReader;
 use Upload\UploadBundle\Handler\UploadHandler;
 
-
 class UploadSubscriber implements EventSubscriber {
 
     /**
@@ -31,16 +30,20 @@ class UploadSubscriber implements EventSubscriber {
             'prePersist',
             'preUpdate',
             'postLoad',
-            'postRemove'
+            'postRemove',
         ];
     }
 
     public function prePersist(EventArgs $event) {
+
         $this->preEvent($event);
+
     }
 
     public function preUpdate(EventArgs $event) {
+
         $this->preEvent($event);
+
     }
 
     private function preEvent(EventArgs $event) {
@@ -51,6 +54,7 @@ class UploadSubscriber implements EventSubscriber {
     }
 
     public function postLoad(EventArgs $event) {
+
         $entity = $event->getEntity();
         foreach ($this->reader->getUploadableFields($entity) as $property => $annotation) {
             $this->handler->setFileFromFilename($entity, $property, $annotation);
@@ -58,6 +62,7 @@ class UploadSubscriber implements EventSubscriber {
     }
 
     public function postRemove(EventArgs $event) {
+
         $entity = $event->getEntity();
         foreach ($this->reader->getUploadableFields($entity) as $property => $annotation) {
             $this->handler->removeFile($entity, $property);

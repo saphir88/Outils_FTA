@@ -30,16 +30,15 @@ class CompteController extends Controller
     public function compte(Request $request, Youtube $youtube)
     {
         $id = $this->getUser()->getId();
-
         $em = $this->getDoctrine()->getManager();
+
         $user = $em->getRepository('AppBundle:User')->find($id);
 
         $communaute = $user->getCommunaute();
 
         $deleteForm = $this->createDeleteForm($communaute);
         $editForm = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
-        $editForm->remove('validation');
-
+        //$editForm->remove('validation');
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -49,14 +48,16 @@ class CompteController extends Controller
                 $communaute->setVideo($replace);
             }
 
-            foreach($communaute->getImages() as $Image)
+ /*           foreach($communaute->getImages() as $Image)
             {
                 $Image->setCommunaute($communaute);
             }
+*/
 
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($communaute);
+
             $em->flush();
 
 
@@ -65,7 +66,6 @@ class CompteController extends Controller
             return $this->redirectToRoute('compte');
         }
 
-        dump($this->getUser());
         return $this->render('compte/index.html.twig', array(
             'communaute' => $communaute,
             'edit_form' => $editForm->createView(),
