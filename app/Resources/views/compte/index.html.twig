@@ -18,6 +18,8 @@
         {{ form_errors(edit_form.file) }}
         {{ form_widget(edit_form.file, {'required': false}) }}
 
+
+
         {{ form_rest(edit_form) }}
 
         <div class="well">
@@ -86,8 +88,6 @@
             // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'une nouvelle annonce par exemple).
 
             if (index == 0) {
-
-                addImage($container);
 
             } else {
 
