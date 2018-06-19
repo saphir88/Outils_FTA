@@ -16,7 +16,7 @@ class EventType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('image')
+            ->add('image', null, ['required' => false])
             ->add("description", FroalaEditorType::class, array(
                 "language" => "fr",
                 "toolbarInline" => false,
