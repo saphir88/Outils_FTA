@@ -8,7 +8,7 @@
                 <h1>{{ event.0.titre }}</h1>
             </div>
             <div class="col-lg-10 img-event">
-                <img src="{{ event.0.image }}" class="img-responsive">
+                <img style="height: 548px;width: 1000px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbl8FbTtd2i9U-cuc2kZ56mv32svcQhH3QHr2ZAzAwSJQP4_xUyA">
             </div>
             <div class="col-lg-2 redbox">
                 <div class="v-center">
@@ -40,15 +40,15 @@
         <div class="panel panel-info">
             <div class="panel-heading">Startups participantes</div>
             <div class="panel-body">
-
+                {% for i in 1..10 %}
                 <div class="container-fluid participant_startup_box">
                     <div class="col-lg-11 event-description">
-                        <p>Startup 1</p>
+                        <p>Startup {{ i }}</p>
                     </div>
                     <div class="col-lg-1 bluebox text-center">
                         <div class="row">
                             <button type="button" class="btn btn-default btn-lg">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>1
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                         </div>
                         <div class="row">
@@ -56,27 +56,10 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="container-fluid participant_startup_box_">
-                    <div class="col-lg-11 event-description">
-                        <p>Startup 2</p>
-                    </div>
-                    <div class="col-lg-1 bluebox text-center">
-                        <div class="row">
-                            <button type="button" class="btn btn-default btn-lg">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>1
-                            </button>
-                        </div>
-                        <div class="row">
-                            <h3>56</h3>
-                        </div>
-                    </div>
-                </div>
-
+                {% endfor %}
             </div>
         </div>
     </div>
-
 
 
 {% endblock %}
