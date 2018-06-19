@@ -55,8 +55,9 @@ class CommunauteType extends AbstractType
             ->add('images', CollectionType::class, [
                 'entry_type' => ImagesType::class,
                 'allow_add' => true,
-                'allow_delete' => true
-            ]);
+                'allow_delete' => true,
+                'by_reference' => false
+           ]);
 
 
 

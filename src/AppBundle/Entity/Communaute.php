@@ -25,9 +25,11 @@ class Communaute
         $this->images = new ArrayCollection();
     }
 
+
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Images", mappedBy="communaute", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Images", mappedBy="communaute", cascade="all", orphanRemoval=true, fetch="EAGER")
+     *
      */
     private $images;
 
@@ -39,12 +41,38 @@ class Communaute
         return $this->images;
     }
 
+  //  /**
+  //   * @param mixed $images
+  //   */
+  //  public function setImages($images)
+  //  {
+  //      $this->images = $images;
+  //  }
+
     /**
-     * @param mixed $images
+     * Add image
+     *
+     * @param Images $image
+     *
+     * @return Communaute
      */
-    public function setImages($images)
+    public function addImage(Images $image)
     {
-        $this->images = $images;
+        $this->images[] = $image;
+        $image->setCommunaute($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param Images $image
+     */
+    public function removeImage(Images $image)
+    {
+        $this->images->removeElement($image);
+        unlink($image->getFile());
     }
 
 
@@ -145,7 +173,7 @@ class Communaute
     /**
      * @var boolean
      *
-     * @ORM\Column(name="validation", type="boolean", nullable=true)
+     * @ORM\Column(name="validation", type="smallint", nullable=true)
      */
     private $validation;
 
@@ -165,8 +193,6 @@ class Communaute
     private $twitter;
 
     /**
-     *
-     * @Assert\Image()
      *@UploadableField(filename="filename", path="uploads")
      */
     private $file;
