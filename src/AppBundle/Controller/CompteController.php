@@ -41,6 +41,8 @@ class CompteController extends Controller
         //$editForm->remove('validation');
         $editForm->handleRequest($request);
 
+        dump($communaute);
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
             if($communaute->getVideo() !== null){
@@ -53,8 +55,6 @@ class CompteController extends Controller
                 $Image->setCommunaute($communaute);
             }
 */
-
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($communaute);
 

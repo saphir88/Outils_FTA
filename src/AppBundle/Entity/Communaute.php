@@ -7,8 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
-use Upload\UploadBundle\Annotation\Uploadable;
-use Upload\UploadBundle\Annotation\UploadableField;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 
 /**
@@ -16,7 +16,8 @@ use Upload\UploadBundle\Annotation\UploadableField;
  *
  * @ORM\Table(name="communaute")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CommunauteRepository")
- * @Uploadable()
+ * @Vich\Uploadable()
+ *
  */
 class Communaute
 {
@@ -41,13 +42,6 @@ class Communaute
         return $this->images;
     }
 
-  //  /**
-  //   * @param mixed $images
-  //   */
-  //  public function setImages($images)
-  //  {
-  //      $this->images = $images;
-  //  }
 
     /**
      * Add image
@@ -193,7 +187,8 @@ class Communaute
     private $twitter;
 
     /**
-     *@UploadableField(filename="filename", path="uploads")
+     * @var File
+     * @Vich\UploadableField(mapping="images", fileNameProperty="fileName")
      */
     private $file;
 

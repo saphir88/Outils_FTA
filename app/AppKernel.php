@@ -18,7 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Upload\UploadBundle\UploadBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
             new KMS\FroalaEditorBundle\KMSFroalaEditorBundle(),
         ];
 

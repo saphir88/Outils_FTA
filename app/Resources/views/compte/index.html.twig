@@ -14,14 +14,14 @@
         {{ form_row(edit_form.nomStartup) }}
         <br>
 
-        <img src="{{ asset(communaute.file) }}" width="150">
+        <img class="logo" src="/uploads/{{ communaute.fileName }}" style="width: 150px">
+
         {{ form_errors(edit_form.file) }}
         {{ form_widget(edit_form.file, {'required': false}) }}
 
-
-
         {{ form_rest(edit_form) }}
 
+        {{ communaute.images.0.filename }}
         <div class="well">
 
             <a href="#" id="add_images" class="btn btn-default">Ajouter une catégorie</a>
