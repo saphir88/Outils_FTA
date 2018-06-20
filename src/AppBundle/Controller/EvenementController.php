@@ -32,10 +32,15 @@ class EvenementController extends Controller
         $date = $date->format('d-m-Y H:i');
 
         $event[0]->setDate($date);
-        return $this->render('evenement/evenement.html.twig',array(
+        $eventId=$event[0]->getId();
+
+        $participations = $em->getRepository('AppBundle:Participation')->findBy(['event' => $eventId]);
+
+        return $this->render('evenement/evenement.html.twig', array(
             'event' => $event,
             'jour' => $jour,
             'heure' => $heure,
+            'participations' => $participations,
         ));
     }
 
