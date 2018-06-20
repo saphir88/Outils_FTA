@@ -57,6 +57,10 @@
                             <option>Participant</option>
                             <option>investiseur</option>
                         </select>
+                        <form method="post" action="">
+                            <input name="eventId" type="hidden" value="{{ event.0.id }}">
+                            <button type="submit" class="btn btn-info btn-lg" >inscription participant</button>
+                        </form>
                     </div>
                 </div>
             </div>
