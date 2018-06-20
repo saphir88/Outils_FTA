@@ -1,24 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container jumbotron">
-    {% for label, messages in app.flashes %}
-        {% for message in messages %}
-            <div class="flash-{{ label }}">
-                {{ message }}
-            </div>
+    <div id="form" class="container jumbotron">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
-   <center><h1>{{ communaute.nomStartup }}</h1></center>
+        <center><h1>{{ communaute.nomStartup }}</h1></center>
         {{ form_start(edit_form) }}
         {{ form_row(edit_form.nomStartup) }}
-        {#{{ form_label(edit_form.file) }}#}
         <br>
 
-        <img src="{{ asset(communaute.file) }}" width="150">
+        <img class="logo" src="/uploads/{{ communaute.fileName }}" style="width: 150px">
+
         {{ form_errors(edit_form.file) }}
         {{ form_widget(edit_form.file, {'required': false}) }}
+
         {{ form_rest(edit_form) }}
+
+        {% for key,image in communaute.images %}
+            <img src="/uploads/{{ image.filename }}" style="width: 200px">
+        {% endfor %}
+
+
+        <div id="ajoutImage" class="well" style="display: block">
+
+            <a href="#" id="add_images" class="btn btn-default">Ajouter une image</a>
+
+        </div>
+
 
         <div class="container">
             <button type="submit" class="btn btn-success">Valider les modifications</button>
@@ -29,4 +42,7 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block javascripts %}
 {% endblock %}
