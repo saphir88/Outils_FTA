@@ -23,14 +23,14 @@ class Participation
 
     /**
      * @var int
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Event", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Event", inversedBy="participation")
      * @ORM\JoinColumn(nullable=false)
      */
     private $event;
 
     /**
      * @var int
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communaute", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communaute", inversedBy="participation")
      * @ORM\JoinColumn(nullable=false)
      */
     private $communaute;

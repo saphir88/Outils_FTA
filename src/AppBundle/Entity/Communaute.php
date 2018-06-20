@@ -171,7 +171,10 @@ class Communaute
      */
     private $file;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Participation", mappedBy="communaute", cascade={"persist","remove"})
+     */
+    private $participation;
 
     /**
      * @var string
@@ -447,6 +450,23 @@ class Communaute
     {
         $this->file = $file;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getParticipation()
+    {
+        return $this->participation;
+    }
+
+    /**
+     * @param mixed $participation
+     */
+    public function setParticipation($participation)
+    {
+        $this->participation = $participation;
+    }
+
 
 
 }
