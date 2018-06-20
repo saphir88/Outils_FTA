@@ -40,7 +40,7 @@
     <br>
     <br>
     <br>
-{{ dump(event) }}
+
 {% if is_granted("ROLE_USER") %}
     <form method="POST" action="{{ path ('inscriptionStartUp') }}">
         <input name="eventId" type="hidden" value="{{ event.0.id }}">
@@ -78,21 +78,21 @@
                 <a class="vote" data-toggle="popover" title="Le vote" data-content="ici on met la présentation du vote avec beaucoup de texte ecte teteztezzrtz">????????</a>
             </div>
             <div class="panel-body">
-                {% for i in 1..10 %}
+                {% for participation in participations %}
                     <div class="container-fluid participant_startup_box">
                         <div class="col-lg-11 event-description">
-                            <p>Startup {{ i }}</p>
+                            <p>{{ participation.communaute.nomStartup }}</p>
                         </div>
                         <div class="col-lg-1 bluebox text-center">
                             <div class="row">
                                 <form action="{{ path('vote') }}" method="POST">
-                                    <button type="submit" name="vote" value="{{ i }}" class="btn btn-default btn-lg">
+                                    <button type="submit" name="vote" value="{{ participation.id }}" class="btn btn-default btn-lg">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                     </button>
                                 </form>
                             </div>
                             <div class="row">
-                                <h3>72</h3>
+                                <h3>{{ participation.nbVote }}</h3>
                             </div>
                         </div>
                     </div>

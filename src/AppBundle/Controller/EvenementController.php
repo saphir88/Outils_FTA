@@ -53,8 +53,6 @@ class EvenementController extends Controller
     public function Vote()
     {
         $id = $_POST['vote'];
-        var_dump($id);
-        die();
         setcookie($id,"vote_startup",time() + 60*24*3600);
         if(!isset($_COOKIE[$id])) {
             $this->getDoctrine()->getManager()->getRepository('AppBundle:Participation')->addVote($id);

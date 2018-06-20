@@ -48,6 +48,7 @@ class ParticipationController extends Controller
         $p = new Participation();
         $p->setEvent($event);
         $p->setCommunaute($communaute);
+        $p->setNbVote('0');
         $em = $this->getDoctrine()->getManager();
         $em->persist($p);
         $em->flush();
