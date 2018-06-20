@@ -38,10 +38,7 @@ class CompteController extends Controller
 
         $deleteForm = $this->createDeleteForm($communaute);
         $editForm = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
-        //$editForm->remove('validation');
         $editForm->handleRequest($request);
-
-        dump($communaute);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
@@ -50,11 +47,11 @@ class CompteController extends Controller
                 $communaute->setVideo($replace);
             }
 
- /*           foreach($communaute->getImages() as $Image)
-            {
-                $Image->setCommunaute($communaute);
-            }
-*/
+            /*           foreach($communaute->getImages() as $Image)
+                       {
+                           $Image->setCommunaute($communaute);
+                       }
+           */
             $em = $this->getDoctrine()->getManager();
             $em->persist($communaute);
 
