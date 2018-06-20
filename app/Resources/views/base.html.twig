@@ -89,6 +89,8 @@
 
         var $container = $('div#appbundle_communaute_images');
 
+        var $bouton = $('div#ajoutImage');
+
 
         // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
 
@@ -110,7 +112,7 @@
 
 
         // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'une nouvelle annonce par exemple).
-
+        console.log(index);
         if (index == 0) {
 
         } else {
@@ -120,13 +122,19 @@
             $container.children('div').each(function() {
 
                 addDeleteLink($(this));
-
             });
+        }
+        if (index >= 3) {
+            $('#ajoutImage').remove();
+            console.log(index);
+        } else {
+            $('#ajoutImage').append();
 
         }
 
 
-        // La fonction qui ajoute un formulaire CategoryType
+
+        // La fonction qui ajoute un formulaire ImageType
 
         function addImage($container) {
 
@@ -163,7 +171,13 @@
             // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
 
             index++;
+            console.log(index);
 
+            if (index == 3) {
+
+                    document.getElementById('ajoutImage').style.display = 'none';
+
+            }
         }
 
 
@@ -187,9 +201,16 @@
 
                 $prototype.remove();
 
-
                 e.preventDefault(); // évite qu'un # apparaisse dans l'URL
 
+
+                index--;
+                if(document.getElementById('ajoutImage').style.display == 'none'){
+                    document.getElementById('ajoutImage').style.display = 'block';
+                }
+                else {
+                    document.getElementById('ajoutImage').style.display = 'block';
+                }
                 return false;
 
             });

@@ -99,12 +99,14 @@ class Images
      */
     public function setFilename($filename)
     {
-        $this->filename = $filename;
-        if ($filename instanceof File) {
-            $this->setUpdatedAt(new \DateTime());
+        if ($filename !== null){
+            $this->filename = $filename;
+            if ($filename instanceof File) {
+                $this->setUpdatedAt(new \DateTime());
+            }
         }
-    }
 
+    }
 
     /**
      * @return File
