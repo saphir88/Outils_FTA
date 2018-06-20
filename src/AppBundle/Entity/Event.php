@@ -21,9 +21,14 @@ class Event
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Participant", mappedBy="event")
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\EventImage", mappedBy="event")
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Participation", mappedBy="event")
+     *
      */
     private $id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Participation", mappedBy="event", cascade={"persist","remove"})
+     */
+    private $participation;
 
     /**
      * @var string
@@ -225,4 +230,22 @@ class Event
     {
         return $this->nbMaxParticipants;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getParticipation()
+    {
+        return $this->participation;
+    }
+
+    /**
+     * @param mixed $participation
+     */
+    public function setParticipation($participation)
+    {
+        $this->participation = $participation;
+    }
+
+
 }

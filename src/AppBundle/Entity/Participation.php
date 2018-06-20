@@ -23,17 +23,39 @@ class Participation
 
     /**
      * @var int
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Event", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Event", inversedBy="participation")
      * @ORM\JoinColumn(nullable=false)
      */
     private $event;
 
     /**
      * @var int
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communaute", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communaute", inversedBy="participation")
      * @ORM\JoinColumn(nullable=false)
      */
     private $communaute;
+
+    /**
+     * @var int
+     * @ORM\Column(name="nb_vote", type="integer", options={"default" : 0})
+     */
+    private $nbVote;
+
+    /**
+     * @return int
+     */
+    public function getNbVote()
+    {
+        return $this->nbVote;
+    }
+
+    /**
+     * @param int $nbVote
+     */
+    public function setNbVote($nbVote)
+    {
+        $this->nbVote = $nbVote;
+    }
 
     /**
      * Get id.

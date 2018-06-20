@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
 
     <div class="container">
         <div class="row">
@@ -26,7 +33,7 @@
                     <div class="hour">{{ heure }}</div>
             </div>
             <div class="col-lg-4 darkbluebox">
-                <p class="v-center text-center">Participants : X / {{ event.0.nbMaxParticipants }}</p>
+                <p class="v-center text-center">Nombre d'inscrits à l'événement : X / {{ event.0.nbMaxParticipants }}</p>
             </div>
         </div>
     </div>
@@ -35,13 +42,16 @@
     <br>
 
 {% if is_granted("ROLE_USER") %}
-    <button type="button" class="btn btn-info btn-lg" >inscription StartUp</button>
+    <form method="POST" action="{{ path ('inscriptionStartUp') }}">
+        <input name="eventId" type="hidden" value="{{ event.0.id }}">
+        <button type="submit" class="btn btn-info btn-lg" >inscription StartUp</button>
+    </form>
 {% else %}
     <a href="/login"><button type="button" class="btn btn-info btn-lg" >inscription StartUp</button></a>
 {% endif %}
 
     <div class="container">
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Inscription Particiant</button>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Inscription Participant</button>
 
 
         <div class="modal fade" id="myModal" role="dialog">
@@ -49,10 +59,10 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Incription Participant</h4>
+                        <h4 class="modal-title">Inscription Participant</h4>
                         <select>
                             <option>Participant</option>
-                            <option>investiseur</option>
+                            <option>Investisseur</option>
                         </select>
                     </div>
                 </div>
@@ -62,31 +72,30 @@
 
 
 
-
-
-
     <div class="container">
         <div class="panel panel-info">
             <div class="panel-heading">Startups participantes
                 <a class="vote" data-toggle="popover" title="Le vote" data-content="ici on met la présentation du vote avec beaucoup de texte ecte teteztezzrtz">????????</a>
             </div>
             <div class="panel-body">
-                {% for i in 1..10 %}
-                <div class="container-fluid participant_startup_box">
-                    <div class="col-lg-11 event-description">
-                        <p>Startup {{ i }}</p>
-                    </div>
-                    <div class="col-lg-1 bluebox text-center">
-                        <div class="row">
-                            <button type="button" class="btn btn-default btn-lg">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            </button>
+                {% for participation in participations %}
+                    <div class="container-fluid participant_startup_box">
+                        <div class="col-lg-11 event-description">
+                            <p>{{ participation.communaute.nomStartup }}</p>
                         </div>
-                        <div class="row">
-                            <h3>72</h3>
+                        <div class="col-lg-1 bluebox text-center">
+                            <div class="row">
+                                <form action="{{ path('vote') }}" method="POST">
+                                    <button type="submit" name="vote" value="{{ participation.id }}" class="btn btn-default btn-lg">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="row">
+                                <h3>{{ participation.nbVote }}</h3>
+                            </div>
                         </div>
                     </div>
-                </div>
                 {% endfor %}
             </div>
         </div>
