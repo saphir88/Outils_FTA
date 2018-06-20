@@ -10,4 +10,10 @@ namespace AppBundle\Repository;
  */
 class ParticipationRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function addVote($id)
+    {
+        return $this->getEntityManager()
+            ->createQuery("UPDATE AppBundle:Participation p SET p.nbVote=p.nbVote + 1 WHERE p.id=$id")
+            ->getResult();
+    }
 }

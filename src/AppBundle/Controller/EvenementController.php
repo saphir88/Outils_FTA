@@ -2,9 +2,11 @@
 
 namespace AppBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Participation;
 
 /**
  * Startup controller.
@@ -37,4 +39,25 @@ class EvenementController extends Controller
         ));
     }
 
+    /**
+     * Recupère l'id de la participation et lui ajoute un vote lorsque l'on appuie sur le bouton "+" qui lui est associé
+     *
+     * @Route("/vote", name="vote")
+     * @Method("POST")
+     */
+    public function Vote()
+    {
+        $id = $_POST['vote'];
+        var_dump($id);
+        die();
+        setcookie($id,"vote_startup",time() + 60*24*3600);
+        if(!isset($_COOKIE[$id])) {
+            $this->getDoctrine()->getManager()->getRepository('AppBundle:Participation')->addVote($id);
+            $this->addFlash('success', 'Votre vote a bien été pris en compte !');
+        } else {
+            $this->addFlash('success', 'Vous avez déjà voté pour cette Startup !');
+        }
+
+        return $this->redirectToRoute('evenement');
+    }
 }

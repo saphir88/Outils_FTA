@@ -145,7 +145,7 @@ class Communaute
     /**
      * @var boolean
      *
-     * @ORM\Column(name="validation", type="boolean", nullable=true)
+     * @ORM\Column(name="validation", type="boolean", nullable=true, options={"default" : 0})
      */
     private $validation;
 
