@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Communaute;
+use AppBundle\Entity\Event;
 use AppBundle\Entity\Participation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -31,6 +33,28 @@ class ParticipationController extends Controller
         ));
     }
 
+    /**
+     *
+     * @Route("/", name="inscriptionStartUp")
+     * @Method("POST")
+     */
+    public function inscriptionStartUpAction(Request $request)
+    {
+        $communaute = $this->getUser()->getCommunaute();
+        $eventId = $request->request->get('eventId');
+
+        $event = $this->getDoctrine()->getManager()->getRepository(Event::class)->find($eventId);
+
+        $p = new Participation();
+        $p->setEvent($event);
+        $p->setCommunaute($communaute);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($p);
+        $em->flush();
+
+        return $this->redirectToRoute('evenement');
+        
+    }
     /**
      * Creates a new participation entity.
      *
