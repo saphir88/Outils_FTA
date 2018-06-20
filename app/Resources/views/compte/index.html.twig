@@ -21,7 +21,10 @@
 
         {{ form_rest(edit_form) }}
 
-        {{ communaute.images.0.filename }}
+        {% for key,image in communaute.images %}
+            <img src="/uploads/{{ image.filename }}" style="width: 200px">
+        {% endfor %}
+
         <div class="well">
 
             <a href="#" id="add_images" class="btn btn-default">Ajouter une catégorie</a>

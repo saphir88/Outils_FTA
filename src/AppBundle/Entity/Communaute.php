@@ -65,8 +65,9 @@ class Communaute
      */
     public function removeImage(Images $image)
     {
+        $path = "uploads/";
         $this->images->removeElement($image);
-        unlink($image->getFile());
+        unlink($path . $image->getFilename());
     }
 
 
