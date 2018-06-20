@@ -10,12 +10,6 @@
             <div class="col-lg-10 img-event">
                 <img style="height: 548px;width: 1000px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbl8FbTtd2i9U-cuc2kZ56mv32svcQhH3QHr2ZAzAwSJQP4_xUyA">
             </div>
-            <div class="col-lg-2 redbox">
-                <div class="v-center">
-                    <div class="date">{{ jour }}</div>
-                    <div class="hour">{{ heure }}</div>
-                </div>
-            </div>
         </div>
         <div class="row">
             <div class="text-justify event-description">
@@ -23,11 +17,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-9 bluebox">
+            <div class="col-lg-4 bluebox">
                 <h3>Où se situe cet événement ?</h3>
                 <p>{{ event.0.localisation }}</p>
             </div>
-            <div class="col-lg-3 darkbluebox">
+            <div class="col-lg-4 redbox">
+                    <div class="date">{{ jour }}</div>
+                    <div class="hour">{{ heure }}</div>
+            </div>
+            <div class="col-lg-4 darkbluebox">
                 <p class="v-center text-center">Participants : X / {{ event.0.nbMaxParticipants }}</p>
             </div>
         </div>
@@ -36,9 +34,42 @@
     <br>
     <br>
 
+{% if is_granted("ROLE_USER") %}
+    <button type="button" class="btn btn-info btn-lg" >inscription StartUp</button>
+{% else %}
+    <a href="/login"><button type="button" class="btn btn-info btn-lg" >inscription StartUp</button></a>
+{% endif %}
+
+    <div class="container">
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Inscription Particiant</button>
+
+
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Incription Participant</h4>
+                        <select>
+                            <option>Participant</option>
+                            <option>investiseur</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
     <div class="container">
         <div class="panel panel-info">
-            <div class="panel-heading">Startups participantes</div>
+            <div class="panel-heading">Startups participantes
+                <a class="vote" data-toggle="popover" title="Le vote" data-content="ici on met la présentation du vote avec beaucoup de texte ecte teteztezzrtz">????????</a>
+            </div>
             <div class="panel-body">
                 {% for i in 1..10 %}
                 <div class="container-fluid participant_startup_box">
@@ -64,4 +95,10 @@
 
 {% endblock %}
 {% block javascripts %}
+    <script>
+        //popover vote
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
 {% endblock %}
