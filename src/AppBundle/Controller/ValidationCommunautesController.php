@@ -24,7 +24,6 @@ class ValidationCommunautesController extends Controller
     public function indexAction()
     {
 
-
         $em = $this->getDoctrine()->getManager();
         $communautes = $em->getRepository('AppBundle:Communaute')->findAllValidFalse();
 

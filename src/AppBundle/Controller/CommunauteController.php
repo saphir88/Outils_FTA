@@ -135,7 +135,7 @@ class CommunauteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($communaute);
             $em->flush();
-            $mailer->sendEmailsuppression($communaute->getMail());
+            $mailer->sendEmailSuppression($communaute->getMail());
         }
 
         return $this->redirectToRoute('communaute_index');

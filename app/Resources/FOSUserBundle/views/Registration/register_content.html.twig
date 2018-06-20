@@ -12,13 +12,11 @@
 </div>
 <br>
 <div class="container jumbotron">
-    {{ form_row(form.communaute.images, {'label': ' '}) }}
+
     {{ form_widget(form.communaute.validation, {'value': 0 }) }}
+    {{ form_row(form.communaute.images, {'label': ' '}) }}
+
     {{ form_row(form.communaute, {"label":" "}) }}
-
-
-
-{{ dump(form.communaute) }}
 
     <div>
         <input type="submit" value="{{ 'Inscription'|trans }}" />

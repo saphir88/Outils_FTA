@@ -12,6 +12,7 @@
             {% for  communaute in communautes %}
                 <div data-Type="{{ communaute.categorie }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
                     <div class="startUP">
+                        <img src="/uploads/{{ communaute.filename }}" style="width: 200px">
                         <h1 class="nomStartUp">{{ communaute.nomStartup }}</h1>
                        {# <center><img class="logo" src="{{ asset('uploads/img/') }}{{ communaute.logo }}"></center>#}
                         <a class="btn btn-primary" href="{{ path('validation_show', { 'id': communaute.id }) }}">Voir</a>

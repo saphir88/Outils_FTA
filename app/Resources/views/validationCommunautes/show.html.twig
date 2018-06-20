@@ -3,12 +3,11 @@
 {% block body %}
     <div class="container">
         <h1>{{ communaute.nomStartup }}</h1>
-{{ dump(communaute) }}
         <table>
             <tbody>
             <tr>
                 <th>Logo</th>
-                {#<td><img src="{{ asset('uploads/img/') }}{{ communaute.logo }}" width="300"></td>#}
+                <img src="/uploads/{{ communaute.filename }}" style="width: 200px">
             </tr>
             <tr>
                 <th>Description : </th>

@@ -5,23 +5,30 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
-use Upload\UploadBundle\Annotation\Uploadable;
-use Upload\UploadBundle\Annotation\UploadableField;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
+
 
 /**
  * Images
  *
  * @ORM\Table(name="images")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ImagesRepository")
+ * @Vich\Uploadable()
  */
 class Images
 {
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communaute", inversedBy="images", cascade={"persist", "remove"})
+     * @var Communaute
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Communaute", inversedBy="images")
      * @ORM\JoinColumn(nullable=true)
      */
     private $communaute;
 
+    public function __construct(Communaute $communaute = null)
+    {
+        $this->communaute = $communaute;
+    }
 
     /**
      * @var int
@@ -34,16 +41,22 @@ class Images
 
     /**
      * @var string
-     *
-<
      * @ORM\Column(name="filename", type="string", length=255, nullable=true)
      */
     private $filename;
 
     /**
-     * @Assert\Image()
+     * @Vich\UploadableField(mapping="images", fileNameProperty="filename")
+     *
+     * @var File
      */
     private $file;
+
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
 
 
     /**
@@ -86,9 +99,14 @@ class Images
      */
     public function setFilename($filename)
     {
-        $this->filename = $filename;
-    }
+        if ($filename !== null){
+            $this->filename = $filename;
+            if ($filename instanceof File) {
+                $this->setUpdatedAt(new \DateTime());
+            }
+        }
 
+    }
 
     /**
      * @return File
@@ -98,13 +116,35 @@ class Images
         return $this->file;
     }
 
-    /**
-     * @param File $file
-     */
-    public function setFile($file)
+    public function setFile(File $image = null)
     {
-        $this->file = $file;
+        $this->file = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
 
 
 }
