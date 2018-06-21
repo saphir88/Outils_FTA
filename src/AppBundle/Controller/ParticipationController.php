@@ -41,17 +41,36 @@ class ParticipationController extends Controller
     public function inscriptionStartUpAction(Request $request)
     {
         $communaute = $this->getUser()->getCommunaute();
-        $eventId = $request->request->get('eventId');
 
-        $event = $this->getDoctrine()->getManager()->getRepository(Event::class)->find($eventId);
+        $validation = $communaute->isValidation();
 
-        $p = new Participation();
-        $p->setEvent($event);
-        $p->setCommunaute($communaute);
-        $p->setNbVote('0');
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($p);
-        $em->flush();
+        if($validation == '1') {
+            $eventId = $request->request->get('eventId');
+            $event = $this->getDoctrine()->getManager()->getRepository(Event::class)->find($eventId);
+            $communauteId = $communaute->getId();
+
+            if ($this->getDoctrine()->getManager()->getRepository(Participation::class)->findOneBy([
+                'event' => $eventId,
+                'communaute' => $communauteId
+            ])) {
+                $this->addFlash('notice', "Votre Startup est déjà inscrite à cet événement !");
+            } else {
+                $p = new Participation();
+                $p->setEvent($event);
+                $p->setCommunaute($communaute);
+                $p->setNbVote('0');
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($p);
+                $em->flush();
+
+                $this->addFlash('success', "Votre Startup vient d'être inscrite à cet événement !");
+            }
+        } else {
+
+            $this->addFlash('notice', "Votre Startup n'a pas encore été validée par l'administrateur.");
+
+        }
 
         return $this->redirectToRoute('evenement');
         
