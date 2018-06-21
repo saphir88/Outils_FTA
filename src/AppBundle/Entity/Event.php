@@ -14,7 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Event
 {
     /**
-     * @var int
+     * @var string
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
