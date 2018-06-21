@@ -55,6 +55,7 @@ class CompteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($communaute);
 
+
             $em->flush();
 
             $this->addFlash('sucess', 'Modifications bien prise en compte.');

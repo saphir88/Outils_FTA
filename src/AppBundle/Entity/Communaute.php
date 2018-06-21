@@ -52,6 +52,9 @@ class Communaute
      */
     public function addImage(Images $image)
     {
+        if ($image->getFile() == null ){
+            return $this;
+        }
         $this->images[] = $image;
         $image->setCommunaute($this);
 
