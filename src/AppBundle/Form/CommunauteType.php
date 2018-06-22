@@ -25,7 +25,7 @@ class CommunauteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nomStartup', TextType::class, array('label'=>'Nom de la startup* :'))
-            ->add('file', FileType::class, ['label' => 'Logo :', 'data_class' => null])
+            ->add('file', FileType::class, ['label' => 'Logo* :', 'data_class' => null])
             ->add('description', TextareaType::class, array('required'=> false, 'label'=>'Description :'))
             ->add('siteWeb', TextType::class, array('required'=> true, 'label'=>'Site Web* :'))
             ->add('video', TextType::class, array('required' => false , 'label' => 'Lien Youtube :'))

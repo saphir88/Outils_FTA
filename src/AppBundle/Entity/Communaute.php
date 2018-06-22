@@ -34,44 +34,6 @@ class Communaute
      */
     private $images;
 
-    /**
-     * @return mixed
-     */
-    public function getImages()
-    {
-        return $this->images;
-    }
-
-
-    /**
-     * Add image
-     *
-     * @param Images $image
-     *
-     * @return Communaute
-     */
-    public function addImage(Images $image)
-    {
-        if ($image->getFile() == null ){
-            return $this;
-        }
-        $this->images[] = $image;
-        $image->setCommunaute($this);
-
-        return $this;
-    }
-
-    /**
-     * Remove image
-     *
-     * @param Images $image
-     */
-    public function removeImage(Images $image)
-    {
-        $path = "uploads/";
-        $this->images->removeElement($image);
-        unlink($path . $image->getFilename());
-    }
 
 
     /**
@@ -490,6 +452,46 @@ class Communaute
     public function setParticipation($participation)
     {
         $this->participation = $participation;
+    }
+
+    /*---- Ajout des images via vichuploader -----*/
+
+    /**
+     * @return mixed
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * Add image
+     *
+     * @param Images $image
+     *
+     * @return Communaute
+     */
+    public function addImage(Images $image)
+    {
+        if ($image->getFile() == null ){
+            return $this;
+        }
+        $this->images[] = $image;
+        $image->setCommunaute($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param Images $image
+     */
+    public function removeImage(Images $image)
+    {
+        $path = "uploads/";
+        $this->images->removeElement($image);
+        unlink($path . $image->getFilename());
     }
 
 
