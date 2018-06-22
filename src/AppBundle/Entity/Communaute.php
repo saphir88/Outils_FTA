@@ -26,16 +26,6 @@ class Communaute
         $this->images = new ArrayCollection();
     }
 
-
-    /**
-     * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Images", mappedBy="communaute", cascade="all", orphanRemoval=true, fetch="EAGER")
-     *
-     */
-    private $images;
-
-
-
     /**
      * @var int
      *
@@ -68,8 +58,11 @@ class Communaute
 
     /**
      * @var string
-     *
      * @ORM\Column(name="description", type="text", nullable=true)
+     * @Assert\Length(
+     *     max="300",
+     *     maxMessage="Votre description dépasse les {{ limit }} caractères"
+     * )
      */
     private $description;
 
@@ -83,8 +76,10 @@ class Communaute
 
     /**
      * @var string
-     *
      * @ORM\Column(name="siteWeb", type="string", length=255, nullable=true)
+     * @Assert\Url(
+     *     message="{{ value }} n'est pas un url valide !"
+     * )
      */
     private $siteWeb;
 
@@ -114,6 +109,10 @@ class Communaute
      * @var string
      *
      * @ORM\Column(name="mail", type="string", length=255)
+     * @Assert\Email(
+     *     message="{{ value }} n'est pas un email valide !",
+     *     checkMX= true
+     * )
      */
     private $mail;
 
@@ -142,6 +141,9 @@ class Communaute
      * @var string
      *
      * @ORM\Column(name="facebook", type="string", length=255, nullable=true)
+     * @Assert\Url(
+     *     message="{{ value }} n'est pas un url valide !"
+     * )
      */
     private $facebook;
 
@@ -149,6 +151,9 @@ class Communaute
      * @var string
      *
      * @ORM\Column(name="twitter", type="string", length=255, nullable=true)
+     * @Assert\Url(
+     *     message="{{ value }} n'est pas un url valide !"
+     * )
      */
     private $twitter;
 
@@ -167,8 +172,19 @@ class Communaute
      * @var string
      *
      * @ORM\Column(name="linkedin", type="string", length=255, nullable=true)
+     * @Assert\Url(
+     *     message="{{ value }} n'est pas un url valide !"
+     * )
      */
     private $linkedin;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Images", mappedBy="communaute", cascade="all", orphanRemoval=true, fetch="EAGER")
+     *
+     */
+    private $images;
+
 
 
     /* Getters and Setters */
