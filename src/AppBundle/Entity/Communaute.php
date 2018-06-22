@@ -45,6 +45,29 @@ class Communaute
     /**
      * @var string
      *
+     * @ORM\Column(name="nomSociete", type="string", length=255, nullable=true)
+     */
+    private $nomSociete;
+
+    /**
+     * @return string
+     */
+    public function getNomSociete()
+    {
+        return $this->nomSociete;
+    }
+
+    /**
+     * @param string $nomSociete
+     */
+    public function setNomSociete($nomSociete)
+    {
+        $this->nomSociete = $nomSociete;
+    }
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="fileName", type="string", length=255, nullable=true)
      */
     private $fileName;
@@ -76,6 +99,17 @@ class Communaute
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="ChaineYouTube", type="string", length=255, nullable=true)
+     *
+     */
+    private $ChaineYouTube;
+
+
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="siteWeb", type="string", length=255, nullable=true)
      * @Assert\Url(
      *     message="{{ value }} n'est pas un url valide !"
@@ -276,6 +310,21 @@ class Communaute
     public function setVideo($video)
     {
         $this->video = $video;
+    }
+    /**
+     * @return string
+     */
+    public function getChaineYouTube()
+    {
+        return $this->ChaineYouTube;
+    }
+
+    /**
+     * @param string $ChaineYouTube
+     */
+    public function setChaineYouTube($ChaineYouTube)
+    {
+        $this->ChaineYouTube = $ChaineYouTube;
     }
 
     /**

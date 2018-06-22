@@ -48,11 +48,15 @@
                                     <div class="modal-body">
 
                                         {% if communaute.description is not null %}
-                                        <p><b>Description :</b>{{ communaute.description}}</p>
+                                            <p><b>Description : </b>{{ communaute.description}}</p>
+                                        {% endif %}
+                                        {% if communaute.nomSociete is not null %}
+                                        <p><b>Nom de societe :</b> {{ communaute.nomSociete }}</p>
                                         {% endif %}
                                         <p><b>Adresse :</b> {{ communaute.adresse }}</p>
                                         <p><b>Domaine :</b> {{ communaute.categorie }}</p>
-                                        <p><b>Site:</b><a href="{{ communaute.siteWeb }}">{{ communaute.siteWeb }}</a></p>
+                                        <p><b>Site Web :</b> <a href="{{ communaute.siteWeb }}">{{ communaute.siteWeb }}</a></p>
+                                        <p><b>Contact :</b> {{ communaute.mail }}</p>
 
                                         {% if communaute.video is not null %}
                                             <div><iframe width="560" height="315" src="{{ communaute.video }}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe></div>
@@ -60,16 +64,21 @@
 
                                         <div class="favIcon">
                                             {% if communaute.facebook is not null %}
-                                            <a href="{{ communaute.facebook }}"><i class="fa fa-facebook-official"  style="font-size:36px;color:#365899;"></i></a>
+                                                <a href="{{ communaute.facebook }}"><i class="fa fa-facebook-official"  style="font-size:36px;color:#365899;"></i></a>
                                             {% endif %}
                                             {% if communaute.twitter is not null %}
-                                            <a href="{{ communaute.twitter }}"><i class="fa fa-twitter-square" style="font-size:36px; color:#1DA1F2;"></i></a>
+                                                <a href="{{ communaute.twitter }}"><i class="fa fa-twitter-square" style="font-size:36px; color:#1DA1F2;"></i></a>
                                             {% endif %}
                                             {% if communaute.linkedin is not null %}
-                                            <a href="{{ communaute.linkedin }}"><i class="fa fa-linkedin-square" style="font-size:36px; color:#0077B5;"></i></a>
+                                                <a href="{{ communaute.linkedin }}"><i class="fa fa-linkedin-square" style="font-size:36px; color:#0077B5;"></i></a>
                                             {% endif %}
+<<<<<<< HEAD
                                             {% if communaute.linkedin is not null %}
-                                             <a href="#"><i class="fa fa-youtube-play" style="font-size:36px;color:red"></i></a>
+                                                <a href="#"><i class="fa fa-youtube-play" style="font-size:36px;color:red"></i></a>
+=======
+                                            {% if communaute.ChaineYoutube is not null %}
+                                             <a href="{{ communaute.ChaineYouTube }}"><i class="fa fa-youtube-play" style="font-size:36px;color:red"></i></a>
+>>>>>>> 967d106ec471b3a09730e60719cfc623c53cb89c
                                             {% endif %}
 
                                         </div>
