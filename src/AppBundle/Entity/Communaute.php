@@ -93,6 +93,29 @@ class Communaute
     /**
      * @var string
      *
+     * @ORM\Column(name="nomSociete", type="string", length=255, nullable=true)
+     */
+    private $nomSociete;
+
+    /**
+     * @return string
+     */
+    public function getNomSociete()
+    {
+        return $this->nomSociete;
+    }
+
+    /**
+     * @param string $nomSociete
+     */
+    public function setNomSociete($nomSociete)
+    {
+        $this->nomSociete = $nomSociete;
+    }
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="fileName", type="string", length=255, nullable=true)
      */
     private $fileName;
@@ -118,6 +141,16 @@ class Communaute
      *
      */
     private $video;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ChaineYouTube", type="string", length=255, nullable=true)
+     *
+     */
+    private $ChaineYouTube;
+
+
 
     /**
      * @var string
@@ -298,6 +331,21 @@ class Communaute
     public function setVideo($video)
     {
         $this->video = $video;
+    }
+    /**
+     * @return string
+     */
+    public function getChaineYouTube()
+    {
+        return $this->ChaineYouTube;
+    }
+
+    /**
+     * @param string $ChaineYouTube
+     */
+    public function setChaineYouTube($ChaineYouTube)
+    {
+        $this->ChaineYouTube = $ChaineYouTube;
     }
 
     /**
