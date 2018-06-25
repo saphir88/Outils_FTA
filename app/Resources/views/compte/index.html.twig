@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <div id="form" class="container jumbotron">
         {% for label, messages in app.flashes %}
             {% for message in messages %}
@@ -15,7 +16,6 @@
         <br>
 
         <img class="logo" src="/uploads/{{ communaute.fileName }}" style="width: 150px">
-
         {{ form_errors(edit_form.file) }}
         {{ form_widget(edit_form.file, {'required': false}) }}
 
@@ -27,9 +27,7 @@
 
 
         <div id="ajoutImage" class="well" style="display: block">
-
             <a href="#" id="add_images" class="btn btn-default">Ajouter une image</a>
-
         </div>
 
 
@@ -41,6 +39,11 @@
             {{ form_end(delete_form) }}
         </div>
     </div>
+
+
+
+
+
 
 {% endblock %}
 
