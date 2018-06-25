@@ -4,6 +4,8 @@ namespace AppBundle\Form;
 
 use KMS\FroalaEditorBundle\Form\Type\FroalaEditorType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -30,7 +32,7 @@ class EventType extends AbstractType
                     'insertHR', 'clearFormatting', '|', 'html', '|', 'undo', 'redo']
 
             ))
-            ->add('date')
+            ->add('date', DateTimeType::class)
             ->add('localisation')
             ->add('nbMaxParticipants');
     }

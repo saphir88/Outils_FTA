@@ -19,11 +19,15 @@ class Event
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Participant", mappedBy="event")
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\EventImage", mappedBy="event")
      *
      */
     private $id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Participant", mappedBy="event", cascade={"persist","remove"})
+     */
+    private $participant;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Participation", mappedBy="event", cascade={"persist","remove"})
@@ -246,6 +250,24 @@ class Event
     {
         $this->participation = $participation;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getParticipant()
+    {
+        return $this->participant;
+    }
+
+    /**
+     * @param mixed $participant
+     */
+    public function setParticipant($participant)
+    {
+        $this->participant = $participant;
+    }
+
+
 
 
 }
