@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <div id="form" class="container jumbotron">
         {% for label, messages in app.flashes %}
             {% for message in messages %}
@@ -38,6 +39,11 @@
             {{ form_end(delete_form) }}
         </div>
     </div>
+
+
+
+
+
 
 {% endblock %}
 
