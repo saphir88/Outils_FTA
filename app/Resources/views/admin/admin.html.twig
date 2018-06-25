@@ -10,16 +10,29 @@
     <div class="container-fluid">
         <div class="row ">
             <div class="col-lg-6 col-lg-offset-3">
-                <div class="col-lg-4">
-                    <a class="btn btn-primary" href="{{ path('communaute_index') }}" role="button">Gestion des Startups</a>
-                    <a class="btn btn-primary" href="{{ path('validation_index') }}" role="button">Validation des inscriptions</a>
-                    <a class="btn btn-primary" href="{{ path('index_extraction') }}" role="button">Extraction de la base de données des Startups</a>
-                    <a class="btn btn-primary" href="{{ path('event_index') }}" role="button">Gestion des événements</a>
-                    <br>
-                    <a class="btn btn-danger" href="{{ path('logout') }}" role="button">Deconnexion</a>
-                </div>
+                <ul>
+                    <li>
+                        <a href="{{ path('communaute_index') }}" role="button">Gestion des Startups</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('validation_index') }}" role="button">Validation des inscriptions</a>
+
+                    </li>
+                    <li>
+                        <a href="{{ path('index_extraction') }}" role="button">Extraction de la base de données des Startups</a>
+
+                    </li>
+                    <li>
+                        <a href="{{ path('event_index') }}" role="button">Gestion des événements</a>
+
+                    </li>
+                    <li>
+                        <a href="{{ path('logout') }}" role="button">Deconnexion</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
+
 
 {% endblock %}

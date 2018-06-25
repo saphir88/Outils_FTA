@@ -3,6 +3,7 @@
 {% block body %}
     <div class="container">
         <h1>{{ communaute.nomStartup }}</h1>
+
         <table>
             <tbody>
             <tr>
@@ -48,7 +49,6 @@
             </tbody>
         </table>
 
-        <a class="btn btn-primary" href="{{ path('validation_index') }}">Retourner à la liste des validations en attentes</a>
         <form action="{{ path('validation_delete') }}" method="POST">
             <input type="hidden" name="id" value="{{ communaute.id }}">
             <input type="hidden" name="mail" value="{{ communaute.mail }}">
@@ -61,5 +61,12 @@
             <input type="hidden" name="mail" value="{{ communaute.mail }}">
             <input type="submit" class="btn btn-success" value="Accepter cette startup">
         </form>
+        <a class="btn btn-primary" href="{{ path('validation_index') }}">Retourner à la liste</a>
+
     </div>
+    <style>
+        form{
+            display: inline-block;
+        }
+    </style>
 {% endblock %}

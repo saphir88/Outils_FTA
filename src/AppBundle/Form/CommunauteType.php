@@ -27,7 +27,7 @@ class CommunauteType extends AbstractType
 
         $builder
             ->add('nomStartup', TextType::class, array('label'=>'Nom de la startup* :'))
-            ->add('nomSociete', TextType::class, array('label'=>'Nom de la societe :'))
+            ->add('nomSociete', TextType::class, array('required'=> false, 'label'=>'Nom de la societe :'))
             ->add('file', FileType::class, ['label' => 'Logo* :', 'data_class' => null])
             ->add('description', TextareaType::class, array('required'=> false, 'label'=>'Description :'))
             ->add('siteWeb', TextType::class, array('required'=> true, 'label'=>'Site Web* :'))

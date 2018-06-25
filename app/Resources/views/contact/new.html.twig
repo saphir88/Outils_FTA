@@ -1,16 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Nous Contacter</h1>
+    <div class="container">
+        <div class="row">
+            <div class="test col-lg-4 col-lg-offset-4">
+                <h1>Nous Contacter</h1>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input class="btn btn-success" type="submit" value="Create" />
+                {{ form_end(form) }}
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('contact_index') }}">Back to the list</a>
-        </li>
-    </ul>
+            </div>
+        </div>
+    </div>
+<style>
+    .test{
+        border: 1px solid black;
+        text-align: center;
+        padding-bottom: 10px;
+        border-radius: 10px;
+    }
+</style>
 {% endblock %}
