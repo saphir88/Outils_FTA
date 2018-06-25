@@ -19,7 +19,7 @@ class EventType extends AbstractType
             ->add('image', null, ['required' => false])
             ->add("description", FroalaEditorType::class, array(
                 "language" => "fr",
-                "toolbarInline" => false,
+                "toolbarInline" => true,
                 "tableColors" => ["#FFFFFF", "#FF0000"],
                 "saveInterval" => "0",
                 "imageUpload" => false,
@@ -28,7 +28,6 @@ class EventType extends AbstractType
                     'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent',
                     'indent', 'quote', '-', 'insertLink', 'insertTable', '|', 'emoticons', 'specialCharacters',
                     'insertHR', 'clearFormatting', '|', 'html', '|', 'undo', 'redo']
-
             ))
             ->add('date')
             ->add('localisation')

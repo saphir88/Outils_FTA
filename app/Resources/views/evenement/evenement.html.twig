@@ -80,7 +80,7 @@
         <div class="col-lg-6 col-lg-offset-1">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <p>Startups participantes</p><span><a class="vote far fa-question-circle" data-toggle="popover" title="Le vote" data-content="ici on met la présentation du vote avec beaucoup de texte ecte teteztezzrtz"></a></span>
+                    <p>Startups participantes</p><a class="vote" data-toggle="popover" title="Le vote" data-content="ici on met la présentation du vote avec beaucoup de texte ecte teteztezzrtz">??????</a>
                 </div>
                 <div class="panel-body">
                     {% for participation in participations %}
@@ -119,11 +119,9 @@
         </div>
     </div>
 
-
 {% endblock %}
 {% block javascripts %}
     <script>
-        //popover vote
         $(document).ready(function(){
             $('[data-toggle="popover"]').popover();
         });
