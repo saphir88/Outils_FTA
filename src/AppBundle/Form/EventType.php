@@ -2,7 +2,7 @@
 
 namespace AppBundle\Form;
 
-use KMS\FroalaEditorBundle\Form\Type\FroalaEditorType;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,18 +17,9 @@ class EventType extends AbstractType
         $builder
             ->add('titre')
             ->add('image', null, ['required' => false])
-            ->add("description", FroalaEditorType::class, array(
-                "language" => "fr",
-                "toolbarInline" => true,
-                "tableColors" => ["#FFFFFF", "#FF0000"],
-                "saveInterval" => "0",
-                "imageUpload" => false,
-                "toolbarButtons" => ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough',
-                    'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle',
-                    'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent',
-                    'indent', 'quote', '-', 'insertLink', 'insertTable', '|', 'emoticons', 'specialCharacters',
-                    'insertHR', 'clearFormatting', '|', 'html', '|', 'undo', 'redo']
-            ))
+            ->add('description', CKEditorType::class, ['config' => array(
+                'config_name' => 'my_config',
+                )])
             ->add('date')
             ->add('localisation')
             ->add('nbMaxParticipants');
