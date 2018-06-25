@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'Helvetica';
-  src: url('/../fonts/Helvetica/HelveticaLTStd-Light.otf');
+  src: url('/../../fonts/Helvetica/HelveticaLTStd-Light.otf');
 }
 
 $fontFamily : Helvetica, Arial;/*variable global d'écriture du site*/
@@ -102,6 +102,11 @@ h2{
   height: 140px;
   width: 140px;
 }
+
+.modal-dialog{
+  width:40%;
+}
+
 /*style de la page presentation*/
 
 /*style de la page evenement*/
@@ -166,6 +171,8 @@ h2{
 
 
 /*style de la page evenement*/
+
+
 
 
 
