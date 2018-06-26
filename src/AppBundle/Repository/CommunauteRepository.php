@@ -55,7 +55,9 @@ class CommunauteRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
 
 
-    }public function findUserById()
+    }
+
+    public function findUserById()
     {
         return $this->getEntityManager()
             ->createQuery("SELECT u.username,c FROM AppBundle:User u with AppBudle:communaute c WHERE u.id = 33")

@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,7 +17,7 @@ class EventType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('image', null, ['required' => false])
+            ->add('file', FileType::class, ['data_class' => null, 'required' => false])
             ->add('description', CKEditorType::class, ['config' => array(
                 'config_name' => 'my_config',
                 )])

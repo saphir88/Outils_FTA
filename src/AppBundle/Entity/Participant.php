@@ -68,7 +68,7 @@ class Participant
     /**
      * @var string
      *
-     * @ORM\Column(name="societe", type="string", length=255)
+     * @ORM\Column(name="societe", type="string", length=255, nullable=true)
      */
     private $societe;
 

@@ -8,14 +8,13 @@
             </div>
         {% endfor %}
     {% endfor %}
-
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="text-center">
                 <h1>{{ event.0.titre }}</h1>
             </div>
-            <div class="col-lg-10 img-event">
-                <img style="height: 548px;width: 1000px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbl8FbTtd2i9U-cuc2kZ56mv32svcQhH3QHr2ZAzAwSJQP4_xUyA">
+            <div class="img-event">
+                <iframe src="/uploads/{{ event.0.filename }}"></iframe>
             </div>
         </div>
         <div class="row">
