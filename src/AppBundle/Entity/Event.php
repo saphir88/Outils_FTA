@@ -51,9 +51,9 @@ class Event
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     * @ORM\Column(name="filename", type="string", length=255, nullable=true)
      */
-    private $image;
+    private $filename;
 
     /**
      * @var \DateTime
@@ -140,28 +140,22 @@ class Event
     }
 
     /**
-     * Set image.
-     *
-     * @param string $image
-     *
-     * @return Event
+     * @return string
      */
-    public function setImage($image)
+    public function getFilename()
     {
-        $this->image = $image;
-
-        return $this;
+        return $this->filename;
     }
 
     /**
-     * Get image.
-     *
-     * @return string
+     * @param string $filename
      */
-    public function getImage()
+    public function setFilename($filename)
     {
-        return $this->image;
+        $this->filename = $filename;
     }
+
+
 
     /**
      * Set date.
