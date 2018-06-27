@@ -1,45 +1,43 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Participants list</h1>
+    <div class="container">
+        <div class="row">
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Prenom</th>
-                <th>Nom</th>
-                <th>Mail</th>
-                <th>Societe</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for participant in participants %}
-            <tr>
-                <td><a href="{{ path('participant_show', { 'id': participant.id }) }}">{{ participant.id }}</a></td>
-                <td>{{ participant.prenom }}</td>
-                <td>{{ participant.nom }}</td>
-                <td>{{ participant.mail }}</td>
-                <td>{{ participant.societe }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('participant_show', { 'id': participant.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('participant_edit', { 'id': participant.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('participant_new') }}">Create a new participant</a>
-        </li>
-    </ul>
+            <h1>Participants list</h1>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    <th>Mail</th>
+                    <th>Societe</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for participant in participants %}
+                    <tr>
+                        <td>{{ participant.prenom }}</td>
+                        <td>{{ participant.nom }}</td>
+                        <td>{{ participant.mail }}</td>
+                        <td>{{ participant.societe }}</td>
+                        <td>
+                            {{ form_start(delForms[loop.index0]) }}
+                            <input type="submit" value="Delete">
+                            {{ form_end(delForms[loop.index0]) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <style>
+        tr:nth-child(even) {background-color: #f2f2f2;}
+        .table,th,tr,td{border: 1px solid black;}
+    </style>
+
 {% endblock %}
