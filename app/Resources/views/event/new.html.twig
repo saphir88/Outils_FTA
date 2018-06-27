@@ -3,18 +3,20 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <h1>Event creation</h1>
-            <div class="container event">
-                {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <input class="btn btn-success" type="submit" value="Create" />
-                {{ form_end(form) }}
-                <a class="btn btn-primary" href="{{ path('admin') }}">Revenir au menu d'administration</a>
+            <h1 class="col-lg-offset-5">Event creation</h1>
+            <div class="container col-lg-8 col-lg-offset-2 event">
+                <div class=" col-lg-8 col-lg-offset-2">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <input class="btn btn-success" type="submit" value="Create" />
+                    {{ form_end(form) }}
+                    <a class="btn btn-primary" href="{{ path('admin') }}">Revenir au menu d'administration</a>
+                </div>
             </div>
         </div>
     </div>
     <style>
         .event{
-           background-color: darkgrey;}
+            background-color: darkgrey;}
     </style>
 {% endblock %}

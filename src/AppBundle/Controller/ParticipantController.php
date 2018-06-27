@@ -25,13 +25,14 @@ class ParticipantController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $participants = $em->getRepository('AppBundle:Participant')->findAll();
+        $deleteFormView=[];
             foreach ($participants as $participant){
                 $deleteFormView[] = $this->createDeleteForm($participant)->createView();
             }
 
         return $this->render('participant/index.html.twig', array(
             'participants' => $participants,
-            'delForms' => $deleteFormView
+            'delForms' => $deleteFormView,
         ));
     }
 

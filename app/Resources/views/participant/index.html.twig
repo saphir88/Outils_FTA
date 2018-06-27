@@ -3,13 +3,14 @@
 {% block body %}
     <div class="container">
         <div class="row">
+            <a class="btn btn-primary" href="{{ path('admin') }}">Revenir au menu d'administration</a>
 
-
-            <h1>Participants list</h1>
+            <h1 class="col-lg-offset-5">Participants list</h1>
 
             <table class="table">
                 <thead>
                 <tr>
+                    <th>Event</th>
                     <th>Prenom</th>
                     <th>Nom</th>
                     <th>Mail</th>
@@ -20,13 +21,14 @@
                 <tbody>
                 {% for participant in participants %}
                     <tr>
+                        <td>{{ participant.event.titre }}</td>
                         <td>{{ participant.prenom }}</td>
                         <td>{{ participant.nom }}</td>
                         <td>{{ participant.mail }}</td>
                         <td>{{ participant.societe }}</td>
                         <td>
                             {{ form_start(delForms[loop.index0]) }}
-                            <input type="submit" value="Delete">
+                            <input class="btn btn-danger" type="submit" value="Delete">
                             {{ form_end(delForms[loop.index0]) }}
                         </td>
                     </tr>
