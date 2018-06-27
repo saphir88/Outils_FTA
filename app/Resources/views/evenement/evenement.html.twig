@@ -13,8 +13,10 @@
             <div class="text-center">
                 <h1>{{ event.0.titre }}</h1>
             </div>
-            <div class="img-event">
-                <iframe src="/uploads/{{ event.0.filename }}"></iframe>
+            <div class="">
+                <object data="/uploads/{{ event.0.filename }}" type="application/pdf" width="100%" height="800">
+                    lie alternatif : <a href="/uploads/{{ event.0.filename }}">evenement.pdf</a>
+                </object>
             </div>
         </div>
         <div class="row">
