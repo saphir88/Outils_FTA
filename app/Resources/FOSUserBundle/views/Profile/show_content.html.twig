@@ -3,8 +3,8 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="fos_user_user_show">
-                <h1>Votre mot de passe à bien était modifier</h1>
+            <div>
+                <h1>Modifications bien prise en compte</h1>
                 {% if is_granted("ROLE_ADMIN") %}
                     <a href="{{ path('admin') }}" class="btn btn-primary">Retour admin</a>
                 {% elseif is_granted("ROLE_USER") %}
