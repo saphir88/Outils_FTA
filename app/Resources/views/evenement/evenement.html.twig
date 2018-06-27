@@ -61,14 +61,13 @@
                     <div class="modal-body">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Inscription Participant</h4>
-                        <select>
-                            <option>Participant</option>
-                            <option>Investisseur</option>
-                        </select>
-                        <form method="post" action="">
-                            <input name="eventId" type="hidden" value="{{ event.0.id }}">
-                            <button type="submit" class="btn btn-info btn-lg" >inscription participant</button>
-                        </form>
+
+                        {{ form_start(form) }}
+                        {{ form_rest(form) }}
+                        <input name="eventId" type="hidden" value="{{ event.0.id }}">
+                        <button type="submit" class="btn btn-info btn-lg" >inscription participant</button>
+                        {{ form_end(form) }}
+
                     </div>
                 </div>
             </div>
@@ -112,9 +111,9 @@
                     <p>Liste des investisseurs inscrit</p>
                 </div>
                 <div class="panel-body">
-                    test
-                    test
-                    test
+                    {% for inscrit in participantInscrit %}
+                        <p>{{ inscrit.nom }} {{ inscrit.prenom }}</p>
+                    {% endfor %}
                 </div>
             </div>
         </div>

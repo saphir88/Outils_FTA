@@ -103,3 +103,4 @@ ivory_ck_editor:
             removeButtons: 'Anchor'
             language: 'en'
             forcePasteAsPlainText: true
+
