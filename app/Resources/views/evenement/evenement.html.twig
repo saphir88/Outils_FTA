@@ -103,14 +103,19 @@
                 </div>
             </div>
         </div>
+        
         <div class="col-lg-offset-1 col-lg-3">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <p>Liste des investisseurs inscrit</p>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body ">
                     {% for inscrit in participantInscrit %}
-                        <p>{{ inscrit.nom }} {{ inscrit.prenom }}</p>
+                        <div class="container-fluid participant_startup_box">
+                            <div class="col-lg-11 event-description">
+                                <p>{{ inscrit.nom }} {{ inscrit.prenom }}</p>
+                            </div>
+                        </div>
                     {% endfor %}
                 </div>
             </div>
