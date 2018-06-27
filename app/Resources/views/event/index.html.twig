@@ -6,7 +6,7 @@
         <div class="row">
             <a class="btn btn-primary" href="{{ path('admin') }}">Revenir au menu d'administration</a>
 
-            <h1>Events list</h1>
+            <h1 class="col-lg-offset-5">Events list</h1>
             <table class="table">
                 <thead>
                 <tr>
@@ -29,15 +29,12 @@
                         <td>{{ event.localisation }}</td>
                         <td>{{ event.nbMaxParticipants }}</td>
                         <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('event_show', { 'id': event.id }) }}">show</a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('event_edit', { 'id': event.id }) }}">edit</a>
-                                </li>
-                            </ul>
+                            <a  class="btn btn-success" href="{{ path('event_edit', { 'id': event.id }) }}">edit</a>
+                            {{ form_start(delForms[loop.index0]) }}
+                            <input class="btn btn-danger" type="submit" value="Delete">
+                            {{ form_end(delForms[loop.index0]) }}
                         </td>
+
                     </tr>
                 {% endfor %}
                 </tbody>

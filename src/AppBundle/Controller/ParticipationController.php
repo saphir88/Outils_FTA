@@ -27,9 +27,12 @@ class ParticipationController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $participations = $em->getRepository('AppBundle:Participation')->findAll();
-
+        foreach ($participations as $participation){
+            $deleteFormView[] = $this->createDeleteForm($participation)->createView();
+        }
         return $this->render('participation/index.html.twig', array(
             'participations' => $participations,
+            'delForms' => $deleteFormView
         ));
     }
 

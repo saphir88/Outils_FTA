@@ -1,37 +1,46 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Participations list</h1>
+    <div class="container">
+        <div class="row">
+            <a class="btn btn-primary" href="{{ path('admin') }}">Revenir au menu d'administration</a>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for participation in participations %}
-            <tr>
-                <td><a href="{{ path('participation_show', { 'id': participation.id }) }}">{{ participation.id }}</a></td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('participation_show', { 'id': participation.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('participation_edit', { 'id': participation.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <h1 class="col-lg-offset-5">Participations list</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('participation_new') }}">Create a new participation</a>
-        </li>
-    </ul>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Titre de l'évenement</th>
+                    <th>StartUp</th>
+                    <th>Nom de Societe</th>
+                    <th>Email</th>
+                    <th>Categorie</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for participation in participations %}
+
+                    <tr>
+                        <td>{{ participation.event.titre }}</td>
+                        <td>{{ participation.communaute.nomStartUp }}</td>
+                        <td>{{ participation.communaute.nomSociete }}</td>
+                        <td>{{ participation.communaute.mail }}</td>
+                        <td>{{ participation.communaute.categorie }}</td>
+
+                        <td>
+                            {{ form_start(delForms[loop.index0]) }}
+                            <input class="btn btn-danger" type="submit" value="Delete">
+                            {{ form_end(delForms[loop.index0]) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <style>
+        tr:nth-child(even) {background-color: #f2f2f2;}
+        .table,th,tr,td{border: 1px solid black;}
+    </style>
 {% endblock %}
