@@ -49,6 +49,7 @@ class EvenementController extends Controller
 
         $participations = $em->getRepository('AppBundle:Participation')->findBy(['event' => $eventId]);
         $participantInscrit = $em->getRepository('AppBundle:Participant')->findAll();
+        $nbInscrit = count($participantInscrit);
         return $this->render('evenement/evenement.html.twig', array(
             'event' => $event,
             'jour' => $jour,
@@ -56,6 +57,7 @@ class EvenementController extends Controller
             'form' => $form->createView(),
             'participations' => $participations,
             'participantInscrit' => $participantInscrit,
+            'nbInscrit' => $nbInscrit,
         ));
     }
 
