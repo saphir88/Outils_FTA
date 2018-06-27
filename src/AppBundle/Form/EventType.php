@@ -5,6 +5,8 @@ namespace AppBundle\Form;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,7 +23,7 @@ class EventType extends AbstractType
             ->add('description', CKEditorType::class, ['config' => array(
                 'config_name' => 'my_config',
                 )])
-            ->add('date')
+            ->add('date', DateTimeType::class)
             ->add('localisation')
             ->add('nbMaxParticipants');
     }

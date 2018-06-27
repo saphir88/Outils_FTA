@@ -23,16 +23,10 @@ class Event
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Participant", mappedBy="event")
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\EventImage", mappedBy="event")
      *
      */
     private $id;
-
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Participation", mappedBy="event", cascade={"persist","remove"})
-     */
-    private $participation;
 
     /**
      * @var string
@@ -49,6 +43,16 @@ class Event
     private $description;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Participant", mappedBy="event", cascade={"persist","remove"})
+     */
+    private $participant;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Participation", mappedBy="event", cascade={"persist","remove"})
+     */
+    private $participation;
+
+     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
@@ -87,11 +91,12 @@ class Event
      */
     private $updatedAt;
 
+
     public function __construct() {
         $this->id = new ArrayCollection();
     }
 
-
+                                    /* Getters and Setters */
 
     /**
      * Get id.
@@ -150,6 +155,7 @@ class Event
     {
         return $this->description;
     }
+
 
     /**
      * Set date.
@@ -224,22 +230,6 @@ class Event
     }
 
     /**
-     * @return mixed
-     */
-    public function getParticipation()
-    {
-        return $this->participation;
-    }
-
-    /**
-     * @param mixed $participation
-     */
-    public function setParticipation($participation)
-    {
-        $this->participation = $participation;
-    }
-
-    /**
      * @return string
      */
     public function getFilename()
@@ -297,5 +287,22 @@ class Event
     {
         $this->updatedAt = $updatedAt;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getParticipant()
+    {
+        return $this->participant;
+    }
+
+    /**
+     * @param mixed $participant
+     */
+    public function setParticipant($participant)
+    {
+        $this->participant = $participant;
+    }
+
 
 }

@@ -23,7 +23,7 @@ class Participant
 
     /**
      * @var int
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Event", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Event", inversedBy="participant")
      * @ORM\JoinColumn(nullable=false)
      */
     private $event;
