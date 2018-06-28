@@ -5,7 +5,7 @@
     <title>{% block title %}Frenchtech Alsace{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('logo.jpg') }}" />
     <link rel="stylesheet" href="{{ asset('build/style.css') }}">
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('build/logo.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -85,7 +85,7 @@
 
         // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
 
-        var $container = $('div#appbundle_communaute_images');
+        var $container = $('div#appbundle_communaute_image');
 
         var $bouton = $('div#ajoutImage');
 
@@ -113,6 +113,7 @@
 
                 addDeleteLink($(this));
             });
+
         }
         if (index >= 3) {
             $('#ajoutImage').remove();
@@ -157,6 +158,7 @@
             // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
 
             index++;
+
 
             if (index == 3) {
 

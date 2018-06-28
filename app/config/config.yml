@@ -81,6 +81,10 @@ vich_uploader:
             uri_prefix:         '%app.path.images%'
             upload_destination: '%kernel.root_dir%/../web%app.path.images%'
             namer: vich_uploader.namer_uniqid
+        logo:
+            uri_prefix:         '%app.path.images%'
+            upload_destination: '%kernel.root_dir%/../web%app.path.images%'
+            namer: vich_uploader.namer_uniqid
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'

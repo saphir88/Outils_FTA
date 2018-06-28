@@ -49,28 +49,8 @@ class Communaute
      */
     private $nomSociete;
 
-    /**
-     * @return string
-     */
-    public function getNomSociete()
-    {
-        return $this->nomSociete;
-    }
 
-    /**
-     * @param string $nomSociete
-     */
-    public function setNomSociete($nomSociete)
-    {
-        $this->nomSociete = $nomSociete;
-    }
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="filename", type="string", length=255, nullable=true)
-     */
-    private $filename;
 
     /**
      * @var string
@@ -88,6 +68,19 @@ class Communaute
      * )
      */
     private $description;
+
+    /**
+     * @var string
+     * @ORM\Column(name="filename", type="string", length=255, nullable=true)
+     */
+    private $filename;
+
+    /**
+     * @Vich\UploadableField(mapping="logo", fileNameProperty="filename")
+     *
+     * @var File
+     */
+    private $file;
 
     /**
      * @var string
@@ -191,11 +184,6 @@ class Communaute
      */
     private $twitter;
 
-    /**
-     * @var File
-     * @Vich\UploadableField(mapping="images", fileNameProperty="filename")
-     */
-    private $file;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Participation", mappedBy="communaute", cascade={"persist","remove"})
@@ -251,17 +239,17 @@ class Communaute
     /**
      * @return string
      */
-    public function getFilename()
+    public function getNomSociete()
     {
-        return $this->filename;
+        return $this->nomSociete;
     }
 
     /**
-     * @param string $filename
+     * @param string $nomSociete
      */
-    public function setFilename($filename)
+    public function setNomSociete($nomSociete)
     {
-        $this->filename = $filename;
+        $this->nomSociete = $nomSociete;
     }
 
     /**
@@ -502,6 +490,24 @@ class Communaute
     {
         $this->file = $file;
     }
+
+    /**
+     * @return string
+     */
+    public function getFilename()
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @param string $filename
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+    }
+
+
 
     /**
      * @return mixed
