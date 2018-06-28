@@ -6,16 +6,15 @@
         <div class="row">
             <a class="btn btn-primary" href="{{ path('admin') }}">Revenir au menu d'administration</a>
 
-            <h1>Events list</h1>
+            <h1 class="col-lg-offset-5">Evenement</h1>
             <table class="table">
                 <thead>
                 <tr>
                     <th>Titre</th>
                     <th>Description</th>
-                    <th>Image</th>
                     <th>Date</th>
                     <th>Localisation</th>
-                    <th>Nbmaxparticipants</th>
+                    <th>Participants</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -24,19 +23,13 @@
                     <tr>
                         <td>{{ event.titre }}</td>
                         <td>{{ event.description }}</td>
-                        <td style="height: 140px; width: 140px;">{{ event.file }}</td>
-                        <td>{% if event.date %}{{ event.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ event.date|date('Y-m-d H:i:s') }}</td>
                         <td>{{ event.localisation }}</td>
-                        <td>{{ event.nbMaxParticipants }}</td>
+                        <td>{{ nbInscrit }}/{{ event.nbMaxParticipants }}</td>
                         <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('event_show', { 'id': event.id }) }}">show</a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('event_edit', { 'id': event.id }) }}">edit</a>
-                                </li>
-                            </ul>
+                            {{ form_start(delForms[loop.index0]) }}
+                            <input class="btn btn-danger" type="submit" value="Delete">
+                            {{ form_end(delForms[loop.index0]) }}
                         </td>
                     </tr>
                 {% endfor %}

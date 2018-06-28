@@ -27,9 +27,18 @@
 
                     </li>
                     <li>
+                        <a href="{{ path('participant_index') }}" role="button">gestion des participant au evenement</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('participation_index') }}" role="button">gestion des startup au evenement</a>
+                    </li>
+                    <li>
                         <a href="{{ path('logout') }}" role="button">Deconnexion</a>
                     </li>
                 </ul>
+                <a class="btn btn-primary" href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a>
+                <a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">Changer Adresse email</a>
+
             </div>
         </div>
     </div>

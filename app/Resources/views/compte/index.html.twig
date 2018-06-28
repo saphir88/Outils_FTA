@@ -32,6 +32,8 @@
 
 
         <div class="container">
+            <a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">Changer Utilisateur</a>
+            <a class="btn btn-primary" href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a>
             <button type="submit" class="btn btn-success">Valider les modifications</button>
             {{ form_end(edit_form) }}
             {{ form_start(delete_form) }}

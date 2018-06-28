@@ -24,11 +24,20 @@ class EventController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
+        $deleteFormView=[];
         $events = $em->getRepository('AppBundle:Event')->findAll();
+
+                foreach ($events as $event){
+                 $deleteFormView[] = $this->createDeleteForm($event)->createView();
+            }
+
+        $participantInscrit = $em->getRepository('AppBundle:Participant')->findAll();
+        $nbInscrit = count($participantInscrit);
 
         return $this->render('event/index.html.twig', array(
             'events' => $events,
+            'delForms' => $deleteFormView,
+            'nbInscrit'=> $nbInscrit
         ));
     }
 
@@ -49,7 +58,7 @@ class EventController extends Controller
             $em->persist($event);
             $em->flush();
 
-            return $this->redirectToRoute('event_show', array('id' => $event->getId()));
+            return $this->redirectToRoute('event_index', array('id' => $event->getId()));
         }
 
         return $this->render('event/new.html.twig', array(
