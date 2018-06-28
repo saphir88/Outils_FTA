@@ -68,9 +68,9 @@ class Communaute
     /**
      * @var string
      *
-     * @ORM\Column(name="fileName", type="string", length=255, nullable=true)
+     * @ORM\Column(name="filename", type="string", length=255, nullable=true)
      */
-    private $fileName;
+    private $filename;
 
     /**
      * @var string
@@ -193,7 +193,7 @@ class Communaute
 
     /**
      * @var File
-     * @Vich\UploadableField(mapping="images", fileNameProperty="fileName")
+     * @Vich\UploadableField(mapping="images", fileNameProperty="filename")
      */
     private $file;
 
@@ -251,17 +251,17 @@ class Communaute
     /**
      * @return string
      */
-    public function getFileName()
+    public function getFilename()
     {
-        return $this->fileName;
+        return $this->filename;
     }
 
     /**
-     * @param string $fileName
+     * @param string $filename
      */
-    public function setFileName($fileName)
+    public function setFilename($filename)
     {
-        $this->fileName = $fileName;
+        $this->filename = $filename;
     }
 
     /**

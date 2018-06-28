@@ -14,31 +14,54 @@
         {{ form_start(edit_form) }}
         {{ form_row(edit_form.nomStartup) }}
         <br>
+        {{ form_row(edit_form.nomSociete) }}
 
         <img class="logo" src="/uploads/{{ communaute.fileName }}" style="width: 150px">
-        {{ form_errors(edit_form.file) }}
-        {{ form_widget(edit_form.file, {'required': false}) }}
+        {{ form_row(edit_form.file, {'required': false}) }}
 
-        {{ form_rest(edit_form) }}
+{#{{ form_row(edit_form.description) }}
+{{ form_row(edit_form.siteWeb) }}
+{{ form_row(edit_form.video) }}
+{{ form_row(edit_form.ChaineYouTube) }}
+{{ form_row(edit_form.facebook) }}
+{{ form_row(edit_form.twitter) }}
+{{ form_row(edit_form.linkedin) }}
+{{ form_row(edit_form.categorie) }}
+{{ form_row(edit_form.siret) }}
+{{ form_row(edit_form.adresse) }}
+{{ form_row(edit_form.nomContact) }}
+{{ form_row(edit_form.mail) }}
+{{ form_row(edit_form.telephone) }}
+{{ form_row(edit_form.validation) }}#}
 
-        {% for key,image in communaute.images %}
-            <img src="/uploads/{{ image.filename }}" style="width: 200px">
-        {% endfor %}
-
-
-        <div id="ajoutImage" class="well" style="display: block">
-            <a href="#" id="add_images" class="btn btn-default">Ajouter une image</a>
+<div class="row">
+    {%  for image in edit_form.images %}
+        <div class="col-lg-3 well" styl"margin-left: 20px; width: 30%;">
+            <img src="/uploads/{{ image.vars.data.filename }}" style="width: 200px">
+            {{ form_row(image.file) }}{{ dump(image.vars.data.filename) }}
         </div>
+    {% endfor %}
+    {{ form_row(edit_form.images, {'label':' '}) }}
+</div>
+{% for image in communaute.images %}
+
+{% endfor %}
 
 
-        <div class="container">
-            <button type="submit" class="btn btn-success">Valider les modifications</button>
-            {{ form_end(edit_form) }}
-            {{ form_start(delete_form) }}
-            <button class="btn btn-danger" type="submit">Supprimer</button>
-            {{ form_end(delete_form) }}
-        </div>
-    </div>
+
+<div id="ajoutImage" class="well" style="display: block">
+    <a href="#" id="add_images" class="btn btn-default">Ajouter une image</a>
+</div>
+
+
+<div class="container">
+    <button type="submit" class="btn btn-success">Valider les modifications</button>
+    {{ form_end(edit_form) }}
+    {{ form_start(delete_form) }}
+    <button class="btn btn-danger" type="submit">Supprimer</button>
+    {{ form_end(delete_form) }}
+</div>
+</div>
 
 
 
