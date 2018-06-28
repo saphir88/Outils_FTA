@@ -21,7 +21,7 @@ class EventType extends AbstractType
             ->add('titre')
             ->add('file', FileType::class, ['data_class' => null, 'required' => false])
             ->add('description', CKEditorType::class, ['config' => array(
-                'config_name' => 'my_config',
+                'config_name' => 'my_config','required'=> false,
                 )])
             ->add('date', DateTimeType::class)
             ->add('localisation')

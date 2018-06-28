@@ -25,6 +25,7 @@
                         <td>{{ event.localisation }}</td>
                         <td>{{ nbInscrit }}/{{ event.nbMaxParticipants }}</td>
                         <td>
+                            <a class="btn btn-primary" href="{{ path('event_edit', { 'id': event.id }) }}">Edit</a>
                             {{ form_start(delForms[loop.index0]) }}
                             <input class="btn btn-danger" type="submit" value="Delete">
                             {{ form_end(delForms[loop.index0]) }}

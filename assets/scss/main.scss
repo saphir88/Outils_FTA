@@ -31,10 +31,7 @@ $Rose: rgb(241, 78, 182);
 }
 .titre1{
   text-align: center;
-
   font-family: $fontFamily;
-  border: 1px solid black;
-  border-radius: 20px;
 }
 
 .contourText{
@@ -70,10 +67,6 @@ $Rose: rgb(241, 78, 182);
 }
 .titreNomStartUp{
   font-size: 4em;
-  border: 1px solid black;
-  border-radius: 20px;
-  margin-bottom: 20px;
-
   font-family: $fontFamily;
 
 }
@@ -115,20 +108,6 @@ h2{
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-}
-
-.date {
-  font-size: 2em;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-}
-
-.hour {
-  font-size: 1.5em;
-  color: white;
-  font-weight: bold;
-  text-align: center;
 }
 
 .event-description {
