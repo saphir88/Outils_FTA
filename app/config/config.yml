@@ -101,6 +101,6 @@ ivory_ck_editor:
         my_config:
             removePlugins: 'about, flash, image, smiley, forms, iframe, newpage, save, templates'
             removeButtons: 'Anchor'
-            language: 'en'
+            language: 'fr'
             forcePasteAsPlainText: true
 

@@ -24,7 +24,6 @@ class CommunauteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
         $builder
             ->add('nomStartup', TextType::class, array('label'=>'Nom de la startup* :'))
             ->add('nomSociete', TextType::class, array('required'=> false, 'label'=>'Nom de la societe :'))
@@ -39,16 +38,21 @@ class CommunauteType extends AbstractType
             ->add('categorie', ChoiceType::class, array('label'=>'Domaine* :',
                 'choices'  => array(
                     'HealthTech' => 'HealthTech',
-                    'service informatique BtoB' => 'service informatique BtoB',
+                    'IoT Manufacturing' => 'IoT Manufacturing',
                     'Ed Tech Entertainment' => 'Ed Tech Entertainment',
+                    'AI'=>'AI',
                     'IOT Manufacturing' => 'IOT Manufacturing',
-                    'CleanTech/Mobility' => 'CleanTech/Mobility',
+                    'VR/VA'=>'VR/VA',
+                    'Blockchain'=>'Blockchain',
                     'FoodTech' => 'FoodTech',
-                    'Sports' => 'Sports',
-                    'Retail' => 'Retail',
-                    'Fintech' => 'Fintech',
-                    'Security Privacy' => 'Security Privacy',
-                    'Service Informatique BtoC' => 'service informatique BtoC'
+                    'Mobility' => 'Mobility',
+                    'IT/ Software / App'=>'IT/ Software / App',
+                    'Smartcity'=>'Smartcity',
+                    'Sustainability'=>'Sustainability',
+
+
+
+
                 ),'placeholder' => 'Choisissez votre domaine'))
             ->add('siret', TextType::class, array('required'=> false,'label'=>'SIRET :'))
             ->add('adresse', TextType::class, array('label'=>'Adresse* :'))

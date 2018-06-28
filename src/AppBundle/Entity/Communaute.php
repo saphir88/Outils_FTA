@@ -49,28 +49,18 @@ class Communaute
      */
     private $nomSociete;
 
-    /**
-     * @return string
-     */
-    public function getNomSociete()
-    {
-        return $this->nomSociete;
-    }
-
-    /**
-     * @param string $nomSociete
-     */
-    public function setNomSociete($nomSociete)
-    {
-        $this->nomSociete = $nomSociete;
-    }
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="fileName", type="string", length=255, nullable=true)
+     * @ORM\Column(name="filename", type="string", length=255, nullable=true)
      */
-    private $fileName;
+    private $filename;
+
+    /**
+     * @Vich\UploadableField(mapping="images", fileNameProperty="filename")
+     * @var File
+     */
+    private $file;
 
     /**
      * @var string
@@ -191,11 +181,6 @@ class Communaute
      */
     private $twitter;
 
-    /**
-     * @var File
-     * @Vich\UploadableField(mapping="images", fileNameProperty="fileName")
-     */
-    private $file;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Participation", mappedBy="communaute", cascade={"persist","remove"})
@@ -251,17 +236,36 @@ class Communaute
     /**
      * @return string
      */
-    public function getFileName()
+    public function getNomSociete()
     {
-        return $this->fileName;
+        return $this->nomSociete;
     }
 
     /**
-     * @param string $fileName
+     * @param string $nomSociete
      */
-    public function setFileName($fileName)
+    public function setNomSociete($nomSociete)
     {
-        $this->fileName = $fileName;
+        $this->nomSociete = $nomSociete;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFilename()
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @param string $filename
+     */
+    public function setFilename($filename)
+    {
+        if ($filename !== null){
+            $this->filename = $filename;
+        }
+
     }
 
     /**
