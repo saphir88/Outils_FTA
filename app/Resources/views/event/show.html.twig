@@ -25,7 +25,7 @@
                     <td>{{ event.titre }}</td>
                     <td>{{ event.description }}</td>
                     <td>{{ event.filename }}</td>
-                    <td>{% if event.date %}{{ event.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{{ event.date|date('Y-m-d H:i:s') }}</td>
                     <td>{{ event.localisation }}</td>
                     <td>{{ event.nbMaxParticipants }}</td>
                 </tr>
