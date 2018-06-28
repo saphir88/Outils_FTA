@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-    <div id="form" class="container jumbotron">
+    <div class="container">
         {% for label, messages in app.flashes %}
             {% for message in messages %}
                 <div class="flash-{{ label }}">
@@ -10,19 +9,51 @@
                 </div>
             {% endfor %}
         {% endfor %}
-        <center><h1>{{ communaute.nomStartup }}</h1></center>
+    </div>
+    <div id="form" class="container jumbotron">
+        <img class="logo" src="/uploads/{{ communaute.fileName }}" style="width: 150px">
+
         {{ form_start(edit_form) }}
         {{ form_row(edit_form.nomStartup) }}
         <br>
+        {{ form_row(edit_form.nomSociete) }}
 
-        <img class="logo" src="/uploads/{{ communaute.filename }}" style="width: 150px">
-        {{ form_errors(edit_form.file) }}
-        {{ form_widget(edit_form.file, {'required': false}) }}
+        {{ form_row(edit_form.file, {'required': false}) }}
 
-        {{ form_rest(edit_form) }}
+        {{ form_row(edit_form.description) }}
+        {{ form_row(edit_form.siteWeb) }}
+        {{ form_row(edit_form.video) }}
+        {{ form_row(edit_form.ChaineYouTube) }}
+        {{ form_row(edit_form.facebook) }}
+        {{ form_row(edit_form.twitter) }}
+        {{ form_row(edit_form.linkedin) }}
+        {{ form_row(edit_form.categorie) }}
+        {{ form_row(edit_form.siret) }}
+        {{ form_row(edit_form.adresse) }}
+        {{ form_row(edit_form.nomContact) }}
+        {{ form_row(edit_form.mail) }}
+        {{ form_row(edit_form.telephone) }}
+        {{ form_row(edit_form.validation) }}
 
-        {% for key,image in communaute.images %}
-            <img src="/uploads/{{ image.filename }}" style="width: 200px">
+        <div id="appbundle_communaute_image" data-prototype="<div class='form-group col-lg-3 well images_startup'>
+        <label class='control-label required'>__name__label__</label>
+        <div id='appbundle_communaute_images___name__'>
+            <div class='form-group'>
+                <label class='control-label' for='appbundle_communaute_images___name___file'> </label>
+                <input type='file' id='appbundle_communaute_images___name___file' name='appbundle_communaute[images][__name__][file]' />
+            </div>
+        </div>
+    </div>" class="row">
+            {%  for image in edit_form.images %}
+                <div  class="col-lg-3 well images_startup">
+                    <img src="/uploads/{{ image.vars.data.filename }}" style="width: 200px">
+                    {{ form_row(image.file) }}
+                </div>
+            {% endfor %}
+            {{ form_row(edit_form.images, {'label':' '}) }}
+        </div>
+        {% for image in communaute.images %}
+
         {% endfor %}
 
 
@@ -37,7 +68,7 @@
             <button type="submit" class="btn btn-success">Valider les modifications</button>
             {{ form_end(edit_form) }}
             {{ form_start(delete_form) }}
-            <button class="btn btn-danger" type="submit">Supprimer mon compte</button>
+            <button class="btn btn-danger" type="submit">Supprimer</button>
             {{ form_end(delete_form) }}
         </div>
     </div>
