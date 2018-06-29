@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Communaute;
 use AppBundle\Entity\Event;
 use AppBundle\Entity\Participation;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -18,8 +19,8 @@ class ParticipationController extends Controller
 {
     /**
      * Lists all participation entities.
-     *
-     * @Route("/", name="participation_index")
+     * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
+     * @Route("/startup", name="participation_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -81,7 +82,7 @@ class ParticipationController extends Controller
     }
     /**
      * Creates a new participation entity.
-     *
+     * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
      * @Route("/new", name="participation_new")
      * @Method({"GET", "POST"})
      */
@@ -110,6 +111,7 @@ class ParticipationController extends Controller
      *
      * @Route("/{id}", name="participation_show")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
      */
     public function showAction(Participation $participation)
     {
@@ -126,6 +128,7 @@ class ParticipationController extends Controller
      *
      * @Route("/{id}/edit", name="participation_edit")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
      */
     public function editAction(Request $request, Participation $participation)
     {

@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Contact;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -20,8 +21,9 @@ class ContactController extends Controller
     /**
      * Lists all contact entities.
      *
-     * @Route("/", name="contact_index")
+     * @Route("/all", name="contact_index")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
      */
     public function indexAction()
     {
@@ -37,7 +39,7 @@ class ContactController extends Controller
     /**
      * Creates a new contact entity.
      *
-     * @Route("/new", name="contact_new")
+     * @Route("/", name="contact_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request, Mailer $mailer)
@@ -81,7 +83,7 @@ class ContactController extends Controller
 
     /**
      * Displays a form to edit an existing contact entity.
-     *
+     * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
      * @Route("/{id}/edit", name="contact_edit")
      * @Method({"GET", "POST"})
      */
@@ -106,7 +108,7 @@ class ContactController extends Controller
 
     /**
      * Deletes a contact entity.
-     *
+     * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
      * @Route("/{id}", name="contact_delete")
      * @Method("DELETE")
      */

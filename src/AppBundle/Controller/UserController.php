@@ -3,13 +3,14 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 
 /**
  * User controller.
- *
+ * @Security("has_role('ROLE_SUPER_ADMIN')", message="Accés réservé au Super_administrateur. Si vous êtes le Super_administrateur de ce site, merci de vous authentifiez")
  * @Route("user")
  */
 class UserController extends Controller

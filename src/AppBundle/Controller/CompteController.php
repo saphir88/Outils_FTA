@@ -3,6 +3,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
 use AppBundle\Repository\CommunauteRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Communaute;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -14,7 +15,7 @@ use AppBundle\Service\Youtube;
 
 /**
  * Compte controller.
- *
+ * @Security("has_role('ROLE_USER')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
  * @Route("monCompte")
  */
 
@@ -73,32 +74,13 @@ class CompteController extends Controller
 
 
     /**
-     *
+     * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
      * @Route("/gestion_admin", name="gestion_admin")
      * @Method({"GET", "POST"})
      */
     public function gestionAdmin(Request $request)
     {
-
-        $communaute = $this->getUser();
-
-        dump($communaute);
-        /* $form = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($communaute);
-            $em->flush();
-
-            return $this->redirectToRoute('gestion_admin');
-        }*/
-
-        return $this->render('admin/gestion.html.twig', array(
-            'utilisateur' => $communaute,
-            //'form' => $form->createView(),
-        ));
-
+        return $this->render('admin/admin.html.twig');
     }
 
     /**
