@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-                <h2 class="titreNomStartUp">Start Up</h2>
+                <h2 class="titreNomStartUp">Start-Ups</h2>
             </div>
         </div>
         <div class="container">
@@ -34,8 +34,8 @@
                 <div data-Type="{{ communaute.categorie }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
                     <div class="startUP">
                         <h1 class="nomStartUp">{{ communaute.nomStartup }}</h1>
-                        <center><img class="logo" src="/uploads/{{ communaute.fileName }}"></center>
-                        <button type="button" class="btn btn-info btn-lg info" data-toggle="modal" data-target="#{{ communaute.id }}">More Infos</button>
+                        <center><p><img class="logo" src="/uploads/{{ communaute.fileName }}"></p></center>
+                        <p><button type="button" class="btn" data-toggle="modal" data-target="#{{ communaute.id }}">Plus d'informations..</button></p>
                         <div  class="modal fade {{ communaute.categorie }}" id="{{ communaute.id }}"  role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">

@@ -1,123 +1,131 @@
 {% extends 'base.html.twig' %}
 
+
+
 {% block body %}
-    {% for label, messages in app.flashes %}
-        {% for message in messages %}
-            <div class="flash-{{ label }}">
-                {{ message }}
-            </div>
+    {% if event is defined %}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
 
-    <section>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-offset-3 col-lg-6">
+                        <div class="thumbnail">
+                            <object class="text-center" style="height: 400px; width: 545px;" data="/uploads/{{ event.0.filename }}" type="application/pdf" width="100%" height="800">
+                                lien alternatif : <a href="/uploads/{{ event.0.filename }}">evenement.pdf</a>
+                            </object>
+
+                            <div class="caption">
+                                <div class="text-center">
+                                    <h1>{{ event.0.titre }}</h1>
+                                </div>
+                                <p class="text-center">DESCRIPTION: {{  event.0.description | raw }}</p>
+                                <div class="text-center">
+                                    <h3>Où se situe cet événement ?</h3>
+                                    <p>{{ event.0.localisation }}</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="date">{{ jour }}</p>
+                                    <p class="hour">{{ heure }}</p>
+                                </div>
+                                <div>
+                                    <p class="v-center text-center">Nombre d'inscrits à l'événement : {{ nbInscrit }} / {{ event.0.nbMaxParticipants }}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section>
+            <div class="container-fluid">
+                <div class="col-lg-offset-1 col-lg-5 ">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <p>Startups participantes<a class="vote" data-toggle="popover" title="Une startup inscrite à l’événement retient particulièrement votre attention et votre intérêt? N’hésitez pas à voter pour elle!">Le Vote</a></p>
+                            {% if is_granted("ROLE_USER") %}
+                                <form method="POST" action="{{ path ('inscriptionStartUp') }}">
+                                    <input name="eventId" type="hidden" value="{{ event.0.id }}">
+                                    <button type="submit" class="btn btn-info btn-lg" >inscription StartUp</button>
+                                </form>
+                            {% else %}
+                                <a href="/login"><button type="button" class="btn btn-info btn-lg" >inscription StartUp</button></a>
+                            {% endif %}
+                        </div>
+                        <div class="panel-body">
+                            {% for participation in participations %}
+                                <div class="container-fluid participant_startup_box">
+                                    <div class="col-lg-11 event-description">
+                                        <p>StartUp :{{ participation.communaute.nomStartup }}</p>
+                                        <p>Domaine : {{ participation.communaute.categorie }}</p>
+                                        <a href="{{ participation.communaute.siteWeb }}">{{ participation.communaute.siteWeb }}</a>
+                                    </div>
+                                    <div class="col-lg-1 text-center">
+                                        <div class="row">
+                                            <form action="{{ path('vote') }}" method="POST" data-toggle="popover" title="Une startup inscrite à l’événement retient particulièrement votre attention et votre intérêt? N’hésitez pas à voter pour elle!">
+                                                <button type="submit" name="vote" value="{{ participation.id }}" class="btn btn-default btn-lg">
+                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <h3>{{ participation.nbVote }}</h3>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <p>Liste des investisseurs inscrit</p>
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Inscription Participant</button>
+
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Inscription Participant</h4>
+                                            {{ form_start(form) }}
+                                            {{ form_rest(form) }}
+                                            <input name="eventId" type="hidden" value="{{ event.0.id }}">
+                                            <button type="submit" class="btn btn-info btn-lg" >inscription participant</button>
+                                            {{ form_end(form) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body ">
+                            {% for inscrit in participantInscrit %}
+                                <div class="container-fluid participant_startup_box">
+                                    <div class="col-lg-11 event-description">
+                                        <p>{{ inscrit.nom }} {{ inscrit.prenom }} / {{ inscrit.societe }}</p>
+                                        <p> {{ inscrit.mail }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% else %}
         <div class="container">
-            <div class="row">
-                <div class="col-lg-offset-3 col-lg-6">
-                    <div class="thumbnail">
-                        <object class="text-center" style="height: 400px; width: 545px;" data="/uploads/{{ event.0.filename }}" type="application/pdf" width="100%" height="800">
-                            lien alternatif : <a href="/uploads/{{ event.0.filename }}">evenement.pdf</a>
-                        </object>
-
-                        <div class="caption">
-                            <div class="text-center">
-                                <h1>{{ event.0.titre }}</h1>
-                            </div>
-                            <p class="text-center">DESCRIPTION: {{  event.0.description | raw }}</p>
-                            <div class="text-center">
-                                <h3>Où se situe cet événement ?</h3>
-                                <p>{{ event.0.localisation }}</p>
-                            </div>
-                            <div class="text-center">
-                                <p class="date">{{ jour }}</p>
-                                <p class="hour">{{ heure }}</p>
-                            </div>
-                            <div>
-                                <p class="v-center text-center">Nombre d'inscrits à l'événement : {{ nbInscrit }} / {{ event.0.nbMaxParticipants }}</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            <p style="font-size: 5vh; margin: 15vw;">La FrenchTech Alsace n'a pas mit en ligne d'évenement. Pour de plus amples informations, merci de nous <a href="{{ path('contact_new') }}">contacter.</a></p>
         </div>
-    </section>
-
-
-    <section>
-        <div class="container-fluid">
-            <div class="col-lg-offset-1 col-lg-5 ">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <p>Startups participantes<a class="vote" data-toggle="popover" title="Une startup inscrite à l’événement retient particulièrement votre attention et votre intérêt? N’hésitez pas à voter pour elle!">Le Vote</a></p>
-                        {% if is_granted("ROLE_USER") %}
-                            <form method="POST" action="{{ path ('inscriptionStartUp') }}">
-                                <input name="eventId" type="hidden" value="{{ event.0.id }}">
-                                <button type="submit" class="btn btn-info btn-lg" >inscription StartUp</button>
-                            </form>
-                        {% else %}
-                            <a href="/login"><button type="button" class="btn btn-info btn-lg" >inscription StartUp</button></a>
-                        {% endif %}
-                    </div>
-                    <div class="panel-body">
-                        {% for participation in participations %}
-                            <div class="container-fluid participant_startup_box">
-                                <div class="col-lg-11 event-description">
-                                    <p>StartUp :{{ participation.communaute.nomStartup }}</p>
-                                    <p>Domaine : {{ participation.communaute.categorie }}</p>
-                                    <a href="{{ participation.communaute.siteWeb }}">{{ participation.communaute.siteWeb }}</a>
-                                </div>
-                                <div class="col-lg-1 text-center">
-                                    <div class="row">
-                                        <form action="{{ path('vote') }}" method="POST" data-toggle="popover" title="Une startup inscrite à l’événement retient particulièrement votre attention et votre intérêt? N’hésitez pas à voter pour elle!">
-                                            <button type="submit" name="vote" value="{{ participation.id }}" class="btn btn-default btn-lg">
-                                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                            </button>
-                                        </form>
-                                    </div>
-                                    <h3>{{ participation.nbVote }}</h3>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <p>Liste des investisseurs inscrit</p>
-                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Inscription Participant</button>
-
-                        <div class="modal fade" id="myModal" role="dialog">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Inscription Participant</h4>
-                                        {{ form_start(form) }}
-                                        {{ form_rest(form) }}
-                                        <input name="eventId" type="hidden" value="{{ event.0.id }}">
-                                        <button type="submit" class="btn btn-info btn-lg" >inscription participant</button>
-                                        {{ form_end(form) }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-body ">
-                        {% for inscrit in participantInscrit %}
-                            <div class="container-fluid participant_startup_box">
-                                <div class="col-lg-11 event-description">
-                                    <p>{{ inscrit.nom }} {{ inscrit.prenom }} / {{ inscrit.societe }}</p>
-                                    <p> {{ inscrit.mail }}</p>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    {% endif %}
 {% endblock %}
 {% block javascripts %}
     <script>

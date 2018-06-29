@@ -28,6 +28,7 @@ class EvenementController extends Controller
         $participant = new participant();
         $form = $this->createForm('AppBundle\Form\ParticipantType', $participant);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $participant->setEvent($event[0]);
             $em = $this->getDoctrine()->getManager();
@@ -36,7 +37,10 @@ class EvenementController extends Controller
 
             return $this->redirectToRoute('evenement');
         }
-
+        dump($participant);
+        if($participant->getId() == null){
+            return $this->render('evenement/evenement.html.twig');
+        }
         $date = $event[0]->getDate();
         $jour = $date->format('d-m-Y');
         $heure = $date->format('H');
