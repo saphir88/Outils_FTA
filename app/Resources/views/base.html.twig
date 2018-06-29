@@ -28,12 +28,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="/presentation">Presentation </a></li>
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {% else %}
-                    <li><a href="/inscription">Inscription</a></li>
-                {% endif %}
                 <li><a href="{{ path('evenement') }}">Evenement</a></li>
-                <li><a href="/contact/new">Nous Contacter</a></li>
+                <li><a href="{{ path('contact_new') }}">Nous Contacter</a></li>
             </ul>
             {% if is_granted("ROLE_ADMIN") %}
                 <ul class="nav navbar-nav navbar-right">
@@ -54,7 +50,7 @@
                         </ul>
                     </li>
                     <li><a href="{{ path('index_extraction') }}" >Extraction CSV</a></li>
-                    <li><a href="{{ path('admin') }}" >Mon Compte</a></li>
+                    <li><a href="{{ path('gestion_admin') }}" >Mon Compte</a></li>
                     <li><a href="/logout">Deconnexion</a></li>
                 </ul>
 
@@ -66,6 +62,10 @@
                 <p class="navbar-text navbar-right"><a href="{{ path('compte') }}" class="navbar-link">Mon compte</a></p>
             {% else %}
                 <p class="navbar-text navbar-right"><a href="/login" class="navbar-link">Connexion</a></p>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {% else %}
+                    <p class="navbar-text navbar-right"><a class="navbar-link" href="/inscription">Inscription</a></p>
+                {% endif %}
             {% endif %}
         </div> <!-- /.navbar-collapse -->
     </div> <!-- /.container-fluid -->
