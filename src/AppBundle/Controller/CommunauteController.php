@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use  AppBundle\Entity\Communaute;
+use AppBundle\Entity\Communaute;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-//use AppBundle\Service\InscriptionMailer;
 use AppBundle\Service\Mailer;
 
 
@@ -51,7 +50,7 @@ class CommunauteController extends Controller
      * @Route("/new", name="communaute_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request) //,InscriptionMailer $InscriptionMailer)
+    public function newAction(Request $request)
     {
         $communaute = new Communaute();
         $form = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
@@ -61,9 +60,6 @@ class CommunauteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($communaute);
             $em->flush();
-
-            //$InscriptionMailer->sendEmailInscription($communaute->getNomStartup(),$communaute->getMail());
-
 
             return $this->redirectToRoute('communaute_show', array('id' => $communaute->getId()));
         }
