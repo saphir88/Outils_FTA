@@ -41,7 +41,6 @@ class CommunauteType extends AbstractType
                     'IoT Manufacturing' => 'IoT Manufacturing',
                     'Ed Tech Entertainment' => 'Ed Tech Entertainment',
                     'AI'=>'AI',
-                    'IOT Manufacturing' => 'IOT Manufacturing',
                     'VR/VA'=>'VR/VA',
                     'Blockchain'=>'Blockchain',
                     'FoodTech' => 'FoodTech',

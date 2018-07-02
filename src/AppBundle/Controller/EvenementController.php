@@ -37,10 +37,7 @@ class EvenementController extends Controller
 
             return $this->redirectToRoute('evenement');
         }
-        dump($participant);
-        if($participant->getId() == null){
-            return $this->render('evenement/evenement.html.twig');
-        }
+
         $date = $event[0]->getDate();
         $jour = $date->format('d-m-Y');
         $heure = $date->format('H');
@@ -54,6 +51,7 @@ class EvenementController extends Controller
         $participations = $em->getRepository('AppBundle:Participation')->findBy(['event' => $eventId]);
         $participantInscrit = $em->getRepository('AppBundle:Participant')->findAll();
         $nbInscrit = count($participantInscrit);
+
         return $this->render('evenement/evenement.html.twig', array(
             'event' => $event,
             'jour' => $jour,

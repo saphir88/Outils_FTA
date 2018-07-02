@@ -16,18 +16,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * ExtractionCSV controller.
- * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
+ * @Security("has_role('ROLE_ADMIN')", message="Accès réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifier")
  * @Route("extraction")
  */
 class ExtractionCSV extends Controller
 {
     /**
-     * Extraction en CSV par domaine
+     * Extraction des Startups (en CSV) par Domaine
      *
-     * @Route("/", name="index_extraction")
-     * @Method({"GET", "POST"})
+     * @Route("/", name="startup_extraction")
+     * @Method({"GET","POST"})
      */
-    public function indexAction()
+    public function CSVStartups()
     {
         if(isset($_POST['categorie'])) {
             $categorie = $_POST['categorie'];
@@ -53,8 +53,36 @@ class ExtractionCSV extends Controller
             return $response;
 
         } else {
-        return $this->render('extractionCSV/index.html.twig');
+            return $this->render('extractionCSV/index.html.twig');
         }
+    }
 
+    /**
+     * Extraction des Participants (en CSV) par évenement
+     *
+     * @Route("/participants", name="participant_extraction")
+     * @Method("POST")
+     */
+    public function CSVParticipants()
+    {
+            $event = $_POST['event'];
+            $em = $this->getDoctrine()->getManager();
+            $dataExport = $em->getRepository('AppBundle:Participant')->findBy(
+                ['event' => $event]
+            );
+
+            $test[] = "Nom;Prénom;Mail;Société";
+            foreach($dataExport as $key => $value) {
+                $test[] = "\n".'"'.$dataExport[$key]->getNom().'";"'.$dataExport[$key]->getPrenom().'";"'.$dataExport[$key]->getMail().'";"'.$dataExport[$key]->getSociete().'"';
+            }
+            $test2= implode("",$test);
+
+            $filename = $event."_participant_export.csv";
+            $filename = str_replace(" ", "_", $filename);
+            $response = new Response($test2);
+            $response->headers->set('Content-Type', 'text/csv; charset=utf-8');
+            $response->headers->set('Content-Disposition',"attachment; filename=$filename");
+
+            return $response;
     }
 }

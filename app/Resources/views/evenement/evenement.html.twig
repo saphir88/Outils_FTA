@@ -3,7 +3,7 @@
 
 
 {% block body %}
-    {% if event is defined %}
+    {% if event is not null %}
         {% for label, messages in app.flashes %}
             {% for message in messages %}
                 <div class="flash-{{ label }}">
