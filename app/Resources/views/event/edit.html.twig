@@ -21,6 +21,10 @@
             </div>
         </div>
     </div>
+    <form method="POST" action="{{ path('participant_extraction') }}">
+        <input name="event" type="hidden" value="{{ event.id }}">
+        <input class="btn btn-info" type="submit" value="extract">
+    </form>
     <style>
         .event{background-color: darkgrey;}
     </style>
