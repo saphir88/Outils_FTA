@@ -12,6 +12,7 @@
 namespace AppBundle\Controller;
 
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -24,9 +25,14 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 //use AppBundle\Entity\Communaute;
 //use AppBundle\Service\InscriptionMailer;
 
-
+/**
+ * Class RegistrationController
+ *
+ * @Route("/inscription")
+ */
 class RegistrationController extends BaseController
 {
+
     private $eventDispatcher;
     private $formFactory;
     private $userManager;
@@ -34,6 +40,8 @@ class RegistrationController extends BaseController
 
     public function __construct()
     {
+        dump($this->get('fos_user.registration.form.factory')); die;
+        parent::__construct();
         $this->formFactory = $this->get('fos_user.registration.form.factory');
         $this->userManager = $this->get('fos_user.user_manager');
         $this->eventDispatcher = $this->get('event_dispatcher');
@@ -46,9 +54,10 @@ class RegistrationController extends BaseController
      * @param Request $request
      *
      * @return Response
+     * @Route("/")
      */
     public function registerAction(Request $request)//,InscriptionMailer $InscriptionMailer)
-    {
+    { die;
         //$communaute = new Communaute();
         $user = $this->userManager->createUser();
         $user->setEnabled(true);

@@ -21,14 +21,13 @@ use AppBundle\Service\Mailer;
 
 /**
  * Communaute controller.
- * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
  * @Route("communaute")
  */
 class CommunauteController extends Controller
 {
     /**
      * Lists all communaute entities.
-     *
+     * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
      * @Route("/modif", name="communaute_index")
      * @Method("GET")
      */
@@ -46,6 +45,8 @@ class CommunauteController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
+
      * Creates a new communaute entity.
      * @Route("/new", name="communaute_new")
      * @Method({"GET", "POST"})
@@ -74,6 +75,7 @@ class CommunauteController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
      * Finds and displays a communaute entity.
      * @Route("/{id}", name="communaute_show")
      * @Method("GET")
@@ -90,7 +92,8 @@ class CommunauteController extends Controller
 
     /**
      * Displays a form to edit an existing communaute entity.
-     *
+     * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
+
      * @Route("/{id}/edit", name="communaute_edit")
      * @Method({"GET", "POST"})
      */

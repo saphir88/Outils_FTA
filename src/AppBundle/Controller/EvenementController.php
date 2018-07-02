@@ -29,13 +29,20 @@ class EvenementController extends Controller
         $form = $this->createForm('AppBundle\Form\ParticipantType', $participant);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
             $participant->setEvent($event[0]);
             $em = $this->getDoctrine()->getManager();
+            $participant->setNom(ucfirst(strtolower($participant->getNom())));
+            $participant->setPrenom(ucfirst(strtolower($participant->getPrenom())));
             $em->persist($participant);
             $em->flush();
 
             return $this->redirectToRoute('evenement');
+        }
+        dump($event);
+        if($event == []){
+            return $this->render('evenement/evenement.html.twig');
         }
 
         $date = $event[0]->getDate();
@@ -77,7 +84,7 @@ class EvenementController extends Controller
             $this->getDoctrine()->getManager()->getRepository('AppBundle:Participation')->addVote($id);
             $this->addFlash('success', 'Votre vote a bien été pris en compte !');
         } else {
-            $this->addFlash('success', 'Vous avez déjà voté pour cette Startup !');
+            $this->addFlash('error', "Vous avez déjà voté pour cette Startup !");
         }
 
         return $this->redirectToRoute('evenement');
@@ -97,12 +104,11 @@ class EvenementController extends Controller
             $eventA = $this->getDoctrine()->getManager()->getRepository(Event::class)->find($eventId);
 
             $participant->setEvent($eventA);
-            dump($participant);die;
             $em = $this->getDoctrine()->getManager();
             $em->persist($participant);
             $em->flush();
 
-            $this->addFlash('sucess', 'Inscription bien prise en compte.');
+            $this->addFlash("success", "Inscription bien prise en compte.");
 
             return $this->redirectToRoute('evenement');
 
