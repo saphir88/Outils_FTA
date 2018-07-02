@@ -3,7 +3,7 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <h1 class="col-lg-offset-5">Participants inscrit</h1>
+            <h1 class="text-center">Participants inscrits à un événement</h1>
             <table class="table">
                 <thead>
                 <tr>
@@ -25,7 +25,7 @@
                         <td>{{ participant.societe }}</td>
                         <td>
                             {{ form_start(delForms[loop.index0]) }}
-                            <input class="btn btn-danger" type="submit" value="Delete">
+                            <input class="btn btn-danger" type="submit" value="Supprimer">
                             {{ form_end(delForms[loop.index0]) }}
                         </td>
                     </tr>

@@ -4,21 +4,23 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-                <h2 class="">Startup(s) en attente d'une validation</h2>
-            </div>
+            <h2 class="text-center">Startup(s) en attente d'une validation</h2>
         </div>
         <div class="row">
-            {% for  communaute in communautes %}
-                <div data-Type="{{ communaute.categorie }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
-                    <div class="startUP">
-                        <img src="/uploads/{{ communaute.filename }}" style="width: 200px">
-                        <h1 class="nomStartUp">{{ communaute.nomStartup }}</h1>
-                       {# <center><img class="logo" src="{{ asset('uploads/img/') }}{{ communaute.logo }}"></center>#}
-                        <a class="btn btn-primary" href="{{ path('validation_show', { 'id': communaute.id }) }}">Voir</a>
+            {% if communautes != [] %}
+                {% for communaute in communautes %}
+                    <div data-Type="{{ communaute.categorie }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
+                        <div class="startUP">
+                            <img src="/uploads/{{ communaute.filename }}" style="width: 200px">
+                            <h1 class="nomStartUp">{{ communaute.nomStartup }}</h1>
+                            {# <center><img class="logo" src="{{ asset('uploads/img/') }}{{ communaute.logo }}"></center>#}
+                            <a class="btn btn-primary" href="{{ path('validation_show', { 'id': communaute.id }) }}">Voir</a>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+                <p class="text-center">Il n'y a aucune startup en attente de validation pour le moment.</p>
+            {% endif %}
         </div>
     </div>
 
