@@ -37,20 +37,21 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestion StartUp<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ path('validation_index') }}">Validation</a></li>
-                            <li><a href="{{ path('communaute_index') }}">Modifier les StartUp</a></li>
+                            <li><a href="{{ path('communaute_index') }}">Modifier les Startups</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ path('validation_index') }}">Validation(s)</a></li>
+                            <li><a href="{{ path('startup_extraction') }}">Extraction des Startups</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Evenement<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ path('event_index') }}">Crée un Evenement</a></li>
+                            <li><a href="{{ path('event_index') }}">Gestion des Evenements</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="{{ path('participation_index') }}">StartUp inscrit</a></li>
-                            <li><a href="{{ path('participant_index') }}">Investiseur inscrit</a></li>
+                            <li><a href="{{ path('participation_index') }}">Startups inscrites</a></li>
+                            <li><a href="{{ path('participant_index') }}">Investisseurs inscrits</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ path('startup_extraction') }}" >Extraction CSV</a></li>
                     <li><a href="{{ path('gestion_admin') }}" >Mon Compte</a></li>
                     <li><a href="/logout">Deconnexion</a></li>
                 </ul>
