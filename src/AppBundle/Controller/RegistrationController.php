@@ -10,6 +10,7 @@
  */
 namespace AppBundle\Controller;
 
+
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
@@ -22,8 +23,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 
+use AppBundle\Entity\Communaute;
 
-use AppBundle\Entity\Mailer;
 
 
 /**
@@ -41,7 +42,6 @@ class RegistrationController extends BaseController
     public function registerAction(Request $request)
     {
 
-
         /** @var $formFactory FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
         /** @var $userManager UserManagerInterface */
@@ -50,6 +50,7 @@ class RegistrationController extends BaseController
         $dispatcher = $this->get('event_dispatcher');
 
         $inscriptionMailer = $this->get('AppBundle\Service\Mailer');
+
 
         $user = $userManager->createUser();
         $user->setEnabled(true);
@@ -70,13 +71,10 @@ class RegistrationController extends BaseController
             if ($form->isValid()) {
                 $event = new FormEvent($form, $request);
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-
                 $userManager->updateUser($user);
 
                 $inscriptionMailer->sendEmailInscription();
-                /*****************************************************
-                 * Add new functionality (e.g. log the registration) *
-                 *****************************************************/
+
                 $this->container->get('logger')->info(
                     sprintf("New user registration: %s", $user)
                 );
@@ -85,8 +83,9 @@ class RegistrationController extends BaseController
                     $url = $this->generateUrl('fos_user_registration_confirmed');
                     $response = new RedirectResponse($url);
                 }
-
+                
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+
 
                 return $response;
             }
