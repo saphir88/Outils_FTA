@@ -72,6 +72,28 @@ class Participant
      */
     private $societe;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="statut", type="string", length=255)
+     */
+    private $statut;
+
+    /**
+     * @return string
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * @param string $statut
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+    }
 
     /**
      * Get id.

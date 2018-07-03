@@ -55,15 +55,20 @@
                 <div class="col-lg-offset-1 col-lg-6 ">
                     <div class="panel panel-info">
                         <div class="panel-heading">
+                            <p style="float: left">Startups participantes</p><span style="text-align: right"><p><i class="vote glyphicon glyphicon-question-sign"data-toggle="popover" title="Une startup inscrite à l’événement retient
+particulièrement votre attention et votre intérêt?
+N’hésitez pas à voter pour elle!"></i></p></span>
+                            {% if is_granted("ROLE_ADMIN") %}
 
-                            <p style="float: left">Startups participantes</p><span style="text-align: right"><p><i class="vote glyphicon glyphicon-question-sign"data-toggle="popover" title="Une startup inscrite à l’événement retient particulièrement votre attention et votre intérêt? N’hésitez pas à voter pour elle!"></i></p></span>
-                            {% if is_granted("ROLE_USER") %}
-                                <form method="POST" action="{{ path ('inscriptionStartUp') }}">
-                                    <input name="eventId" type="hidden" value="{{ event.0.id }}">
-                                    <button type="submit" class="btn btn-info btn-lg" >Inscription Startup</button>
-                                </form>
                             {% else %}
-                                <a href="/login"><button type="button" class="btn btn-info btn-lg" >Inscription Startup</button></a>
+                                {% if is_granted("ROLE_USER") %}
+                                    <form method="POST" action="{{ path ('inscriptionStartUp') }}">
+                                        <input name="eventId" type="hidden" value="{{ event.0.id }}">
+                                        <button type="submit" class="btn btn-info btn-lg" >Inscription Startup</button>
+                                    </form>
+                                {% else %}
+                                    <a href="/login"><button type="button" class="btn btn-info btn-lg" >Inscription Startup</button></a>
+                                {% endif %}
                             {% endif %}
                         </div>
                         <div class="panel-body">
@@ -98,32 +103,33 @@
 
                             {% else %}
                                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Inscription Participant</button>
-
-                                <div class="modal fade" id="myModal" role="dialog">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-body">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title">Inscription Participant</h4>
-                                                {{ form_start(form) }}
-                                                {{ form_rest(form) }}
-                                                <input name="eventId" type="hidden" value="{{ event.0.id }}">
-                                                <button type="submit" class="btn btn-info btn-lg" >inscription participant</button>
-                                                {{ form_end(form) }}
-                                            </div>
+                            {% endif %}
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Inscription Participant</h4>
+                                            {{ form_start(form) }}
+                                            {{ form_rest(form) }}
+                                            <input name="eventId" type="hidden" value="{{ event.0.id }}">
+                                            <button type="submit" class="btn btn-info btn-lg" >inscription participant</button>
+                                            {{ form_end(form) }}
                                         </div>
                                     </div>
                                 </div>
-                            {% endif %}
+                            </div>
                         </div>
-                        <div class="panel-body ">
+                        <div class="panel-body">
                             {% for inscrit in participantInscrit %}
-                                <div class="container-fluid participant_startup_box">
-                                    <div class="col-lg-11 event-description">
-                                        <p>{{ inscrit.nom }} {{ inscrit.prenom }} / {{ inscrit.societe }}</p>
-                                        <p> {{ inscrit.mail }}</p>
+                                {% if inscrit.statut =='Investisseur' %}
+                                    <div class="container-fluid participant_startup_box">
+                                        <div class="col-lg-11 event-description">
+                                            <p>{{ inscrit.nom }} {{ inscrit.prenom }} / {{ inscrit.societe }}</p>
+                                            <p> {{ inscrit.mail }}</p>
+                                        </div>
                                     </div>
-                                </div>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>
