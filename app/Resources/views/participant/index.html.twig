@@ -12,6 +12,7 @@
                     <th>Nom</th>
                     <th>Mail</th>
                     <th>Societe</th>
+                    <th>Statut</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -23,6 +24,7 @@
                         <td>{{ participant.nom }}</td>
                         <td>{{ participant.mail }}</td>
                         <td>{{ participant.societe }}</td>
+                        <td>{{ participant.statut }}</td>
                         <td>
                             {{ form_start(delForms[loop.index0]) }}
                             <input class="btn btn-danger" type="submit" value="Supprimer">
