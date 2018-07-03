@@ -17,6 +17,10 @@
                     <input name="event" type="hidden" value="{{ event.id }}">
                     <input class="btn btn-info" type="submit" value="Extraire la liste des participants">
                 </form>
+                <form method="POST" action="{{ path('investisseur_extraction') }}">
+                    <input name="event" type="hidden" value="{{ event.id }}">
+                    <input class="btn btn-info" type="submit" value="Extraire la liste des investisseurs">
+                </form>
 
                 <a class="btn btn-primary" href="{{ path('event_index') }}">Retour à la liste des événements</a>
                 {{ form_start(delete_form) }}

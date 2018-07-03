@@ -55,8 +55,9 @@
                 <div class="col-lg-offset-1 col-lg-6 ">
                     <div class="panel panel-info">
                         <div class="panel-heading">
-
-                            <p style="float: left">Startups participantes</p><span style="text-align: right"><p><i class="vote glyphicon glyphicon-question-sign"data-toggle="popover" title="Une startup inscrite à l’événement retient particulièrement votre attention et votre intérêt? N’hésitez pas à voter pour elle!"></i></p></span>
+                            <p style="float: left">Startups participantes</p><span style="text-align: right"><p><i class="vote glyphicon glyphicon-question-sign"data-toggle="popover" title="Une startup inscrite à l’événement retient
+particulièrement votre attention et votre intérêt?
+N’hésitez pas à voter pour elle!"></i></p></span>
                             {% if is_granted("ROLE_USER") %}
                                 <form method="POST" action="{{ path ('inscriptionStartUp') }}">
                                     <input name="eventId" type="hidden" value="{{ event.0.id }}">
@@ -116,14 +117,16 @@
                                 </div>
                             {% endif %}
                         </div>
-                        <div class="panel-body ">
+                        <div class="panel-body">
                             {% for inscrit in participantInscrit %}
+                                {% if inscrit.statut =='Investisseur' %}
                                 <div class="container-fluid participant_startup_box">
                                     <div class="col-lg-11 event-description">
                                         <p>{{ inscrit.nom }} {{ inscrit.prenom }} / {{ inscrit.societe }}</p>
                                         <p> {{ inscrit.mail }}</p>
                                     </div>
                                 </div>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>
