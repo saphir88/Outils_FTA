@@ -50,7 +50,8 @@ class RegistrationController extends BaseController
         $dispatcher = $this->get('event_dispatcher');
 
         $inscriptionMailer = $this->get('AppBundle\Service\Mailer');
-
+        $youtube = $this->get('AppBundle\Service\Youtube');
+        $communaute = new Communaute();
 
         $user = $userManager->createUser();
         $user->setEnabled(true);
@@ -74,6 +75,11 @@ class RegistrationController extends BaseController
                 $userManager->updateUser($user);
 
                 $inscriptionMailer->sendEmailInscription();
+
+                if($communaute->getVideo() !== null){
+                    $replace = $youtube->replaceVideo($communaute->getVideo());
+                    $communaute->setVideo($replace);
+                }
 
                 $this->container->get('logger')->info(
                     sprintf("New user registration: %s", $user)
