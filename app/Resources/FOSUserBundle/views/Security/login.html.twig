@@ -3,49 +3,51 @@
 
 
     {% block fos_user_content %}
-        <div>
-            {% if error %}
-                <div class="container alert alert-danger">
-                    <span class="glyphicon glyphicon-warning-sign"></span> {{ error.messageKey|trans(error.messageData, 'security') }}
-                </div>
-            {% endif %}
-        </div>
         <div class="container">
-            <div class=" login col-lg-4 col-lg-offset-4">
-                <div class="col-lg-12 ">
-                    <form action="{{ path("fos_user_security_check") }}" method="post">
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
-                        <div class="formgroup">
-                            <label for="username">{{ 'security.login.username'|trans }}</label>
-                            <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+            <div class="row">
+                    {% if error %}
+                        <div class="col-lg-4 col-lg-offset-4 alert alert-danger">
+                            <span class="glyphicon glyphicon-warning-sign"></span> {{ error.messageKey|trans(error.messageData, 'security') }}
                         </div>
+                    {% endif %}
+            </div>
 
-                        <div class="formgroup">
-                            <label for="password">{{ 'security.login.password'|trans }}</label>
-                            <input class="form-control" type="password" id="password" name="_password" required="required" />
-                            <div>
-                                <div class="checkbox">
-                                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                                    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-                                </div>
-                                <p><input class="btn btn-success" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" /></p>
-                                <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié</a>
+            <div class="row">
+                <div class=" login col-lg-4 col-lg-offset-4">
+                    <div class="col-lg-12 ">
+                        <form action="{{ path("fos_user_security_check") }}" method="post">
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                            <div class="formgroup">
+                                <label for="username">{{ 'security.login.username'|trans }}</label>
+                                <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
                             </div>
 
-                        </div>
-                    </form>
+                            <div class="formgroup">
+                                <label for="password">{{ 'security.login.password'|trans }}</label>
+                                <input class="form-control" type="password" id="password" name="_password" required="required" />
+                                <div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                                        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                                    </div>
+                                    <p><input class="btn btn-success" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" /></p>
+                                    <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié</a>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+
         <style>
             .login{
                 border: 1px solid black;
                 border-radius: 10px;
                 padding-bottom: 10px;
                 padding-top: 10px;
-            }
-            .container{
                 text-align: center;
             }
         </style>

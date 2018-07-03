@@ -3,12 +3,14 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div>
-                <h1>Modifications bien prise en compte</h1>
+            <div class="col-lg-offset-4">
+                <h3>Modifications bien prise en compte</h3>
+            </div>
+            <div class="col-lg-offset-5">
                 {% if is_granted("ROLE_ADMIN") %}
-                    <a href="{{ path('admin') }}" class="btn btn-primary">Retour admin</a>
+                    <a href="{{ path('admin') }}" class="btn btn-primary">Retourner à l'administration.</a>
                 {% elseif is_granted("ROLE_USER") %}
-                    <a href="{{ path('compte') }}" class="btn btn-primary">Retour user</a>
+                    <a href="{{ path('compte') }}" class="btn btn-primary">Retourner à mon profil.</a>
                 {% endif %}
             </div>
         </div>

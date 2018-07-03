@@ -59,7 +59,7 @@ class CompteController extends Controller
 
             $em->flush();
 
-            $this->addFlash('sucess', 'Modifications bien prise en compte.');
+            $this->addFlash('success', 'Modifications bien prise en compte.');
 
             return $this->redirectToRoute('compte');
         }

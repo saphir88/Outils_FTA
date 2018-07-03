@@ -2,13 +2,19 @@
 
 {% block body %}
     <div class="container">
-        {% for label, messages in app.flashes %}
-            {% for message in messages %}
-                <div class="flash-{{ label }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
+
+
+        {% for message in app.flashes('success') %}
+            <div class="col-lg-offset-3 col-lg-6 flash-notice alert alert-success">
+                <span class="glyphicon glyphicon-ok" ></span> {{ message }}
+            </div>
         {% endfor %}
+        {% for message in app.flashes('error') %}
+            <div class="col-lg-offset-3 col-lg-6 flash-notice alert alert-danger">
+                <span class='glyphicon glyphicon-warning-sign' aria-hidden='true'></span>  {{ message }}
+            </div>
+        {% endfor %}
+
     </div>
     <div id="form" class="container jumbotron">
         <img class="logo" src="/uploads/{{ communaute.fileName }}" style="width: 150px">
