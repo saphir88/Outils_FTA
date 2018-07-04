@@ -50,10 +50,7 @@ $Rose: rgb(241, 78, 182);
 
 
 /*style de la page presentation*/
-.test{
-  margin-top: 20px;
-  border: 1px solid black;
-}
+
 .select{
   margin-bottom: 20px;
 }
@@ -129,10 +126,19 @@ h2{
 }
 
 .participant_startup_box {
-  display: block;
+
   background-color: #eeeeee;
   margin-bottom: 10px;
-  margin-top: 10px;
+
+}
+
+.investiseur-casse{
+  background-color: #eeeeee;
+  padding: 5px;
+  margin: 15px;
+  border: 1px solid black;
+
+
 }
 
 
