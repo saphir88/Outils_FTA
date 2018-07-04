@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Event;
+use Proxies\__CG__\AppBundle\Entity\Communaute;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -94,24 +95,14 @@ class EvenementController extends Controller
      */
     public function inscription()
     {
-        die;
         $em = $this->getDoctrine()->getManager();
         $event = $em->getRepository('AppBundle:Event')->findLastEvent();
 
 
         $eventId = $request->request->get('eventId');
         $eventA = $this->getDoctrine()->getManager()->getRepository(Event::class)->find($eventId);
-
-        $participant->setEvent($eventA);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($participant);
-        $em->flush();
-
-        $this->addFlash("success", "Inscription bien prise en compte.");
-
-        return $this->redirectToRoute('evenement');
-
     }
+
 
     /**
      * @return \Symfony\Component\HttpFoundation\Response

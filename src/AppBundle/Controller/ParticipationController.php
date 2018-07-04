@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Service\Mailer;
 
 /**
  * Participation controller.
@@ -43,10 +44,9 @@ class ParticipationController extends Controller
      * @Route("/", name="inscriptionStartUp")
      * @Method("POST")
      */
-    public function inscriptionStartUpAction(Request $request)
+    public function inscriptionStartUpAction(Request $request, Mailer $mailer)
     {
         $communaute = $this->getUser()->getCommunaute();
-
         $validation = $communaute->isValidation();
 
         if($validation == '1') {
@@ -66,6 +66,9 @@ class ParticipationController extends Controller
                 $p->setNbVote('0');
 
                 $em = $this->getDoctrine()->getManager();
+
+                $mailer->sendEmailEvenement($communaute->getMail(),$event->getDate(),$event->getTitre(),$event->getLocalisation());
+
                 $em->persist($p);
                 $em->flush();
 
