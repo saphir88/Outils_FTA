@@ -40,7 +40,7 @@ class EvenementController extends Controller
 
             return $this->redirectToRoute('evenement');
         }
-        dump($event);
+
         if($event == []){
             return $this->render('evenement/evenement.html.twig');
         }
