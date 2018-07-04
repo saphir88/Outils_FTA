@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Event;
+use Proxies\__CG__\AppBundle\Entity\Communaute;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -96,6 +97,7 @@ class EvenementController extends Controller
      */
     public function inscription()
     {
+
         $em = $this->getDoctrine()->getManager();
         $event = $em->getRepository('AppBundle:Event')->findLastEvent();
 
@@ -104,6 +106,9 @@ class EvenementController extends Controller
             $eventA = $this->getDoctrine()->getManager()->getRepository(Event::class)->find($eventId);
 
             $participant->setEvent($eventA);
+
+            //$mailer->sendEmailEvenement($communaute->getMail(),$events->getTitre(),$events->getDate(),$events->getLocalisation());
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($participant);
             $em->flush();
