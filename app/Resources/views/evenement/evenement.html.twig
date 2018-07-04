@@ -58,7 +58,6 @@
 particulièrement votre attention et votre intérêt?
 N’hésitez pas à voter pour elle!"></i></p></span>
                             {% if event.date < today %}
-                                >>>>>>> vue
                             {% else %}
                                 {% if is_granted("ROLE_ADMIN") %}
                                 {% else %}
@@ -115,64 +114,65 @@ N’hésitez pas à voter pour elle!"></i> </h4>
                                     {% endif %}
 
                                 {% endif %}
-                                <div class="modal fade" id="myModal" role="dialog">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-body">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title">Inscription Participant</h4>
-                                                {{ form_start(form) }}
-                                                {{ form_rest(form) }}
-                                                <input name="eventId" type="hidden" value="{{ event.id }}">
-                                                <button type="submit" class="btn btn-info btn-lg" >inscription participant</button>
-                                                {{ form_end(form) }}
-                                            </div>
+                            </div>
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Inscription Participant</h4>
+                                            {{ form_start(form) }}
+                                            {{ form_rest(form) }}
+                                            <input name="eventId" type="hidden" value="{{ event.id }}">
+                                            <button type="submit" class="btn btn-info btn-lg" >inscription participant</button>
+                                            {{ form_end(form) }}
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="container-fluid">
-                                    <div class="col-lg-12">
-                                        <div class="col-lg-6 ">
-                                            <p>investiseur</p>
-                                            <div class="row ">
-                                                {% for inscrit in participantInscrit %}
-                                                    {% if inscrit.statut =='Investisseur' %}
-                                                        <div class=" investiseur-casse">
-                                                            <p>{{ inscrit.nom }}  </p>
-                                                            <p>{{ inscrit.prenom }}</p>
-                                                            <p>{{ inscrit.societe }}</p>
-                                                            <p>{{ inscrit.mail }}</p>
-                                                        </div>
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </div>
+                            <div class="container-fluid">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6 ">
+                                        <p>investiseur</p>
+                                        <div class="row ">
+                                            {% for inscrit in participantInscrit %}
+                                                {% if inscrit.statut =='Investisseur' %}
+                                                    <div class=" investiseur-casse">
+                                                        <p>{{ inscrit.nom }}  </p>
+                                                        <p>{{ inscrit.prenom }}</p>
+                                                        <p>{{ inscrit.societe }}</p>
+                                                        <p>{{ inscrit.mail }}</p>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
                                         </div>
+                                    </div>
 
-                                        <div class="col-lg-6">
-                                            <p>Visiteur</p>
-                                            <div class="row ">
-                                                {% for inscrit in participantInscrit %}
-                                                    {% if inscrit.statut =='Visiteur' %}
-                                                        <div class=" investiseur-casse">
-                                                            <p>{{ inscrit.nom }}  </p>
-                                                            <p>{{ inscrit.prenom }}</p>
-                                                            <p>{{ inscrit.mail }}</p>
+                                    <div class="col-lg-6">
+                                        <p>Visiteur</p>
+                                        <div class="row ">
+                                            {% for inscrit in participantInscrit %}
+                                                {% if inscrit.statut =='Visiteur' %}
+                                                    <div class=" investiseur-casse">
+                                                        <p>{{ inscrit.nom }}  </p>
+                                                        <p>{{ inscrit.prenom }}</p>
+                                                        <p>{{ inscrit.mail }}</p>
 
-                                                        </div>
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </div>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
                                         </div>
-
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
+
+
                     </div>
                 </div>
+            </div>
+            </div>
 
         </section>
     {% else %}
