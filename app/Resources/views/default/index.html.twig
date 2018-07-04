@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <center><img class="imgTete" src="{{ asset ('uploads/img/French-tech-horizontal1.jpg') }}"></center>
+    <center><img class="imgTete" style="width: 200px; height: 200px;" src="{{ asset ('uploads/img/FTA.png') }}"></center>
 
     <div class="container section1">
         <div class="row">
@@ -14,12 +14,11 @@
         <div class="row paragraphe">
             <div class="col-lg-10 col-lg-offset-1 contourText">
                 <p class="text">
-                    Grâce au formulaire proposé par le site de la French Tech, les startups Alsaciennes pourront<br> s'enregistrer en renseignant certaines informations, elles pourront être géré dans leur espace personnelle.
-                    L'ajout de photo et vidéo sera à remplir dans l'espace du compte.<br>
+                    Grâce au formulaire proposé par le site de la French Tech Alsace les startups de la communautés peuvent
+                    s’enregistrer en renseignant leurs informations qui sont gérées dans leur espace
                     <br>
-                    Elles seront visibles dans la page présentation et seront triées grace à un filtre.
+                    “<a href="{{ path('compte') }}">Mon Compte</a>”
 
-                    <a href="/register">Inscription</a>
                 </p>
             </div>
         </div>

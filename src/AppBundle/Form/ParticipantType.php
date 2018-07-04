@@ -16,15 +16,15 @@ class ParticipantType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('prenom', TextType::class, ['label' => 'Prénom* :'])
-            ->add('nom', TextType::class, ['label' => 'Nom* :'])
+        $builder->add('prenom', TextType::class, array ('attr' => array('maxlength' => 15),'label' => 'Prénom* :'))
+            ->add('nom', TextType::class, array ('attr' => array('maxlength' => 15),'label' => 'Nom* :'))
             ->add('mail', EmailType::class, ['label' => 'Mail* :'])
             ->add('statut', ChoiceType::class, array('label'=>'Statut* :',
                 'choices'  => array(
                     'Visiteur' => 'Visiteur',
                     'Investisseur' => 'Investisseur',
                 ),'placeholder' => 'Choisissez votre statut'))
-            ->add('societe', TextType::class, ['required' => false, 'label' => 'Société :']);
+            ->add('societe', TextType::class, array ('attr' => array('maxlength' => 20),'required' => false, 'label' => 'Société :'));
 
     }/**
      * {@inheritdoc}
