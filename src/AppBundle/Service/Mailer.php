@@ -134,4 +134,20 @@ class Mailer
 
         $this->mailer->send($message);
     }
+
+    public function sendEmailEvenement($email,$date,$titre,$lieu)
+    {
+        $body = $this->templating->render('email/evenementMail.html.twig',[
+            'titre' => $titre,
+            'date' => $date,
+            'lieu' => $lieu,
+    ]);
+
+        $message = (new \Swift_Message('Rappel d\'evenement'))
+            ->setFrom('axelfertinel@gmail.com')
+            ->setTo($email)
+            ->setBody($body, 'text/html');
+
+        $this->mailer->send($message);
+    }
 }
