@@ -49,7 +49,6 @@ class ParticipantController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            die;
             $em = $this->getDoctrine()->getManager();
             $em->persist($participant);
             $em->flush();

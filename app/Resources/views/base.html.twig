@@ -28,8 +28,15 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/presentation">Presentation </a></li>
-                <li><a href="{{ path('evenement') }}">Evenement</a></li>
+                <li><a href="{{ path('start_ups') }}">Liste des Startups </a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Évenements<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('event_to_come') }}">Évenements à venir</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{ path('event_archive') }}">Évenements passés</a></li>
+                    </ul>
+                </li>
                 <li><a href="{{ path('contact_new') }}">Nous Contacter</a></li>
             </ul>
             {% if is_granted("ROLE_ADMIN") %}

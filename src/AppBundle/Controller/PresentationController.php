@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Startup controller.
  *
- * @Route("presentation")
+ * @Route("Start_ups")
  */
 class PresentationController extends Controller
 {
     /**
-     * @Route("/", name="presentation")
+     * @Route("/", name="start_ups")
      */
     public function indexAction(Request $request)
     {

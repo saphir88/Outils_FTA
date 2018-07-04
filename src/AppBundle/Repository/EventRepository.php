@@ -17,5 +17,15 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 
+    public function findAllEventPast()
+    {
+        return $this->findBy(array(), array('date' => 'DESC'));
+    }
+
+    public function findAllEventToCome()
+    {
+        return $this->findBy(array(), array('date' => 'DESC'));
+    }
+
 
 }
