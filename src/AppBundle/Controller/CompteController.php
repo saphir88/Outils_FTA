@@ -32,9 +32,7 @@ class CompteController extends Controller
     {
         $id = $this->getUser()->getId();
         $em = $this->getDoctrine()->getManager();
-
         $user = $em->getRepository('AppBundle:User')->find($id);
-
         $communaute = $user->getCommunaute();
 
         $deleteForm = $this->createDeleteForm($communaute);
@@ -48,15 +46,8 @@ class CompteController extends Controller
                 $communaute->setVideo($replace);
             }
 
-            /*           foreach($communaute->getImages() as $Image)
-                       {
-                           $Image->setCommunaute($communaute);
-                       }
-           */
             $em = $this->getDoctrine()->getManager();
             $em->persist($communaute);
-
-
             $em->flush();
 
             $this->addFlash('success', 'Modifications bien prise en compte.');
