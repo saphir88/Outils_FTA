@@ -134,12 +134,14 @@ N’hésitez pas à voter pour elle!"></i> </h4>
                                         <div class="row ">
                                             {% for inscrit in participantInscrit %}
                                                 {% if inscrit.statut =='Investisseur' %}
-                                                    <div class=" investiseur-casse">
-                                                        <p>{{ inscrit.nom }}  </p>
-                                                        <p>{{ inscrit.prenom }}</p>
-                                                        <p>{{ inscrit.societe }}</p>
-                                                        <p>{{ inscrit.mail }}</p>
-                                                    </div>
+                                                    {% if inscrit.visibilite == 1 %}
+                                                        <div class=" investiseur-casse">
+                                                            <p>{{ inscrit.nom }}  </p>
+                                                            <p>{{ inscrit.prenom }}</p>
+                                                            <p>{{ inscrit.societe }}</p>
+                                                            <p>{{ inscrit.mail }}</p>
+                                                        </div>
+                                                    {% endif %}
                                                 {% endif %}
                                             {% endfor %}
                                         </div>
@@ -150,11 +152,13 @@ N’hésitez pas à voter pour elle!"></i> </h4>
                                         <div class="row ">
                                             {% for inscrit in participantInscrit %}
                                                 {% if inscrit.statut =='Visiteur' %}
-                                                    <div class=" investiseur-casse">
-                                                        <p>{{ inscrit.nom }}  </p>
-                                                        <p>{{ inscrit.prenom }}</p>
-                                                        <p>{{ inscrit.mail }}</p>
-                                                    </div>
+                                                    {% if inscrit.visibilite == 1 %}
+                                                        <div class=" investiseur-casse">
+                                                            <p>{{ inscrit.nom }}  </p>
+                                                            <p>{{ inscrit.prenom }}</p>
+                                                            <p>{{ inscrit.mail }}</p>
+                                                        </div>
+                                                    {% endif %}
                                                 {% endif %}
                                             {% endfor %}
                                         </div>
