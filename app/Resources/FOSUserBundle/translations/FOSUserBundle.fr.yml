@@ -1,0 +1,6 @@
+resetting:
+    check_email: |
+        Un message a été envoyé à l'adresse mail associé au compte renseigné. Il contient un lien pour réinitialiser votre mot de passe.
+        Remarque : Vous ne pouvez demander un nouveau mot de passe que toutes les %tokenLifetime% heures.
+
+        Si vous ne recevez pas d'email, vérifiez votre dossier spam ou essayez à nouveau.
