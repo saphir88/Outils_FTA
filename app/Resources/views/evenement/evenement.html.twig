@@ -16,7 +16,6 @@
                     <span class='glyphicon glyphicon-warning-sign' aria-hidden='true'></span>  {{ message }}
                 </div>
             {% endfor %}
-
         </div>
         <section>
             <div class="container-fluid">
@@ -26,7 +25,6 @@
                             <object class="text-center" style="height: 600px;" data="/uploads/{{ event.0.filename }}" type="application/pdf" width="100%" height="800">
                                 lien alternatif : <a href="/uploads/{{ event.0.filename }}">evenement.pdf</a>
                             </object>
-
                             <div class="caption">
                                 <div class="text-center">
                                     <h1>{{ event.0.titre }}</h1>
@@ -127,18 +125,18 @@ N’hésitez pas à voter pour elle!"></i> </h4>
                                 <div class="col-lg-12">
                                     <div class="col-lg-6 ">
                                         <p>investiseur</p>
-                                            <div class="row ">
-                                                    {% for inscrit in participantInscrit %}
-                                                        {% if inscrit.statut =='Investisseur' %}
-                                                            <div class=" investiseur-casse">
-                                                            <p>{{ inscrit.nom }}  </p>
-                                                            <p>{{ inscrit.prenom }}</p>
-                                                            <p>{{ inscrit.societe }}</p>
-                                                            <p>{{ inscrit.mail }}</p>
-                                                            </div>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                            </div>
+                                        <div class="row ">
+                                            {% for inscrit in participantInscrit %}
+                                                {% if inscrit.statut =='Investisseur' %}
+                                                    <div class=" investiseur-casse">
+                                                        <p>{{ inscrit.nom }}  </p>
+                                                        <p>{{ inscrit.prenom }}</p>
+                                                        <p>{{ inscrit.societe }}</p>
+                                                        <p>{{ inscrit.mail }}</p>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
                                     </div>
 
                                     <div class="col-lg-6">
@@ -150,22 +148,17 @@ N’hésitez pas à voter pour elle!"></i> </h4>
                                                         <p>{{ inscrit.nom }}  </p>
                                                         <p>{{ inscrit.prenom }}</p>
                                                         <p>{{ inscrit.mail }}</p>
-
                                                     </div>
                                                 {% endif %}
                                             {% endfor %}
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
     {% else %}
         <div class="container">
@@ -179,9 +172,4 @@ N’hésitez pas à voter pour elle!"></i> </h4>
             $('[data-toggle="popover"]').popover();
         });
     </script>
-    <style>
-
-
-    </style>
-
 {% endblock %}
