@@ -19,12 +19,23 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
 
     public function findAllEventPast()
     {
-        return $this->findBy(array(), array('date' => 'DESC'));
+        $now =  new \DateTime('now');
+
+        return $this->getEntityManager()
+            ->createQuery("SELECT ev FROM AppBundle:Event AS ev WHERE ev.date < :date ")
+            ->setParameter('date', $now)
+            ->getResult();
+
     }
 
     public function findAllEventToCome()
     {
-        return $this->findBy(array(), array('date' => 'DESC'));
+        $now = new \DateTime('now');
+
+        return $this->getEntityManager()
+            ->createQuery("SELECT ev FROM AppBundle:Event AS ev WHERE ev.date > :date ")
+            ->setParameter('date', $now)
+            ->getResult();
     }
 
 

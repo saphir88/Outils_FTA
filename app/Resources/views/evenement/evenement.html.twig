@@ -172,7 +172,16 @@ N’hésitez pas à voter pour elle!"></i> </h4>
         </section>
     {% else %}
         <div class="container">
-            <p style="font-size: 5vh; margin: 15vw;">La FrenchTech Alsace n'a pas mit en ligne d'évenement. Pour de plus amples informations, merci de nous <a href="{{ path('contact_new') }}">contacter.</a></p>
+            <div class="emptyEvent">
+                <div style="font-size: 5vh; margin: 15vw;">L'évènement demandé n'existe pas ou a été supprimé par la FrenchTech Alsace. Merci de vous rendre sur un autre<div class="dropdown">
+                        <span><a>&nbsp;évènement.</a></span>
+                        <div class="dropdown-content">
+                            <a style="font-size: medium" href="{{ path('event_to_come') }}">Évenements à venir</a>
+                            <a role="separator" class="divider"></a>
+                            <a style="font-size: medium" href="{{ path('event_archive') }}">Évenements passés</a>
+                        </div>
+                    </div></div>
+            </div>
         </div>
     {% endif %}
 {% endblock %}

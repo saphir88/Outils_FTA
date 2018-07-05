@@ -104,20 +104,6 @@ class EvenementController extends Controller
         return $this->redirectToRoute('evenement', ["id" => $evenementId]);
     }
 
-    /**
-     *
-     * @Route("/inscription", name="inscription_event")
-     */
-    public function inscription()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $event = $em->getRepository('AppBundle:Event')->findLastEvent();
-
-
-        $eventId = $request->request->get('eventId');
-        $eventA = $this->getDoctrine()->getManager()->getRepository(Event::class)->find($eventId);
-    }
-
 
     /**
      * @return \Symfony\Component\HttpFoundation\Response
@@ -132,12 +118,13 @@ class EvenementController extends Controller
         $events = $em->getRepository('AppBundle:Event')->findAllEventPast();
 
 
-        return $this->render("evenement/archives.html.twig", [
+        return $this->render("evenement/allEvenement.html.twig", [
             "events" => $events,
             "dateNow" => $now,
         ]);
     }
 
+    /*---- Récuperation des évènements passés ----*/
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -151,7 +138,7 @@ class EvenementController extends Controller
         $events = $em->getRepository('AppBundle:Event')->findAllEventToCome();
 
 
-        return $this->render("evenement/eventToCome.html.twig", [
+        return $this->render("evenement/allEvenement.html.twig", [
             "events" => $events,
             "dateNow" => $now,
         ]);

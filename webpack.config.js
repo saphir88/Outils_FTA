@@ -6,8 +6,7 @@ var Encore = require('@symfony/webpack-encore');
         .addEntry('app', './assets/js/app.js')  
         .addEntry('style', './assets/scss/main.scss')
         .addEntry('logo', './assets/css/style.css')
-        .addEntry('Helvetica', './assets/fonts/Helvetica/HelveticaInseratLTStd-Roman.otf')
-        .cleanupOutputBeforeBuild()  
+        .cleanupOutputBeforeBuild()
         .enableBuildNotifications()
         .enableSassLoader();
 
