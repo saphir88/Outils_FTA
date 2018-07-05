@@ -58,7 +58,7 @@ class ParticipationController extends Controller
                 'event' => $eventId,
                 'communaute' => $communauteId
             ])) {
-                $this->addFlash('notice', "Votre Startup est déjà inscrite à cet événement !");
+                $this->addFlash('error', "Votre Startup est déjà inscrite à cet événement !");
             } else {
                 $p = new Participation();
                 $p->setEvent($event);
@@ -76,11 +76,11 @@ class ParticipationController extends Controller
             }
         } else {
 
-            $this->addFlash('notice', "Votre Startup n'a pas encore été validée par l'administrateur.");
+            $this->addFlash('error', "Votre Startup n'a pas encore été validée par l'administrateur.");
 
         }
 
-        return $this->redirectToRoute('evenement');
+        return $this->redirectToRoute('evenement', array('id' => $event->getId()));
         
     }
     /**

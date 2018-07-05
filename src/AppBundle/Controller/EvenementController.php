@@ -39,16 +39,27 @@ class EvenementController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             $participant->setEvent($event);
-            $em = $this->getDoctrine()->getManager();
-            $participant->setNom(ucfirst(strtolower($participant->getNom())));
-            $participant->setPrenom(ucfirst(strtolower($participant->getPrenom())));
+            $mail = $participant->getMail();
 
-            $mailer->sendEmailEvenement($participant->getMail(),$event->getDate(),$event->getTitre(),$event->getLocalisation());
+            if ($this->getDoctrine()->getManager()->getRepository(Participant::class)->findOneBy([
+                'event' => $evenementId,
+                'mail' => $mail
+            ])) {
+                $this->addFlash('error', "Vous êtes déjà inscrit à cet événement !");
+            } else {
+                $em = $this->getDoctrine()->getManager();
+                $participant->setNom(ucfirst(strtolower($participant->getNom())));
+                $participant->setPrenom(ucfirst(strtolower($participant->getPrenom())));
 
-            $em->persist($participant);
-            $em->flush();
+                $mailer->sendEmailEvenement($participant->getMail(), $event->getDate(), $event->getTitre(), $event->getLocalisation());
 
-            return $this->redirectToRoute('evenement', ["id" => $evenementId]);
+                $em->persist($participant);
+                $em->flush();
+
+                $this->addFlash('success', "Votre inscription à cet événement a bien été prise en compte !");
+
+                return $this->redirectToRoute('evenement', ["id" => $evenementId]);
+            }
         }
         /* -------FIN------ */
 
