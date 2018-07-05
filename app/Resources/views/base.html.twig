@@ -44,8 +44,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestion StartUp<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ path('communaute_index') }}">Modifier les Startups</a></li>
-                            <li role="separator" class="divider"></li>
+
                             <li><a href="{{ path('validation_index') }}">Validation(s)</a></li>
                             <li><a href="{{ path('startup_extraction') }}">Extraction des Startups</a></li>
                         </ul>
@@ -59,7 +58,13 @@
                             <li><a href="{{ path('participant_index') }}">Investisseurs inscrits</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ path('gestion_admin') }}" >Mon Compte</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon Compte<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('fos_user_profile_edit') }}">Changer mes informations</a></li>
+                            <li><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/logout">Deconnexion</a></li>
                 </ul>
 
@@ -67,8 +72,17 @@
 
             {% elseif is_granted("ROLE_USER") %}
                 <p class="navbar-text navbar-right"><a href="/logout" class="navbar-link">Deconnexion</a></p>
-
-                <p class="navbar-text navbar-right"><a href="{{ path('compte') }}" class="navbar-link">Mon compte</a></p>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon Compte<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('compte') }}">Ma StartUp</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ path('fos_user_profile_edit') }}">Changer mes informations</a></li>
+                            <li><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></li>
+                        </ul>
+                    </li>
+                </ul>
             {% else %}
                 <p class="navbar-text navbar-right"><a href="/login" class="navbar-link">Connexion</a></p>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}

@@ -48,16 +48,12 @@ class CommunauteType extends AbstractType
                     'IT/ Software / App'=>'IT/ Software / App',
                     'Smartcity'=>'Smartcity',
                     'Sustainability'=>'Sustainability',
-
-
-
-
                 ),'placeholder' => 'Choisissez votre domaine'))
-            ->add('siret', TextType::class, array('required'=> false,'label'=>'SIRET :'))
+            ->add('siret', TextType::class, array('attr' => array('maxlength' => 14),'required'=> false,'label'=>'SIRET :'))
             ->add('adresse', TextType::class, array('label'=>'Adresse* :'))
             ->add('nomContact', TextType::class, array('attr' => array('maxlength' => 15),'label'=>'Nom du contact* :'))
             ->add('mail', EmailType::class, array('label'=>'Email du contact* :'))
-            ->add('telephone', TelType::class, array('label' => 'N° de téléphone du contact* :'))
+            ->add('telephone', TelType::class, array('attr' => array('maxlength' => 10),'label' => 'N° de téléphone du contact* :'))
             ->add('validation', HiddenType::class, ['required' => false])
             ->add('images', CollectionType::class, [
                 'entry_type' => ImagesType::class,
@@ -66,9 +62,6 @@ class CommunauteType extends AbstractType
                 'by_reference' => false
 
             ]);
-
-
-
     }
     /**
      * {@inheritdoc}
@@ -87,6 +80,4 @@ class CommunauteType extends AbstractType
     {
         return 'appbundle_communaute';
     }
-
-
 }

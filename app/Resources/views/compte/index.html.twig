@@ -1,9 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <div class="container">
-
-
         {% for message in app.flashes('success') %}
             <div class="col-lg-offset-3 col-lg-6 flash-notice alert alert-success">
                 <span class="glyphicon glyphicon-ok" ></span> {{ message }}
@@ -14,9 +13,9 @@
                 <span class='glyphicon glyphicon-warning-sign' aria-hidden='true'></span>  {{ message }}
             </div>
         {% endfor %}
-
     </div>
     <div id="form" class="container jumbotron">
+        <h1 class="center"> Ma startUp</h1>
         <img class="logo" src="/uploads/{{ communaute.fileName }}" style="width: 150px">
 
         {{ form_start(edit_form) }}
@@ -69,8 +68,6 @@
 
 
         <div class="container">
-            <a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">Changer mon email</a>
-            <a class="btn btn-primary" href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a>
             <button type="submit" class="btn btn-success">Valider les modifications</button>
             {{ form_end(edit_form) }}
             {{ form_start(delete_form) }}
@@ -81,7 +78,11 @@
 
 
 
-
+<style>
+    .center{
+        text-align: center;
+    }
+</style>
 
 
 {% endblock %}
