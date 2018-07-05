@@ -1,72 +1,103 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        <h1>{{ communaute.nomStartup }}</h1>
 
-        <table>
-            <tbody>
-            <tr>
-                <th>Logo</th>
-                <img src="/uploads/{{ communaute.filename }}" style="width: 200px">
-            </tr>
-            <tr>
-                <th>Description : </th>
-                <td>{{ communaute.description }}</td>
-            </tr>
-            <tr>
-                <th>Video</th>
-                <td>{{ communaute.video }}</td>
-            </tr>
-            <tr>
-                <th>Siteweb</th>
-                <td>{{ communaute.siteWeb }}</td>
-            </tr>
-            <tr>
-                <th>Categorie</th>
-                <td>{{ communaute.categorie }}</td>
-            </tr>
-            <tr>
-                <th>Siret</th>
-                <td>{{ communaute.siret }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ communaute.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Nomcontact</th>
-                <td>{{ communaute.nomContact }}</td>
-            </tr>
-            <tr>
-                <th>Mail</th>
-                <td>{{ communaute.mail }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ communaute.telephone }}</td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="container-fluid">
+        <div class="row col-lg-offset-4">
+            <div class="row col-lg-5  startUpValidation">
 
-        <form action="{{ path('validation_delete') }}" method="POST">
-            <input type="hidden" name="id" value="{{ communaute.id }}">
-            <input type="hidden" name="mail" value="{{ communaute.mail }}">
-            {# <input type="hidden" name="logo" value="{{ communaute.logo }}"> #}
-            <input type="submit" class="btn btn-danger" value="Refuser cette startup">
-        </form>
-
-        <form action="{{ path('validation_validate') }}" method="POST">
-            <input type="hidden" name="id" value="{{ communaute.id }}">
-            <input type="hidden" name="mail" value="{{ communaute.mail }}">
-            <input type="submit" class="btn btn-success" value="Accepter cette startup">
-        </form>
-        <a class="btn btn-primary" href="{{ path('validation_index') }}">Retourner à la liste</a>
-
+                <div class="row col-lg-offset-3">
+                    <h1>{{ communaute.nomStartup }}</h1>
+                    <table>
+                        <tbody >
+                        <tr>
+                            <img  src="/uploads/{{ communaute.filename }}" style="width: 200px">
+                        </tr>
+                        <tr>
+                            <td><a href="{{ communaute.siteWeb }}">Site Web</a></td>
+                        </tr>
+                        <tr>
+                            {% if communaute.video is not null %}
+                            <td><a href="{{ communaute.video }}">Video Youtube</a></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            {% if communaute.ChaineYouTube is not null %}
+                            <td><a href="{{ communaute.ChaineYouTube }}">Chaine Youtube</a> </td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            {% if communaute.linkedin is not null %}
+                            <td><a href="{{ communaute.linkedin }}">Linkedin</a></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            {% if communaute.facebook is not null %}
+                            <td><a href="{{ communaute.facebook }}">Facebook</a></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            {% if communaute.twitter is not null %}
+                            <td><a href="{{ communaute.twitter }}">Twitter</a></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th>Societe</th>
+                            <td>{{ communaute.nomSociete }}</td>
+                        </tr>
+                        <tr>
+                            <th>Domaine</th>
+                            <td>{{ communaute.categorie }}</td>
+                        </tr>
+                        <tr>
+                            <th>Siret</th>
+                            <td>{{ communaute.siret }}</td>
+                        </tr>
+                        <tr>
+                            <th>Adresse</th>
+                            <td>{{ communaute.adresse }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nomcontact</th>
+                            <td>{{ communaute.nomContact }}</td>
+                        </tr>
+                        <tr>
+                            <th>Mail</th>
+                            <td>{{ communaute.mail }}</td>
+                        </tr>
+                        <tr>
+                            <th>Telephone</th>
+                            <td>{{ communaute.telephone }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <form action="{{ path('validation_validate') }}" method="POST">
+                        <input type="hidden" name="id" value="{{ communaute.id }}">
+                        <input type="hidden" name="mail" value="{{ communaute.mail }}">
+                        <input type="submit" class="btn btn-success" value="Accepter">
+                    </form>
+                    <form action="{{ path('validation_delete') }}" method="POST">
+                        <input type="hidden" name="id" value="{{ communaute.id }}">
+                        <input type="hidden" name="mail" value="{{ communaute.mail }}">
+                        {# <input type="hidden" name="logo" value="{{ communaute.logo }}"> #}
+                        <input type="submit" class="btn btn-danger" value="Refuser">
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+
+
     <style>
         form{
             display: inline-block;
+        }
+        .startUpValidation{
+            border: 1px solid black;
+            border-radius: 5%;
+            padding: 10px;
+            background-color: #cdcdcd;
+            margin: 10px;
         }
     </style>
 {% endblock %}

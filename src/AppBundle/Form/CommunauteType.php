@@ -25,8 +25,8 @@ class CommunauteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nomStartup', TextType::class, array('label'=>'Nom de la startup* :'))
-            ->add('nomSociete', TextType::class, array('required'=> false, 'label'=>'Société:'))
+            ->add('nomStartup', TextType::class, array('attr' => array('maxlength' => 16),'label'=>'Nom de la startup* :'))
+            ->add('nomSociete', TextType::class, array('attr' => array('maxlength' => 19),'required'=> false, 'label'=>'Société:'))
             ->add('file', FileType::class, ['label' => 'Logo* :', 'data_class' => null])
             ->add('description', TextareaType::class, array ('attr' => array('maxlength' => 300),'required'=> false, 'label'=>'Description :'))
             ->add('siteWeb', TextType::class, array('required'=> true, 'label'=>'Site Web* :'))
@@ -55,7 +55,7 @@ class CommunauteType extends AbstractType
                 ),'placeholder' => 'Choisissez votre domaine'))
             ->add('siret', TextType::class, array('required'=> false,'label'=>'SIRET :'))
             ->add('adresse', TextType::class, array('label'=>'Adresse* :'))
-            ->add('nomContact', TextType::class, array('label'=>'Nom du contact* :'))
+            ->add('nomContact', TextType::class, array('attr' => array('maxlength' => 15),'label'=>'Nom du contact* :'))
             ->add('mail', EmailType::class, array('label'=>'Email du contact* :'))
             ->add('telephone', TelType::class, array('label' => 'N° de téléphone du contact* :'))
             ->add('validation', HiddenType::class, ['required' => false])
