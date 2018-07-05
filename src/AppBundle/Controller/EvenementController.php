@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Participant;
+use AppBundle\Service\Mailer;
 
 /**
  * Startup controller.
@@ -21,7 +22,7 @@ class EvenementController extends Controller
      * @Route("/", name="evenement")
      * @Method({"GET", "POST"})
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, Mailer $mailer)
     {
         $evenementId = $request->query->get('id');
         $em = $this->getDoctrine()->getManager();
@@ -41,6 +42,9 @@ class EvenementController extends Controller
             $em = $this->getDoctrine()->getManager();
             $participant->setNom(ucfirst(strtolower($participant->getNom())));
             $participant->setPrenom(ucfirst(strtolower($participant->getPrenom())));
+
+            $mailer->sendEmailEvenement($participant->getMail(),$event->getDate(),$event->getTitre(),$event->getLocalisation());
+
             $em->persist($participant);
             $em->flush();
 
