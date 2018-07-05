@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * User
  *
@@ -34,6 +35,14 @@ class User extends BaseUser
      */
     private $communaute;
 
+
+    /**
+     * @Assert\Regex(
+     *  pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{8,}$/",
+     *  message="Le mot de passe doit contenir au moins 8 caractères dont une majuscule, une minuscule, un chiffre et un caractère spécial."
+     * )
+     */
+    protected $plainPassword;
 
     /**
      * Get id.
@@ -68,5 +77,21 @@ class User extends BaseUser
     public function getCommunaute()
     {
         return $this->communaute;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
     }
 }
