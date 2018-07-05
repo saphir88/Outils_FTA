@@ -48,13 +48,15 @@ class RegistrationController extends BaseController
         $userManager = $this->get('fos_user.user_manager');
         /** @var $dispatcher EventDispatcherInterface */
         $dispatcher = $this->get('event_dispatcher');
-
+        /*Envoie de mail l'ors de l'inscription d'une startup*/
         $inscriptionMailer = $this->get('AppBundle\Service\Mailer');
+        /*appel du service Youtube*/
         $youtube = $this->get('AppBundle\Service\Youtube');
-        $communaute = new Communaute();
+
 
         $user = $userManager->createUser();
         $user->setEnabled(true);
+
 
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
@@ -73,14 +75,18 @@ class RegistrationController extends BaseController
                 $event = new FormEvent($form, $request);
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
                 $userManager->updateUser($user);
-
+                /*mail d'incription*/
                 $inscriptionMailer->sendEmailInscription();
-
+                /*service youtube*/
+                $id = $user->getId();
+                $em = $this->getDoctrine()->getManager();
+                $user = $em->getRepository('AppBundle:User')->find($id);
+                $communaute = $user->getCommunaute();
                 if($communaute->getVideo() !== null){
                     $replace = $youtube->replaceVideo($communaute->getVideo());
                     $communaute->setVideo($replace);
                 }
-
+                /*service youtube*/
                 $this->container->get('logger')->info(
                     sprintf("New user registration: %s", $user)
                 );
