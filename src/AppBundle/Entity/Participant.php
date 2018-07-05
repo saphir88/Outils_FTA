@@ -80,6 +80,29 @@ class Participant
     private $statut;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="visibilite", type="smallint", nullable=true)
+     */
+    private $visibilite;
+
+    /**
+     * @return bool
+     */
+    public function isVisibilite()
+    {
+        return $this->visibilite;
+    }
+
+    /**
+     * @param bool $visibilite
+     */
+    public function setVisibilite($visibilite)
+    {
+        $this->visibilite = $visibilite;
+    }
+
+    /**
      * @return string
      */
     public function getStatut()

@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,7 +25,11 @@ class ParticipantType extends AbstractType
                     'Visiteur' => 'Visiteur',
                     'Investisseur' => 'Investisseur',
                 ),'placeholder' => 'Choisissez votre statut'))
-            ->add('societe', TextType::class, array ('attr' => array('maxlength' => 20),'required' => false, 'label' => 'Société :'));
+            ->add('societe', TextType::class, array ('attr' => array('maxlength' => 20),'required' => false, 'label' => 'Société :'))
+            ->add('visibilite', CheckboxType::class, array(
+                'label'    => 'Déclarer sa participation à l’événement',
+                'required' => false,
+            ));
 
     }/**
      * {@inheritdoc}
