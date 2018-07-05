@@ -23,47 +23,43 @@ class EvenementController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $evenementId = $request->query->get('id');
         $em = $this->getDoctrine()->getManager();
-        $event = $em->getRepository('AppBundle:Event')->findLastEvent();
+        $event = $em->getRepository('AppBundle:Event')->findOneBy(['id' => $evenementId]);
+
+        $today = new \DateTime('now');
+
+        /* -------Inscription des participant------- */
 
         $participant = new participant();
         $form = $this->createForm('AppBundle\Form\ParticipantType', $participant);
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $participant->setEvent($event[0]);
+
+            $participant->setEvent($event);
             $em = $this->getDoctrine()->getManager();
             $participant->setNom(ucfirst(strtolower($participant->getNom())));
             $participant->setPrenom(ucfirst(strtolower($participant->getPrenom())));
             $em->persist($participant);
             $em->flush();
 
-            return $this->redirectToRoute('evenement');
+            return $this->redirectToRoute('evenement', ["id" => $evenementId]);
         }
-        dump($event);
+        /* -------FIN------ */
+
         if($event == []){
             return $this->render('evenement/evenement.html.twig');
         }
 
-        $date = $event[0]->getDate();
-        $jour = $date->format('d-m-Y');
-        $heure = $date->format('H');
-        $minute = $date->format('i');
-        $heure = $heure.'h'.$minute;
-        $date = $date->format('d-m-Y H:i');
-        $event[0]->setDate($date);
-        $eventId=$event[0]->getId();
 
-
-        $participations = $em->getRepository('AppBundle:Participation')->findBy(['event' => $eventId]);
-        $participantInscrit = $em->getRepository('AppBundle:Participant')->findAll();
+        $participations = $em->getRepository('AppBundle:Participation')->findBy(['event' => $evenementId]);
+        $participantInscrit = $em->getRepository('AppBundle:Participant')->findBy(['event' => $evenementId]);
         $nbInscrit = count($participantInscrit);
 
         return $this->render('evenement/evenement.html.twig', array(
             'event' => $event,
-            'jour' => $jour,
-            'heure' => $heure,
+            'today' => $today,
             'form' => $form->createView(),
             'participations' => $participations,
             'participantInscrit' => $participantInscrit,
@@ -79,6 +75,8 @@ class EvenementController extends Controller
      */
     public function Vote()
     {
+        $evenementId = $_POST['eventId'];
+
         $id = $_POST['vote'];
         setcookie($id,"vote_startup",time() + 60*24*3600);
         if(!isset($_COOKIE[$id])) {
@@ -88,7 +86,7 @@ class EvenementController extends Controller
             $this->addFlash('error', "Vous avez déjà voté pour cette Startup !");
         }
 
-        return $this->redirectToRoute('evenement');
+        return $this->redirectToRoute('evenement', ["id" => $evenementId]);
     }
 
     /**
@@ -97,25 +95,52 @@ class EvenementController extends Controller
      */
     public function inscription()
     {
-
         $em = $this->getDoctrine()->getManager();
         $event = $em->getRepository('AppBundle:Event')->findLastEvent();
 
 
-            $eventId = $request->request->get('eventId');
-            $eventA = $this->getDoctrine()->getManager()->getRepository(Event::class)->find($eventId);
-
-            $participant->setEvent($eventA);
-
-            //$mailer->sendEmailEvenement($communaute->getMail(),$events->getTitre(),$events->getDate(),$events->getLocalisation());
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($participant);
-            $em->flush();
-
-            $this->addFlash("success", "Inscription bien prise en compte.");
-
-            return $this->redirectToRoute('evenement');
-
+        $eventId = $request->request->get('eventId');
+        $eventA = $this->getDoctrine()->getManager()->getRepository(Event::class)->find($eventId);
     }
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("/archive" , name="event_archive")
+     * @Method("GET")
+     */
+    public function archives()
+    {
+        $now = new \DateTime('now');
+        $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository('AppBundle:Event')->findAllEventPast();
+
+
+        return $this->render("evenement/archives.html.twig", [
+            "events" => $events,
+            "dateNow" => $now,
+        ]);
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("/prochain", name="event_to_come")
+     * @Method("GET")
+     */
+    public function eventToCome()
+    {
+        $now = new \DateTime('now');
+        $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository('AppBundle:Event')->findAllEventToCome();
+
+
+        return $this->render("evenement/eventToCome.html.twig", [
+            "events" => $events,
+            "dateNow" => $now,
+        ]);
+    }
+
+
 }

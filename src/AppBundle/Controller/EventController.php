@@ -103,7 +103,6 @@ class EventController extends Controller
 
             return $this->redirectToRoute('event_edit', array('id' => $event->getId()));
         }
-        dump($event);
         return $this->render('event/edit.html.twig', array(
             'event' => $event,
             'edit_form' => $editForm->createView(),
