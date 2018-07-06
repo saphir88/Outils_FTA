@@ -8,52 +8,53 @@
         </div>
         <div class="row">
 
-                    <div class="container-fluid">
-                        <div class="row col-lg-offset-2">
-                            {% if communautes != [] %}
-                            {% for communaute in communautes %}
+            <div class="container-fluid">
+                <div class="row col-lg-offset-2">
+                    {% if communautes != [] %}
+                    {% for communaute in communautes %}
 
-                            <div class="row col-lg-3 col-lg-offset-2 startUpValidation">
-                                <h1>{{ communaute.nomStartup }}</h1>
-                                <table>
-                                    <tbody >
-                                    <tr>
-                                        <img  src="/uploads/{{ communaute.filename }}" style="width: 200px">
-                                    </tr>
-                                    <tr>
-                                        <th>Site web</th>
-                                        <td><a href="{{ communaute.siteWeb }}">Site Web</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Societe</th>
-                                        <td>{{ communaute.nomSociete }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Domaine</th>
-                                        <td>{{ communaute.categorie }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Siret</th>
-                                        <td>{{ communaute.siret }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Adresse</th>
-                                        <td>{{ communaute.adresse }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Nomcontact</th>
-                                        <td>{{ communaute.nomContact }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Mail</th>
-                                        <td>{{ communaute.mail }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Telephone</th>
-                                        <td>{{ communaute.telephone }}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                        <div class="row col-lg-3 col-lg-offset-2 startUpValidation">
+                            <h1>{{ communaute.nomStartup }}</h1>
+                            <table>
+                                <tbody >
+                                <tr>
+                                    <img  src="/uploads/{{ communaute.filename }}" style="width: 200px; height: 200px; margin-bottom: 1vw;">
+                                </tr>
+                                <tr>
+                                    <th>Site web</th>
+                                    <td><a href="{{ communaute.siteWeb }}">Site Web</a></td>
+                                </tr>
+                                <tr>
+                                    <th>Societe</th>
+                                    <td>{{ communaute.nomSociete }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Domaine</th>
+                                    <td>{{ communaute.categorie }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Siret</th>
+                                    <td>{{ communaute.siret }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Adresse</th>
+                                    <td>{{ communaute.adresse }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nomcontact</th>
+                                    <td>{{ communaute.nomContact }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Mail</th>
+                                    <td>{{ communaute.mail }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Telephone</th>
+                                    <td>{{ communaute.telephone }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="blockBouton">
                                 <form action="{{ path('validation_validate') }}" method="POST">
                                     <input type="hidden" name="id" value="{{ communaute.id }}">
                                     <input type="hidden" name="mail" value="{{ communaute.mail }}">
@@ -66,14 +67,15 @@
                                     <input type="submit" class="btn btn-danger" value="Refuser">
                                 </form>
                                 <a class="btn btn-primary" href="{{ path('validation_show', { 'id': communaute.id }) }}">Voir plus</a>
-
                             </div>
-                            {% endfor %}
-                            {% else %}
-                        </div>
-                    </div>
 
-                <p class="text-center">Il n'y a aucune startup en attente de validation pour le moment.</p>
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                </div>
+            </div>
+
+            <p class="text-center">Il n'y a aucune startup en attente de validation pour le moment.</p>
             {% endif %}
         </div>
     </div>
@@ -88,10 +90,12 @@
             background-color: #cdcdcd;
             text-align: center;
             margin: 10px;
+            height: 550px;
         }
-        .test{
-            border: 1px solid black;
+        .blockBouton{
+            margin-top: 1.5vw;
         }
+
     </style>
 
 {% endblock %}

@@ -2,7 +2,9 @@
 
 {% block body %}
 
-    <center><img class="imgTete" style="width: 200px; height: 200px;" src="{{ asset ('uploads/img/FTA.png') }}"></center>
+    <div class="imgTete">
+        <img src="{{ asset ('uploads/img/FTA.png') }}">
+    </div>
 
     <div class="container section1">
         <div class="row">
@@ -12,12 +14,16 @@
         </div>
 
         <div class="row paragraphe">
-            <div class="col-lg-10 col-lg-offset-1 contourText">
+            <div class="col-lg-10 col-lg-offset-1">
                 <p class="text">
                     Grâce au formulaire proposé par le site de la French Tech Alsace, les startups de la communauté peuvent
                     s’enregistrer en renseignant leurs informations qui sont gérées dans leur espace
                     <br>
-                    “<a href="{{ path('compte') }}">Mon Compte</a>”
+                    {% if is_granted('ROLE_ADMIN') %}
+                        “<a href="{{ path('gestion_admin') }}">Mon Compte</a>”
+                    {% elseif is_granted('ROLE_USER')%}
+                        “<a href="{{ path('compte') }}">Mon Compte</a>”
+                    {% endif %}
 
                 </p>
             </div>

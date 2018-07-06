@@ -34,13 +34,10 @@ class EventController extends Controller
                  $deleteFormView[] = $this->createDeleteForm($event)->createView();
             }
 
-        $participantInscrit = $em->getRepository('AppBundle:Participant')->findAll();
-        $nbInscrit = count($participantInscrit);
 
         return $this->render('event/index.html.twig', array(
             'events' => $events,
             'delForms' => $deleteFormView,
-            'nbInscrit'=> $nbInscrit
         ));
     }
 
