@@ -17,14 +17,12 @@
                 </thead>
                 <tbody>
                 {% for participation in participations %}
-
                     <tr>
                         <td>{{ participation.event.titre }}</td>
                         <td>{{ participation.communaute.nomStartUp }}</td>
                         <td>{{ participation.communaute.nomSociete }}</td>
                         <td>{{ participation.communaute.mail }}</td>
                         <td>{{ participation.communaute.categorie }}</td>
-
                         <td>
                             {{ form_start(delForms[loop.index0]) }}
                             <input class="btn btn-danger" type="submit" value="Supprimer">

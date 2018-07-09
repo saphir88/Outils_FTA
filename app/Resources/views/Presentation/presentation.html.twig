@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
@@ -28,7 +27,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             {% for  communaute in communautes %}
                 <div data-Type="{{ communaute.categorie }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
@@ -44,7 +42,6 @@
                                         <img class="logo" src="/uploads/{{ communaute.fileName }}">
                                     </div>
                                     <div class="modal-body">
-
                                         {% if communaute.description is not null %}
                                             <p><b>Description : </b>{{ communaute.description}}</p>
                                         {% endif %}
@@ -55,13 +52,9 @@
                                         <p><b>Domaine :</b> {{ communaute.categorie }}</p>
                                         <p><b>Site Web :</b> <a href="{{ communaute.siteWeb }}">{{ communaute.siteWeb }}</a></p>
                                         <p><b>Contact :</b> {{ communaute.mail }}</p>
-
                                         {% if communaute.video is not null %}
                                             <div><iframe width="560" height="315" src="{{ communaute.video }}?controls=2 " frameborder="0" allow="encrypted-media" allowfullscreen ></iframe></div>
                                         {% endif %}
-
-
-
                                         <div class="row">
                                             {% for key,image in communaute.images %}<div class="col-xs-6 col-md-3 col-lg-4">
                                                 <a href="#" class="thumbnail">
@@ -69,8 +62,6 @@
                                                 </a>
                                                 </div>{% endfor %}
                                         </div>
-
-
                                         <div class="favIcon">
                                             {% if communaute.facebook is not null %}
                                                 <a href="{{ communaute.facebook }}"><i class="fa fa-facebook-official"  style="font-size:36px;color:#365899;"></i></a>
@@ -85,7 +76,6 @@
                                             {% if communaute.ChaineYoutube is not null %}
                                                 <a href="{{ communaute.ChaineYouTube }}"><i class="fa fa-youtube-play" style="font-size:36px;color:red"></i></a>
                                             {% endif %}
-
                                         </div>
                                     </div>
                                 </div>

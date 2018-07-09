@@ -137,6 +137,9 @@ class EvenementController extends Controller
         $em = $this->getDoctrine()->getManager();
         $events = $em->getRepository('AppBundle:Event')->findAllEventToCome();
 
+        if($events == []){
+            return $this->render('evenement/allEvenement.html.twig');
+        }
 
         return $this->render("evenement/allEvenement.html.twig", [
             "events" => $events,

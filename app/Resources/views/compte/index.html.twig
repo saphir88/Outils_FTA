@@ -47,7 +47,7 @@
         </div>
     </div>" class="row">
             {%  for image in edit_form.images %}
-                <div  class="col-lg-3 well images_startup">
+                <div  class="col-lg-4 well images_startup">
                     <img src="/uploads/{{ image.vars.data.filename }}" style="width: 200px">
                     {{ form_row(image.file) }}
                 </div>

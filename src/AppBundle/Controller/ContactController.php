@@ -55,7 +55,9 @@ class ContactController extends Controller
 
             $mailer->sendEmail($contact->getNom(),$contact->getEmail(),$contact->getMessage());
 
-            return $this->redirectToRoute('contact_new', array('id' => $contact->getId()));
+            $this->addFlash('success', 'Votre message à bien été envoyé.');
+
+            return $this->redirectToRoute('contact_new');
         }
 
         return $this->render('contact/new.html.twig', array(

@@ -14,14 +14,19 @@ $Rose: rgb(241, 78, 182);
 
 /*style de la page d'accueil*/
 .imgTete{
-  margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 2vw;
 }
+
+.imgTete img{
+  height: 500px;
+}
+
+
+
 .section1{
-  border: 1px solid black;
   padding-top: 20px;
-  padding-bottom: 20px;
   margin-bottom: 20px;
-  background-color: $VertClair;
   border-radius: 20px;
   font-family: $fontFamily;
 }
@@ -136,9 +141,6 @@ h2{
   background-color: #eeeeee;
   padding: 5px;
   margin: 15px;
-  border: 1px solid black;
-
-
 }
 
 
