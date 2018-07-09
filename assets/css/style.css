@@ -1,8 +1,3 @@
-
-.images_startup {
-    width: 30%;
-}
-
 .eventPast h1{
     text-align: center;
 }
@@ -13,6 +8,7 @@
     box-shadow: 10px 10px 16px 1px lightgray;
     border-bottom-left-radius: 15px;
     border-top-right-radius: 15px;
+    background-color: #FFFFFF;
 }
 
 .eventArchive .titre{
@@ -47,5 +43,11 @@
 
 .emptyEvent .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.emptyEvent .evenementInconnu{
+    text-align: center;
+    font-size: 4vh;
+    margin-top: 15vw;
 }
 

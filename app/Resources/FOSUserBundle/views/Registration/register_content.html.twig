@@ -1,23 +1,98 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="container jumbotron">
-    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+<div class="container">
+    <div class="col-lg-6 col-lg-offset-3 inscription">
+        <h3>Mon compte : </h3>
 
-    {{ form_row(form.email) }}
-
-    {{ form_row(form.username) }}
-
-    {{ form_row(form.plainPassword.first) }}
-    {{ form_row(form.plainPassword.second) }}
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+        <div class="row ">
+            <div class="col-lg-6">
+                {{ form_row(form.email, {'label':'Adresse e-mail* :'}) }}
+            </div>
+            <div class="col-lg-6">
+                {{ form_row(form.username, {'label':"Nom d'utilisateur* :"}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                {{ form_row(form.plainPassword.first, {'label':'Mot de passe* :'}) }}
+            </div>
+            <div class="col-lg-6">
+                {{ form_row(form.plainPassword.second, {'label':'Confirmer le mot de passe* :'}) }}
+            </div>
+        </div>
+    </div>
 </div>
 <br>
-<div class="container jumbotron">
+<div class="container inscription">
+    <div class="">
+        <h3>Ma startup : </h3>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_row(form.communaute.nomStartup) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_row(form.communaute.nomSociete) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_row(form.communaute.siret) }}
+            </div>
+        </div>
+        {{ form_row(form.communaute.file) }}
 
-    {{ form_widget(form.communaute.validation, {'value': 0 }) }}
-    {{ form_row(form.communaute.images, {'label': ' '}) }}
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_row(form.communaute.categorie) }}
+            </div>
+            <div class="col-lg-8">
+                {{ form_row(form.communaute.adresse) }}
+            </div>
+        </div>
 
-    {{ form_row(form.communaute, {"label":" "}) }}
 
+
+        {{ form_row(form.communaute.description) }}
+
+
+        <div class="row">
+            <div class="col-lg-6">
+                {{ form_row(form.communaute.siteWeb) }}
+            </div>
+            <div class="col-lg-6">
+                {{ form_row(form.communaute.ChaineYouTube) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                {{ form_row(form.communaute.video) }}
+                {{ form_row(form.communaute.facebook) }}
+            </div>
+            <div class="col-lg-6">
+                {{ form_row(form.communaute.twitter) }}
+                {{ form_row(form.communaute.linkedin) }}
+            </div>
+        </div>
+
+        <div>
+            {{ form_row(form.communaute.siret) }}
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_row(form.communaute.nomContact) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_row(form.communaute.mail) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_row(form.communaute.telephone) }}
+            </div>
+        </div>
+        {{ form_row(form.communaute.validation, {'value': 0 }) }}
+        {{ form_widget(form.communaute.images, { 'attr' : { 'style':'display:none'}}) }}
+    </div>
+    <p>Merci de complèter les champs obligatoires (*).</p>
+
+    <br>
     <div>
         <input type="submit" value="{{ 'Inscription'|trans }}" />
     </div>
