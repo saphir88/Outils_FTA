@@ -22,9 +22,7 @@
         {{ form_row(edit_form.nomStartup) }}
         <br>
         {{ form_row(edit_form.nomSociete) }}
-
         {{ form_row(edit_form.file, {'required': false}) }}
-
         {{ form_row(edit_form.description) }}
         {{ form_row(edit_form.siteWeb) }}
         {{ form_row(edit_form.video) }}
@@ -39,7 +37,6 @@
         {{ form_row(edit_form.mail) }}
         {{ form_row(edit_form.telephone) }}
         {{ form_row(edit_form.validation) }}
-
         <div id="appbundle_communaute_image" data-prototype="<div class='form-group col-lg-3 well images_startup'>
         <label class='control-label required'>__name__label__</label>
         <div id='appbundle_communaute_images___name__'>
@@ -58,15 +55,10 @@
             {{ form_row(edit_form.images, {'label':' '}) }}
         </div>
         {% for image in communaute.images %}
-
         {% endfor %}
-
-
         <div id="ajoutImage" class="well" style="display: block">
             <a href="#" id="add_images" class="btn btn-default">Ajouter une image</a>
         </div>
-
-
         <div class="container">
             <button type="submit" class="btn btn-success">Valider les modifications</button>
             {{ form_end(edit_form) }}
@@ -75,16 +67,11 @@
             {{ form_end(delete_form) }}
         </div>
     </div>
-
-
-
-<style>
-    .center{
-        text-align: center;
-    }
-</style>
-
-
+    <style>
+        .center{
+            text-align: center;
+        }
+    </style>
 {% endblock %}
 
 {% block javascripts %}

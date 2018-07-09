@@ -1,28 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block body %}a
     <div class="container jumbotron">
         {{ form_start(edit_form) }}
         {{ form_row(edit_form.nomStartup) }}
         {#{{ form_label(edit_form.file) }}#}
         <br>
-
         <img class="logo" src="/uploads/{{ communaute.filename }}">
         {{ form_errors(edit_form.file) }}
         {{ form_widget(edit_form.file, {'required': false}) }}
         {{ form_rest(edit_form) }}
-
         {% for key,image in communaute.images %}
             <img src="/uploads/{{ image.filename }}" style="width: 200px">
         {% endfor %}
-
-
         <div class="well">
-
             <a href="#" id="add_images" class="btn btn-default">Ajouter une catégorie</a>
-
         </div>
-
         <div class="container">
             <button type="submit" class="btn btn-success">Valider les modifications</button>
             {{ form_end(edit_form) }}
