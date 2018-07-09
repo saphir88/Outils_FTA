@@ -1,0 +1,27 @@
+.compte{
+  padding: 1vw;
+  margin-bottom: 1vw;
+  border: solid 1px rgba(190,190,190, .5);
+  box-shadow: 10px 10px 16px 1px lightgray;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: #FFFFFF;
+}
+
+.logo{
+  width: 200px;
+  height: auto;
+}
+
+.center{
+  text-align: center;
+}
+.imagesStartup{
+  height: 350px;
+}
+
+.button button{
+    width: 20%;
+    margin:10px 2.5% 10px 2.5%;
+    text-align:center;
+  }
