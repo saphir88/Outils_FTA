@@ -1,5 +1,6 @@
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+
 @font-face {
   font-family: 'Helvetica';
   src: url('/build/fonts/HelveticaInseratLTStd-Roman.eeee8a17.otf');
@@ -12,6 +13,9 @@ $VertClair: rgb(181,221,214);
 $Rose: rgb(241, 78, 182);
 
 
+body{
+  background-color:  	rgb(248,248,248);
+}
 /*style de la page d'accueil*/
 .imgTete{
   text-align: center;
@@ -22,14 +26,13 @@ $Rose: rgb(241, 78, 182);
   height: 500px;
 }
 
-
-
 .section1{
   padding-top: 20px;
   margin-bottom: 20px;
   border-radius: 20px;
   font-family: $fontFamily;
 }
+
 .contourText{
   border: 1px solid black;
   border-radius: 20px;
@@ -59,13 +62,19 @@ $Rose: rgb(241, 78, 182);
 .select{
   margin-bottom: 20px;
 }
+.logo{
+  width: 200px;
+  height: 200px;
+}
+
 .startUP{
-  border: 10px outset darkgrey;
-  padding-bottom: 20px;
-  margin-bottom: 30px;
-  border-radius: 20px;
-  background-color: rgba(122,151,170,0.4);
-  font-family: $fontFamily;
+  height: 17vw;
+  margin-bottom: 1vw;
+  border: solid 1px rgba(190,190,190, .5);
+  box-shadow: 10px 10px 16px 1px lightgray;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: #FFFFFF;
 }
 .titreNomStartUp{
   font-size: 4em;
@@ -91,10 +100,7 @@ $Rose: rgb(241, 78, 182);
 h2{
   text-align: center;
 }
-.logo{
-  height: 140px;
-  width: 140px;
-}
+
 
 .modal-dialog{
   width:40%;
@@ -147,8 +153,32 @@ h2{
 /*style de la page evenement*/
 
 /*login style*/
+.login{
+  padding: 1vw;
+  margin-bottom: 1vw;
+  margin-top: 2vw;
+  border: solid 1px rgba(190,190,190, .5);
+  box-shadow: 10px 10px 16px 1px lightgray;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: #FFFFFF;
+}
+.login .formgroup{
+  margin: 5%;
+}
 
 /*login style*/
+
+/* Style Contact */
+.contact{
+  margin-top: 10vw;
+  padding: 10px;
+  border: solid 1px rgba(190,190,190, .5);
+  box-shadow: 10px 10px 16px 1px lightgray;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: #FFFFFF;
+}
 
 
 

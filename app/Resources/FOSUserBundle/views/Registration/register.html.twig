@@ -1,6 +1,8 @@
 {% extends "base.html.twig" %}
 
-
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('build/inscription.css') }}">
+{% endblock %}
 {% block fos_user_content %}
     {% include "@FOSUser/Registration/register_content.html.twig" %}
 {% endblock fos_user_content %}

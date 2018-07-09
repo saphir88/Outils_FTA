@@ -1,8 +1,9 @@
 {% trans_default_domain 'FOSUserBundle' %}
 {% extends 'base.html.twig' %}
+
     {% block body %}
         <div class="container center">
-            <h1>Changer les infos du compte</h1>
+            <h1 style="text-align: center">Changer les infos du compte</h1>
             <div class=" login col-lg-4 col-lg-offset-4">
                 <div class="col-lg-12 ">
                     {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
@@ -14,18 +15,5 @@
                 </div>
             </div>
         </div>
-        <style>
-            .login{
-                border: 1px solid black;
-                padding-bottom: 10px;
-                padding-top: 10px;
-                border-radius: 10px;
-            }
-            .center{
-                text-align: center;
-            }
-            .btn{
-                margin-top: 10px;
-            }
-        </style>
+
     {% endblock %}

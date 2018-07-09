@@ -1,10 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/validation.css') }}">
+{% endblock %}
+
 {% block body %}
 
     <div class="container-fluid">
-        <div class="row col-lg-offset-4">
-            <div class="row col-lg-5  startUpValidation">
+
+        <div class="col-lg-4 col-lg-offset-4" style="margin-top: 3vw">
+            <div class="startUpValidation">
                 <div class="row col-lg-offset-3">
                     <h1>{{ communaute.nomStartup }}</h1>
                     <table>
@@ -84,16 +89,5 @@
             </div>
         </div>
     </div>
-    <style>
-        form{
-            display: inline-block;
-        }
-        .startUpValidation{
-            border: 1px solid black;
-            border-radius: 5%;
-            padding: 10px;
-            background-color: #cdcdcd;
-            margin: 10px;
-        }
-    </style>
+
 {% endblock %}
