@@ -4,7 +4,6 @@
     <div class="container jumbotron">
         {{ form_start(edit_form) }}
         {{ form_row(edit_form.nomStartup) }}
-        {#{{ form_label(edit_form.file) }}#}
         <br>
         <img class="logo" src="/uploads/{{ communaute.filename }}">
         {{ form_errors(edit_form.file) }}
@@ -16,16 +15,25 @@
         <div class="well">
             <a href="#" id="add_images" class="btn btn-default">Ajouter une catégorie</a>
         </div>
+
         <div class="container">
             <button type="submit" class="btn btn-success">Valider les modifications</button>
             {{ form_end(edit_form) }}
             {{ form_start(delete_form) }}
-            <button class="btn btn-danger" type="submit">Supprimer</button>
+            <button class="btn btn-danger" type="submit">Supprimer mon compte</button>
             {{ form_end(delete_form) }}
         </div>
-        <a class="btn btn-primary" href="{{ path('communaute_index') }}">Revenir à la liste des Startups</a>
     </div>
-{% endblock %}
 
+
+
+    <style>
+        .center{
+            text-align: center;
+        }
+    </style>
+
+
+{% endblock %}
 {% block javascripts %}
 {% endblock %}

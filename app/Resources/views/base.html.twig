@@ -44,7 +44,8 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestion StartUp<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-
+                            <li><a href="{{ path('communaute_index') }}">Liste des Startups</a></li>
+                            <li role="separator" class="divider"></li>
                             <li><a href="{{ path('validation_index') }}">Validation(s)</a></li>
                             <li><a href="{{ path('startup_extraction') }}">Extraction des Startups</a></li>
                         </ul>
@@ -55,7 +56,7 @@
                             <li><a href="{{ path('event_index') }}">Gestion des Evenements</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ path('participation_index') }}">Startups inscrites</a></li>
-                            <li><a href="{{ path('participant_index') }}">Investisseurs inscrits</a></li>
+                            <li><a href="{{ path('participant_index') }}">Participants inscrits</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
