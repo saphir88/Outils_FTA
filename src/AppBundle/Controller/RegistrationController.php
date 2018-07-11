@@ -48,7 +48,7 @@ class RegistrationController extends BaseController
         $userManager = $this->get('fos_user.user_manager');
         /** @var $dispatcher EventDispatcherInterface */
         $dispatcher = $this->get('event_dispatcher');
-        /*Envoie de mail l'ors de l'inscription d'une startup*/
+        /*Envoie de mail lors de l'inscription d'une startup*/
         $inscriptionMailer = $this->get('AppBundle\Service\Mailer');
         /*appel du service Youtube*/
         $youtube = $this->get('AppBundle\Service\Youtube');

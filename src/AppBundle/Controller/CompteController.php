@@ -65,16 +65,6 @@ class CompteController extends Controller
 
 
     /**
-     * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
-     * @Route("/gestion_admin", name="gestion_admin")
-     * @Method({"GET", "POST"})
-     */
-    public function gestionAdmin(Request $request)
-    {
-        return $this->render('admin/admin.html.twig');
-    }
-
-    /**
      * Deletes a communaute entity.
      *
      * @Route("/{id}", name="compte_delete")

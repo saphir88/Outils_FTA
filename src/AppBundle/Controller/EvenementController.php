@@ -104,7 +104,7 @@ class EvenementController extends Controller
         return $this->redirectToRoute('evenement', ["id" => $evenementId]);
     }
 
-
+    /*---- Récuperation des évènements passés ----*/
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -124,7 +124,7 @@ class EvenementController extends Controller
         ]);
     }
 
-    /*---- Récuperation des évènements passés ----*/
+
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      *

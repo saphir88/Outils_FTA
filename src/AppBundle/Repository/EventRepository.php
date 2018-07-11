@@ -10,13 +10,6 @@ namespace AppBundle\Repository;
  */
 class EventRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findLastEvent()
-    {
-        return $this->getEntityManager()
-            ->createQuery("SELECT ev FROM AppBundle:Event AS ev WHERE ev.id = (SELECT MAX(ada.id) FROM AppBundle:Event ada)")
-            ->getResult();
-    }
-
     public function findAllEventPast()
     {
         $now =  new \DateTime('now');
@@ -37,6 +30,4 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('date', $now)
             ->getResult();
     }
-
-
 }
