@@ -46,13 +46,10 @@ class CompteController extends Controller
                 $replace = $youtube->replaceVideo($communaute->getVideo());
                 $communaute->setVideo($replace);
             }
-            dump($communaute->getSiteWeb());
             if($communaute->getSiteWeb() !== null){
                 $replaceHttp = $http->replaceHttp($communaute->getSiteWeb());
                 $communaute->setSiteWeb($replaceHttp);
             }
-            dump($communaute->getSiteWeb());die;
-
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($communaute);
