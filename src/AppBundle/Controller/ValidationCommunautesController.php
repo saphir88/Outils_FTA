@@ -60,7 +60,7 @@ class ValidationCommunautesController extends Controller
 
         $this->getDoctrine()->getManager()->getRepository('AppBundle:Communaute')->delete($id);
         //unlink($logo);
-
+        // appel du service Mailer
         $mail = $_POST['mail'];
         $mailer->sendEmailRefus($mail);
 
@@ -80,6 +80,7 @@ class ValidationCommunautesController extends Controller
         $this->getDoctrine()->getManager()->getRepository('AppBundle:Communaute')->validate($id);
 
         $mail = $_POST['mail'];
+        // appel du service Mailer
         $mailer->sendEmailValidate($mail);
 
 

@@ -34,7 +34,7 @@ class ContactController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($contact);
             $em->flush();
-
+            // appel du service Mailer
             $mailer->sendEmail($contact->getNom(),$contact->getEmail(),$contact->getMessage());
 
             $this->addFlash('success', 'Votre message à bien été envoyé.');

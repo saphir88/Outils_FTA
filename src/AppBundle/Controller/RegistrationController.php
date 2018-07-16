@@ -86,7 +86,7 @@ class RegistrationController extends BaseController
                     $replace = $youtube->replaceVideo($communaute->getVideo());
                     $communaute->setVideo($replace);
                 }
-                /*service youtube*/
+                /*service youtube fin */
                 $this->container->get('logger')->info(
                     sprintf("New user registration: %s", $user)
                 );

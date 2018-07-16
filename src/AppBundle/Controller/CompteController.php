@@ -40,7 +40,7 @@ class CompteController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-
+            // appel du service youtube
             if($communaute->getVideo() !== null){
                 $replace = $youtube->replaceVideo($communaute->getVideo());
                 $communaute->setVideo($replace);

@@ -66,7 +66,7 @@ class ParticipationController extends Controller
                 $p->setNbVote('0');
 
                 $em = $this->getDoctrine()->getManager();
-
+                // appel du service mailer
                 $mailer->sendEmailEvenement($communaute->getMail(),$event->getDate(),$event->getTitre(),$event->getLocalisation());
 
                 $em->persist($p);

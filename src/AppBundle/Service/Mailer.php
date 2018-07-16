@@ -38,6 +38,7 @@ class Mailer
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
+    //Service utiliser pour contacter la French tech Alsace
     public function sendEmail($nom, $email, $message)
     {
         $body = $this->templating->render('email/send.html.twig',[
@@ -48,7 +49,7 @@ class Mailer
 
         $message = (new\Swift_Message('infocontact'))
             ->setFrom($email)
-            ->setTo('axelfertinel@gmail.com')
+            ->setTo('')   //Renseigner l'adresse mail de la FTA
             ->setBody($body, 'text/html');
 
         $this->mailer->send($message);
@@ -62,13 +63,14 @@ class Mailer
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
+    //Email envoyer quand l'admin valide une startup
     public function sendEmailValidate($email){
         $body = $this->templating->render('email/validateStartUp.html.twig',[
             'email' => $email,
         ]);
 
         $message = (new\Swift_Message('validateStartUp'))
-            ->setFrom('axelfertinel@gmail.com')
+            ->setFrom('') //Renseigner l'adresse mail de la FTA
             ->setTo($email)
             ->setBody($body, 'text/html');
 
@@ -83,13 +85,14 @@ class Mailer
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
+    //EMail envoyer quand la FTA refuse une startup
     public function sendEmailRefus($email){
         $body = $this->templating->render('email/refusStartUp.html.twig',[
             'email' => $email,
         ]);
 
         $message = (new\Swift_Message('RefusStartUp'))
-            ->setFrom('axelfertinel@gmail.com')
+            ->setFrom('')   //Renseigner l'adresse mail de la FTA
             ->setTo($email)
             ->setBody($body, 'text/html');
 
@@ -104,13 +107,14 @@ class Mailer
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
+    // Email envoyer quand une statup est supprimer par la FTA
     public function sendEmailSuppression($email){
         $body = $this->templating->render('email/suppressionStartUp.html.twig',[
             'email' => $email,
         ]);
 
         $message = (new\Swift_Message('suppressionStartUp'))
-            ->setFrom('axelfertinel@gmail.com')
+            ->setFrom('') //Renseigner l'adresse mail de la FTA
             ->setTo($email)
             ->setBody($body, 'text/html');
 
@@ -123,18 +127,20 @@ class Mailer
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
+        //Email envoyer à la FTA pour lui annoncer qu'un nouvelle startup c'est inscrite
     public function sendEmailInscription()
     {
         $body = $this->templating->render('email/inscriptionMail.html.twig');
 
         $message = (new \Swift_Message('Nouvelle StartUp inscrite'))
-            ->setFrom('axelfertinel@gmail.com')
-            ->setTo('axelfertinel@gmail.com')
+            ->setFrom('')   //Renseigner l'adresse mail de la FTA
+            ->setTo('')   //Renseigner l'adresse mail de la FTA
             ->setBody($body, 'text/html');
 
         $this->mailer->send($message);
     }
 
+    // Email envoyer au participant des evenement pour leur donner la date/heure lieu et titre de l'evemenent.
     public function sendEmailEvenement($email,$date,$titre,$lieu)
     {
         $body = $this->templating->render('email/evenementMail.html.twig',[

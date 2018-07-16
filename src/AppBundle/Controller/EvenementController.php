@@ -50,7 +50,7 @@ class EvenementController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $participant->setNom(ucfirst(strtolower($participant->getNom())));
                 $participant->setPrenom(ucfirst(strtolower($participant->getPrenom())));
-
+                // appel du service Mailer
                 $mailer->sendEmailEvenement($participant->getMail(), $event->getDate(), $event->getTitre(), $event->getLocalisation());
 
                 $em->persist($participant);

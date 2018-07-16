@@ -58,7 +58,7 @@ class CommunauteController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-
+                //appel du service youtube.
             if($communaute->getVideo() !== null){
                 $replace = $youtube->replaceVideo($communaute->getVideo());
                 $communaute->setVideo($replace);
@@ -90,6 +90,7 @@ class CommunauteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($communaute);
             $em->flush();
+            // envoye de mail
             $mailer->sendEmailSuppression($communaute->getMail());
         }
 
