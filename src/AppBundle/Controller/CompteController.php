@@ -3,6 +3,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
 use AppBundle\Repository\CommunauteRepository;
+use AppBundle\Service\RemoveHttp;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Communaute;
@@ -28,7 +29,7 @@ class CompteController extends Controller
      * @Route("/", name="compte")
      * @Method({"GET", "POST"})
      */
-    public function compte(Request $request, Youtube $youtube)
+    public function compte(Request $request, Youtube $youtube, RemoveHttp $http)
     {
         $id = $this->getUser()->getId();
         $em = $this->getDoctrine()->getManager();
@@ -44,6 +45,10 @@ class CompteController extends Controller
             if($communaute->getVideo() !== null){
                 $replace = $youtube->replaceVideo($communaute->getVideo());
                 $communaute->setVideo($replace);
+            }
+            if($communaute->getSiteWeb() !== null){
+                $replaceHttp = $http->replaceHttp($communaute->getSiteWeb());
+                $communaute->setSiteWeb($replaceHttp);
             }
 
             $em = $this->getDoctrine()->getManager();

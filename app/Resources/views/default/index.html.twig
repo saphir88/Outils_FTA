@@ -19,7 +19,7 @@
                     s’enregistrer en renseignant leurs informations qui sont gérées dans leur espace
                     <br>
                     {% if is_granted('ROLE_ADMIN') %}
-                        “<a href="{{ path('gestion_admin') }}">Mon Compte</a>”
+                        
                     {% elseif is_granted('ROLE_USER')%}
                         “<a href="{{ path('compte') }}">Mon Compte</a>”
                     {% endif %}
