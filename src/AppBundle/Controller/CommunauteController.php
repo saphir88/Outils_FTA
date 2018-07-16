@@ -44,49 +44,6 @@ class CommunauteController extends Controller
     }
 
     /**
-     * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
-
-     * Creates a new communaute entity.
-     * @Route("/new", name="communaute_new")
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request)
-    {
-        $communaute = new Communaute();
-        $form = $this->createForm('AppBundle\Form\CommunauteType', $communaute);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($communaute);
-            $em->flush();
-
-            return $this->redirectToRoute('communaute_show', array('id' => $communaute->getId()));
-        }
-
-        return $this->render('communaute/new.html.twig', array(
-            'communaute' => $communaute,
-            'form' => $form->createView(),
-        ));
-    }
-
-    /**
-     * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
-     * Finds and displays a communaute entity.
-     * @Route("/{id}", name="communaute_show")
-     * @Method("GET")
-     */
-    public function showAction(Communaute $communaute)
-    {
-        $deleteForm = $this->createDeleteForm($communaute);
-
-        return $this->render('communaute/show.html.twig', array(
-            'communaute' => $communaute,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
      * Displays a form to edit an existing communaute entity.
      * @Security("has_role('ROLE_ADMIN')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
 

@@ -68,22 +68,6 @@ class EventController extends Controller
     }
 
     /**
-     * Finds and displays a event entity.
-     *
-     * @Route("/{id}", name="event_show")
-     * @Method("GET")
-     */
-    public function showAction(Event $event)
-    {
-        $deleteForm = $this->createDeleteForm($event);
-
-        return $this->render('event/show.html.twig', array(
-            'event' => $event,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
      * Displays a form to edit an existing event entity.
      *
      * @Route("/{id}/edit", name="event_edit")

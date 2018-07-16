@@ -18,12 +18,11 @@ class PresentationController extends Controller
     /**
      * @Route("/", name="start_ups")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
         $communautes = $em->getRepository('AppBundle:Communaute')->findAllValidTrue();
-        // replace this example code with whatever you need
         return $this->render('Presentation/presentation.html.twig',array(
             'communautes' => $communautes,
         ));
