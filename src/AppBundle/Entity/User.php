@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * User
@@ -32,6 +33,7 @@ class User extends BaseUser
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Communaute",cascade={"persist", "remove"}, fetch="EAGER")
      * @ORM\JoinColumn(onDelete="cascade")
+     * @Assert\Valid  // On utilise Valid pour vérifier les erreur dans l'entité Communaute
      */
     private $communaute;
 

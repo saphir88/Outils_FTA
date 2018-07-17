@@ -91,6 +91,7 @@ class Mailer
             'email' => $email,
         ]);
 
+
         $message = (new\Swift_Message('RefusStartUp'))
             ->setFrom('')   //Renseigner l'adresse mail de la FTA
             ->setTo($email)
@@ -135,6 +136,7 @@ class Mailer
         $message = (new \Swift_Message('Nouvelle StartUp inscrite'))
             ->setFrom('')   //Renseigner l'adresse mail de la FTA
             ->setTo('')   //Renseigner l'adresse mail de la FTA
+
             ->setBody($body, 'text/html');
 
         $this->mailer->send($message);

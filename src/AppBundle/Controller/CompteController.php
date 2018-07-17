@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Communaute;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 
 use AppBundle\Service\Youtube;
@@ -51,14 +52,16 @@ class CompteController extends Controller
                 $communaute->setSiteWeb($replaceHttp);
             }
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($communaute);
-            $em->flush();
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($communaute);
+                $em->flush();
 
-            $this->addFlash('success', 'Modifications bien prise en compte.');
+                $this->addFlash('success', 'Modifications bien prise en compte.');
 
-            return $this->redirectToRoute('compte');
+                return $this->redirectToRoute('compte');
+
         }
+
 
         return $this->render('compte/index.html.twig', array(
             'communaute' => $communaute,

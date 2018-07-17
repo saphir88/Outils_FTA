@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -16,6 +17,11 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table(name="communaute")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CommunauteRepository")
+ * @UniqueEntity(
+ *     fields="nomStartup",
+ *     errorPath="nomStartup",
+ *     message="Ce nom de startup est déjà utilisé !"
+ * )
  * @Vich\Uploadable()
  *
  */
@@ -38,7 +44,7 @@ class Communaute
     /**
      * @var string
      *
-     * @ORM\Column(name="nomStartup", type="string", length=255, unique=true)
+     * @ORM\Column(name="nomStartup", type="string", length=255)
      */
     private $nomStartup;
 
