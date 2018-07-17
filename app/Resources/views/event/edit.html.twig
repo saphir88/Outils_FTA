@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h2 class="text-center">Modifier l'événement "{{ event.titre }}"</h2>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row event thumbnail">
+            <div class="col-xs-offset-1 col-xs-10">
+                {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <input class="btn btn-success" type="submit" value="Valider les modifications" />
+                {{ form_end(edit_form) }}
+                <form method="POST" action="{{ path('participant_extraction') }}">
+                    <input name="event" type="hidden" value="{{ event.id }}">
+                    <input class="btn btn-info" type="submit" value="Extraire la liste des participants">
+                </form>
+                <form method="POST" action="{{ path('investisseur_extraction') }}">
+                    <input name="event" type="hidden" value="{{ event.id }}">
+                    <input class="btn btn-info" type="submit" value="Extraire la liste des investisseurs">
+                </form>
+
+                <a class="btn btn-primary" href="{{ path('event_index') }}">Retour à la liste des événements</a>
+                {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Supprimer">
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+    </div>
+    <style>
+        .event{background-color: lightgrey;}
+    </style>
+{% endblock %}

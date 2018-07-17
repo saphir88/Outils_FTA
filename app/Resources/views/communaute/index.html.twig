@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row" style="margin-bottom: 1vw">
+            <h2 class="text-center">Gestion des Startups</h2>
+        </div>
+        <form method="POST" action="{{ path('startup_extraction') }}">
+            <div class="container">
+                <div class="row select text-center">
+                    <label for="Type">Domaine :</label>
+                    <select id="Type" name="categorie">
+                        <option value="all">Tous</option>
+                        <option value="HealthTech">HealthTech</option>
+                        <option value="IoT Manufacturing">IoT Manufacturing</option>
+                        <option value="AI">AI</option>
+                        <option value="VR/VA">VR/VA</option>
+                        <option value="Blockchain">Blockchain</option>
+                        <option value="FoodTech">FoodTech</option>
+                        <option value="Mobility">Mobility</option>
+                        <option value="IT/ Software / App">IT/ Software / App</option>
+                        <option value="Smartcity">Smartcity</option>
+                        <option value="Sustainability">Sustainability</option>
+                    </select>
+                </div>
+                <div class="row" style="margin-bottom: 2vw">
+                    <button class="btn btn-success center-block" type="submit">Extraire les données de ce domaine en CSV</button>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            {% for  communaute in communautes %}
+                <div data-Type="{{ communaute.categorie }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
+                    <div class="startUP">
+                        <h1 class="nomStartUp">{{ communaute.nomStartup }}</h1>
+                        <center><img class="logo" src="/uploads/{{ communaute.filename }}"></center>
+                        <br>
+                        <a class="btn btn-primary" href="{{ path('communaute_edit', { 'id': communaute.id }) }}">Modifier</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

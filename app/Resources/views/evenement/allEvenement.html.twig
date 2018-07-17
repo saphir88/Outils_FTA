@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/event.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% if events is defined %}
+        <div class="container-fluid">
+        {% if events.0.date > dateNow %}
+            <div class="container eventPast">
+                <h1>Évenements à venir</h1>
+            </div>
+        {% else %}
+            <div class="container eventPast">
+                <h1>Évenements passés</h1>
+            </div>
+        {% endif %}
+        <hr>
+
+        <!--- Boucle d'affichage des évènements --->
+        {% for event in events %}
+            <div class="container">
+                <div class="eventArchive">
+                    <h3 class="titre">{{ event.titre }}</h3>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <p>Date et lieu:</p>
+                            <br>
+                            <p>{{ event.date|date("d-m-Y H:i") }}</p>
+                            <p>{{ event.localisation }}</p>
+                        </div>
+                        <div class="description col-lg-9">
+                            <p>Description: </p>
+                            <br>
+                            {{ event.description| raw }}
+                            <input type="button" value="Voir l'évènement" onClick="window.location = '{{ path('evenement', {'id': event.id}) }}'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="container">
+            <div class="emptyEvent">
+                <div style="font-size: 5vh; margin: 15vw;">
+                    Il n'y a pas d'évènement à venir.
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

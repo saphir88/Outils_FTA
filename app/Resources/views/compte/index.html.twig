@@ -1,0 +1,149 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/compte.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        {% for message in app.flashes('success') %}
+            <div class="col-lg-offset-3 col-lg-6 flash-notice alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span> {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('error') %}
+            <div class="col-lg-offset-3 col-lg-6 flash-notice alert alert-danger">
+                <span class='glyphicon glyphicon-warning-sign' aria-hidden='true'></span>  {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    <div id="form" class="container compte">
+        <h1 class="center"> Ma startUp</h1>
+        <br>
+
+        {{ form_start(edit_form) }}
+        <div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_row(edit_form.nomStartup) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_row(edit_form.nomSociete) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_row(edit_form.siret) }}
+                </div>
+            </div>
+            <div class="row">
+                <hr>
+                <div class="col-lg-4 col-lg-offset-1">
+                    {{ form_row(edit_form.file, {'required': false}) }}
+                </div>
+                <div class="col-lg-offset-1 ">
+                    <img class="logo well" src="/uploads/{{ communaute.fileName }}">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_row(edit_form.categorie) }}
+                </div>
+                <div class="col-lg-8">
+                    {{ form_row(edit_form.adresse) }}
+                </div>
+            </div>
+
+
+
+            {{ form_row(edit_form.description) }}
+
+
+            <div class="row">
+                <div class="col-lg-6">
+                    {{ form_row(edit_form.siteWeb) }}
+                </div>
+                <div class="col-lg-6">
+                    {{ form_row(edit_form.ChaineYouTube) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    {{ form_row(edit_form.video) }}
+                    {{ form_row(edit_form.facebook) }}
+                </div>
+                <div class="col-lg-6">
+                    {{ form_row(edit_form.twitter) }}
+                    {{ form_row(edit_form.linkedin) }}
+                </div>
+            </div>
+
+            <div>
+                {{ form_row(edit_form.siret) }}
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_row(edit_form.nomContact) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_row(edit_form.mail) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_row(edit_form.telephone) }}
+                </div>
+            </div>
+        </div>
+        <p>Merci de complèter les champs obligatoires (*).</p>
+
+        <br>
+
+        <div id="appbundle_communaute_image" data-prototype="<div class='form-group col-lg-3 well imagesStartup'>
+        <label class='control-label required'>__name__label__</label>
+        <div id='appbundle_communaute_images___name__'>
+            <div class='form-group'>
+                <label class='control-label' for='appbundle_communaute_images___name___file'> </label>
+                <input type='file' id='appbundle_communaute_images___name___file' name='appbundle_communaute[images][__name__][file]' />
+            </div>
+        </div>
+        </div>" class="row">
+            {%  for image in edit_form.images %}
+                <div class="col-lg-4 well imagesStartup">
+                    <img class="well logo" src="/uploads/{{ image.vars.data.filename }}">
+                    {{ form_row(image.file) }}
+                </div>
+            {% endfor %}
+            {{ form_row(edit_form.images, {'label':' '}) }}
+        </div>
+
+        {% for image in communaute.images %}
+        {% endfor %}
+
+        <div id="ajoutImage" class="well" style="display: block">
+            <a href="#" id="add_images" class="btn btn-default">Ajouter une image</a>
+        </div>
+
+        <div class="container button">
+            <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-ok" style="float: left"></i> Valider les modifications</button>
+            {{ form_end(edit_form) }}
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ communaute.id }}" style="float: right"><i class="glyphicon glyphicon-trash"></i> Supprimer mon compte</button>
+        </div>
+    </div>
+    <div  class="modal fade" id="{{ communaute.id }}"  role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Etes-vous sur de vouloir supprimer votre compte ? <h6>La suppression de votre compte entrainera la suppression de la startup lié de la base de données de la FrenchTech Alsace.</h6></p>
+                    <br>
+                    {{ form_start(delete_form) }}
+                    <button class="btn btn-danger" type="submit" style="float: right"><i class="glyphicon glyphicon-trash"></i> Supprimer mon compte</button>
+                    {{ form_end(delete_form) }}
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

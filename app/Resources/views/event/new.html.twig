@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/event.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h1 class="col-lg-offset-5">Création d'évènement</h1>
+            <div class="container col-lg-8 col-lg-offset-2 eventCreation">
+                <div class=" col-lg-8 col-lg-offset-2">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <input class="btn btn-success" type="submit" value="Créer" style="float: left;"/>
+                    {{ form_end(form) }}
+                    <a class="btn btn-primary" href="{{ path('admin') }}" style="float: right">Revenir au menu d'administration</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

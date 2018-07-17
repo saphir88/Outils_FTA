@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                <h2 class="titreNomStartUp">Start-Ups</h2>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row select">
+                <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-3">
+                    <label for="sel1">Domaine :</label>
+                    <select class="" id="Type">
+                        <option value="">Tous</option>
+                        <option value="HealthTech">HealthTech</option>
+                        <option value="IoT Manufacturing">IoT Manufacturing</option>
+                        <option value="AI">AI</option>
+                        <option value="VR/VA">VR/VA</option>
+                        <option value="Blockchain">Blockchain</option>
+                        <option value="FoodTech">FoodTech</option>
+                        <option value="Mobility">Mobility</option>
+                        <option value="IT/ Software / App">IT/ Software / App</option>
+                        <option value="Smartcity">Smartcity</option>
+                        <option value="Sustainability">Sustainability</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for  communaute in communautes %}
+                <div data-Type="{{ communaute.categorie }}" class="col-lg-4 col-md-6 col-sm-6 modalUnique">
+                    <div class="startUP">
+                        <h1 class="nomStartUp">{{ communaute.nomStartup }}</h1>
+                        <center><p><img class="logo" src="/uploads/{{ communaute.fileName }}"></p></center>
+                        <p><button type="button" class="btn" data-toggle="modal" data-target="#{{ communaute.id }}">Plus d'informations..</button></p>
+                        <div  class="modal fade {{ communaute.categorie }}" id="{{ communaute.id }}"  role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="nomStartUp">{{ communaute.nomStartup }}</h4>
+                                        <img class="logo" src="/uploads/{{ communaute.fileName }}">
+                                    </div>
+                                    <div class="modal-body">
+                                        {% if communaute.description is not null %}
+                                            <p><b>Description : </b>{{ communaute.description}}</p>
+                                        {% endif %}
+                                        {% if communaute.nomSociete is not null %}
+                                            <p><b>Société :</b> {{ communaute.nomSociete }}</p>
+                                        {% endif %}
+                                        <p><b>Adresse :</b> {{ communaute.adresse }}</p>
+                                        <p><b>Domaine :</b> {{ communaute.categorie }}</p>
+                                        <p><b>Site Web :</b> <a href="{{ communaute.siteWeb }}">{{ communaute.siteWeb }}</a></p>
+                                        <p><b>Contact :</b> {{ communaute.mail }}</p>
+                                        {% if communaute.video is not null %}
+                                            <div><iframe width="560" height="315" src="{{ communaute.video }}?controls=2 " frameborder="0" allow="encrypted-media" allowfullscreen ></iframe></div>
+                                        {% endif %}
+                                        <div class="row">
+                                            {% for key,image in communaute.images %}<div class="col-xs-6 col-md-3 col-lg-4">
+                                                <a href="#" class="thumbnail">
+                                                    <img src="/uploads/{{ image.filename }}" alt="{{ image.filename }}">
+                                                </a>
+                                                </div>{% endfor %}
+                                        </div>
+                                        <div class="favIcon">
+                                            {% if communaute.facebook is not null %}
+                                                <a href="{{ communaute.facebook }}"><i class="fa fa-facebook-official"  style="font-size:36px;color:#365899;"></i></a>
+                                            {% endif %}
+                                            {% if communaute.twitter is not null %}
+                                                <a href="{{ communaute.twitter }}"><i class="fa fa-twitter-square" style="font-size:36px; color:#1DA1F2;"></i></a>
+                                            {% endif %}
+                                            {% if communaute.linkedin is not null %}
+                                                <a href="{{ communaute.linkedin }}"><i class="fa fa-linkedin-square" style="font-size:36px; color:#0077B5;"></i></a>
+                                            {% endif %}
+
+                                            {% if communaute.ChaineYoutube is not null %}
+                                                <a href="{{ communaute.ChaineYouTube }}"><i class="fa fa-youtube-play" style="font-size:36px;color:red"></i></a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+{% endblock %}

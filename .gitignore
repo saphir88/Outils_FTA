@@ -29,14 +29,14 @@
 
 # Assets and user uploads
 /web/bundles/
-/web/uploads/
+
 
 # PHPUnit
 /app/phpunit.xml
 /phpunit.xml
 
 # Build data
-/build/
+/web/build/
 
 # Composer PHAR
 /composer.phar
@@ -46,3 +46,9 @@
 
 # Embedded web-server pid file
 /.web-server-pid
+
+/.idea/
+/.parameters.yml
+/node_modules/
+/.parameters.yml.dist
+/.idea/

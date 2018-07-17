@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/validation.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+
+        <div class="col-lg-4 col-lg-offset-4" style="margin-top: 3vw">
+            <div class="startUpValidation">
+                <div class="row col-lg-offset-3">
+                    <h1>{{ communaute.nomStartup }}</h1>
+                    <table>
+                        <tbody >
+                        <tr>
+                            <img  src="/uploads/{{ communaute.filename }}" style="width: 200px">
+                        </tr>
+                        <tr>
+                            <td><a href="{{ communaute.siteWeb }}">Site Web</a></td>
+                        </tr>
+                        <tr>
+                            {% if communaute.video is not null %}
+                                <td><a href="{{ communaute.video }}">Video Youtube</a></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            {% if communaute.ChaineYouTube is not null %}
+                                <td><a href="{{ communaute.ChaineYouTube }}">Chaine Youtube</a> </td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            {% if communaute.linkedin is not null %}
+                                <td><a href="{{ communaute.linkedin }}">Linkedin</a></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            {% if communaute.facebook is not null %}
+                                <td><a href="{{ communaute.facebook }}">Facebook</a></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            {% if communaute.twitter is not null %}
+                                <td><a href="{{ communaute.twitter }}">Twitter</a></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th>Societe</th>
+                            <td>{{ communaute.nomSociete }}</td>
+                        </tr>
+                        <tr>
+                            <th>Domaine</th>
+                            <td>{{ communaute.categorie }}</td>
+                        </tr>
+                        <tr>
+                            <th>Siret</th>
+                            <td>{{ communaute.siret }}</td>
+                        </tr>
+                        <tr>
+                            <th>Adresse</th>
+                            <td>{{ communaute.adresse }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nomcontact</th>
+                            <td>{{ communaute.nomContact }}</td>
+                        </tr>
+                        <tr>
+                            <th>Mail</th>
+                            <td>{{ communaute.mail }}</td>
+                        </tr>
+                        <tr>
+                            <th>Telephone</th>
+                            <td>{{ communaute.telephone }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <form action="{{ path('validation_validate') }}" method="POST">
+                        <input type="hidden" name="id" value="{{ communaute.id }}">
+                        <input type="hidden" name="mail" value="{{ communaute.mail }}">
+                        <input type="submit" class="btn btn-success" value="Accepter">
+                    </form>
+                    <form action="{{ path('validation_delete') }}" method="POST">
+                        <input type="hidden" name="id" value="{{ communaute.id }}">
+                        <input type="hidden" name="mail" value="{{ communaute.mail }}">
+                        <input type="submit" class="btn btn-danger" value="Refuser">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

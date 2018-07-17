@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center">Participants inscrits à un événement</h1>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Event</th>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    <th>Mail</th>
+                    <th>Societe</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for participant in participants %}
+                    <tr>
+                        <td>{{ participant.event.titre }}</td>
+                        <td>{{ participant.prenom }}</td>
+                        <td>{{ participant.nom }}</td>
+                        <td>{{ participant.mail }}</td>
+                        <td>{{ participant.societe }}</td>
+                        <td>{{ participant.statut }}</td>
+                        <td>
+                            {{ form_start(delForms[loop.index0]) }}
+                            <input class="btn btn-danger" type="submit" value="Supprimer">
+                            {{ form_end(delForms[loop.index0]) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <style>
+        tr:nth-child(even) {background-color: #f2f2f2;}
+        .table,th,tr,td{border: 1px solid black;}
+    </style>
+
+{% endblock %}

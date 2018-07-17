@@ -1,13 +1,186 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Frenchtech Alsace{% endblock %}</title>
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('build/main.css') }}">
+    {% block stylesheets %}{% endblock %}
+
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            </button>
+            <a class="navbar-brand" href="{{ path('homepage') }}">Accueil</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ path('start_ups') }}">Liste des Startups </a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Évenements<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('event_to_come') }}">Évenements à venir</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{ path('event_archive') }}">Évenements passés</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ path('contact_new') }}">Nous Contacter</a></li>
+            </ul>
+            {% if is_granted("ROLE_ADMIN") %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestion StartUp<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('communaute_index') }}">Liste des Startups</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ path('validation_index') }}">Validation(s)</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Evenement<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('event_index') }}">Gestion des Evenements</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ path('participation_index') }}">Startups inscrites</a></li>
+                            <li><a href="{{ path('participant_index') }}">Participants inscrits</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon Compte<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('fos_user_profile_edit') }}">Changer mes informations</a></li>
+                            <li><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/logout">Deconnexion</a></li>
+                </ul>
+            {% elseif is_granted("ROLE_USER") %}
+                <p class="navbar-text navbar-right"><a href="/logout" class="navbar-link">Deconnexion</a></p>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon Compte<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('compte') }}">Ma StartUp</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ path('fos_user_profile_edit') }}">Changer mes informations</a></li>
+                            <li><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            {% else %}
+                <p class="navbar-text navbar-right"><a href="/login" class="navbar-link">Connexion</a></p>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {% else %}
+                    <p class="navbar-text navbar-right"><a class="navbar-link" href="/inscription">Inscription</a></p>
+                {% endif %}
+            {% endif %}
+        </div> <!-- /.navbar-collapse -->
+    </div> <!-- /.container-fluid -->
+</nav>
+<div class="container-fluid">
+
+    {% block fos_user_content %}{% endblock fos_user_content %}
+
+    {% block body %}{% endblock %}
+</div>
+<script src="{{ asset('build/app.js') }}"></script>
+{% block javascripts %}{% endblock %}
+{# src/OC/PlatformBundle/Resources/views/Advert/form.html.twig #}
+{# Le formulaire reste globalement le même,
+   On ne rajoute que le champ catégorie et le lien pour en ajouter #}
+{# On charge la bibliothèque jQuery. Ici, je la prends depuis le CDN google
+   mais si vous l'avez en local, changez simplement l'adresse. #}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+{# Voici le script en question : #}
+<script type="text/javascript">
+    $(document).ready(function() {
+        // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
+        var $container = $('div#appbundle_communaute_image');
+        var $bouton = $('div#ajoutImage');
+        // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
+        var index = $container.find(':input').length;
+        // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
+        $('#add_images').click(function(e) {
+            addImage($container);
+            e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+            return false;
+        });
+
+
+        if (index == 0) {
+        } else {
+            // S'il existe déjà des images, on ajoute un lien de suppression pour chacune d'entre elles
+            $container.children('div').each(function() {
+                addDeleteLink($(this));
+            });
+        }
+        if (index >= 3) {
+            $('#ajoutImage').remove();
+            console.log(index);
+        } else {
+            $('#ajoutImage').append();
+        }
+        // La fonction qui ajoute un formulaire ImageType
+        function addImage($container) {
+            // Dans le contenu de l'attribut « data-prototype », on remplace :
+            // - le texte "__name__label__" qu'il contient par le label du champ
+            // - le texte "__name__" qu'il contient par le numéro du champ
+            var template = $container.attr('data-prototype')
+                .replace(/__name__label__/g, 'Image n°' + (index+1))
+                .replace(/__name__/g,        index)
+            ;
+            // On crée un objet jquery qui contient ce template
+            var $prototype = $(template);
+            // On ajoute au prototype un lien pour pouvoir supprimer la catégorie
+            addDeleteLink($prototype);
+            // On ajoute le prototype modifié à la fin de la balise <div>
+            $container.append($prototype);
+            // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
+            index++;
+            if (index == 3) {
+                document.getElementById('ajoutImage').style.display = 'none';
+            }
+        }
+
+
+        // La fonction qui ajoute un lien de suppression d'une catégorie
+        function addDeleteLink($prototype) {
+            // Création du lien
+            var $deleteLink = $('<a href="#" class="btn btn-danger">Supprimer</a>');
+            // Ajout du lien
+            $prototype.append($deleteLink);
+            // Ajout du listener sur le clic du lien pour effectivement supprimer la catégorie
+            $deleteLink.click(function(e) {
+                $prototype.remove();
+                e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+                index--;
+                if(document.getElementById('ajoutImage').style.display == 'none'){
+                    document.getElementById('ajoutImage').style.display = 'block';
+                }
+                else {
+                    document.getElementById('ajoutImage').style.display = 'block';
+                }
+                return false;
+
+            });
+        }
+    });
+</script>
+</body>
 </html>

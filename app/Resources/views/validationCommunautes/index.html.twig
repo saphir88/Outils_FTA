@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/validation.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <h2 class="text-center">Startup(s) en attente d'une validation</h2>
+        </div>
+        <div class="row">
+            <div class="container-fluid">
+                {% if communautes != [] %}
+                {% for communaute in communautes %}
+
+                    <div class="col-lg-3 col-lg-offset-1 startUpValidation">
+                        <h1>{{ communaute.nomStartup }}</h1>
+                        <table>
+                            <tbody >
+                            <tr>
+                                <img  src="/uploads/{{ communaute.filename }}" style="width: 200px; height: 200px; margin-bottom: 1vw;">
+                            </tr>
+                            <tr>
+                                <th>Site web</th>
+                                <td><a href="{{ communaute.siteWeb }}">Site Web</a></td>
+                            </tr>
+                            <tr>
+                                <th>Societe</th>
+                                <td>{{ communaute.nomSociete }}</td>
+                            </tr>
+                            <tr>
+                                <th>Domaine</th>
+                                <td>{{ communaute.categorie }}</td>
+                            </tr>
+                            <tr>
+                                <th>Siret</th>
+                                <td>{{ communaute.siret }}</td>
+                            </tr>
+                            <tr>
+                                <th>Adresse</th>
+                                <td>{{ communaute.adresse }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nomcontact</th>
+                                <td>{{ communaute.nomContact }}</td>
+                            </tr>
+                            <tr>
+                                <th>Mail</th>
+                                <td>{{ communaute.mail }}</td>
+                            </tr>
+                            <tr>
+                                <th>Telephone</th>
+                                <td>{{ communaute.telephone }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="blockBouton">
+                            <form action="{{ path('validation_validate') }}" method="POST">
+                                <input type="hidden" name="id" value="{{ communaute.id }}">
+                                <input type="hidden" name="mail" value="{{ communaute.mail }}">
+                                <input type="submit" class="btn btn-success" value="Accepter">
+                            </form>
+                            <form action="{{ path('validation_delete') }}" method="POST">
+                                <input type="hidden" name="id" value="{{ communaute.id }}">
+                                <input type="hidden" name="mail" value="{{ communaute.mail }}">
+                                {# <input type="hidden" name="logo" value="{{ communaute.logo }}"> #}
+                                <input type="submit" class="btn btn-danger" value="Refuser">
+                            </form>
+                            <a class="btn btn-primary" href="{{ path('validation_show', { 'id': communaute.id }) }}">Voir plus</a>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% else %}
+            </div>
+
+            <p class="text-center">Il n'y a aucune startup en attente de validation pour le moment.</p>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

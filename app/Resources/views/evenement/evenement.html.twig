@@ -1,0 +1,196 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/event.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {% if event is defined %}
+        <div class="container-fluid" >
+            {% for message in app.flashes('success') %}
+                <div class="col-lg-offset-3 col-lg-6 flash-notice alert alert-success">
+                    <span class="glyphicon glyphicon-ok" ></span> {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="col-lg-offset-3 col-lg-6 flash-notice alert alert-danger">
+                    <span class='glyphicon glyphicon-warning-sign' aria-hidden='true'></span>  {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        <section>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-offset-3 col-lg-6">
+                        <div class="thumbnail">
+                            <object class="text-center" style="height: 600px;" data="/uploads/{{ event.filename }}" type="application/pdf" width="100%" height="800">
+                                lien alternatif : <a href="/uploads/{{ event.filename }}">evenement.pdf</a>
+                            </object>
+                            <div class="caption">
+                                <div class="text-center">
+                                    <h1>{{ event.titre }}</h1>
+                                </div>
+                                <p class="text-center">DESCRIPTION: {{  event.description | raw }}</p>
+                                <div class="text-center">
+                                    <h3>Où se situe cet événement ?</h3>
+                                    <p>{{ event.localisation }}</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="date">{{ event.date|date("d-m-Y H:i") }}</p>
+                                </div>
+                                <div>
+                                    <p class="v-center text-center">Nombre d'inscrits à l'événement : {{ nbInscrit }} / {{ event.nbMaxParticipants }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container-fluid">
+                <div class="col-lg-offset-1 col-lg-6 ">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <p>Startups participantes</p>
+                            {% if event.date < today %}
+                            {% else %}
+                                {% if is_granted("ROLE_ADMIN") %}
+                                {% else %}
+                                    {% if is_granted("ROLE_USER") %}
+                                        <form method="POST" action="{{ path ('inscriptionStartUp') }}">
+                                            <input name="eventId" type="hidden" value="{{ event.id }}">
+                                            <button type="submit" class="btn btn-info btn-lg" >Inscription Startup</button>
+                                        </form>
+                                    {% else %}
+                                        <a href="/login"><button type="button" class="btn btn-info btn-lg" >Inscription Startup</button></a>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        </div>
+
+                        <div class="panel-body">
+                            {% for participation in participations %}
+                                <div class="container-fluid participant_startup_box">
+                                    <div class="col-lg-7 event-description">
+                                        <p>StartUp :{{ participation.communaute.nomStartup }}</p>
+                                        <p>Domaine : {{ participation.communaute.categorie }}</p>
+                                        <a href="{{ participation.communaute.siteWeb }}">Site Web</a>
+                                    </div>
+                                    <h4> Nombre de Vote : {{ participation.nbVote }} &nbsp;<i class="vote glyphicon glyphicon-question-sign"data-toggle="popover" title="Une startup inscrite à l’événement retient
+particulièrement votre attention et votre intérêt?
+N’hésitez pas à voter pour elle!"></i> </h4>
+                                    <div class="col-lg-1 ">
+                                        <div class="row">
+                                            <form action="{{ path('vote') }}" method="POST">
+                                                <input name="eventId" type="hidden" value="{{ event.id }}">
+                                                <button type="submit" name="vote" value="{{ participation.id }}" class="btn btn-default btn-lg">
+                                                    <span class="glyphicon " aria-hidden="true">Voter</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-lg-4">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <p>Liste des participants</p>
+
+                                {% if event.date < today %}
+                                {% else %}
+                                    {% if is_granted("ROLE_ADMIN") %}
+
+                                    {% else %}
+                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Inscription Participant</button>
+                                    {% endif %}
+
+                                {% endif %}
+                            </div>
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Inscription Participant</h4>
+                                            {{ form_start(form) }}
+                                            {{ form_rest(form) }}
+                                            <input name="eventId" type="hidden" value="{{ event.id }}">
+                                            <button type="submit" class="btn btn-info btn-lg" >inscription participant</button>
+                                            {{ form_end(form) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container-fluid">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6 ">
+                                        <p>investiseur</p>
+                                        <div class="row ">
+                                            {% for inscrit in participantInscrit %}
+                                                {% if inscrit.statut =='Investisseur' %}
+                                                    {% if inscrit.visibilite == 1 %}
+                                                        <div class=" investiseur-casse">
+                                                            <p>{{ inscrit.nom }}  </p>
+                                                            <p>{{ inscrit.prenom }}</p>
+                                                            <p>{{ inscrit.societe }}</p>
+                                                            <p>{{ inscrit.mail }}</p>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <p>Visiteur</p>
+                                        <div class="row ">
+                                            {% for inscrit in participantInscrit %}
+                                                {% if inscrit.statut =='Visiteur' %}
+                                                    {% if inscrit.visibilite == 1 %}
+                                                        <div class="investiseur-casse">
+                                                            <p>{{ inscrit.nom }}  </p>
+                                                            <p>{{ inscrit.prenom }}</p>
+                                                            <p>{{ inscrit.mail }}</p>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% else %}
+        <div class="container">
+            <div class="emptyEvent">
+                <div class="evenementInconnu">L'évènement demandé n'existe pas ou a été supprimé par la FrenchTech Alsace. Merci de vous rendre sur un autre<div class="dropdown">
+                        <span><a>&nbsp;évènement.</a></span>
+                        <div class="dropdown-content">
+                            <a style="font-size: medium" href="{{ path('event_to_come') }}">Évenements à venir</a>
+                            <a role="separator" class="divider"></a>
+                            <a style="font-size: medium" href="{{ path('event_archive') }}">Évenements passés</a>
+                        </div>
+                    </div></div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+{% endblock %}

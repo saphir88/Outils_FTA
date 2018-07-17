@@ -1,0 +1,15 @@
+
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+   
+    <div class="container confirmation">
+        <div class="jumbotron">
+            <p>
+                {{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
+            </p>
+        </div>
+    </div>
+
+{% endblock %}

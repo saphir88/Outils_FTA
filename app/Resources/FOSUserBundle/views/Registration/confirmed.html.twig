@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <div class="container confirmation">
+        <div class="jumbotron">
+            <p>Bienvenue et merci de nous rejoindre <strong style="text-transform: capitalize">{{ user.username }}.</strong></p>
+            <p>Votre inscription à bien été prise en compte et votre compte personnel est désormais activé.</p>
+            <p>Cependant, afin de figurer parmi notre liste de <a href="{{ path('start_ups') }}">Startup</a>, vous devez être valider par l'organisme FrenchTech Alsace.</p>
+            <br>
+            <p>Vous pouvez toutefois accéder à <a href="{{ path('compte') }}">Votre Profil</a> afin de modifier si vous le souhaiter les informations relative à votre startup.</p>
+            <br>
+            <p><a href="{{ path('homepage') }}">Cliquez ici</a> pour revenir a la page d'acceuil</p>
+        </div>
+    </div>
+
+
+
+{% endblock fos_user_content %}
