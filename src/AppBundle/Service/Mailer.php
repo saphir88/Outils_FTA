@@ -88,7 +88,7 @@ class Mailer
             'email' => $email,
         ]);
 
-        $message = (new\Swift_Message('RefusStartUp'))
+        $message = (new\Swift_Message('Refus StartUp'))
             ->setFrom('axelfertinel@gmail.com')
             ->setTo($email)
             ->setBody($body, 'text/html');
@@ -129,7 +129,7 @@ class Mailer
 
         $message = (new \Swift_Message('Nouvelle StartUp inscrite'))
             ->setFrom('axelfertinel@gmail.com')
-            ->setTo('axelfertinel@gmail.com')
+            ->setTo('fosuserbundle@gmail.com')
             ->setBody($body, 'text/html');
 
         $this->mailer->send($message);

@@ -47,6 +47,18 @@ class CommunauteRepository extends \Doctrine\ORM\EntityRepository
             ->createQuery("UPDATE AppBundle:Communaute c SET c.validation='1' WHERE c.id=$id")
             ->getResult();
     }
+
+    public function findOneCommunaute($nomStartup)
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->andWhere('c.nomStartup != :nom')
+            ->setParameter('nom', $nomStartup)
+            ->getQuery();
+
+        return $qb->execute();
+    }
+
+
 }
 
 

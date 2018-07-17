@@ -35,6 +35,7 @@ Class RegistrationType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Appbundle\Entity\User',
+            'cascade_validation' => true,
         ));
     }
     public function getParent()
