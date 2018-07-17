@@ -1,0 +1,11 @@
+.inscription {
+  padding: 1vw;
+  margin-bottom: 1vw;
+  border: solid 1px rgba(190, 190, 190, 0.5);
+  box-shadow: 10px 10px 16px 1px lightgray;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: #FFFFFF;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3dpbGRlci9Eb2N1bWVudHMvT3V0aWxzX0ZUQS9hc3NldHMvc2Nzcy9pbnNjcmlwdGlvbi5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIi5pbnNjcmlwdGlvbntcbiAgcGFkZGluZzogMXZ3O1xuICBtYXJnaW4tYm90dG9tOiAxdnc7XG4gIGJvcmRlcjogc29saWQgMXB4IHJnYmEoMTkwLDE5MCwxOTAsIC41KTtcbiAgYm94LXNoYWRvdzogMTBweCAxMHB4IDE2cHggMXB4IGxpZ2h0Z3JheTtcbiAgYm9yZGVyLWJvdHRvbS1sZWZ0LXJhZGl1czogMTVweDtcbiAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDE1cHg7XG4gIGJhY2tncm91bmQtY29sb3I6ICNGRkZGRkY7XG59Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLEFBQUEsWUFBWSxDQUFBO0VBQ1YsT0FBTyxFQUFFLEdBQUc7RUFDWixhQUFhLEVBQUUsR0FBRztFQUNsQixNQUFNLEVBQUUsS0FBSyxDQUFDLEdBQUcsQ0FBQyx3QkFBcUI7RUFDdkMsVUFBVSxFQUFFLDRCQUE0QjtFQUN4Qyx5QkFBeUIsRUFBRSxJQUFJO0VBQy9CLHVCQUF1QixFQUFFLElBQUk7RUFDN0IsZ0JBQWdCLEVBQUUsT0FBTyxHQUMxQiJ9 */
