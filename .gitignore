@@ -47,7 +47,7 @@
 # Embedded web-server pid file
 /.web-server-pid
 
-#/web/uploads/*
+/web/uploads/*
 !web/uploads/img/
 
 /.parameters.yml
