@@ -50,5 +50,3 @@
 /.idea/
 /.parameters.yml
 /node_modules/
-/.parameters.yml.dist
-/.idea/
