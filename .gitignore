@@ -36,7 +36,7 @@
 /phpunit.xml
 
 # Build data
-# /web/build/
+/web/build/
 
 # Composer PHAR
 /composer.phar
@@ -48,6 +48,6 @@
 /.web-server-pid
 
 /.parameters.yml
-# /node_modules/
+/node_modules/
 /.parameters.yml.dist
-# /.idea/
+/.idea/
