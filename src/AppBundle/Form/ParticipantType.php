@@ -17,15 +17,16 @@ class ParticipantType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('prenom', TextType::class, array ('attr' => array('maxlength' => 15),'label' => 'Prénom* :'))
-            ->add('nom', TextType::class, array ('attr' => array('maxlength' => 15),'label' => 'Nom* :'))
+        $builder
+            ->add('prenom', TextType::class, array ('attr' => array('maxlength' => 20),'label' => 'Prénom* :'))
+            ->add('nom', TextType::class, array ('attr' => array('maxlength' => 20),'label' => 'Nom* :'))
             ->add('mail', EmailType::class, ['label' => 'Mail* :'])
             ->add('statut', ChoiceType::class, array('label'=>'Statut* :',
                 'choices'  => array(
                     'Visiteur' => 'Visiteur',
                     'Investisseur' => 'Investisseur',
                 ),'placeholder' => 'Choisissez votre statut'))
-            ->add('societe', TextType::class, array ('attr' => array('maxlength' => 20),'required' => false, 'label' => 'Société :'))
+            ->add('societe', TextType::class, array ('attr' => array('maxlength' => 25),'required' => false, 'label' => 'Société :'))
             ->add('visibilite', CheckboxType::class, array(
                 'label'    => 'Déclarer sa participation à l’événement',
                 'required' => false,
