@@ -47,7 +47,6 @@
 # Embedded web-server pid file
 /.web-server-pid
 
-# /.idea/
 /.parameters.yml
 # /node_modules/
 /.parameters.yml.dist
