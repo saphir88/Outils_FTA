@@ -16,6 +16,10 @@ class Mailer
      * @var Modèle du mail
      */
     private $templating;
+    /**
+     * @var admin mail
+     */
+    private $admin;
 
     /**
      * Mailer constructor.
@@ -26,6 +30,7 @@ class Mailer
     {
         $this->mailer = $mailer;
         $this->templating = $templating;
+        $this->admin = 'contact@lafrenchetech-alsace.eu';
     }
 
     /**

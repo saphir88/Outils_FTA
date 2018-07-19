@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -18,13 +19,13 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre')
+            ->add('titre',TextType::class, array('attr' => array('maxlength' => 100)))
             ->add('file', FileType::class, ['data_class' => null, 'required' => false])
             ->add('description', CKEditorType::class, ['config' => array(
                 'config_name' => 'my_config','required'=> false,
                 )])
             ->add('date', DateTimeType::class)
-            ->add('localisation')
+            ->add('localisation',TextType::class, array('attr' => array('maxlength' => 100)))
             ->add('nbMaxParticipants');
     }
 
