@@ -50,7 +50,7 @@
                                         {% endif %}
                                         <p><b>Adresse :</b> {{ communaute.adresse }}</p>
                                         <p><b>Domaine :</b> {{ communaute.categorie }}</p>
-                                        <p><b>Site Web :</b> <a href="{{ communaute.siteWeb }}">{{ communaute.siteWeb }}</a></p>
+                                        <p><b>Site Web :</b> <a href="http://{{ communaute.siteWeb }}">{{ communaute.siteWeb }}</a></p>
                                         <p><b>Contact :</b> {{ communaute.mail }}</p>
                                         {% if communaute.video is not null %}
                                             <div><iframe width="560" height="315" src="{{ communaute.video }}?controls=2 " frameborder="0" allow="encrypted-media" allowfullscreen ></iframe></div>

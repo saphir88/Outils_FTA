@@ -6,3 +6,11 @@
 {% block fos_user_content %}
     {% include "@FOSUser/Registration/register_content.html.twig" %}
 {% endblock fos_user_content %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            $('.message').tooltip();
+        });
+    </script>
+{% endblock %}
