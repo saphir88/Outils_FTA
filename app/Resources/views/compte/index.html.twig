@@ -38,7 +38,7 @@
             <div class="row">
                 <hr>
                 <div class="col-lg-4 col-lg-offset-1">
-                    {{ form_row(edit_form.file, {'attr' : {'title':'Format de fichier authorisé: .jpg, .png, .jpeg. \n Taille maximum: 2Mo', 'class':'message'}}) }}
+                    {{ form_row(edit_form.file, {'required':false ,'attr' : {'title':'Format de fichier authorisé: .jpg, .png, .jpeg. \n Taille maximum: 2Mo', 'class':'message'}}) }}
                 </div>
                 <div class="col-lg-offset-1 ">
                     <img class="logo well" src="/uploads/{{ communaute.fileName }}">
