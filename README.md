@@ -24,16 +24,16 @@ Projet client French Tech Alsace (Développement des outils "Communautés Startu
 ## parameter.yml :
 
   parameters:
-      database_host: 127.0.0.1
-      database_port: null
-      database_name: BDDname
-      database_user: BDDuser
-      database_password: BDDpass
-      mailer_transport: gmail
-      mailer_host: 127.0.0.1
-      mailer_user: admin@
-      mailer_password: pass
-      secret: ThisTokenIsNotSoSecretChangeIt
+      database_host: 127.0.0.1  
+      database_port: null  
+      database_name: BDDname  
+      database_user: BDDuser  
+      database_password: BDDpass  
+      mailer_transport: gmail  
+      mailer_host: 127.0.0.1  
+      mailer_user: admin@  
+      mailer_password: pass  
+      secret: ThisTokenIsNotSoSecretChangeIt  
 
 
 ## Webpack commande :
