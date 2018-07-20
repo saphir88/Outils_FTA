@@ -25,7 +25,7 @@ class ParticipantController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $participants = $em->getRepository('AppBundle:Participant')->findAll();
+        $participants = $em->getRepository('AppBundle:Participant')->findBy([], ['event' => 'asc']);
         $deleteFormView=[];
             foreach ($participants as $participant){
                 $deleteFormView[] = $this->createDeleteForm($participant)->createView();

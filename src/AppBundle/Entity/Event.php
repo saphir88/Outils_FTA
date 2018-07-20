@@ -81,9 +81,6 @@ class Event
 
     /**
      * @Vich\UploadableField(mapping="images", fileNameProperty="filename")
-     * @Assert\Image(
-     *     allowLandscape = false,
-     *     )
      * @Assert\File(
      *     maxSize="5000k",
      *     mimeTypes = {"image/jpg", "image/png", "image/jpeg"}

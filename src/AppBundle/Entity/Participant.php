@@ -67,7 +67,6 @@ class Participant
      * 
      * @Assert\Email(
      *     message = "L'adresse '{{ value }}' n'est pas une adresse valide.",
-     *
      * )
      */
     private $mail;

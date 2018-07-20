@@ -69,7 +69,7 @@ class Communaute
      * @var File
      * @Assert\File(
      *     maxSize="2000k",
-     *     mimeTypes = {"image/jpg", "image/png"},
+     *     mimeTypes = {"image/jpg", "image/png", "image/jpeg"},
      * )
      */
     private $file;

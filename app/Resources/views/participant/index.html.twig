@@ -8,6 +8,7 @@
                 <thead>
                 <tr>
                     <th>Event</th>
+                    <th>Date Evenement</th>
                     <th>Prenom</th>
                     <th>Nom</th>
                     <th>Mail</th>
@@ -20,6 +21,7 @@
                 {% for participant in participants %}
                     <tr>
                         <td>{{ participant.event.titre }}</td>
+                        <td>{{ participant.event.date|date('d-m-Y') }}</td>
                         <td>{{ participant.prenom }}</td>
                         <td>{{ participant.nom }}</td>
                         <td>{{ participant.mail }}</td>

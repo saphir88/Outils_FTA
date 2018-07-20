@@ -104,7 +104,10 @@
 <script src="{{ asset('build/app.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('build/main.css') }}">
 
-{# Voici le script en question : #}
+
+
+
+
 {% block javascripts %}{% endblock %}
 <script type="text/javascript">
     $(document).ready(function() {
@@ -178,6 +181,10 @@
 
             });
         }
+    });
+
+    $(document).ready(function(){
+        $('.message').tooltip();
     });
 </script>
 </body>
