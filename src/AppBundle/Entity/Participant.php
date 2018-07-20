@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Participant
@@ -62,6 +64,11 @@ class Participant
      * @var string
      *
      * @ORM\Column(name="mail", type="string", length=255)
+     * 
+     * @Assert\Email(
+     *     message = "L'adresse '{{ value }}' n'est pas une adresse valide.",
+     *
+     * )
      */
     private $mail;
 

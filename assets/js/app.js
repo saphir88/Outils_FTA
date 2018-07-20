@@ -13,6 +13,3 @@ $('select').on('change', function() {
     }
 });
 
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-});
