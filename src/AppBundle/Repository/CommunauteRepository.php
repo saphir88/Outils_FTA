@@ -30,7 +30,7 @@ class CommunauteRepository extends \Doctrine\ORM\EntityRepository
     public function findAllByCategory($categorie)
     {
         return $this->getEntityManager()
-            ->createQuery("SELECT c FROM AppBundle:Communaute c WHERE c.categorie='$categorie'")
+            ->createQuery("SELECT c FROM AppBundle:Communaute c WHERE c.categorie='$categorie' AND c.validation='1'")
             ->getResult();
     }
 

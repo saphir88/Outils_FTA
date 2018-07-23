@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    {% if events is defined %}
+    {% if events.0 is defined %}
         <div class="container-fluid">
         {% if events.0.date > dateNow %}
             <div class="container eventPast">

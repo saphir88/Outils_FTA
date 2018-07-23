@@ -13,7 +13,10 @@
             <div class="contact col-lg-6 col-lg-offset-3">
                 <h1>Nous Contacter</h1>
                 {{ form_start(form) }}
-                {{ form_widget(form) }}
+
+                {{ form_row(form.nom) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.message, {'attr' : {'placeholder':'Maximum 300 caractères..'}}) }}
                 <p>Merci de complèter les champs obligatoires (*).</p>
                 <input class="btn btn-success" type="submit" value="Envoyer" />
                 {{ form_end(form) }}

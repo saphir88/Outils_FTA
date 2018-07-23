@@ -33,8 +33,9 @@ class ExtractionCSV extends Controller
             $categorie = $_POST['categorie'];
             $em = $this->getDoctrine()->getManager();
 
-            if ($categorie == "all") {
-                $dataExport = $em->getRepository('AppBundle:Communaute')->findAll();
+            if ($categorie == "") {
+                $dataExport = $em->getRepository('AppBundle:Communaute')->findAllValidTrue();
+                $categorie = "all";
             } else {
                 $dataExport = $em->getRepository('AppBundle:Communaute')->findAllByCategory($categorie);
             }
