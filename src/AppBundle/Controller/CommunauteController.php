@@ -63,8 +63,10 @@ class CommunauteController extends Controller
                 $replace = $youtube->replaceVideo($communaute->getVideo());
                 $communaute->setVideo($replace);
             }
-
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Modifications bien prise en compte.');
+
             return $this->redirectToRoute('communaute_edit', array('id' => $communaute->getId()));
         }
 

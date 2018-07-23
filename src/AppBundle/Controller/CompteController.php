@@ -17,7 +17,7 @@ use AppBundle\Service\Youtube;
 
 /**
  * Compte controller.
- * @Security("has_role('ROLE_USER')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
+ * @Security("has_role('ROLE_USER')", message="Accés réservé au utilisateurs. Si vous êtes un utilisateur de ce site, merci de vous authentifiez")
  * @Route("monCompte")
  */
 

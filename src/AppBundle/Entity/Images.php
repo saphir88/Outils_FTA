@@ -49,6 +49,11 @@ class Images
      * @Vich\UploadableField(mapping="images", fileNameProperty="filename")
      *
      * @var File
+     * @Assert\File(
+     *     maxSize="2000k",
+     *     mimeTypes = {"image/jpg", "image/png"},
+     *     uploadIniSizeErrorMessage="{{ limit }}"
+     * )
      */
     private $file;
 

@@ -37,7 +37,7 @@
             <div class="row">
                 <hr>
                 <div class="col-lg-4 col-lg-offset-1">
-                    {{ form_row(edit_form.file, {'required': false}) }}
+                    {{ form_row(edit_form.file,{'required':false ,'attr' : {'title':'Format de fichier authorisé: .jpg, .png, .jpeg. \n Taille maximum: 2Mo', 'class':'message'}}) }}
                 </div>
                 <div class="col-lg-offset-2">
                     <img class="logo well" src="/uploads/{{ communaute.fileName }}">
@@ -105,7 +105,7 @@
             {%  for image in edit_form.images %}
                 <div class="col-lg-4 well imagesStartup">
                     <img class="well logo" src="/uploads/{{ image.vars.data.filename }}">
-                    {{ form_row(image.file) }}
+                    {{ form_row(image.file, {'attr' : {'title':'Format de fichier authorisé: .jpg, .png, .jpeg. \n Taille maximum: 2Mo', 'class':'message'}}) }}
                 </div>
             {% endfor %}
             {{ form_row(edit_form.images, {'label':' '}) }}

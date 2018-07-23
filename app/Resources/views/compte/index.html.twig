@@ -38,7 +38,7 @@
             <div class="row">
                 <hr>
                 <div class="col-lg-4 col-lg-offset-1">
-                    {{ form_row(edit_form.file, {'required': false}) }}
+                    {{ form_row(edit_form.file, {'required':false ,'attr' : {'title':'Format de fichier authorisé: .jpg, .png, .jpeg. \n Taille maximum: 2Mo', 'class':'message'}}) }}
                 </div>
                 <div class="col-lg-offset-1 ">
                     <img class="logo well" src="/uploads/{{ communaute.fileName }}">
@@ -53,8 +53,6 @@
                     {{ form_row(edit_form.adresse) }}
                 </div>
             </div>
-
-
 
             {{ form_row(edit_form.description) }}
 
@@ -108,8 +106,8 @@
         </div>" class="row">
             {%  for image in edit_form.images %}
                 <div class="col-lg-4 well imagesStartup">
-                    <img class="well logo" src="/uploads/{{ image.vars.data.filename }}">
-                    {{ form_row(image.file) }}
+                    <img class="well logo" src="/uploads/{{ image.vars.data.filename }}" alt="{{ image.vars.data.filename }}">
+                    {{ form_row(image.file, {'attr' : {'title':'Format de fichier authorisé: .jpg, .png, .jpeg. \n Taille maximum: 2Mo', 'class':'message'}}) }}
                 </div>
             {% endfor %}
             {{ form_row(edit_form.images, {'label':' '}) }}
@@ -119,7 +117,7 @@
         {% endfor %}
 
         <div id="ajoutImage" class="well" style="display: block">
-            <a href="#" id="add_images" class="btn btn-default">Ajouter une image</a>
+            <a href="#" id="add_images" class="btn btn-default" title="Format de fichier authorisé: .jpg, .png, .jpeg. \n Taille maximum: 2Mo">Ajouter une image</a>
         </div>
 
         <div class="container button">

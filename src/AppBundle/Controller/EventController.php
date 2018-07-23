@@ -28,7 +28,7 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $deleteFormView=[];
-        $events = $em->getRepository('AppBundle:Event')->findAll();
+        $events = $em->getRepository('AppBundle:Event')->findBy([], ['date' => 'desc']);
 
                 foreach ($events as $event){
                  $deleteFormView[] = $this->createDeleteForm($event)->createView();
