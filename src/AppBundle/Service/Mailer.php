@@ -70,7 +70,7 @@ class Mailer
         ]);
 
         $message = (new\Swift_Message('validateStartUp'))
-            ->setFrom('') //Renseigner l'adresse mail de la FTA
+            ->setFrom('fosuserbundle@gmail.com') //Renseigner l'adresse mail de la FTA
             ->setTo($email)
             ->setBody($body, 'text/html');
 
@@ -133,8 +133,8 @@ class Mailer
         $body = $this->templating->render('email/inscriptionMail.html.twig');
 
         $message = (new \Swift_Message('Nouvelle StartUp inscrite'))
-            ->setFrom('')   //Renseigner l'adresse mail de la FTA
-            ->setTo('')   //Renseigner l'adresse mail de la FTA
+            ->setFrom('fosuserbundle@gmail.com')   //Renseigner l'adresse mail de la FTA
+            ->setTo('fosuserbundle@gmail.com')   //Renseigner l'adresse mail de la FTA
             ->setBody($body, 'text/html');
 
         $this->mailer->send($message);

@@ -38,7 +38,7 @@ class Communaute
     /**
      * @var string
      *
-     * @ORM\Column(name="nomStartup", type="string", length=255, unique=true)
+     * @ORM\Column(name="nomStartup", type="string", length=255)
      */
     private $nomStartup;
 
