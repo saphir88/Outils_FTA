@@ -6,6 +6,7 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
@@ -47,6 +48,7 @@ class Communaute
      * @var string
      *
      * @ORM\Column(name="nomStartup", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $nomStartup;
 
@@ -78,6 +80,7 @@ class Communaute
      * @var string
      *
      * @ORM\Column(name="categorie", type="string", length=255)
+     * @Assert\NotNull()
      */
     private $categorie;
 
@@ -109,6 +112,7 @@ class Communaute
      * @var string
      *
      * @ORM\Column(name="siteWeb", type="string", length=255, nullable=true)
+     * @Assert\NotNull()
      *
      */
     private $siteWeb;
@@ -124,6 +128,7 @@ class Communaute
      * @var string
      *
      * @ORM\Column(name="adresse", type="string", length=255)
+     * @Assert\NotNull()
      */
     private $adresse;
 
@@ -131,6 +136,7 @@ class Communaute
      * @var string
      *
      * @ORM\Column(name="nomContact", type="string", length=255)
+     * @Assert\NotNull()
      *
      */
     private $nomContact;
@@ -139,6 +145,8 @@ class Communaute
      * @var string
      *
      * @ORM\Column(name="mail", type="string", length=255)
+     * @Assert\NotNull()
+     * @Assert\Email()
      *
      */
     private $mail;

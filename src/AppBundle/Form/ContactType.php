@@ -21,7 +21,7 @@ class ContactType extends AbstractType
     {
         $builder->add('nom', TextType::class, array('attr' => array('maxlength' => 20),'label'=>'Nom:'))
             ->add('email', EmailType::class, array('label'=>'Email* :'))
-            ->add('message',TextareaType::class, array ('attr' => array('maxlength' => 300),'required'=> false, 'label'=>'Votre message* :'));
+            ->add('message',TextareaType::class, array ('attr' => array('maxlength' => 300),'label'=>'Votre message* :'));
     }/**
  * {@inheritdoc}
  */
