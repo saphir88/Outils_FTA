@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Communaute;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 
 use AppBundle\Service\Youtube;
@@ -16,7 +17,7 @@ use AppBundle\Service\Youtube;
 
 /**
  * Compte controller.
- * @Security("has_role('ROLE_USER')", message="Accés réservé à l'administrateur. Si vous êtes l'administrateur de ce site, merci de vous authentifiez")
+ * @Security("has_role('ROLE_USER')", message="Accés réservé au utilisateurs. Si vous êtes un utilisateur de ce site, merci de vous authentifiez")
  * @Route("monCompte")
  */
 
@@ -51,14 +52,16 @@ class CompteController extends Controller
                 $communaute->setSiteWeb($replaceHttp);
             }
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($communaute);
-            $em->flush();
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($communaute);
+                $em->flush();
 
-            $this->addFlash('success', 'Modifications bien prise en compte.');
+                $this->addFlash('success', 'Modifications bien prise en compte.');
 
-            return $this->redirectToRoute('compte');
+                return $this->redirectToRoute('compte');
+
         }
+
 
         return $this->render('compte/index.html.twig', array(
             'communaute' => $communaute,

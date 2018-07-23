@@ -9,12 +9,25 @@
             <div class="container col-lg-8 col-lg-offset-2 eventCreation">
                 <div class=" col-lg-8 col-lg-offset-2">
                     {{ form_start(form) }}
-                    {{ form_widget(form) }}
+                    {{ form_row(form.titre) }}
+                    <div style="margin-bottom: 10px">
+                        {{ form_label(form.file) }}
+                        {{ form_widget(form.file, {'attr' : {'title':'Extension de fichier authorisé: .jpg, .png, .jpeg. Format portrait UNIQUEMENT ! \n Taille maximum: 5Mo.', 'class':'message'}}) }}
+                        {{ form_errors(form.file) }}
+                    </div>
+                    {{ form_rest(form) }}
                     <input class="btn btn-success" type="submit" value="Créer" style="float: left;"/>
                     {{ form_end(form) }}
-                    <a class="btn btn-primary" href="{{ path('admin') }}" style="float: right">Revenir au menu d'administration</a>
                 </div>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            $('.message').tooltip();
+        });
+    </script>
 {% endblock %}

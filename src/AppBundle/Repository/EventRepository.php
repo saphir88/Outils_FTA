@@ -15,7 +15,7 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
         $now =  new \DateTime('now');
 
         return $this->getEntityManager()
-            ->createQuery("SELECT ev FROM AppBundle:Event AS ev WHERE ev.date < :date ")
+            ->createQuery("SELECT ev FROM AppBundle:Event AS ev WHERE ev.date < :date ORDER BY ev.date DESC ")
             ->setParameter('date', $now)
             ->getResult();
 
@@ -26,7 +26,7 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
         $now = new \DateTime('now');
 
         return $this->getEntityManager()
-            ->createQuery("SELECT ev FROM AppBundle:Event AS ev WHERE ev.date > :date ")
+            ->createQuery("SELECT ev FROM AppBundle:Event AS ev WHERE ev.date > :date ORDER BY ev.date ASC")
             ->setParameter('date', $now)
             ->getResult();
     }

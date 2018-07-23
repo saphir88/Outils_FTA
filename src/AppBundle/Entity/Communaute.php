@@ -5,8 +5,10 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
@@ -16,6 +18,12 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table(name="communaute")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CommunauteRepository")
+ * @UniqueEntity(
+ *     fields="nomStartup",
+ *     errorPath="nomStartup",
+ *     message="Ce nom de startup est déjà utilisé !"
+ * )
+ * @ORM\HasLifecycleCallbacks
  * @Vich\Uploadable()
  *
  */
@@ -59,6 +67,10 @@ class Communaute
     /**
      * @Vich\UploadableField(mapping="images", fileNameProperty="filename")
      * @var File
+     * @Assert\File(
+     *     maxSize="2000k",
+     *     mimeTypes = {"image/jpg", "image/png", "image/jpeg"},
+     * )
      */
     private $file;
 
@@ -185,7 +197,10 @@ class Communaute
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Images", mappedBy="communaute", cascade="all", orphanRemoval=true, fetch="EAGER")
-     *
+     * @Assert\All({
+     *     @Assert\Type(type="AppBundle\Entity\Images"),
+     * })
+     * @Assert\Valid
      */
     private $images;
 
@@ -548,6 +563,37 @@ class Communaute
         unlink($path . $image->getFilename());
     }
 
-
+//    /**
+//     * @Assert\Callback
+//     * @param ExecutionContextInterface $context
+//     */
+//    public function validate(ExecutionContextInterface $context)
+//    {
+//        // do your own validation
+//        if (! in_array($this->file->getMimeType(), array(
+//            'image/jpeg',
+//            'image/png'
+//        ))) {
+//            $context
+//                ->buildViolation('Erreur de format (Insérer uniquement une image au format jpg ou png)')
+//                ->atPath('file')
+//                ->addViolation();
+//        }
+//    }
+//
+//    /**
+//     * @Assert\Callback
+//     * @param ExecutionContextInterface $context
+//     */
+//    public function checkSize(ExecutionContextInterface $context)
+//    {
+//        // do your own validation
+//        if ($this->file->getSize() > '500000') {
+//            $context
+//                ->buildViolation('Veuillez uploader un fichier inférieur à 5M.')
+//                ->atPath('file')
+//                ->addViolation();
+//        }
+//    }
 
 }

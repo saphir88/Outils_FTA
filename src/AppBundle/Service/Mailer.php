@@ -16,6 +16,10 @@ class Mailer
      * @var Modèle du mail
      */
     private $templating;
+    /**
+     * @var admin mail
+     */
+    private $admin;
 
     /**
      * Mailer constructor.
@@ -26,6 +30,7 @@ class Mailer
     {
         $this->mailer = $mailer;
         $this->templating = $templating;
+        $this->admin = 'contact@lafrenchetech-alsace.eu';
     }
 
     /**
@@ -91,6 +96,7 @@ class Mailer
             'email' => $email,
         ]);
 
+
         $message = (new\Swift_Message('RefusStartUp'))
             ->setFrom('')   //Renseigner l'adresse mail de la FTA
             ->setTo($email)
@@ -133,8 +139,8 @@ class Mailer
         $body = $this->templating->render('email/inscriptionMail.html.twig');
 
         $message = (new \Swift_Message('Nouvelle StartUp inscrite'))
-            ->setFrom('fosuserbundle@gmail.com')   //Renseigner l'adresse mail de la FTA
-            ->setTo('fosuserbundle@gmail.com')   //Renseigner l'adresse mail de la FTA
+            ->setFrom('')   //Renseigner l'adresse mail de la FTA
+            ->setTo('')   //Renseigner l'adresse mail de la FTA
             ->setBody($body, 'text/html');
 
         $this->mailer->send($message);

@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -80,7 +81,10 @@ class Event
 
     /**
      * @Vich\UploadableField(mapping="images", fileNameProperty="filename")
-     *
+     * @Assert\File(
+     *     maxSize="5000k",
+     *     mimeTypes = {"image/jpg", "image/png", "image/jpeg"}
+     * )
      * @var File
      */
     private $file;
@@ -302,6 +306,22 @@ class Event
     public function setParticipant($participant)
     {
         $this->participant = $participant;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParticipation()
+    {
+        return $this->participation;
+    }
+
+    /**
+     * @param mixed $participation
+     */
+    public function setParticipation($participation)
+    {
+        $this->participation = $participation;
     }
 
 
