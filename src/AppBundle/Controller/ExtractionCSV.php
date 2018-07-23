@@ -34,7 +34,7 @@ class ExtractionCSV extends Controller
             $em = $this->getDoctrine()->getManager();
 
             if ($categorie == "all") {
-                $dataExport = $em->getRepository('AppBundle:Communaute')->findAll();
+                $dataExport = $em->getRepository('AppBundle:Communaute')->findAllValidTrue();
             } else {
                 $dataExport = $em->getRepository('AppBundle:Communaute')->findAllByCategory($categorie);
             }
