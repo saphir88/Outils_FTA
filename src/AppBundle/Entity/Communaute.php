@@ -167,7 +167,7 @@ class Communaute
     /**
      * @var boolean
      *
-     * @ORM\Column(name="validation", type="smallint", nullable=true)
+     * @ORM\Column(name="validation", type="smallint", nullable=false)
      */
     private $validation;
 
