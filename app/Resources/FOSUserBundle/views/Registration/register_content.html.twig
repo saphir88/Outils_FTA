@@ -17,6 +17,7 @@
             <div class="col-lg-6">
                 {{ form_label(form.plainPassword.first, 'Mot de passe* :') }}
                 {{ form_widget(form.plainPassword.first, {'attr' : {'title':'Le mot de passe doit contenir au moins 8 caractères dont une majuscule, une minuscule, un chiffre et un caractère spécial.', 'class':'message'}}) }}
+                {{ form_errors(form.plainPassword.first) }}
             </div>
             <div class="col-lg-6">
                 {{ form_row(form.plainPassword.second, {'label':'Confirmer le mot de passe* :'}) }}
@@ -86,6 +87,7 @@
             </div>
             <div class="col-lg-4">
                 {{ form_row(form.communaute.telephone) }}
+                {{ form_row(form.communaute.validation, { 'attr' : { 'value': 0 }}) }}
             </div>
         </div>
         {{ form_widget(form.communaute.images, { 'attr' : { 'style':'display:none'}}) }}
