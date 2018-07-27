@@ -2,8 +2,7 @@
 
 
 @font-face {
-  font-family: 'Helvetica';
-  src: url('/build/fonts/HelveticaInseratLTStd-Roman.eeee8a17.otf');
+
 }
 
 $fontFamily : Helvetica, Arial;/*variable global d'écriture du site*/
@@ -118,11 +117,6 @@ h2{
   transform: translateY(-50%);
 }
 
-.event-description {
-  background-color: #eeeeee;
-  padding: 15px;
-
-}
 
 .bluebox {
   display: block;
@@ -137,18 +131,27 @@ h2{
 }
 
 .participant_startup_box {
-
-  background-color: #eeeeee;
+  box-shadow: 8px 7px 12px #aaa;
   margin-bottom: 10px;
-
+  padding: 15px;
 }
 
-.investiseur-casse{
-  background-color: #eeeeee;
-  padding: 5px;
+.investisseur-casse{
+  box-shadow: 8px 7px 12px #aaa;
+  padding: 10px;
   margin: 15px;
 }
 
+.participant{
+  display: flex;
+}
+
+.title_participant{
+  background-color: whitesmoke;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 1vw;
+}
 
 /*style de la page evenement*/
 

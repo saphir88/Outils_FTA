@@ -74,15 +74,16 @@
                         <div class="panel-body">
                             {% for participation in participations %}
                                 <div class="container-fluid participant_startup_box">
-                                    <div class="col-lg-7 event-description">
+                                    <div class="col-lg-7">
                                         <p>StartUp :{{ participation.communaute.nomStartup }}</p>
                                         <p>Domaine : {{ participation.communaute.categorie }}</p>
                                         <a href="{{ participation.communaute.siteWeb }}">Site Web</a>
                                     </div>
-                                    <h4> Nombre de Vote : {{ participation.nbVote }} &nbsp;<i class="vote glyphicon glyphicon-question-sign"data-toggle="popover" title="Une startup inscrite à l’événement retient
+
+                                    <div class="col-lg-4 ">
+                                        <h4> Nombre de Vote : {{ participation.nbVote }} &nbsp;<i class="vote glyphicon glyphicon-question-sign"data-toggle="popover" title="Une startup inscrite à l’événement retient
 particulièrement votre attention et votre intérêt?
 N’hésitez pas à voter pour elle!"></i> </h4>
-                                    <div class="col-lg-1 ">
                                         <div class="row">
                                             {% if event.date < today %}
                                             {% else %}
@@ -137,14 +138,16 @@ N’hésitez pas à voter pour elle!"></i> </h4>
                             <div class="container-fluid">
                                 <div class="col-lg-12">
                                     <div class="col-lg-6 ">
-                                        <p>investiseur</p>
+                                        <p class="title_participant">investiseur</p>
                                         <div class="row ">
                                             {% for inscrit in participantInscrit %}
                                                 {% if inscrit.statut =='Investisseur' %}
                                                     {% if inscrit.visibilite == 1 %}
-                                                        <div class=" investiseur-casse">
-                                                            <p>{{ inscrit.nom }}  </p>
-                                                            <p>{{ inscrit.prenom }}</p>
+                                                        <div class=" investisseur-casse">
+                                                            <div class="participant">
+                                                                <p>{{ inscrit.nom }}  </p>
+                                                                <p>&nbsp;{{ inscrit.prenom }}</p>
+                                                            </div>
                                                             <p>{{ inscrit.societe }}</p>
                                                             <p>{{ inscrit.mail }}</p>
                                                         </div>
@@ -155,14 +158,16 @@ N’hésitez pas à voter pour elle!"></i> </h4>
                                     </div>
 
                                     <div class="col-lg-6">
-                                        <p>Visiteur</p>
+                                        <p class="title_participant" >Visiteur</p>
                                         <div class="row ">
                                             {% for inscrit in participantInscrit %}
                                                 {% if inscrit.statut =='Visiteur' %}
                                                     {% if inscrit.visibilite == 1 %}
-                                                        <div class="investiseur-casse">
-                                                            <p>{{ inscrit.nom }}  </p>
-                                                            <p>{{ inscrit.prenom }}</p>
+                                                        <div class="investisseur-casse">
+                                                            <div class="participant">
+                                                                <p>{{ inscrit.nom }}  </p>
+                                                                <p>&nbsp;{{ inscrit.prenom }}</p>
+                                                            </div>
                                                             <p>{{ inscrit.mail }}</p>
                                                         </div>
                                                     {% endif %}
